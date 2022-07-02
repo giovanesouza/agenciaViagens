@@ -1,0 +1,357 @@
+/* FORMATAÇÃO SCROLL */
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(40deg, #26b4fb, #26b4fb46);
+    border-radius: 50px;
+}
+
+/* ALINHAMENTO NAVBAR - POSITION */
+
+.relative {
+    position: relative;
+}
+
+.absolute-right {
+    position: absolute;
+    right: 9%;
+}
+
+/* FIM ALINHAMENTO NAVBAR - POSITION */
+
+
+
+/* BOTÕES */
+
+.bg-active {
+    background-color: #1a2e46;
+    color: #fff !important;
+
+}
+
+.btn-hover {
+    transition: all .2s;
+}
+
+.btn-hover:hover {
+    background-color: #1a2e46;
+    color: #fff !important;
+
+}
+
+.float-right {
+    float: right !important;
+}
+
+
+
+.login {
+    background-color: #0354b8;
+    color: #fff !important;
+    transition: all .2s;
+}
+
+.login:hover {
+    background-color: #d8450b;
+    color: #fff !important;
+}
+
+
+
+/* FIM BOTÕES */
+
+
+/* MODAL BACKGROUND */
+
+
+.bg-modal {
+    background-color: #1a2e46ec;
+    color: #fff;
+}
+
+.bg-cadastrar {
+    background-color: #eee;
+    color: #1a2e46;
+}
+
+
+.bg-cadastrar:hover {
+    background-color: #d8450b;
+    color: #fff;
+}
+
+
+/* FIM BACKGROUND */
+
+
+
+/* BUSCAR PASSAGENS */
+
+.bg-degrade {
+    background-image: linear-gradient(40deg, #1a2e46, #26b4fb);
+}
+
+.btn-buscar {
+    border: 1px solid #fff;
+    transition: all 0.2s;
+}
+
+.btn-buscar:hover {
+    background-color: #0354b8;
+}
+
+.bg-buscar {
+    background-color: #025ece;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: all 0.2s;
+}
+
+.bg-buscar:hover {
+    background-color: #d8450b;
+    color: #fff;
+}
+
+
+input[type="date"] {
+    width: 160px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+
+/* FIM BUSCAR PASSAGENS */
+
+
+/* COMPRA SEGURA - IMAGEM FLOAT */
+.img_float>img {
+    z-index: 1;
+    width: 100px;
+    position: fixed;
+    right: 5px;
+    bottom: 10px;
+}
+
+/* FIM COMPRA SEGURA - IMAGEM FLOAT */
+
+
+
+/* RODAPÉ LINK */
+
+.link_rodape {
+    text-decoration: none;
+    color: #1a2e46;
+
+}
+
+/* FIM RODAPÉ LINK */
+
+
+
+
+/* ALINHAMENTOS GERAIS */
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-right {
+    text-align: end;
+
+}
+
+.p_justify {
+    text-align: justify;
+}
+
+/* FIM ALINHAMENTOS GERAIS */
+
+
+
+/* COR PADRÃO LOGO - TEXTO */
+
+.text-padrao {
+    color: #1a2e46;
+}
+
+
+/* FIM COR PADRÃO */
+
+
+/* TEXTO - Sempre justificado */
+
+.text-alinhado {
+    text-align: justify;
+}
+
+/* FIM justificado */
+
+
+
+/* FIM FORMATAÇÃO GERAL */
+
+
+/* PÁGINA INICIAL */
+
+
+.bg-ver-mais {
+    border: 1px solid #d8450b;
+    color: #1a2e46;
+    transition: all 0.2s;
+}
+
+.bg-ver-mais:hover {
+    transform: scale(1.1);
+    background-color: #d8450b;
+    box-shadow: 1px 2px 10px;
+    color: #fff;
+}
+
+
+
+/* FIM PÁGINA INICIAL */
+
+
+
+/* PÁGINA PROMOÇÕES */
+
+.animation {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+/* ANIMAÇÃO DE PROMOÇÃO CONTEÚDO */
+
+.animation::after {
+    color: #d80b0b;
+    content:'';
+    animation: promocao 2s linear infinite;
+}
+
+@keyframes promocao {
+    0% {content:''}
+    50% {content:' POR TEMPO LIMITADO!!'}
+
+    100% {content:''}
+}
+
+
+/* FIM PÁGINA PROMOÇÕES */
+
+
+
+/* PÁGINA DE LOGIN */
+
+/* LOGIN */
+
+.text-login {
+    color: #1a2e46 !important;
+}
+
+.text-registrar:hover {
+    cursor: pointer;
+    color: #F86629;
+}
+
+
+.botao_login {
+
+    border: 1px solid #1a2e46;
+    border-radius: 10px;
+
+
+    color: #1a2e46;
+    padding: 10px;
+    margin-top: 10px;
+
+}
+
+
+.botao_login:hover {
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #1a2e46;
+    color: #EEEEEE;
+    transition: 0.2s;
+}
+
+/* FIM DE LOGIN */
+
+
+
+/* PÁGINA CENTRAL DE AJUDA */
+
+.bg-central-ajuda,
+a {
+    text-decoration: none;
+}
+
+.bg-central-ajuda {
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 2px 10px;
+    border: none;
+    transition: all .2s;
+
+}
+
+.bg-central-ajuda:hover {
+    background-color: #d8450b;
+    box-shadow: 1px 2px 10px;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+}
+
+.icon>i {
+    color: #1a2e46;
+}
+
+
+
+/* FIM CENTRAL DE AJUDA */
+
+
+
+@media only screen and (max-width: 575px) {
+
+    .text-right {
+        text-align: center;
+
+    }
+
+    .text-justify {
+        text-align: center;
+    }
+
+
+    /* ALINHAMENTO NAVBAR - POSITION */
+
+    .relative {
+        position: relative;
+    }
+
+    .absolute-right {
+        position: static;
+
+    }
+
+}
