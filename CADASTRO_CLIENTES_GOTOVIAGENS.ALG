@@ -10,7 +10,7 @@ algoritmo "Cadastro_Clientes_GoToViagens"
 var
 
    nomes: vetor[0..4] de caractere
-   cpf: vetor[0..4] de real
+   cpf: vetor[0..4] de inteiro
    destino: vetor[0..4] de caractere
    op, nome: caractere
    i, j, s: inteiro
