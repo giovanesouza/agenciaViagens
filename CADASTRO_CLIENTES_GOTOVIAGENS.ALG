@@ -1,11 +1,9 @@
 algoritmo "Cadastro_Clientes_GoToViagens"
-// Disciplina   : [Linguagem e Lógica de Programação]
-// Professor   : Antonio Carlos Nicolodi
 
-// Go To - Agência de Viagens! Pensou em Viajar?!
-// A Go To Viagens te leva até aonde você quer chegar!!
+// Go To - AgÃªncia de Viagens! Pensou em Viajar?!
+// A Go To Viagens te leva atÃ© aonde vocÃª quer chegar!!
 
-// O programa permite realizar ATÉ 05 cadastros. Att, Giovane Souza.
+// O programa permite realizar ATÃ‰ 05 cadastros. Att, Giovane Souza.
 
 var
 
@@ -26,7 +24,7 @@ inicio
       escreval()
       escreval("--------------------------------------------")
       escreval("------------------- MENU -------------------")
-      escreval("------- Escolha uma das opções abaixo ------")
+      escreval("------- Escolha uma das opÃ§Ãµes abaixo ------")
       escreval("--------------------------------------------")
       escreval()
       escreval("(1) Cadastrar cliente")
@@ -34,7 +32,7 @@ inicio
       escreval("(3) Sair")
       escreval()
 
-      escreva("Opção: ")
+      escreva("OpÃ§Ã£o: ")
       leia(op)
 
       se op="1" entao
@@ -66,7 +64,7 @@ inicio
          fimpara
          limpatela
 
-         escreval("-- A Go To Viagens agradece pela preferência! --")
+         escreval("-- A Go To Viagens agradece pela preferÃªncia! --")
          escreval("                 Volte sempre!                  ")
 
       fimse
@@ -89,7 +87,7 @@ inicio
          leia(nomes[i])
 
 
-         escreva("-> CPF (APENAS NÚMEROS): ")
+         escreva("-> CPF (APENAS NÃšMEROS): ")
          leia(cpf[i])
 
          escreva("-> Destino: ")
@@ -114,7 +112,7 @@ procedimento voltar_menu()
 
 inicio
 
-   escreva("Voltar para o menu (s/n - letra minúscula)? ") // Resposta: letra minúscula
+   escreva("Voltar para o menu (s/n - letra minÃºscula)? ") // Resposta: letra minÃºscula
    leia(op)
 
    se op="s" entao
@@ -162,7 +160,7 @@ inicio
 
    se (j = 0) entao
 
-      escreval("Ops... Cliente não cadastrado!")
+      escreval("Ops... Cliente nÃ£o cadastrado!")
       escreval()
 
    fimse
@@ -177,7 +175,7 @@ procedimento voltar_menu2()
 
 inicio
 
-   Escreva("Voltar para o MENU (s/n - letra minúscula)? ") // Resposta: letra minúscula
+   Escreva("Voltar para o MENU (s/n - letra minÃºscula)? ") // Resposta: letra minÃºscula
    leia(op)
 
 
