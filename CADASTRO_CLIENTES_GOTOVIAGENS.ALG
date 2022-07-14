@@ -1,9 +1,9 @@
 algoritmo "Cadastro_Clientes_GoToViagens"
 
-// Go To - Ag√™ncia de Viagens! Pensou em Viajar?!
-// A Go To Viagens te leva at√© aonde voc√™ quer chegar!!
+// Go To - AgÍncia de Viagens! Pensou em Viajar?!
+// A Go To Viagens te leva atÈ aonde vocÍ quer chegar!!
 
-// O programa permite realizar AT√â 05 cadastros. Att, Giovane Souza.
+// O programa permite realizar AT… 05 cadastros. Att, Giovane Souza.
 
 var
 
@@ -24,7 +24,7 @@ inicio
       escreval()
       escreval("--------------------------------------------")
       escreval("------------------- MENU -------------------")
-      escreval("------- Escolha uma das op√ß√µes abaixo ------")
+      escreval("------- Escolha uma das opÁıes abaixo ------")
       escreval("--------------------------------------------")
       escreval()
       escreval("(1) Cadastrar cliente")
@@ -32,7 +32,7 @@ inicio
       escreval("(3) Sair")
       escreval()
 
-      escreva("Op√ß√£o: ")
+      escreva("OpÁ„o: ")
       leia(op)
 
       se op="1" entao
@@ -64,7 +64,7 @@ inicio
          fimpara
          limpatela
 
-         escreval("-- A Go To Viagens agradece pela prefer√™ncia! --")
+         escreval("-- A Go To Viagens agradece pela preferÍncia! --")
          escreval("                 Volte sempre!                  ")
 
       fimse
@@ -87,7 +87,7 @@ inicio
          leia(nomes[i])
 
 
-         escreva("-> CPF (APENAS N√öMEROS): ")
+         escreva("-> CPF (APENAS N⁄MEROS): ")
          leia(cpf[i])
 
          escreva("-> Destino: ")
@@ -112,7 +112,7 @@ procedimento voltar_menu()
 
 inicio
 
-   escreva("Voltar para o menu (s/n - letra min√∫scula)? ") // Resposta: letra min√∫scula
+   escreva("Voltar para o menu (s/n - letra min˙scula)? ") // Resposta: letra min√∫scula
    leia(op)
 
    se op="s" entao
@@ -160,7 +160,7 @@ inicio
 
    se (j = 0) entao
 
-      escreval("Ops... Cliente n√£o cadastrado!")
+      escreval("Ops... Cliente n„o cadastrado!")
       escreval()
 
    fimse
@@ -175,7 +175,7 @@ procedimento voltar_menu2()
 
 inicio
 
-   Escreva("Voltar para o MENU (s/n - letra min√∫scula)? ") // Resposta: letra min√∫scula
+   Escreva("Voltar para o MENU (s/n - letra min˙scula)? ") // Resposta: letra min√∫scula
    leia(op)
 
 
