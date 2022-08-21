@@ -206,18 +206,6 @@ input[type="date"] {
 /* FIM BUSCAR PASSAGENS */
 
 
-/* COMPRA SEGURA - IMAGEM FLOAT */
-.img_float>img {
-    z-index: 1;
-    width: 10rem;
-    position: fixed;
-    right: 0.5rem;
-    bottom: 1rem;
-}
-
-/* FIM COMPRA SEGURA - IMAGEM FLOAT */
-
-
 
 /* INÍCIO RODAPÉ */
 
@@ -391,7 +379,7 @@ a {
     background-color: #d8450b;
     box-shadow: 0.1rem 0.2rem 1rem;
     color: #fff;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .icon {
