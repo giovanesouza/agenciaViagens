@@ -206,6 +206,39 @@ input[type="date"] {
 /* FIM BUSCAR PASSAGENS */
 
 
+/* INÍCIO ICON DO SCROLL TOP */
+
+#icon-top {
+    background-color: #0354b8;
+    color: #ffffff;
+
+    padding: 0.5rem 1rem;
+    text-align: center;
+    
+
+    border-radius: 50%;
+    box-shadow: 0 0 0.1rem 0.1rem #ffffff;
+
+    display: none;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+
+    cursor: pointer;
+    z-index: 999;
+}
+
+#icon-top:hover {
+    background-color: #1a2e46;
+}
+
+/* FIM ICON DO SCROLL TOP */
+
+
 
 /* INÍCIO RODAPÉ */
 
