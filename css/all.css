@@ -1,16 +1,76 @@
-/* FORMATAÇÃO SCROLL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* FORMATAÇÃO BARRA SCROLL */
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 1rem;
 }
 
 ::-webkit-scrollbar-thumb {
     background-image: linear-gradient(40deg, #26b4fb, #26b4fb46);
-    border-radius: 50px;
+    border-radius: 5rem;
 }
 
-/* ALINHAMENTO NAVBAR - POSITION */
+/* FIM FORMATAÇÃO BARRA SCROLL */
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+
+/* TAMANHO TEXTOS */
+
+h2 {
+    font-size: 3.1rem;
+}
+
+h3 {
+    font-size: 2.7rem;
+}
+
+h4 {
+    font-size: 2.3rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+/* INÍCIO CABEÇALHO */
+
+header img {
+    width: 14.3rem;
+}
+
+
+/* FIM CABEÇALHO */
+
+
+/* MENUS */
+
+nav {
+    font-size: 1.6rem;
+}
+
+
+.navbar-toggler {
+    font-size: 2rem;
+}
+
+/* --- ALINHAMENTO NAVBAR - POSITION */
 
 .relative {
     position: relative;
@@ -24,13 +84,24 @@
 /* FIM ALINHAMENTO NAVBAR - POSITION */
 
 
+/* INPUTS COM A CLASS .FORM-CONTROL */
+.form-control {
+    font-size: 1.6rem;
+}
+
+
 
 /* BOTÕES */
+
+.btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+}
 
 .bg-active {
     background-color: #1a2e46;
     color: #fff !important;
-
+    font-size: 1.6rem;
 }
 
 .btn-hover {
@@ -52,6 +123,7 @@
 .login {
     background-color: #0354b8;
     color: #fff !important;
+
     transition: all .2s;
 }
 
@@ -93,10 +165,16 @@
 
 .bg-degrade {
     background-image: linear-gradient(40deg, #1a2e46, #26b4fb);
+    padding: 1.6rem;
+}
+
+
+.bg-degrade h3 {
+    font-size: 2.7rem;
 }
 
 .btn-buscar {
-    border: 1px solid #fff;
+    border: 0.1rem solid #fff;
     transition: all 0.2s;
 }
 
@@ -107,7 +185,7 @@
 .bg-buscar {
     background-color: #025ece;
     color: #fff;
-    border: 1px solid #fff;
+    border: 0.1rem solid #fff;
     transition: all 0.2s;
 }
 
@@ -118,9 +196,9 @@
 
 
 input[type="date"] {
-    width: 160px;
+    width: 16rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.5rem;
 }
 
 
@@ -131,17 +209,22 @@ input[type="date"] {
 /* COMPRA SEGURA - IMAGEM FLOAT */
 .img_float>img {
     z-index: 1;
-    width: 100px;
+    width: 10rem;
     position: fixed;
-    right: 5px;
-    bottom: 10px;
+    right: 0.5rem;
+    bottom: 1rem;
 }
 
 /* FIM COMPRA SEGURA - IMAGEM FLOAT */
 
 
 
-/* RODAPÉ LINK */
+/* INÍCIO RODAPÉ */
+
+footer .text-right img {
+    width: 20rem;
+}
+
 
 .link_rodape {
     text-decoration: none;
@@ -149,7 +232,11 @@ input[type="date"] {
 
 }
 
-/* FIM RODAPÉ LINK */
+.accordion-button {
+    font-size: 1.6rem;
+}
+
+/* FIM RODAPÉ */
 
 
 
@@ -201,7 +288,7 @@ input[type="date"] {
 
 
 .bg-ver-mais {
-    border: 1px solid #d8450b;
+    border: 0.1rem solid #d8450b;
     color: #1a2e46;
     transition: all 0.2s;
 }
@@ -209,11 +296,9 @@ input[type="date"] {
 .bg-ver-mais:hover {
     transform: scale(1.1);
     background-color: #d8450b;
-    box-shadow: 1px 2px 10px;
+    box-shadow: 0.1rem 0.2rem 1rem;
     color: #fff;
 }
-
-
 
 /* FIM PÁGINA INICIAL */
 
@@ -222,7 +307,7 @@ input[type="date"] {
 /* PÁGINA PROMOÇÕES */
 
 .animation {
-    height: 120px;
+    height: 12rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -265,20 +350,20 @@ input[type="date"] {
 
 .botao_login {
 
-    border: 1px solid #1a2e46;
-    border-radius: 10px;
+    border: 0.1rem solid #1a2e46;
+    border-radius: 1rem;
 
 
     color: #1a2e46;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
 
 }
 
 
 .botao_login:hover {
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: #1a2e46;
     color: #EEEEEE;
     transition: 0.2s;
@@ -296,7 +381,7 @@ a {
 .bg-central-ajuda {
     display: flex;
     align-items: center;
-    box-shadow: 1px 2px 10px;
+    box-shadow: 0.1rem 0.2rem 1rem;
     border: none;
     transition: all .2s;
 
@@ -304,7 +389,7 @@ a {
 
 .bg-central-ajuda:hover {
     background-color: #d8450b;
-    box-shadow: 1px 2px 10px;
+    box-shadow: 0.1rem 0.2rem 1rem;
     color: #fff;
     transform: scale(1.1);
 }
@@ -314,8 +399,8 @@ a {
     align-items: center;
     justify-content: center;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     background-color: #EEEEEE;
 }
@@ -324,13 +409,19 @@ a {
     color: #1a2e46;
 }
 
-
-
 /* FIM CENTRAL DE AJUDA */
 
 
 
+
 @media only screen and (max-width: 575px) {
+
+
+    html {
+        font-size: 55%;
+    }
+
+
 
     .text-right {
         text-align: center;
@@ -351,6 +442,15 @@ a {
     .absolute-right {
         position: static;
 
+    }
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    html {
+        font-size: 50%;
     }
 
 }
