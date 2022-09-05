@@ -1,0 +1,30 @@
+package gotoviagens;
+
+public class Departamento extends Empresa {
+    
+    private int codDepartamento;
+    private String nomeDepartamento;
+    
+    
+
+    public int getCodDepartamento() {
+        return codDepartamento;
+    }
+    
+
+    public void setCodDepartamento(int codDepartamento) {
+        this.codDepartamento = codDepartamento;
+    }
+    
+
+    public String getNomeDepartamento() {
+        return nomeDepartamento;
+    }
+    
+
+    public void setNomeDepartamento(String nomeDepartamento) {
+        this.nomeDepartamento = nomeDepartamento;
+    }
+    
+}
+
