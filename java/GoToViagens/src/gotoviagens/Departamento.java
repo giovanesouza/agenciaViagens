@@ -26,5 +26,15 @@ public class Departamento extends Empresa {
         this.nomeDepartamento = nomeDepartamento;
     }
     
+    
+    // INFORMAÇÕES DE EMPRESA
+    public int getCodUnid() {
+    	return codUnid;
+    }
+    
+    public void setCodUnid(int codUnid) {
+    	this.codUnid = codUnid;
+    }
+    
 }
 

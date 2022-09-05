@@ -5,7 +5,7 @@ public class Empresa {
     private String cnpj;
     private String razaoSocial;
     private String nomeFantasia;
-    private int codUnid;
+    public int codUnid;
     private String unidade;
     private String endereco;
     private String telefone;
