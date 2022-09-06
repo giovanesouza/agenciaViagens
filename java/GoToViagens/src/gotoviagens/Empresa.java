@@ -2,14 +2,9 @@ package gotoviagens;
 
 public class Empresa {
 
-    private String cnpj;
-    private String razaoSocial;
-    private String nomeFantasia;
+    private String cnpj, razaoSocial, nomeFantasia, unidade, endereco, telefone, email;
+
     public int codUnid;
-    private String unidade;
-    private String endereco;
-    private String telefone;
-    private String email;
     
     
 
@@ -68,7 +63,7 @@ public class Empresa {
     }
     
 
-    public void setEndereço(String endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
     

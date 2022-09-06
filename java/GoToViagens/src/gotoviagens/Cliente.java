@@ -2,10 +2,7 @@ package gotoviagens;
 
 public class Cliente {
 
-    private String cpf;
-    private String nome;
-    private String email;
-    private String telefone;
+    private String cpf, nome, email, telefone;
     
    
     public String getCpf() {

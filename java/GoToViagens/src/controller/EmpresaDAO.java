@@ -6,21 +6,22 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Departamento;
+import gotoviagens.Empresa;
 
-public class DepartamentoDAO {
-	
+public class EmpresaDAO {
+
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
-	// EDITAR <=======
-	public void save(Departamento departamento) {
+	
+	public void save(Empresa empresa) {
 
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
-		// EDITAR <=======
-		String sql = "INSERT INTO departamento(cod_departamento,nome_departamento, cod_unid)"
-		+ " VALUES(?,?,?)";
+
+		String sql = "INSERT INTO cliente(cnpj,razao_social,nome_fantasia,cod_unidade,"
+				+ "unidade,telefone,email,endereco)"
+				+ " VALUES(?,?,?,?,?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -28,11 +29,15 @@ public class DepartamentoDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <=======
-			pstm.setInt(1, departamento.getCodDepartamento());
-			pstm.setString(2, departamento.getNomeDepartamento());
-			pstm.setInt(3, departamento.getCodUnid());
-			
+			// ======= SET TIPO + GET DA CLASSE SEM O DAO
+			pstm.setString(1, empresa.getCnpj());
+			pstm.setString(2, empresa.getRazaoSocial());
+			pstm.setString(3, empresa.getNomeFantasia());
+			pstm.setInt(4, empresa.getCodUnid());
+			pstm.setString(5, empresa.getUnidade());
+			pstm.setString(6, empresa.getTelefone());
+			pstm.setString(7, empresa.getEmail());
+			pstm.setString(8, empresa.getEndereco());
 			
 			pstm.execute();
 
@@ -61,17 +66,17 @@ public class DepartamentoDAO {
 		}
 	}
 
-	// EDITAR <=======
-	public void removeByCod(int codDep) {
 
-		String sql = "DELETE FROM departamento WHERE cod_departamento = ?";
+	public void removeByCodUnid(int codUnid) {
+
+		String sql = "DELETE FROM empresa WHERE cod_unid = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setInt(1, codDep); // TROQUEI STRING PARA LONG
+			pstm.setInt(1, codUnid);
 
 			pstm.execute();
 
@@ -98,11 +103,11 @@ public class DepartamentoDAO {
 		}
 	}
 
-	// EDITAR <=======
-	public void update(Departamento departamento) {
+
+	public void update(Empresa empresa) {
 		
-		String sql = "UPDATE cliente SET cod_departamento = ?, nome_Departamento = ?, cod_unid = ?"
-		+ " WHERE cod_departamento = ?";
+		String sql = "UPDATE empresa SET unidade = ?, telefone = ?, email = ?, endereco = ?"
+		+ " WHERE cod_unid = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -111,12 +116,14 @@ public class DepartamentoDAO {
 			// Cria um PreparedStatment, classe usada para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			// EDITAR <=======
-			pstm.setInt(1, departamento.getCodDepartamento());
-			pstm.setString(2, departamento.getNomeDepartamento());
-			pstm.setInt(3, departamento.getCodUnid());
+			pstm.setString(1, empresa.getUnidade());
+			pstm.setString(2, empresa.getTelefone());
+			pstm.setString(3, empresa.getEmail());
+			pstm.setString(4, empresa.getEndereco());
 
-
+			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
+			pstm.setInt(5, empresa.getCodUnid());
+			
 			// Executa a sql para inserção dos dados
 			pstm.execute();
 
@@ -144,12 +151,12 @@ public class DepartamentoDAO {
 		}
 	}
 	
-	// EDITAR <=======
-	public List<Departamento> getDepartamento() {
 
-		String sql = "SELECT * FROM departamento";
+	public List<Empresa> getEmpresas() {
 
-		List<Departamento> departamentos = new ArrayList<Departamento>();
+		String sql = "SELECT * FROM empresa";
+
+		List<Empresa> empresas = new ArrayList<Empresa>();
 
 		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
@@ -164,20 +171,16 @@ public class DepartamentoDAO {
 			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
-				Departamento departamento = new Departamento();
+				Empresa empresa = new Empresa();
 
-				// Recupera o id do banco e atribui ele ao objeto
-				departamento.setCodDepartamento(rset.getInt("cod_departamento"));
+				pstm.setString(1, empresa.getUnidade());
+				pstm.setString(2, empresa.getTelefone());
+				pstm.setString(3, empresa.getEmail());
+				pstm.setString(4, empresa.getEndereco());
 
-				// Recupera o nome do banco e atribui ele ao objeto
-				departamento.setNomeDepartamento(rset.getString("nome_departamento"));
-
-				// Recupera a idade do banco e atribui ele ao objeto
-				departamento.setCodUnid(rset.getInt("cod_unid"));
-				
 				
 				// Adiciono o contato recuperado, a lista de contatos
-				departamentos.add(departamento);
+				empresas.add(empresa);
 			}
 		} catch (Exception e) {
 
@@ -206,30 +209,30 @@ public class DepartamentoDAO {
 			}
 		}
 
-		return departamentos;
+		return empresas;
 	}
 
 	
 	// EDITAR <=======
-	public Departamento getDepartamentoByCod(int codDep) {
+	public Empresa getUnidadesByCod(int codUnid) {
 
-		String sql = "SELECT * FROM departamento where cod_departamento = ?";
-		Departamento departamento = new Departamento();
+		String sql = "SELECT * FROM cliente where cod_unid = ?";
+		Empresa empresa = new Empresa();
 
 		ResultSet rset = null;
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, codDep);
+			pstm.setInt(1, codUnid);
 			rset = pstm.executeQuery();
 
 			rset.next();
 
-			departamento.setCodDepartamento(rset.getInt("cod_departamento"));
-			departamento.setNomeDepartamento(rset.getString("nome_departamento"));
-	
-			departamento.setCodUnid(rset.getInt("cod_unidade"));
+			empresa.setUnidade(rset.getString("unidade"));
+			empresa.setTelefone(rset.getString("telefone"));
+			empresa.setEmail(rset.getString("email"));
+			empresa.setEndereco(rset.getString("endereco"));
 			
 
 		} catch (Exception e) {
@@ -249,9 +252,10 @@ public class DepartamentoDAO {
 				e.printStackTrace();
 			}
 		}
-		return departamento;
+		return empresa;
+  
+    }
 	
 	
-	}
-
+	
 }

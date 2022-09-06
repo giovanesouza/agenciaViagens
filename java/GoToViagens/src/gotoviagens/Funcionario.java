@@ -3,8 +3,7 @@ package gotoviagens;
 public class Funcionario extends Departamento {
     
     private int matricula;
-    private String nome;
-    private String cargo;
+    private String nome, cargo;
     private float salario;
     
 
@@ -47,6 +46,13 @@ public class Funcionario extends Departamento {
         this.salario = salario;
     }
     
+    public int getCodDepartamento() {
+        return codDepartamento;
+    }
+    
+    public void setCodDepartamento(int dep) {
+    	this.codDepartamento = dep;
+    }
 
     public boolean trabalhando() {
 

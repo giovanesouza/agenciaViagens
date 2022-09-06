@@ -2,11 +2,10 @@ package gotoviagens;
 
 public class Departamento extends Empresa {
     
-    private int codDepartamento;
+    public int codDepartamento;
     private String nomeDepartamento;
     
     
-
     public int getCodDepartamento() {
         return codDepartamento;
     }

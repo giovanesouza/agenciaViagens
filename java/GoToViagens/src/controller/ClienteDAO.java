@@ -72,7 +72,7 @@ public class ClienteDAO {
 
 			// TIPO DE VALOR REFERENTE AO CPF E 1 = QTD QUE SERÁ EXCLUÍDA
 			pstm.setString(1, cpf);
-
+		
 			pstm.execute();
 
 		} catch (Exception e) {
@@ -216,7 +216,7 @@ public class ClienteDAO {
 
 	
 	// EDITAR <=======
-	public Cliente getContatoByCpf(String cpf) {
+	public Cliente getClienteByCpf(String cpf) {
 
 		String sql = "SELECT * FROM cliente where cpf_cli = ?";
 		Cliente cliente = new Cliente();
