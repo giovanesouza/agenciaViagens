@@ -19,7 +19,8 @@ public class ClienteDAO {
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
 		// EDITAR <=======
-		String sql = "INSERT INTO cliente(cpf_cli,nome_cli,email_cli,telefone_cli)" + " VALUES(?,?,?,?)";
+		String sql = "INSERT INTO cliente(CPF_CLI, NOME_CLI, EMAIL_CLI, TELEFONE_CLI)"
+		+ " VALUES(?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -63,7 +64,7 @@ public class ClienteDAO {
 	// EDITAR <=======
 	public void removeByCpf(String cpf) {
 
-		String sql = "DELETE FROM cliente WHERE cpf_cli = ?";
+		String sql = "DELETE FROM cliente WHERE CPF_CLI = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
@@ -101,8 +102,8 @@ public class ClienteDAO {
 	// EDITAR <=======
 	public void update(Cliente cliente) {
 		
-		String sql = "UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?"
-		+ " WHERE cpf_cli = ?";
+		String sql = "UPDATE cliente SET NOME_CLI = ?, EMAIL_CLI = ?, TELEFONE_CLI = ?"
+		+ " WHERE CPF_CLI = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -169,16 +170,16 @@ public class ClienteDAO {
 				Cliente cliente = new Cliente();
 
 				// Recupera o id do banco e atribui ele ao objeto
-				cliente.setCpf(rset.getString("cpf_cli"));
+				cliente.setCpf(rset.getString("CPF_CLI"));
 
 				// Recupera o nome do banco e atribui ele ao objeto
-				cliente.setNome(rset.getString("nome_cli"));
+				cliente.setNome(rset.getString("NOME_CLI"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
-				cliente.setEmail(rset.getString("email_cli"));
+				cliente.setEmail(rset.getString("EMAIL_CLI"));
 				
 				// Recupera a idade do banco e atribui ele ao objeto
-				cliente.setTelefone(rset.getString("telefone_cli"));
+				cliente.setTelefone(rset.getString("TELEFONE_CLI"));
 
 				
 				// Adiciono o contato recuperado, a lista de contatos
@@ -218,7 +219,7 @@ public class ClienteDAO {
 	// EDITAR <=======
 	public Cliente getClienteByCpf(String cpf) {
 
-		String sql = "SELECT * FROM cliente where cpf_cli = ?";
+		String sql = "SELECT * FROM cliente where CPF_CLI = ?";
 		Cliente cliente = new Cliente();
 
 		ResultSet rset = null;
@@ -231,10 +232,10 @@ public class ClienteDAO {
 
 			rset.next();
 
-			cliente.setNome(rset.getString("nome_cli"));
-			cliente.setEmail(rset.getString("email_cli"));
+			cliente.setNome(rset.getString("NOME_CLI"));
+			cliente.setEmail(rset.getString("EMAIL_CLI"));
 	
-			cliente.setTelefone(rset.getString("telefone_cli"));
+			cliente.setTelefone(rset.getString("TELEFONE_CLI"));
 			
 
 		} catch (Exception e) {

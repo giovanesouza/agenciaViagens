@@ -19,9 +19,8 @@ public class EmpresaDAO {
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
 
-		String sql = "INSERT INTO cliente(cnpj,razao_social,nome_fantasia,cod_unidade,"
-				+ "unidade,telefone,email,endereco)"
-				+ " VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO EMPRESA (UNIDADE, TELEFONE, EMAIL, ENDERECO)"
+		+ " VALUES(?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -30,14 +29,10 @@ public class EmpresaDAO {
 			pstm = conn.prepareStatement(sql);
 
 			// ======= SET TIPO + GET DA CLASSE SEM O DAO
-			pstm.setString(1, empresa.getCnpj());
-			pstm.setString(2, empresa.getRazaoSocial());
-			pstm.setString(3, empresa.getNomeFantasia());
-			pstm.setInt(4, empresa.getCodUnid());
-			pstm.setString(5, empresa.getUnidade());
-			pstm.setString(6, empresa.getTelefone());
-			pstm.setString(7, empresa.getEmail());
-			pstm.setString(8, empresa.getEndereco());
+			pstm.setString(1, empresa.getUnidade());
+			pstm.setString(2, empresa.getTelefone());
+			pstm.setString(3, empresa.getEmail());
+			pstm.setString(4, empresa.getEndereco());
 			
 			pstm.execute();
 
@@ -69,7 +64,7 @@ public class EmpresaDAO {
 
 	public void removeByCodUnid(int codUnid) {
 
-		String sql = "DELETE FROM empresa WHERE cod_unid = ?";
+		String sql = "DELETE FROM empresa WHERE COD_UNID = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
@@ -106,8 +101,8 @@ public class EmpresaDAO {
 
 	public void update(Empresa empresa) {
 		
-		String sql = "UPDATE empresa SET unidade = ?, telefone = ?, email = ?, endereco = ?"
-		+ " WHERE cod_unid = ?";
+		String sql = "UPDATE empresa SET UNIDADE = ?, TELEFONE = ?, EMAIL = ?, ENDERECO = ?"
+		+ " WHERE COD_UNID = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -216,7 +211,7 @@ public class EmpresaDAO {
 	// EDITAR <=======
 	public Empresa getUnidadesByCod(int codUnid) {
 
-		String sql = "SELECT * FROM cliente where cod_unid = ?";
+		String sql = "SELECT * FROM empresa where COD_UNID = ?";
 		Empresa empresa = new Empresa();
 
 		ResultSet rset = null;
@@ -229,10 +224,10 @@ public class EmpresaDAO {
 
 			rset.next();
 
-			empresa.setUnidade(rset.getString("unidade"));
-			empresa.setTelefone(rset.getString("telefone"));
-			empresa.setEmail(rset.getString("email"));
-			empresa.setEndereco(rset.getString("endereco"));
+			empresa.setUnidade(rset.getString("UNIDADE"));
+			empresa.setTelefone(rset.getString("TELEFONE"));
+			empresa.setEmail(rset.getString("EMAIL"));
+			empresa.setEndereco(rset.getString("ENDERECO"));
 			
 
 		} catch (Exception e) {

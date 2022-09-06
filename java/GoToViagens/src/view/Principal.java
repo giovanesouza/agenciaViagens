@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Date;
 //import java.lang.runtime.SwitchBootstraps;
 import java.util.Scanner;
 
@@ -7,31 +8,37 @@ import controller.ClienteDAO;
 import controller.DepartamentoDAO;
 import controller.EmpresaDAO;
 import controller.FuncionarioDAO;
+import controller.UsuarioDAO;
+
 import gotoviagens.Cliente;
 import gotoviagens.Departamento;
 import gotoviagens.Empresa;
 import gotoviagens.Funcionario;
+import gotoviagens.Usuario;
 
 public class Principal {
 
 	public static void main(String[] args) {
 	
+		// CLASSES DAO
 		EmpresaDAO empresaDAO = new EmpresaDAO();
 		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		
 		ClienteDAO clienteDAO = new ClienteDAO();
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
 		
-		// Cria um contato e salva no banco
+		// CLASSES PARA CRIAR UM NOVO REGISTRO NO BD
 		
 		Empresa empresa = new Empresa();
 		Departamento departamento = new Departamento();
 		Funcionario funcionario = new Funcionario();
 		
-		
 		Cliente cliente = new Cliente();
+		Usuario usuario = new Usuario();
 
+		
 		Scanner entrada = new Scanner(System.in);
 		
 		// VARIÁVEL PARA O LOOP CADASTRO
@@ -42,12 +49,11 @@ public class Principal {
 		
 		
 		// VARIÁVEIS PARA EMPRESA
-	    String cnpj = "", razaoSocial = "", nomeFantasia = "", unidade = "", endereco = "",
-	    telefoneUnid = "", emailUnid = "";
+	    String unidade = "", endereco = "", telefoneUnid = "", emailUnid = "";
 	    int codUnid;
 	    
 		
-	    // VARIÁVEIS DEPARTAMENTO
+	    // VARIÁVEIS DEPARTAMENTO - codUnid ACIMA TAMBÉM FOI UTILIZADO PARA DEPARTAMENTO
 	    int codDepartamento;
 	    String nomeDepartamento;
 	    
@@ -61,6 +67,9 @@ public class Principal {
 		// VARIÁVEIS PARA CLIENTE
 		String cpf = "", nome = "", email = "", telefone = "";
 		
+		// VARIÁVEIS PARA USUÁRIO - CPF DE CLIENTE FOI UTILIZADO PARA USUÁRIO
+		String emailUsuario, senhaUsuario;
+		int id;
 
 		
 		System.out.println("=== INFORME ABAIXO ONDE DESEJA REALIZAR UM CADASTRO: ===");
@@ -90,29 +99,14 @@ public class Principal {
 				System.out.println("2 - Excluir unidade");
 				System.out.println("3 - Atualizar unidade");
 				System.out.println("4 - Mostrar informações de unidade");
-				System.out.println("5 - Buscar por unidade por código");
+				System.out.println("5 - Buscar unidade por código");
 				System.out.println("6 - Sair");
 				opcao = entrada.nextInt();
 
 				switch (opcao) {
 				
 				case 1: {
-					System.out.println("Digite o CNPJ da empresa:");
-					cnpj = entrada.next();
-					empresa.setCnpj(cnpj);
-					
-					System.out.println("Digite a RAZÃO SOCIAL da empresa:");
-					razaoSocial = entrada.next();
-					empresa.setRazaoSocial(razaoSocial);
-
-					System.out.println("Digite o NOME FANTASIA da empresa:");
-					nomeFantasia = entrada.next();
-					empresa.setNomeFantasia(nomeFantasia);
-					
-					System.out.println("Digite o CÓDIGO da unidade:");
-					codUnid = entrada.nextInt();
-					empresa.setCodUnid(codUnid);
-					
+															
 					System.out.println("Digite o NOME da unidade:");
 					unidade = entrada.next();
 					empresa.setUnidade(unidade);
@@ -167,6 +161,9 @@ public class Principal {
 					emailUnid = entrada.next();
 					empresa.setEmail(emailUnid);
 					
+					System.out.println("Digite o novo ENDEREÇO da unidade: ");
+					endereco = entrada.next();
+					empresa.setEndereco(endereco);
 
 					empresa.setCodUnid(codUnid);
 					empresaDAO.update(empresa);
@@ -236,10 +233,7 @@ public class Principal {
 				switch (opcao) {
 				
 				case 1: {
-					System.out.println("Digite a MATRÍCULA do funcionário:");
-					matricula = entrada.nextInt();
-					funcionario.setMatricula(matricula);
-					
+										
 					System.out.println("Digite o NOME do departamento:");
 					nomeDepartamento = entrada.next();
 					departamento.setNomeDepartamento(nomeDepartamento);
@@ -284,7 +278,7 @@ public class Principal {
 				case 4: {
 					for (Departamento dep : departamentoDAO.getDepartamento()) {
 
-						System.out.println("CÓDIGO: " + dep.getCodDepartamento());
+						System.out.println("CÓDIGO DO DEPARTAMENTO: " + dep.getCodDepartamento());
 						System.out.println("NOME: " + dep.getNomeDepartamento());
 						System.out.println("UNIDADE: " + dep.getCodUnid());
 						
@@ -302,7 +296,7 @@ public class Principal {
 
 					dep = departamentoDAO.getDepartamentoByCod(codDepartamento);
 
-					System.out.println("CÓDIGO: " + dep.getCodDepartamento());
+					System.out.println("CÓDIGO DO DEPARTAMENTO: " + dep.getCodDepartamento());
 					System.out.println("NOME: " + dep.getNomeDepartamento());
 					System.out.println("UNIDADE: " + dep.getCodUnid());
 
@@ -311,7 +305,7 @@ public class Principal {
 					break;
 
 				case 6: {
-					System.out.println(" === Agradecemos pela preferência! === ");
+					System.out.println(" === Até logo! === ");
 					break;
 				}
 				default:
@@ -344,10 +338,7 @@ public class Principal {
 				switch (opcao) {
 				
 				case 1: {
-					System.out.println("Digite a MATRÍCULA do funcionário:");
-					matricula = entrada.nextInt();
-					funcionario.setMatricula(matricula);
-					
+										
 					System.out.println("Digite o NOME do funcionário:");
 					nomeFunc = entrada.next();
 					funcionario.setNome(nomeFunc);
@@ -408,7 +399,7 @@ public class Principal {
 				case 4: {
 					for (Funcionario func : funcionarioDAO.getFuncionarios()) {
 
-						System.out.println("NOME: " + func.getNome());
+						System.out.println("NOME DO FUNCIONÁRIO: " + func.getNome());
 						System.out.println("CARGO: " + func.getCargo());
 						System.out.println("SALÁRIO: " + func.getSalario());
 						System.out.println("CÓDIGO DEPARTAMENTO: " + func.getCodDepartamento());
@@ -427,7 +418,7 @@ public class Principal {
 
 					func = funcionarioDAO.getFuncionariosByMat(matricula);
 
-					System.out.println("NOME: " + func.getNome());
+					System.out.println("NOME DO FUNCIONÁRIO: " + func.getNome());
 					System.out.println("CARGO: " + func.getCargo());
 					System.out.println("SALÁRIO: " + func.getSalario());
 					System.out.println("CÓDIGO DEPARTAMENTO: " + func.getCodDepartamento());
@@ -437,7 +428,7 @@ public class Principal {
 					break;
 
 				case 6: {
-					System.out.println(" === Agradecemos pela preferência! === ");
+					System.out.println(" === Até logo! === ");
 					break;
 				}
 				default:
@@ -452,6 +443,8 @@ public class Principal {
 
 			}
 		
+		
+		// DESTINO
 		case 4: {
 			
 			System.out.println("=== CADASTRO DESTINO ===");
@@ -460,6 +453,8 @@ public class Principal {
 
 			}
 		
+		
+		// PASSAGEM
 		case 5: {
 			
 			System.out.println("=== CADASTRO PASSAGEM ===");
@@ -469,6 +464,7 @@ public class Principal {
 			}
 		
 		
+		// PEDIDO
 		case 6: {
 			
 			System.out.println("=== CADASTRO PEDIDO ===");
@@ -477,6 +473,8 @@ public class Principal {
 
 			}
 		
+		
+		// CLIENTE
 		case 7: {
 			
 			do {
@@ -535,7 +533,7 @@ public class Principal {
 					cpf = entrada.next();
 
 					System.out.println("Digite o novo NOME do cliente: ");
-					nome = entrada.next();
+					nome = entrada.nextLine();
 					cliente.setNome(nome);
 					
 					System.out.println("Digite o novo E-MAIL do cliente: ");
@@ -596,9 +594,125 @@ public class Principal {
 
 			}
 		
+		
+		// USUÁRIO
 		case 8: {
 			
-			System.out.println("=== CADASTRO USUÁRIO ===");
+			do {
+
+				System.out.println("===== USUÁRIO =====");
+				System.out.println("1 - Cadastro de usuário");
+				System.out.println("2 - Excluir usuário");
+				System.out.println("3 - Atualizar cadastro");
+				System.out.println("4 - Mostrar cadastro");
+				System.out.println("5 - Buscar por id");
+				System.out.println("6 - Sair");
+				opcao = entrada.nextInt();
+
+				switch (opcao) {
+				
+				case 1: {
+
+					System.out.println("Digite seu CPF:");
+					cpf = entrada.next();
+					usuario.setCpf(cpf);
+					
+					
+					System.out.println("Digite um E-MAIL para usuário:");
+					emailUsuario = entrada.next();
+					usuario.setEmailUsuario(emailUsuario);
+					
+					System.out.println("Digite uma SENHA para o usuário:");
+					senhaUsuario = entrada.next();
+					usuario.setSenha(senhaUsuario);
+					
+					usuario.setDataCadastro(new Date());
+					
+					usuarioDAO.save(usuario);
+					break;
+				}
+				case 2: {
+					
+					System.out.println("Digite o id do usuário para exclusao: ");
+					try {
+						
+						id = entrada.nextInt();
+						
+						usuarioDAO.removeById(id);
+						
+					} catch (Exception e) {
+						// e.getMessage();
+						 
+						System.out.println("Nenhum usuário para excluir ");
+					}
+
+					break;
+				}
+				case 3: {
+
+					System.out.println("Digite o id do usuário para atualizar: ");
+					id = entrada.nextInt();
+
+					System.out.println("Digite o novo NOME do usuário: ");
+					nome = entrada.next();
+					usuario.setNome(nome);
+					
+					System.out.println("Digite o novo E-MAIL do usuário: ");
+					emailUsuario = entrada.next();
+					usuario.setEmailUsuario(emailUsuario);
+					
+					System.out.println("Digite uma nova SENHA para o usuário: ");
+					senhaUsuario = entrada.next();
+					usuario.setSenha(senhaUsuario);
+					
+
+					usuario.setIdUsuario(id);
+					clienteDAO.update(cliente);
+				}
+				case 4: {
+					for (Usuario usu : usuarioDAO.getUsuarios()) {
+
+						System.out.println("CPF: " + usu.getCpf());
+						System.out.println("NOME: " + usu.getNome());
+						System.out.println("EMAIL: " + usu.getEmailUsuario());
+						System.out.println("TELEFONE: " + usu.getSenha());
+						System.out.println("DATA DE CADASTRO: " + usu.getDataCadastro());
+						
+						System.out.println("----------------------------------- ");
+
+					}
+					break;
+				}
+				case 5: {
+
+					System.out.print("Digite o id do usuário para buscar: ");
+					id = entrada.nextInt();
+					
+					Usuario usu = new Usuario();
+
+					usu = usuarioDAO.getClienteById(id);
+
+					System.out.println("CPF: " + usu.getCpf());
+					System.out.println("NOME: " + usu.getNome());
+					System.out.println("EMAIL: " + usu.getEmailUsuario());
+					System.out.println("SENHA: " + usu.getSenha());
+					System.out.println("DATA DE CADASTRO: " + usu.getDataCadastro());
+					
+					System.out.println("----------------------------------- ");
+				}
+					break;
+
+				case 6: {
+					System.out.println(" === Agradecemos pela preferência! === ");
+					break;
+				}
+				default:
+					System.out.println("Opcao invalida: ");
+
+				};
+
+			} while (opcao != 6);
+
 			
 			break;
 
@@ -607,9 +721,7 @@ public class Principal {
 
 		}
 		
-		
 
-	
 		entrada.close();
 
 

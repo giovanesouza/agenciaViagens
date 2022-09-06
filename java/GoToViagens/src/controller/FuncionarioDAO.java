@@ -19,7 +19,8 @@ public class FuncionarioDAO {
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
 		// EDITAR <=======
-		String sql = "INSERT INTO funcionario(mat_func,nome_func,cargo_func,salario_func,cod_departamento)" + " VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO funcionario(NOME_FUNC, CARGO_FUNC, SALARIO_FUNC, COD_DEPARTAMENTO)"
+		+ " VALUES(?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -28,11 +29,11 @@ public class FuncionarioDAO {
 			pstm = conn.prepareStatement(sql);
 
 			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
-			pstm.setInt(1, funcionario.getMatricula());
-			pstm.setString(2, funcionario.getNome());
-			pstm.setString(3, funcionario.getCargo());
-			pstm.setFloat(4, funcionario.getSalario());
-			pstm.setInt(5, funcionario.getCodDepartamento());
+			pstm.setString(1, funcionario.getNome());
+			pstm.setString(2, funcionario.getCargo());
+			pstm.setFloat(3, funcionario.getSalario());
+			pstm.setInt(4, funcionario.getCodDepartamento());
+			
 			
 			pstm.execute();
 
@@ -64,7 +65,7 @@ public class FuncionarioDAO {
 	// EDITAR <=======
 	public void removeByMat(int mat) {
 
-		String sql = "DELETE FROM funcionario WHERE mat_func = ?";
+		String sql = "DELETE FROM funcionario WHERE MAT_FUNC = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
@@ -102,8 +103,8 @@ public class FuncionarioDAO {
 	// EDITAR <=======
 	public void update(Funcionario funcionario) {
 		
-		String sql = "UPDATE funcionario SET cargo_func = ?, salario_func = ?, cod_departamento = ?"
-		+ " WHERE mat_func = ?";
+		String sql = "UPDATE funcionario SET NOME_FUNC = ?, CARGO_FUNC = ?,"
+				+ "SALARIO_FUNC = ?, COD_DEPARTAMENTO" + " WHERE MAT_FUNC = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -113,12 +114,13 @@ public class FuncionarioDAO {
 			pstm = conn.prepareStatement(sql);
 			
 			// EDITAR <=======
-			pstm.setString(1, funcionario.getCargo());
-			pstm.setFloat(2, funcionario.getSalario());
-			pstm.setInt(3, funcionario.getCodDepartamento());
+			pstm.setString(1, funcionario.getNome());
+			pstm.setString(2, funcionario.getCargo());
+			pstm.setFloat(3, funcionario.getSalario());
+			pstm.setInt(4, funcionario.getCodDepartamento());
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(4, funcionario.getMatricula());
+			pstm.setInt(5, funcionario.getMatricula());
 			
 			// Executa a sql para inserção dos dados
 			pstm.execute();
@@ -171,16 +173,16 @@ public class FuncionarioDAO {
 
 				
 				// Recupera o nome do banco e atribui ele ao objeto
-				funcionario.setNome(rset.getString("nome_func"));
+				funcionario.setNome(rset.getString("NOME_FUNC"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
-				funcionario.setCargo(rset.getString("cargo_func"));
+				funcionario.setCargo(rset.getString("CARGO_FUNC"));
 				
 				// Recupera a idade do banco e atribui ele ao objeto
-				funcionario.setSalario(rset.getFloat("salario_func"));
+				funcionario.setSalario(rset.getFloat("SALARIO_FUNC"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
-				funcionario.setCodDepartamento(rset.getInt("cod_departamento"));
+				funcionario.setCodDepartamento(rset.getInt("COD_DEPARTAMENTO"));
 
 				
 				// Adiciono o contato recuperado, a lista de contatos
@@ -220,7 +222,7 @@ public class FuncionarioDAO {
 	// EDITAR <=======
 	public Funcionario getFuncionariosByMat(int mat) {
 
-		String sql = "SELECT * FROM funcionario where mat_func = ?";
+		String sql = "SELECT * FROM funcionario where MAT_FUNC = ?";
 		Funcionario funcionario = new Funcionario();
 
 		ResultSet rset = null;
@@ -233,11 +235,11 @@ public class FuncionarioDAO {
 
 			rset.next();
 
-			funcionario.setNome(rset.getString("nome_func"));
-			funcionario.setCargo(rset.getString("cargo_func"));
-			funcionario.setSalario(rset.getFloat("salario_func"));
+			funcionario.setNome(rset.getString("NOME_FUNC"));
+			funcionario.setCargo(rset.getString("CARGO_FUNC"));
+			funcionario.setSalario(rset.getFloat("sALARIO_FUNC"));
 	
-			funcionario.setCodDepartamento(rset.getInt("cod_departamento"));
+			funcionario.setCodDepartamento(rset.getInt("COD_DEPARTAMENTO"));
 			
 
 		} catch (Exception e) {

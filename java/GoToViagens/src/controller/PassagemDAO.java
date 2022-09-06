@@ -6,21 +6,21 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Departamento;
+import gotoviagens.Cliente;
+import gotoviagens.Passagem;
 
-public class DepartamentoDAO {
+public class PassagemDAO {
 	
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
 	// EDITAR <=======
-	public void save(Departamento departamento) {
+	public void save(Passagem passagem) {
 
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
 		// EDITAR <=======
-		String sql = "INSERT INTO departamento(NOME_DEPARTAMENTO, COD_UNID)"
-		+ " VALUES(?,?)";
+		String sql = "INSERT INTO passagem(cpf_cli,nome_cli,email_cli,telefone_cli)" + " VALUES(?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -28,9 +28,11 @@ public class DepartamentoDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <=======
-			pstm.setString(1, departamento.getNomeDepartamento());
-			pstm.setInt(2, departamento.getCodUnid());	
+			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
+			pstm.setString(1, cliente.getCpf());
+			pstm.setString(2, cliente.getNome());
+			pstm.setString(3, cliente.getEmail());
+			pstm.setString(4, cliente.getTelefone());
 			
 			pstm.execute();
 
@@ -60,17 +62,18 @@ public class DepartamentoDAO {
 	}
 
 	// EDITAR <=======
-	public void removeByCod(int codDep) {
+	public void removeByCpf(String cpf) {
 
-		String sql = "DELETE FROM departamento WHERE COD_DEPARTAMENTO = ?";
+		String sql = "DELETE FROM cliente WHERE cpf_cli = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setInt(1, codDep); // TROQUEI STRING PARA LONG
-
+			// TIPO DE VALOR REFERENTE AO CPF E 1 = QTD QUE SERÁ EXCLUÍDA
+			pstm.setString(1, cpf);
+		
 			pstm.execute();
 
 		} catch (Exception e) {
@@ -97,10 +100,10 @@ public class DepartamentoDAO {
 	}
 
 	// EDITAR <=======
-	public void update(Departamento departamento) {
+	public void update(Cliente cliente) {
 		
-		String sql = "UPDATE departamento SET NOME_DEPARTAMENTO = ?, COD_UNID = ?"
-		+ " WHERE COD_DEPARTAMENTO = ?";
+		String sql = "UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?"
+		+ " WHERE cpf_cli = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -110,11 +113,12 @@ public class DepartamentoDAO {
 			pstm = conn.prepareStatement(sql);
 			
 			// EDITAR <=======
-			pstm.setString(1, departamento.getNomeDepartamento());
-			pstm.setInt(2, departamento.getCodUnid());
+			pstm.setString(1, cliente.getNome());
+			pstm.setString(2, cliente.getEmail());
+			pstm.setString(3, cliente.getTelefone());
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(3, departamento.getCodDepartamento());
+			pstm.setString(4, cliente.getCpf());
 			
 			// Executa a sql para inserção dos dados
 			pstm.execute();
@@ -144,11 +148,11 @@ public class DepartamentoDAO {
 	}
 	
 	// EDITAR <=======
-	public List<Departamento> getDepartamento() {
+	public List<Cliente> getClientes() {
 
-		String sql = "SELECT * FROM departamento";
+		String sql = "SELECT * FROM cliente";
 
-		List<Departamento> departamentos = new ArrayList<Departamento>();
+		List<Cliente> clientes = new ArrayList<Cliente>();
 
 		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
@@ -163,20 +167,23 @@ public class DepartamentoDAO {
 			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
-				Departamento departamento = new Departamento();
+				Cliente cliente = new Cliente();
 
 				// Recupera o id do banco e atribui ele ao objeto
-				departamento.setCodDepartamento(rset.getInt("COD_DEPARTAMENTO"));
+				cliente.setCpf(rset.getString("cpf_cli"));
 
 				// Recupera o nome do banco e atribui ele ao objeto
-				departamento.setNomeDepartamento(rset.getString("NOME_DEPARTAMENTO"));
+				cliente.setNome(rset.getString("nome_cli"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
-				departamento.setCodUnid(rset.getInt("COD_UNID"));
+				cliente.setEmail(rset.getString("email_cli"));
 				
+				// Recupera a idade do banco e atribui ele ao objeto
+				cliente.setTelefone(rset.getString("telefone_cli"));
+
 				
 				// Adiciono o contato recuperado, a lista de contatos
-				departamentos.add(departamento);
+				clientes.add(cliente);
 			}
 		} catch (Exception e) {
 
@@ -205,30 +212,31 @@ public class DepartamentoDAO {
 			}
 		}
 
-		return departamentos;
+		return clientes;
 	}
 
 	
 	// EDITAR <=======
-	public Departamento getDepartamentoByCod(int codDep) {
+	public Cliente getClienteByCpf(String cpf) {
 
-		String sql = "SELECT * FROM departamento where COD_DEPARTAMENTO = ?";
-		Departamento departamento = new Departamento();
+		String sql = "SELECT * FROM cliente where cpf_cli = ?";
+		Cliente cliente = new Cliente();
 
 		ResultSet rset = null;
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, codDep);
+			pstm.setString(1, cpf);
 			rset = pstm.executeQuery();
 
 			rset.next();
 
-			departamento.setNomeDepartamento(rset.getString("NOME_DEPARTAMENTO"));
-			departamento.setCodUnid(rset.getInt("COD_UNID"));
+			cliente.setNome(rset.getString("nome_cli"));
+			cliente.setEmail(rset.getString("email_cli"));
 	
-						
+			cliente.setTelefone(rset.getString("telefone_cli"));
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -247,9 +255,9 @@ public class DepartamentoDAO {
 				e.printStackTrace();
 			}
 		}
-		return departamento;
-	
-	
-	}
+		return cliente;
+  
+    }
+
 
 }
