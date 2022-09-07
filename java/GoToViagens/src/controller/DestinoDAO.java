@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Cliente;
 import gotoviagens.Destino;
 
 public class DestinoDAO {
@@ -20,7 +19,8 @@ public class DestinoDAO {
 		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
 		// EDITAR <=======
-		String sql = "INSERT INTO destino(cpf_cli,nome_cli,email_cli,telefone_cli)" + " VALUES(?,?,?,?)";
+		String sql = "INSERT INTO destino(NOME_DESTINO, PRECO_DESTINO, CATEGORIA_DESTINO,"
+				+ " QTD_DISPONIVEL, CONDICAO)" + " VALUES(?,?,?,?,?)";
 
 		try {
 			// Cria uma conexão com o banco
@@ -29,10 +29,11 @@ public class DestinoDAO {
 			pstm = conn.prepareStatement(sql);
 
 			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
-			pstm.setString(1, cliente.getCpf());
-			pstm.setString(2, cliente.getNome());
-			pstm.setString(3, cliente.getEmail());
-			pstm.setString(4, cliente.getTelefone());
+			pstm.setString(1, destino.getNomeDestino());
+			pstm.setFloat(2, destino.getPrecoUnit());
+			pstm.setString(3, destino.getCategoriaDestino());
+			pstm.setInt(4, destino.getQtdDisponivel());
+			pstm.setString(5, destino.getCondicao());
 			
 			pstm.execute();
 
@@ -62,9 +63,9 @@ public class DestinoDAO {
 	}
 
 	// EDITAR <=======
-	public void removeByCpf(String cpf) {
+	public void removeById(int id) {
 
-		String sql = "DELETE FROM cliente WHERE cpf_cli = ?";
+		String sql = "DELETE FROM destino WHERE ID_DESTINO = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
@@ -72,7 +73,7 @@ public class DestinoDAO {
 			pstm = conn.prepareStatement(sql);
 
 			// TIPO DE VALOR REFERENTE AO CPF E 1 = QTD QUE SERÁ EXCLUÍDA
-			pstm.setString(1, cpf);
+			pstm.setInt(1, id);
 		
 			pstm.execute();
 
@@ -100,10 +101,11 @@ public class DestinoDAO {
 	}
 
 	// EDITAR <=======
-	public void update(Cliente cliente) {
+	public void update(Destino destino) {
 		
-		String sql = "UPDATE cliente SET nome_cli = ?, email_cli = ?, telefone_cli = ?"
-		+ " WHERE cpf_cli = ?";
+		String sql = "UPDATE destino SET NOME_DESTINO = ?, PRECO_DESTINO = ?,"
+				+ " CATEGORIA_DESTINO = ?, QTD_DISPONÍVEL = ?, CONDICAO = ?"
+		+ " WHERE ID_DESTINO = ?";
 
 		try {
 			// Cria uma conexão com o banco
@@ -113,12 +115,14 @@ public class DestinoDAO {
 			pstm = conn.prepareStatement(sql);
 			
 			// EDITAR <=======
-			pstm.setString(1, cliente.getNome());
-			pstm.setString(2, cliente.getEmail());
-			pstm.setString(3, cliente.getTelefone());
+			pstm.setString(1, destino.getNomeDestino());
+			pstm.setFloat(2, destino.getPrecoUnit());
+			pstm.setString(3, destino.getCategoriaDestino());
+			pstm.setInt(4, destino.getQtdDisponivel());
+			pstm.setString(5, destino.getCondicao());
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setString(4, cliente.getCpf());
+			pstm.setInt(6, destino.getIdDestino());
 			
 			// Executa a sql para inserção dos dados
 			pstm.execute();
@@ -148,11 +152,11 @@ public class DestinoDAO {
 	}
 	
 	// EDITAR <=======
-	public List<Cliente> getClientes() {
+	public List<Destino> getDestinos() {
 
-		String sql = "SELECT * FROM cliente";
+		String sql = "SELECT * FROM destino";
 
-		List<Cliente> clientes = new ArrayList<Cliente>();
+		List<Destino> destinos = new ArrayList<Destino>();
 
 		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
@@ -167,23 +171,25 @@ public class DestinoDAO {
 			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
-				Cliente cliente = new Cliente();
+				Destino destino = new Destino();
 
 				// Recupera o id do banco e atribui ele ao objeto
-				cliente.setCpf(rset.getString("cpf_cli"));
+				destino.setNomeDestino(rset.getString("NOME_DESTINO"));
 
 				// Recupera o nome do banco e atribui ele ao objeto
-				cliente.setNome(rset.getString("nome_cli"));
+				destino.setPrecoUnit(rset.getFloat("PRECO_DESTINO"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
-				cliente.setEmail(rset.getString("email_cli"));
+				destino.setCategoriaDestino(rset.getString("CATEGORIA_DESTINO"));
 				
 				// Recupera a idade do banco e atribui ele ao objeto
-				cliente.setTelefone(rset.getString("telefone_cli"));
+				destino.setQtdDisponivel(rset.getInt("QTD_DESTINO"));
+				
+				destino.setCondicao(rset.getString("CONDICAO"));
 
 				
 				// Adiciono o contato recuperado, a lista de contatos
-				clientes.add(cliente);
+				destinos.add(destino);
 			}
 		} catch (Exception e) {
 
@@ -212,30 +218,31 @@ public class DestinoDAO {
 			}
 		}
 
-		return clientes;
+		return destinos;
 	}
 
 	
 	// EDITAR <=======
-	public Cliente getClienteByCpf(String cpf) {
+	public Destino getDestinoById(int id) {
 
-		String sql = "SELECT * FROM cliente where cpf_cli = ?";
-		Cliente cliente = new Cliente();
+		String sql = "SELECT * FROM destino where ID_DESTINO = ?";
+		Destino destino = new Destino();
 
 		ResultSet rset = null;
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 			pstm = conn.prepareStatement(sql);
-			pstm.setString(1, cpf);
+			pstm.setInt(1, id);
 			rset = pstm.executeQuery();
 
 			rset.next();
 
-			cliente.setNome(rset.getString("nome_cli"));
-			cliente.setEmail(rset.getString("email_cli"));
-	
-			cliente.setTelefone(rset.getString("telefone_cli"));
+			destino.setNomeDestino(rset.getString("NOME_DESTINO"));
+			destino.setPrecoUnit(rset.getFloat("PRECO_DESTINO"));
+			destino.setCategoriaDestino(rset.getString("CATEGORIA_DESTINO"));
+			destino.setQtdDisponivel(rset.getInt("QTD_DISPONIVEL"));
+			destino.setCondicao(rset.getString("CONDICAO"));
 			
 
 		} catch (Exception e) {
@@ -255,7 +262,7 @@ public class DestinoDAO {
 				e.printStackTrace();
 			}
 		}
-		return cliente;
+		return destino;
   
     }
 

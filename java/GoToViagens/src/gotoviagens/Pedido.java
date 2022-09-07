@@ -1,16 +1,17 @@
 package gotoviagens;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Pedido extends Passagem {
+	
+	// PRECOTOTAL, FORMA_PAG, MAT_FUNC, CPF_CLI, NOME_CLI, DATA_PEDIDO
     
-    private int idPedido;
+    private int idPedido, matFunc;
     private Date dataPedido;
-    private String pagamento;
+    private String pagamento, cpfCli, nomeCli;
     private float precoTotal;
     
-    
-    
+  
     public int getIdPedido() {
         return idPedido;
     }
@@ -18,6 +19,15 @@ public class Pedido extends Passagem {
 
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
+    }
+
+    
+    public int getMatFunc() {
+    	return matFunc;
+    }
+    
+    public void setMatFunc(int matFunc) {
+    	this.matFunc = matFunc;
     }
     
 
@@ -31,22 +41,40 @@ public class Pedido extends Passagem {
     }
     
 
-    private String getPagamento() {
+    public String getPagamento() {
         return pagamento;
     }
     
+    
+    public String getCpfCli() {
+    	return cpfCli;
+    }
+    
+    public void setCpfCli(String cpfCli) {
+    	this.cpfCli = cpfCli;
+    }
+    
+    
+    public String getNomeCli() {
+    	return nomeCli;
+    }
+    
+    public void setNomeCli(String nomeCli) {
+    	this.nomeCli = nomeCli;
+    }
+    
 
-    private void setPagamento(String pagamento) {
+    public void setPagamento(String pagamento) {
         this.pagamento = pagamento;
     }
     
 
-    private float getPrecoTotal() {
+    public float getPrecoTotal() {
         return precoTotal;
     }
     
 
-    private void setPrecoTotal(float precoTotal) {
+    public void setPrecoTotal(float precoTotal) {
         this.precoTotal = precoTotal;
     }
     

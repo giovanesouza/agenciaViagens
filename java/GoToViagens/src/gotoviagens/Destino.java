@@ -3,8 +3,7 @@ package gotoviagens;
 public class Destino {
     
     private int idDestino;
-    private String nomeDestino;
-    private String categoriaDestino;
+    private String nomeDestino, categoriaDestino, condicao;
     private float precoUnit;
     private int qtdDisponivel;
     
@@ -57,6 +56,13 @@ public class Destino {
         this.qtdDisponivel = qtdDisponivel;
     }
     
+    public String getCondicao() {
+    	return condicao;
+    }
+    
+    public void setCondicao(String condicao) {
+    	this.condicao = condicao;
+    }
 
 
     public void cadastrarDestino() {

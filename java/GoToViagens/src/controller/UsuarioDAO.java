@@ -175,7 +175,7 @@ public class UsuarioDAO {
 				usuario.setEmailUsuario(rset.getString("EMAIL_USUARIO"));
 
 				// Recupera o nome do banco e atribui ele ao objeto
-				usuario.setSenha(rset.getString("SENHA_USUÁRIO"));
+				usuario.setSenha(rset.getString("SENHA_USUARIO"));
 
 				// Recupera a idade do banco e atribui ele ao objeto
 				usuario.setDataCadastro(rset.getDate("DATACADASTRO"));

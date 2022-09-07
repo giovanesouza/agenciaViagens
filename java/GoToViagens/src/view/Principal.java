@@ -1,19 +1,26 @@
 package view;
 
 import java.util.Date;
+
 //import java.lang.runtime.SwitchBootstraps;
 import java.util.Scanner;
 
 import controller.ClienteDAO;
 import controller.DepartamentoDAO;
+import controller.DestinoDAO;
 import controller.EmpresaDAO;
 import controller.FuncionarioDAO;
+import controller.PassagemDAO;
+import controller.PedidoDAO;
 import controller.UsuarioDAO;
 
 import gotoviagens.Cliente;
 import gotoviagens.Departamento;
+import gotoviagens.Destino;
 import gotoviagens.Empresa;
 import gotoviagens.Funcionario;
+import gotoviagens.Passagem;
+import gotoviagens.Pedido;
 import gotoviagens.Usuario;
 
 public class Principal {
@@ -25,6 +32,10 @@ public class Principal {
 		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		
+		DestinoDAO destinoDAO = new DestinoDAO();
+		PassagemDAO passagemDAO = new PassagemDAO();
+		PedidoDAO pedidoDAO = new PedidoDAO();
+		
 		ClienteDAO clienteDAO = new ClienteDAO();
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
@@ -35,17 +46,13 @@ public class Principal {
 		Departamento departamento = new Departamento();
 		Funcionario funcionario = new Funcionario();
 		
+		Destino destino = new Destino();
+		Passagem passagem = new Passagem();
+		Pedido pedido = new Pedido();
+		
 		Cliente cliente = new Cliente();
 		Usuario usuario = new Usuario();
 
-		
-		Scanner entrada = new Scanner(System.in);
-		
-		// VARIÁVEL PARA O LOOP CADASTRO
-		int opcao = 0;
-		
-		// VARIÁVEL PARA O MENU PRINCIPAL
-		int menu = 0;
 		
 		
 		// VARIÁVEIS PARA EMPRESA
@@ -64,15 +71,44 @@ public class Principal {
 	    float salario;
 		
 		
+	    // VARIÁVEIS DESTINO
+	    String nomeDestino, categoriaDestino, condicao;
+	    float precoDestino;
+	    int qtdDisponivel;
+	    
+	    
+	    
 		// VARIÁVEIS PARA CLIENTE
 		String cpf = "", nome = "", email = "", telefone = "";
 		
 		// VARIÁVEIS PARA USUÁRIO - CPF DE CLIENTE FOI UTILIZADO PARA USUÁRIO
 		String emailUsuario, senhaUsuario;
+		
+		
+		// VARIÁVEIS PEDIDO
+		float total;
+		String formaPagamento;
+		
+				
+		// VARIÁVEIS PARA PASSAGEM
+		int qtd;
+		
+		
+		
+		// VARIÁVLE ID GLOGAL
 		int id;
 
+		// VARIÁVEL PARA O LOOP CADASTRO
+		int opcao = 0;
+				
+		// VARIÁVEL PARA O MENU PRINCIPAL
+		int menu = 0;
 		
-		System.out.println("=== INFORME ABAIXO ONDE DESEJA REALIZAR UM CADASTRO: ===");
+		
+		
+		Scanner entrada = new Scanner(System.in);
+		
+		System.out.println("=== INFORME ABAIXO ONDE DESEJA REALIZAR UM CADASTRO: \n");
 
 		System.out.println("=> 1 - EMPRESA");
 		System.out.println("=> 2 - DEPARTAMENTO");
@@ -447,7 +483,133 @@ public class Principal {
 		// DESTINO
 		case 4: {
 			
-			System.out.println("=== CADASTRO DESTINO ===");
+			do {
+
+				System.out.println("===== DESTINO =====");
+				System.out.println("1 - Cadastro de destino");
+				System.out.println("2 - Excluir cadastro");
+				System.out.println("3 - Atualizar cadastro");
+				System.out.println("4 - Mostrar cadastro");
+				System.out.println("5 - Buscar cadastro por id");
+				System.out.println("6 - Sair");
+				opcao = entrada.nextInt();
+
+				switch (opcao) {
+				
+				case 1: {
+					
+					System.out.println("Digite o NOME do destino:");
+					nomeDestino = entrada.next();
+					destino.setNomeDestino(nomeDestino);
+					
+					System.out.println("Digite o PREÇO do destino:");
+					precoDestino = entrada.nextFloat();
+					destino.setPrecoUnit(precoDestino);
+
+					System.out.println("Digite a CATEGORIA do destino:");
+					categoriaDestino = entrada.next();
+					destino.setCategoriaDestino(categoriaDestino);
+					
+					System.out.println("Digite a QUANTIDADE:");
+					qtdDisponivel = entrada.nextInt();
+					destino.setQtdDisponivel(qtdDisponivel);
+					
+					System.out.println("Digite a CONDIÇÃO:");
+					condicao = entrada.next();
+					destino.setCondicao(condicao);
+					
+					destinoDAO.save(destino);
+					break;
+				}
+				case 2: {
+					
+					System.out.println("Digite o id do destino para exclusao: ");
+					try {
+						
+						id = entrada.nextInt();
+						
+						destinoDAO.removeById(id);
+						
+					} catch (Exception e) {
+						// e.getMessage();
+						 
+						System.out.println("Nenhum destino para excluir ");
+					}
+
+					break;
+				}
+				case 3: {
+
+					System.out.println("Digite o id do destino para atualizar: ");
+					id = entrada.nextInt();
+
+					System.out.println("Digite o novo NOME do destino: ");
+					nomeDestino = entrada.next();
+					destino.setNomeDestino(nomeDestino);
+					
+					System.out.println("Digite o novo PREÇO: ");
+					precoDestino = entrada.nextFloat();
+					destino.setPrecoUnit(precoDestino);;
+					
+					System.out.println("Digite a nova CATEGORIA do destino: ");
+					categoriaDestino = entrada.next();
+					 destino.setCategoriaDestino(categoriaDestino);
+					
+					System.out.println("Digite a nova QUANTIDADE DISPONÍVEL para destino: ");
+					qtdDisponivel = entrada.nextInt();
+					destino.setQtdDisponivel(qtdDisponivel);
+					
+					System.out.println("Digite a nova CONDIÇÃO para o destino: ");
+					condicao = entrada.next();
+					destino.setCondicao(condicao);
+					
+
+					destino.setIdDestino(id);
+					destinoDAO.update(destino);
+				}
+				case 4: {
+					for (Destino des : destinoDAO.getDestinos()) {
+
+						System.out.println("NOME DESTINO: " + des.getNomeDestino());
+						System.out.println("PRECO R$: " + des.getPrecoUnit());
+						System.out.println("CATEGORIA: " + des.getCategoriaDestino());
+						System.out.println("QUANTIDADE DISPONÍVEL: " + des.getQtdDisponivel());			
+						System.out.println("CONDIÇÃO: " + des.getCondicao());
+						
+						System.out.println("----------------------------------- ");
+
+					}
+					break;
+				}
+				case 5: {
+
+					System.out.print("Digite o id para buscar: ");
+					id = entrada.nextInt();
+					
+					Destino des = new Destino();
+
+					des = destinoDAO.getDestinoById(id);
+
+					System.out.println("NOME DESTINO: " + des.getNomeDestino());
+					System.out.println("PRECO R$: " + des.getPrecoUnit());
+					System.out.println("CATEGORIA: " + des.getCategoriaDestino());
+					System.out.println("QUANTIDADE DISPONÍVEL: " + des.getQtdDisponivel());			
+					System.out.println("CONDIÇÃO: " + des.getCondicao());
+
+					System.out.println("----------------------------------- ");
+				}
+					break;
+
+				case 6: {
+					System.out.println(" === Até logo! === ");
+					break;
+				}
+				default:
+					System.out.println("Opcao invalida: ");
+
+				};
+
+			} while (opcao != 6);
 			
 			break;
 
@@ -457,7 +619,103 @@ public class Principal {
 		// PASSAGEM
 		case 5: {
 			
-			System.out.println("=== CADASTRO PASSAGEM ===");
+			do {
+
+				System.out.println("===== PASSAGEM =====");
+				System.out.println("1 - Cadastro de passagem com base em um DESTINO");
+				System.out.println("2 - Excluir passagem");
+				System.out.println("3 - Atualizar passagem");
+				System.out.println("4 - Mostrar passagem");
+				System.out.println("5 - Buscar por id");
+				System.out.println("6 - Sair");
+				opcao = entrada.nextInt();
+
+				switch (opcao) {
+				
+				case 1: {
+					System.out.println("Digite a QUANTIDADE de passagens:");
+					qtd = entrada.nextInt();
+					passagem.setQuantidade(qtd);
+					
+					System.out.println("Digite o id do destino:");
+					id = entrada.nextInt();
+					passagem.setIdDestino(id);
+				
+					passagemDAO.save(passagem);
+					break;
+				}
+				case 2: {
+					
+					System.out.println("Digite o id da passagem para exclusao: ");
+					try {
+						
+						id = entrada.nextInt();
+						
+						passagemDAO.removeById(id);
+						
+					} catch (Exception e) {
+						// e.getMessage();
+						 
+						System.out.println("Nenhuma passagem para excluir ");
+					}
+
+					break;
+				}
+				case 3: {
+
+					System.out.println("Digite o id da passagem para atualizar: ");
+					id = entrada.nextInt();
+
+					System.out.println("Digite a QUANTIDADE de passagens: ");
+					qtd = entrada.nextInt();
+					passagem.setQuantidade(qtd);
+					
+					System.out.println("Digite o novo id do destino: ");
+					id = entrada.nextInt();
+					passagem.setIdDestino(id);
+
+
+					passagem.setIdPassagem(id);
+					passagemDAO.update(passagem);
+				}
+				case 4: {
+					for (Passagem pas : passagemDAO.getPassagens()) {
+
+						System.out.println("QUANTIDADE: " + pas.getQuantidade());
+						System.out.println("ID DESTINO: " + pas.getIdDestino());
+												
+						System.out.println("----------------------------------- ");
+
+					}
+					break;
+				}
+				case 5: {
+
+					System.out.print("Digite o id para buscar: ");
+					id = entrada.nextInt();
+					
+					Passagem pas = new Passagem();
+
+					pas = passagemDAO.getPassagemById(id);
+
+					System.out.println("QUANTIDADE: " + pas.getQuantidade());
+					System.out.println("ID DESTINO: " + pas.getIdDestino());
+
+					System.out.println("----------------------------------- ");
+				}
+					break;
+
+				case 6: {
+					System.out.println(" === Agradecemos pela preferência! === ");
+					break;
+				}
+				default:
+					System.out.println("Opcao invalida: ");
+
+				};
+
+			} while (opcao != 6);
+
 			
 			break;
 
@@ -467,7 +725,138 @@ public class Principal {
 		// PEDIDO
 		case 6: {
 			
-			System.out.println("=== CADASTRO PEDIDO ===");
+			do {
+
+				System.out.println("===== PEDIDO =====");
+				System.out.println("1 - Cadastro de pedido");
+				System.out.println("2 - Excluir pedido");
+				System.out.println("3 - Atualizar pedido");
+				System.out.println("4 - Mostrar pedido");
+				System.out.println("5 - Buscar pedido pelo número");
+				System.out.println("6 - Sair");
+				opcao = entrada.nextInt();
+
+				switch (opcao) {
+				
+				case 1: {
+					System.out.println("Digite o PREÇO TOTAL do pedido:");
+					total = entrada.nextFloat();
+					pedido.setPrecoTotal(total);
+					
+					System.out.println("Digite a FORMA DE PAGAMENTO do pedido:");
+					formaPagamento = entrada.next();
+					pedido.setPagamento(formaPagamento);
+
+					System.out.println("Digite a MATRÍCULA do vendedor:");
+					matricula = entrada.nextInt();
+					pedido.setMatFunc(matricula);;
+					
+					System.out.println("Digite o CPF do cliente:");
+					cpf = entrada.next();
+					pedido.setCpfCli(cpf);;
+					
+					System.out.println("Digite o NOME do cliente:");
+					nome = entrada.next();
+					pedido.setNomeCli(nome);
+					
+					pedido.setDataPedido(new Date());
+					
+					
+					pedidoDAO.save(pedido);
+					break;
+				}
+				case 2: {
+					
+					System.out.println("Digite o NÚMERO DO PEDIDO para exclusao: ");
+					try {
+						
+						id = entrada.nextInt();
+						
+						pedidoDAO.removeById(id);
+						
+					} catch (Exception e) {
+						// e.getMessage();
+						 
+						System.out.println("Nenhum pedido para excluir ");
+					}
+
+					break;
+				}
+				case 3: {
+
+					System.out.println("Digite o NÚMERO DO PEDIDO para atualizar: ");
+					id = entrada.nextInt();
+
+					System.out.println("Digite o novo PREÇO do pedido: ");
+					total = entrada.nextFloat();
+					pedido.setPrecoTotal(total);
+					
+					System.out.println("Digite a nova FORMA DE PAGAMENTO: ");
+					formaPagamento = entrada.next();
+					pedido.setPagamento(formaPagamento);
+					
+					System.out.println("Digite a MATRÍCULA do funcionário: ");
+					matricula = entrada.nextInt();
+					pedido.setMatFunc(matricula);
+					
+					System.out.println("Digite o CPF do cliente: ");
+					cpf = entrada.next();
+					pedido.setCpfCli(cpf);
+					
+					System.out.println("Digite o NOME do cliente: ");
+					nome = entrada.next();
+					pedido.setNomeCli(nome);
+					
+
+					pedido.setIdPedido(id);
+					pedidoDAO.update(pedido);
+				}
+				case 4: {
+					for (Pedido ped : pedidoDAO.getPedidos()) {
+
+						System.out.println("PREÇO TOTAL R$: " + ped.getPrecoTotal());
+						System.out.println("FORMA DE PAGAMENTO: " + ped.getPagamento());
+						System.out.println("MATR. DO FUNCIONÁRIO: " + ped.getMatFunc());
+						System.out.println("CPF DO CLIENTE: " + ped.getCpfCli());
+						System.out.println("NOME DO CLIENTE: " + ped.getNomeCli());
+						System.out.println("DATA DO PEDIDO: " + ped.getDataPedido());
+						
+						System.out.println("----------------------------------- ");
+
+					}
+					break;
+				}
+				case 5: {
+
+					System.out.print("Digite o NÚMERO do pedido para buscar: ");
+					id = entrada.nextInt();
+					
+					Pedido ped = new Pedido();
+
+					ped = pedidoDAO.getPedidoById(id);
+
+					System.out.println("PREÇO TOTAL R$: " + ped.getPrecoTotal());
+					System.out.println("FORMA DE PAGAMENTO: " + ped.getPagamento());
+					System.out.println("MATR. DO FUNCIONÁRIO: " + ped.getMatFunc());
+					System.out.println("CPF DO CLIENTE: " + ped.getCpfCli());
+					System.out.println("NOME DO CLIENTE: " + ped.getNomeCli());
+					System.out.println("DATA DO PEDIDO: " + ped.getDataPedido());
+
+					System.out.println("----------------------------------- ");
+				}
+					break;
+
+				case 6: {
+					System.out.println(" === Agradecemos pela preferência! === ");
+					break;
+				}
+				default:
+					System.out.println("Opcao invalida: ");
+
+				};
+
+			} while (opcao != 6);
+			
 			
 			break;
 

@@ -2,10 +2,8 @@ package gotoviagens;
 
 public class Passagem extends Destino {
     
-
-    private int idPassagem;
-    private int quantidade;
-    
+    private int idPassagem, idDestino, quantidade;
+        
     
     
     public int getIdPassagem() {
@@ -16,6 +14,18 @@ public class Passagem extends Destino {
     public void setIdPassagem(int idPassagem) {
         this.idPassagem = idPassagem;
     }
+    
+    
+    public int getIdDestino() {
+    	return idDestino;
+    }
+    
+    
+    public void setIdDestino(int idDestino) {
+    	this.idDestino = idDestino;
+    }
+    
+    
     
 
     public int getQuantidade() {
