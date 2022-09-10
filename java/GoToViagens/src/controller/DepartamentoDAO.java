@@ -13,26 +13,23 @@ public class DepartamentoDAO {
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
-	// EDITAR <=======
 	public void save(Departamento departamento) {
 
-		// os ? são os parâmetros que nós vamos adicionar na base de dados
-
-		// EDITAR <=======
 		String sql = "INSERT INTO departamento(NOME_DEPARTAMENTO, COD_UNID)"
 		+ " VALUES(?,?)";
 
 		try {
-			// Cria uma conexão com o banco
+			// 
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <=======
 			pstm.setString(1, departamento.getNomeDepartamento());
 			pstm.setInt(2, departamento.getCodUnid());	
 			
 			pstm.execute();
+			
+			System.out.println("Departamento cadastrado com sucesso!");
 
 		} catch (Exception e) {
 
@@ -40,7 +37,6 @@ public class DepartamentoDAO {
 			
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -59,7 +55,6 @@ public class DepartamentoDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void removeByCod(int codDep) {
 
 		String sql = "DELETE FROM departamento WHERE COD_DEPARTAMENTO = ?";
@@ -69,9 +64,11 @@ public class DepartamentoDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setInt(1, codDep); // TROQUEI STRING PARA LONG
+			pstm.setInt(1, codDep); 
 
 			pstm.execute();
+			
+			System.out.println("Departamento excluído com sucesso!");
 
 		} catch (Exception e) {
 
@@ -96,35 +93,31 @@ public class DepartamentoDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void update(Departamento departamento) {
 		
 		String sql = "UPDATE departamento SET NOME_DEPARTAMENTO = ?, COD_UNID = ?"
 		+ " WHERE COD_DEPARTAMENTO = ?";
 
 		try {
-			// Cria uma conexão com o banco
+			
 			conn = Conexao.createConnectionToMySQL();
 
-			// Cria um PreparedStatment, classe usada para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			// EDITAR <=======
 			pstm.setString(1, departamento.getNomeDepartamento());
 			pstm.setInt(2, departamento.getCodUnid());
 
-			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
 			pstm.setInt(3, departamento.getCodDepartamento());
 			
-			// Executa a sql para inserção dos dados
 			pstm.execute();
+			
+			System.out.println("Departamento atualizado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -143,14 +136,12 @@ public class DepartamentoDAO {
 		}
 	}
 	
-	// EDITAR <=======
 	public List<Departamento> getDepartamento() {
 
 		String sql = "SELECT * FROM departamento";
 
 		List<Departamento> departamentos = new ArrayList<Departamento>();
 
-		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
 
 		try {
@@ -160,22 +151,16 @@ public class DepartamentoDAO {
 
 			rset = pstm.executeQuery();
 
-			// Enquanto existir dados no banco de dados, faça
+	
 			while (rset.next()) {
 
 				Departamento departamento = new Departamento();
 
-				// Recupera o id do banco e atribui ele ao objeto
 				departamento.setCodDepartamento(rset.getInt("COD_DEPARTAMENTO"));
-
-				// Recupera o nome do banco e atribui ele ao objeto
 				departamento.setNomeDepartamento(rset.getString("NOME_DEPARTAMENTO"));
-
-				// Recupera a idade do banco e atribui ele ao objeto
+				
 				departamento.setCodUnid(rset.getInt("COD_UNID"));
 				
-				
-				// Adiciono o contato recuperado, a lista de contatos
 				departamentos.add(departamento);
 			}
 		} catch (Exception e) {
@@ -209,7 +194,6 @@ public class DepartamentoDAO {
 	}
 
 	
-	// EDITAR <=======
 	public Departamento getDepartamentoByCod(int codDep) {
 
 		String sql = "SELECT * FROM departamento where COD_DEPARTAMENTO = ?";
