@@ -1,5 +1,6 @@
 package controller;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,29 +14,24 @@ public class FuncionarioDAO {
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
-	// EDITAR <=======
 	public void save(Funcionario funcionario) {
 
-		// os ? são os parâmetros que nós vamos adicionar na base de dados
-
-		// EDITAR <=======
 		String sql = "INSERT INTO funcionario(NOME_FUNC, CARGO_FUNC, SALARIO_FUNC, COD_DEPARTAMENTO)"
 		+ " VALUES(?,?,?,?)";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
 			pstm.setString(1, funcionario.getNome());
 			pstm.setString(2, funcionario.getCargo());
 			pstm.setFloat(3, funcionario.getSalario());
 			pstm.setInt(4, funcionario.getCodDepartamento());
 			
-			
 			pstm.execute();
+			System.out.println("Funcionário cadastrado com sucesso!");
 
 		} catch (Exception e) {
 
@@ -43,7 +39,6 @@ public class FuncionarioDAO {
 			
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -62,7 +57,6 @@ public class FuncionarioDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void removeByMat(int mat) {
 
 		String sql = "DELETE FROM funcionario WHERE MAT_FUNC = ?";
@@ -72,10 +66,10 @@ public class FuncionarioDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			// TIPO DE VALOR REFERENTE AO CPF E 1 = QTD QUE SERÁ EXCLUÍDA
 			pstm.setInt(1, mat);
 		
 			pstm.execute();
+			System.out.println("Funcionário excluído com sucesso!");
 
 		} catch (Exception e) {
 
@@ -100,37 +94,32 @@ public class FuncionarioDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void update(Funcionario funcionario) {
 		
-		String sql = "UPDATE funcionario SET NOME_FUNC = ?, CARGO_FUNC = ?,"
-				+ "SALARIO_FUNC = ?, COD_DEPARTAMENTO" + " WHERE MAT_FUNC = ?";
+		String sql = "UPDATE funcionario SET CARGO_FUNC = ?, SALARIO_FUNC = ?,"
+				+ "COD_DEPARTAMENTO = ? WHERE MAT_FUNC = ?";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
-			// Cria um PreparedStatment, classe usada para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			// EDITAR <=======
-			pstm.setString(1, funcionario.getNome());
-			pstm.setString(2, funcionario.getCargo());
-			pstm.setFloat(3, funcionario.getSalario());
-			pstm.setInt(4, funcionario.getCodDepartamento());
+			pstm.setString(1, funcionario.getCargo());
+			pstm.setFloat(2, funcionario.getSalario());
+			pstm.setInt(3, funcionario.getCodDepartamento());
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(5, funcionario.getMatricula());
+			pstm.setInt(4, funcionario.getMatricula());
 			
-			// Executa a sql para inserção dos dados
 			pstm.execute();
+			System.out.println("Funcionário atualizado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -149,14 +138,12 @@ public class FuncionarioDAO {
 		}
 	}
 	
-	// EDITAR <=======
 	public List<Funcionario> getFuncionarios() {
 
 		String sql = "SELECT * FROM funcionario";
 
 		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 
-		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
 
 		try {
@@ -166,26 +153,20 @@ public class FuncionarioDAO {
 
 			rset = pstm.executeQuery();
 
-			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
 				Funcionario funcionario = new Funcionario();
 
 				
-				// Recupera o nome do banco e atribui ele ao objeto
 				funcionario.setNome(rset.getString("NOME_FUNC"));
 
-				// Recupera a idade do banco e atribui ele ao objeto
 				funcionario.setCargo(rset.getString("CARGO_FUNC"));
 				
-				// Recupera a idade do banco e atribui ele ao objeto
 				funcionario.setSalario(rset.getFloat("SALARIO_FUNC"));
 
-				// Recupera a idade do banco e atribui ele ao objeto
 				funcionario.setCodDepartamento(rset.getInt("COD_DEPARTAMENTO"));
 
-				
-				// Adiciono o contato recuperado, a lista de contatos
+								
 				funcionarios.add(funcionario);
 			}
 		} catch (Exception e) {
@@ -219,10 +200,10 @@ public class FuncionarioDAO {
 	}
 
 	
-	// EDITAR <=======
 	public Funcionario getFuncionariosByMat(int mat) {
 
 		String sql = "SELECT * FROM funcionario where MAT_FUNC = ?";
+		
 		Funcionario funcionario = new Funcionario();
 
 		ResultSet rset = null;
