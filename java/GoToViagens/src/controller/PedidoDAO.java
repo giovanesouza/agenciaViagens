@@ -14,23 +14,18 @@ public class PedidoDAO {
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
-	// EDITAR <=======
 	
 	public void save(Pedido pedido) {
 
-		// os ? são os parâmetros que nós vamos adicionar na base de dados
-
-		// EDITAR <=======
 		String sql = "INSERT INTO pedido(PRECOTOTAL, FORMA_PAG, MAT_FUNC, CPF_CLI,"
 				+ " NOME_CLI, DATA_PEDIDO)" + " VALUES(?,?,?,?,?,?)";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
 			pstm.setFloat(1, pedido.getPrecoTotal());
 			pstm.setString(2, pedido.getPagamento());
 			pstm.setInt(3, pedido.getMatFunc());
@@ -39,8 +34,8 @@ public class PedidoDAO {
 			
 			pstm.setDate(6, new Date(pedido.getDataPedido().getTime()));
 
-			
 			pstm.execute();
+			System.out.println("Pedido salvo com sucesso!");
 
 		} catch (Exception e) {
 
@@ -48,7 +43,6 @@ public class PedidoDAO {
 			
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -67,7 +61,6 @@ public class PedidoDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void removeById(int id) {
 
 		String sql = "DELETE FROM pedido WHERE NUM_PEDIDO = ?";
@@ -77,10 +70,10 @@ public class PedidoDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			// TIPO DE VALOR REFERENTE AO CPF E 1 = QTD QUE SERÁ EXCLUÍDA
 			pstm.setInt(1, id);
 		
 			pstm.execute();
+			System.out.println("Pedido excluído com sucesso!");
 
 		} catch (Exception e) {
 
@@ -105,39 +98,34 @@ public class PedidoDAO {
 		}
 	}
 
-	// EDITAR <=======
+
 	public void update(Pedido pedido) {
 		
-		String sql = "UPDATE pedido SET PRECOTOTAL = ?, FORMA_PAG = ?, MAT_FUNC = ?, CPF_CLI = ?"
-				+ "NOME_CLI = ?"
-		+ " WHERE NUM_PEDIDO = ?";
+				
+		String sql = "UPDATE pedido SET PRECOTOTAL = ?, FORMA_PAG = ? WHERE NUM_PEDIDO = ?";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
-			// Cria um PreparedStatment, classe usada para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			// EDITAR <=======
 			pstm.setFloat(1, pedido.getPrecoTotal());
 			pstm.setString(2, pedido.getPagamento());
-			pstm.setInt(3, pedido.getMatFunc());
-			pstm.setString(4, pedido.getCpfCli());
-			pstm.setString(5, pedido.getNomeCli());
+			
+			// CRIAR UMA NOVA COLUNA E INSERIR ESTE TRECHO COMO DATA 
+			//pstm.setDate(3, new Date(pedido.getDataAtualizacao().getTime()));
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(6, pedido.getIdPedido());
+			pstm.setInt(3, pedido.getIdPedido());
 			
-			// Executa a sql para inserção dos dados
 			pstm.execute();
+			System.out.println("Pedido atualizado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
-
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -156,14 +144,12 @@ public class PedidoDAO {
 		}
 	}
 	
-	// EDITAR <=======
 	public List<Pedido> getPedidos() {
 
 		String sql = "SELECT * FROM pedido";
 
 		List<Pedido> pedidos = new ArrayList<Pedido>();
 
-		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
 
 		try {
@@ -173,27 +159,23 @@ public class PedidoDAO {
 
 			rset = pstm.executeQuery();
 
-			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
 				Pedido pedido = new Pedido();
 
-				// Recupera o id do banco e atribui ele ao objeto
 				pedido.setPrecoTotal(rset.getFloat("PRECOTOTAL"));
 
-				// Recupera o nome do banco e atribui ele ao objeto
 				pedido.setPagamento(rset.getString("FORMA_PAG"));
 
-				// Recupera a idade do banco e atribui ele ao objeto
 				pedido.setMatFunc(rset.getInt("MAT_FUNC"));
 				
-				// Recupera a idade do banco e atribui ele ao objeto
 				pedido.setCpfCli(rset.getString("CPF_CLI"));
 				
 				pedido.setNomeCli(rset.getString("NOME_CLI"));
-
 				
-				// Adiciono o contato recuperado, a lista de contatos
+				pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
+				
+				
 				pedidos.add(pedido);
 			}
 		} catch (Exception e) {
@@ -227,7 +209,6 @@ public class PedidoDAO {
 	}
 
 	
-	// EDITAR <=======
 	public Pedido getPedidoById(int id) {
 
 		String sql = "SELECT * FROM pedido where NUM_PEDIDO = ?";
@@ -249,6 +230,7 @@ public class PedidoDAO {
 			pedido.setMatFunc(rset.getInt("MAT_FUNC"));
 			pedido.setCpfCli(rset.getString("CPF_CLI"));
 			pedido.setNomeCli(rset.getString("NOME_CLI"));
+			pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
 			
 
 		} catch (Exception e) {
