@@ -13,36 +13,31 @@ public class ClienteDAO {
 	Connection conn = null;
 	PreparedStatement pstm = null;
 
-	// EDITAR <=======
 	public void save(Cliente cliente) {
 
-		// os ? são os parâmetros que nós vamos adicionar na base de dados
 
-		// EDITAR <=======
 		String sql = "INSERT INTO cliente(CPF_CLI, NOME_CLI, EMAIL_CLI, TELEFONE_CLI)"
 		+ " VALUES(?,?,?,?)";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			// EDITAR <======= SET TIPO + GET DA CLASSE SEM O DAO
 			pstm.setString(1, cliente.getCpf());
 			pstm.setString(2, cliente.getNome());
 			pstm.setString(3, cliente.getEmail());
 			pstm.setString(4, cliente.getTelefone());
 			
 			pstm.execute();
+			System.out.println("Cliente cadastrado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 			
 		} finally {
-
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -61,7 +56,7 @@ public class ClienteDAO {
 		}
 	}
 
-	// EDITAR <=======
+
 	public void removeByCpf(String cpf) {
 
 		String sql = "DELETE FROM cliente WHERE CPF_CLI = ?";
@@ -75,6 +70,7 @@ public class ClienteDAO {
 			pstm.setString(1, cpf);
 		
 			pstm.execute();
+			System.out.println("Cliente excluído com sucesso!");
 
 		} catch (Exception e) {
 
@@ -99,20 +95,17 @@ public class ClienteDAO {
 		}
 	}
 
-	// EDITAR <=======
 	public void update(Cliente cliente) {
 		
 		String sql = "UPDATE cliente SET NOME_CLI = ?, EMAIL_CLI = ?, TELEFONE_CLI = ?"
 		+ " WHERE CPF_CLI = ?";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
-			// Cria um PreparedStatment, classe usada para executar a query
 			pstm = conn.prepareStatement(sql);
 			
-			// EDITAR <=======
 			pstm.setString(1, cliente.getNome());
 			pstm.setString(2, cliente.getEmail());
 			pstm.setString(3, cliente.getTelefone());
@@ -120,15 +113,14 @@ public class ClienteDAO {
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
 			pstm.setString(4, cliente.getCpf());
 			
-			// Executa a sql para inserção dos dados
 			pstm.execute();
+			System.out.println("Cliente atualizado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -147,14 +139,13 @@ public class ClienteDAO {
 		}
 	}
 	
-	// EDITAR <=======
+
 	public List<Cliente> getClientes() {
 
 		String sql = "SELECT * FROM cliente";
 
 		List<Cliente> clientes = new ArrayList<Cliente>();
 
-		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
 
 		try {
@@ -164,25 +155,19 @@ public class ClienteDAO {
 
 			rset = pstm.executeQuery();
 
-			// Enquanto existir dados no banco de dados, faça
 			while (rset.next()) {
 
 				Cliente cliente = new Cliente();
 
-				// Recupera o id do banco e atribui ele ao objeto
 				cliente.setCpf(rset.getString("CPF_CLI"));
 
-				// Recupera o nome do banco e atribui ele ao objeto
 				cliente.setNome(rset.getString("NOME_CLI"));
 
-				// Recupera a idade do banco e atribui ele ao objeto
 				cliente.setEmail(rset.getString("EMAIL_CLI"));
 				
-				// Recupera a idade do banco e atribui ele ao objeto
 				cliente.setTelefone(rset.getString("TELEFONE_CLI"));
 
 				
-				// Adiciono o contato recuperado, a lista de contatos
 				clientes.add(cliente);
 			}
 		} catch (Exception e) {
@@ -216,7 +201,6 @@ public class ClienteDAO {
 	}
 
 	
-	// EDITAR <=======
 	public Cliente getClienteByCpf(String cpf) {
 
 		String sql = "SELECT * FROM cliente where CPF_CLI = ?";
