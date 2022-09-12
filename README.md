@@ -1,9 +1,60 @@
-# Agência de Viagens
+<h1> Projeto: Agência de Viagens </h1>
 
-Meu primeiro projeto utilizando HTML, CSS e BOOTSTRAP.
+<p> O projeto corresponde às atividades individuais referente a conclusão de cada módulo - MÓDULO 02 ao MÓDULO 06 -, do curso de DESENVOLVEDOR FULL STACK da RECODE PRO. </p>
 
-O projeto corresponde à atividade do MÓDULO 02 do curso de DESENVOLVEDOR FULL STACK da RECODE PRO.
+<h2>== ENTREGAS ==</h2>
 
-Além da página Web, também desenvolvi um programa utilizando pseudo-código, no VisualG, para simular o cadastro de clientes, onde nele é possível inserir o NOME, CPF e o destino da viagem.
+<h3>MÓDULO 02:</h3>
 
-No site, o cliente também tem a autonomia de realizar o cadastro por meio da página LOGIN -> REGISTRAR.
+<h4>Usando Pseudocódigo: </h4>
+
+- Usando conceitos de programação estruturada (Vetor), criar em pseudocódigo um menu para simular um cadastro para uma agência de viagens com as seguintes funções: cadastro de cliente e cadastro de destino, criar também uma consulta para cada estrutura de dados.
+
+<h4>Usando HTML, CSS e Bootstrap:</h4>
+
+- Criar um protótipo da primeira versão do site; 
+- Criar as páginas: Home, Destino, Promoções, Contato e as demais páginas de acordo com seu modelo de negócio. Usando HTML, CSS e BOOTSTRAP; 
+- Páginas devem ser responsivas ou adaptáveis. 
+
+
+<h3>MÓDULO 03:</h3>
+
+<h4>Modelagem de dados:</h4>
+ 
+- Criar o modelo conceitual e lógico do banco de dados, usando uma ferramenta de modelagem de dados(BRmodelo) ;
+- Criar as relações e cardinalidades entre as tabelas do modelo do banco;
+- Criar o modelo físico (tabelas e relações) usando SQL;
+- Criar o modelo do sistema (Classes) em UML e Java.
+
+<h4>Back-end:</h4>
+ 
+- Usando os conceitos da orientação a objetos em Java, criar um projeto do tipo console da agencia de viagens, aplicando o CRUD (Create, Read, Update, Delete) para todas as tabelas de seu modelo de banco de dados;
+- Usar classes Java, JDBC e MySql.
+
+<h4>Front-end:</h4>
+ 
+- Atualização da versão anterior do site, refatorando se preciso as páginas: Home, Destino, Promoções, Contato e as demais de acordo com seu modelo de dados usando HTML, CSS Bootstrap. 
+
+
+<h3>MÓDULO 04:</h3>
+
+<h4>Banco de dados:</h4>
+
+- Ajustes no modelo lógico do banco de dados (Tabelas, atributos e relacionamentos) se houver necessidades, implementar o banco de dados no Mysql de forma manual ou usando o ORM (Object-Relational Mapping ou em português mapeamento objeto-relacional).  
+
+<h4>Back-end:</h4>
+
+- Construção o back-end usando tecnologias Java (Estrutura de dados Classes), conexão com MySql usando o padrão de projeto MVC (Implementado o CRUD básico para todas as tabelas do modelo de dados).  
+
+<h4>Front-end:</h4>
+
+- Criação de uma nova versão do site usando o padrão de projeto MVC (Model, View, Controller (Conectar todas as telas de cadastro ao banco de dados usando o padrão de projetos MVC). 
+
+
+
+<h3>MÓDULO 05:</h3>
+
+
+
+<h3>MÓDULO 06</h3>
+
