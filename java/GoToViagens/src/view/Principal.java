@@ -91,7 +91,7 @@ public class Principal {
 		
 				
 		// VARIÁVEIS PARA PASSAGEM
-		int qtd;
+		int qtd, idPassagem;
 		
 		
 		
@@ -147,7 +147,7 @@ public class Principal {
 					unidade = entrada.next();
 					empresa.setUnidade(unidade);
 							
-					System.out.println("Digite a TELEFONE da unidade:");
+					System.out.println("Digite o TELEFONE da unidade:");
 					telefoneUnid = entrada.next();
 					empresa.setTelefone(telefoneUnid);
 					
@@ -187,7 +187,7 @@ public class Principal {
 
 					System.out.println("Digite o novo NOME da unidade: ");
 					unidade = entrada.next();
-					empresa.setNomeFantasia(unidade);
+					empresa.setUnidade(unidade);
 					
 					System.out.println("Digite o novo TELEFONE da unidade: ");
 					telefoneUnid = entrada.next();
@@ -205,16 +205,18 @@ public class Principal {
 					empresaDAO.update(empresa);
 				}
 				case 4: {
-					for (Empresa unid : empresaDAO.getEmpresas()) {
+									
+					for (Empresa und : empresaDAO.getEmpresas()){
 
-						System.out.println("UNIDADE: " + unid.getUnidade());
-						System.out.println("TELEFONE: " + unid.getTelefone());
-						System.out.println("E-MAIL: " + unid.getEmail());
-						System.out.println("ENDEREÇO: " + unid.getEndereco());
+						System.out.println("CÓDIGO DA UNIDADE: " + und.getCodUnid());
+						System.out.println("UNIDADE: " + und.getUnidade());
+						System.out.println("TELEFONE: " + und.getTelefone());
+						System.out.println("E-MAIL: " + und.getEmail());
+						System.out.println("ENDEREÇO: " + und.getEndereco());
 						
 						System.out.println("----------------------------------- ");
-
 					}
+					
 					break;
 				}
 				case 5: {
@@ -306,8 +308,11 @@ public class Principal {
 					System.out.println("Digite o novo NOME do departamento: ");
 					nomeDepartamento = entrada.next();
 					departamento.setNomeDepartamento(nomeDepartamento);
-										
-
+					
+					System.out.println("Digite o CÓDIGO da nova UNIDADE: ");
+					codUnid = entrada.nextInt();
+					departamento.setCodUnid(codUnid);
+					
 					departamento.setCodDepartamento(codDepartamento);
 					departamentoDAO.update(departamento);
 				}
@@ -332,7 +337,7 @@ public class Principal {
 
 					dep = departamentoDAO.getDepartamentoByCod(codDepartamento);
 
-					System.out.println("CÓDIGO DO DEPARTAMENTO: " + dep.getCodDepartamento());
+					System.out.println("CÓDIGO DO DEPARTAMENTO: " + codDepartamento);
 					System.out.println("NOME: " + dep.getNomeDepartamento());
 					System.out.println("UNIDADE: " + dep.getCodUnid());
 
@@ -418,7 +423,7 @@ public class Principal {
 
 					System.out.println("Digite o novo CARGO do funcionário: ");
 					cargo = entrada.next();
-					funcionario.setCargo(cargo);;
+					funcionario.setCargo(cargo);
 					
 					System.out.println("Digite o novo SALÁRIO do funcionário: ");
 					salario = entrada.nextFloat();
@@ -664,7 +669,7 @@ public class Principal {
 				case 3: {
 
 					System.out.println("Digite o id da passagem para atualizar: ");
-					id = entrada.nextInt();
+					idPassagem = entrada.nextInt();
 
 					System.out.println("Digite a QUANTIDADE de passagens: ");
 					qtd = entrada.nextInt();
@@ -675,7 +680,7 @@ public class Principal {
 					passagem.setIdDestino(id);
 
 
-					passagem.setIdPassagem(id);
+					passagem.setIdPassagem(idPassagem);
 					passagemDAO.update(passagem);
 				}
 				case 4: {
@@ -795,19 +800,19 @@ public class Principal {
 					formaPagamento = entrada.next();
 					pedido.setPagamento(formaPagamento);
 					
-					System.out.println("Digite a MATRÍCULA do funcionário: ");
-					matricula = entrada.nextInt();
-					pedido.setMatFunc(matricula);
+					//System.out.println("Digite a MATRÍCULA do funcionário: ");
+					//matricula = entrada.nextInt();
+					//pedido.setMatFunc(matricula);
 					
-					System.out.println("Digite o CPF do cliente: ");
-					cpf = entrada.next();
-					pedido.setCpfCli(cpf);
+					//System.out.println("Digite o CPF do cliente: ");
+					//cpf = entrada.next();
+					//pedido.setCpfCli(cpf);
 					
-					System.out.println("Digite o NOME do cliente: ");
-					nome = entrada.next();
-					pedido.setNomeCli(nome);
+					//System.out.println("Digite o NOME do cliente: ");
+					//nome = entrada.next();
+					//pedido.setNomeCli(nome);
 					
-
+										
 					pedido.setIdPedido(id);
 					pedidoDAO.update(pedido);
 				}
@@ -922,7 +927,7 @@ public class Principal {
 					cpf = entrada.next();
 
 					System.out.println("Digite o novo NOME do cliente: ");
-					nome = entrada.nextLine();
+					nome = entrada.next();
 					cliente.setNome(nome);
 					
 					System.out.println("Digite o novo E-MAIL do cliente: ");
@@ -1006,6 +1011,10 @@ public class Principal {
 					cpf = entrada.next();
 					usuario.setCpf(cpf);
 					
+					System.out.println("Digite seu NOME:");
+					nome = entrada.next();
+					usuario.setNome(nome);
+					
 					
 					System.out.println("Digite um E-MAIL para usuário:");
 					emailUsuario = entrada.next();
@@ -1042,10 +1051,6 @@ public class Principal {
 					System.out.println("Digite o id do usuário para atualizar: ");
 					id = entrada.nextInt();
 
-					System.out.println("Digite o novo NOME do usuário: ");
-					nome = entrada.next();
-					usuario.setNome(nome);
-					
 					System.out.println("Digite o novo E-MAIL do usuário: ");
 					emailUsuario = entrada.next();
 					usuario.setEmailUsuario(emailUsuario);
@@ -1054,9 +1059,13 @@ public class Principal {
 					senhaUsuario = entrada.next();
 					usuario.setSenha(senhaUsuario);
 					
-
+					System.out.println("Digite o novo NOME do usuário: ");
+					nome = entrada.next();
+					usuario.setNome(nome);
+						
+					
 					usuario.setIdUsuario(id);
-					clienteDAO.update(cliente);
+					usuarioDAO.update(usuario);
 				}
 				case 4: {
 					for (Usuario usu : usuarioDAO.getUsuarios()) {
