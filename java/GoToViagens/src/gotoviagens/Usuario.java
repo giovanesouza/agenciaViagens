@@ -7,7 +7,7 @@ public class Usuario extends Cliente {
 
     private int idUsuario;
     private Boolean cadastrado;
-    private String emailUsuario, senha;
+    private String emailUsuario, senha, nome;
     private Boolean logado;
     private Date dataCadastro;
     
@@ -32,6 +32,14 @@ public class Usuario extends Cliente {
     }
     
 
+    public String getEmailUsuario() {
+    	return emailUsuario;
+    }
+    
+    public void setEmailUsuario(String emailUsuario) {
+    	this.emailUsuario = emailUsuario;
+    }
+    
     public String getSenha() {
         return senha;
     }
@@ -41,14 +49,15 @@ public class Usuario extends Cliente {
         this.senha = senha;
     }
     
-    public String getEmailUsuario() {
-    	return emailUsuario;
+    
+    public String getNome() {
+        return nome;
     }
     
-    public void setEmailUsuario(String emailUsuario) {
-    	this.emailUsuario = emailUsuario;
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    
 
     public Boolean getLogado() {
         return logado;
