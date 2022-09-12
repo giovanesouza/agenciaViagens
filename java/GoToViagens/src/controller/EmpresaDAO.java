@@ -16,25 +16,23 @@ public class EmpresaDAO {
 	
 	public void save(Empresa empresa) {
 
-		// os ? são os parâmetros que nós vamos adicionar na base de dados
-
 
 		String sql = "INSERT INTO EMPRESA (UNIDADE, TELEFONE, EMAIL, ENDERECO)"
 		+ " VALUES(?,?,?,?)";
 
 		try {
-			// Cria uma conexão com o banco
+
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
 
-			// ======= SET TIPO + GET DA CLASSE SEM O DAO
 			pstm.setString(1, empresa.getUnidade());
 			pstm.setString(2, empresa.getTelefone());
 			pstm.setString(3, empresa.getEmail());
 			pstm.setString(4, empresa.getEndereco());
 			
 			pstm.execute();
+			System.out.println("Unidade cadastrada com sucesso!");
 
 		} catch (Exception e) {
 
@@ -42,7 +40,6 @@ public class EmpresaDAO {
 			
 		} finally {
 
-			// Fecha as conexões
 
 			try {
 				if (pstm != null) {
@@ -74,6 +71,7 @@ public class EmpresaDAO {
 			pstm.setInt(1, codUnid);
 
 			pstm.execute();
+			System.out.println("Unidade excluída com sucesso!");
 
 		} catch (Exception e) {
 
@@ -105,10 +103,9 @@ public class EmpresaDAO {
 		+ " WHERE COD_UNID = ?";
 
 		try {
-			// Cria uma conexão com o banco
+			
 			conn = Conexao.createConnectionToMySQL();
-
-			// Cria um PreparedStatment, classe usada para executar a query
+			
 			pstm = conn.prepareStatement(sql);
 			
 			pstm.setString(1, empresa.getUnidade());
@@ -119,15 +116,15 @@ public class EmpresaDAO {
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
 			pstm.setInt(5, empresa.getCodUnid());
 			
-			// Executa a sql para inserção dos dados
 			pstm.execute();
+			System.out.println("Unidade atualizada com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
 
-			// Fecha as conexões
+
 
 			try {
 				if (pstm != null) {
@@ -153,7 +150,6 @@ public class EmpresaDAO {
 
 		List<Empresa> empresas = new ArrayList<Empresa>();
 
-		// Classe que vai recuperar os dados do banco de dados
 		ResultSet rset = null;
 
 		try {
@@ -163,23 +159,29 @@ public class EmpresaDAO {
 
 			rset = pstm.executeQuery();
 
-			// Enquanto existir dados no banco de dados, faça
+			
 			while (rset.next()) {
 
 				Empresa empresa = new Empresa();
 
-				pstm.setString(1, empresa.getUnidade());
-				pstm.setString(2, empresa.getTelefone());
-				pstm.setString(3, empresa.getEmail());
-				pstm.setString(4, empresa.getEndereco());
+				empresa.setCodUnid(rset.getInt("COD_UNID"));
+				empresa.setUnidade(rset.getString("UNIDADE"));
+				empresa.setTelefone(rset.getString("TELEFONE"));
+				empresa.setEmail(rset.getString("EMAIL"));
+				empresa.setEndereco(rset.getString("ENDERECO"));
 
-				
-				// Adiciono o contato recuperado, a lista de contatos
+				//pstm.setInt(1, empresa.getCodUnid());
+				//pstm.setString(2, empresa.getUnidade());
+				//pstm.setString(3, empresa.getTelefone());
+				//pstm.setString(4, empresa.getEmail());
+				//pstm.setString(5, empresa.getEndereco());
+
 				empresas.add(empresa);
 			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
+			
 		} finally {
 
 			try {
@@ -208,7 +210,6 @@ public class EmpresaDAO {
 	}
 
 	
-	// EDITAR <=======
 	public Empresa getUnidadesByCod(int codUnid) {
 
 		String sql = "SELECT * FROM empresa where COD_UNID = ?";
