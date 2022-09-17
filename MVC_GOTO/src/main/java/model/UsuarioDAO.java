@@ -227,6 +227,8 @@ public class UsuarioDAO {
 			usuario.setCpf(rset.getString("CPF_CLI"));
 			usuario.setNome(rset.getString("NOME_CLI"));
 			
+			// CÓDIGO ADD PARA FUNCIONAR A ATUALIZAÇÃO
+			usuario.setIdUsuario(rset.getInt("ID_USUARIO"));
 
 		} catch (Exception e) {
 			e.printStackTrace();

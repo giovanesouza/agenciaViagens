@@ -12,12 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.Usuario;
 import model.UsuarioDAO;
 
-/**
- * Servlet implementation class CadastrarUsuario
- */
+
 @WebServlet("/CadastrarUsuario")
 public class CadastrarUsuario extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -43,7 +41,7 @@ public class CadastrarUsuario extends HttpServlet {
 		udao.save(objUsuario);
 		
 		// Redirecionando o usuario para a pagina inicial da aplicação.
-		response.sendRedirect("home");
+		response.sendRedirect("login1.jsp");
 		
 	}
 
