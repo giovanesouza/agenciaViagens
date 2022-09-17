@@ -31,7 +31,7 @@ public class CadastrarUsuario extends HttpServlet {
 		// guardando os dados do formulario do objeto
 		objUsuario.setNome(nome);
 		objUsuario.setCpf(cpf);
-		objUsuario.setEmailUsuario(email);
+		objUsuario.setEmail(email);
 		objUsuario.setSenha(senha);
 		objUsuario.setDataCadastro(new Date());
 		
@@ -41,7 +41,7 @@ public class CadastrarUsuario extends HttpServlet {
 		udao.save(objUsuario);
 		
 		// Redirecionando o usuario para a pagina inicial da aplicação.
-		response.sendRedirect("login1.jsp");
+		response.sendRedirect("login1.html");
 		
 	}
 

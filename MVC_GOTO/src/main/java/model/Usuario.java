@@ -2,42 +2,51 @@ package model;
 
 import java.util.Date;
 
-public class Usuario extends Cliente {
+public class Usuario {
     
-
-    private int idUsuario;
-    private Boolean cadastrado;
-    private String emailUsuario, senha, nome;
-    private Boolean logado;
-    private Date dataCadastro;
+    private int id;
+    private String nome, cpf, email, senha;
+    private Date dataCadastro, dataAtualizacaoCadastro;
+    private Boolean cadastrado, logado;
     
      
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getId() {
+        return id;
     }
     
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
+    public String getNome() {
+        return nome;
     }
     
 
-    public Boolean getCadastrado() {
-        return cadastrado;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 
-    public void setCadastrado(Boolean cadastrado) {
-        this.cadastrado = cadastrado;
+    public String getCpf() {
+        return cpf;
     }
     
 
-    public String getEmailUsuario() {
-    	return emailUsuario;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
-    public void setEmailUsuario(String emailUsuario) {
-    	this.emailUsuario = emailUsuario;
+    
+    
+    public String getEmai() {
+    	return email;
+    }
+    
+    public void setEmail(String email) {
+    	this.email = email;
     }
     
     public String getSenha() {
@@ -50,14 +59,41 @@ public class Usuario extends Cliente {
     }
     
     
-    public String getNome() {
-        return nome;
+    
+    
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
     
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
+    
+    
+    public Date getDataAtualizacaoCadastro() {
+        return dataAtualizacaoCadastro;
+    }
+    
+
+    public void setDataAtualizacaoCadastro(Date dataAtualizacaoCadastro) {
+        this.dataAtualizacaoCadastro = dataAtualizacaoCadastro;
+    }
+    
+    
+
+    public Boolean getCadastrado() {
+        return cadastrado;
+    }
+    
+
+    public void setCadastrado(Boolean cadastrado) {
+        this.cadastrado = cadastrado;
+    }
+    
+
+     
+
 
     public Boolean getLogado() {
         return logado;
@@ -69,15 +105,6 @@ public class Usuario extends Cliente {
     }
     
 
-    public Date getDataCadastro() {
-        return dataCadastro;
-    }
-    
-
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-    
 
 
     public void realizarCadastro() {
