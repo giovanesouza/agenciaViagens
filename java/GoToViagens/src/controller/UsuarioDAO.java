@@ -9,6 +9,10 @@ import java.util.List;
 
 import gotoviagens.Usuario;
 
+
+
+//import gotoviagens.Usuario;
+
 public class UsuarioDAO {
 
 	Connection conn = null;
@@ -16,8 +20,7 @@ public class UsuarioDAO {
 
 	public void save(Usuario usuario) {
 
-		String sql = "INSERT INTO usuario(EMAIL_USUARIO, SENHA_USUARIO, DATACADASTRO,"
-				+ " CPF_CLI, NOME_CLI)" + " VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO USUARIO(NOME, CPF, EMAIL, SENHA, DATACADASTRO) VALUES(?,?,?,?,?)";
 
 		try {
 
@@ -25,21 +28,19 @@ public class UsuarioDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setString(1, usuario.getEmailUsuario());
-			pstm.setString(2, usuario.getSenha());
-			pstm.setDate(3, new Date(usuario.getDataCadastro().getTime()));
-			pstm.setString(4, usuario.getCpf());
-			pstm.setString(5, usuario.getNome());
-			
+			pstm.setString(1, usuario.getNome());
+			pstm.setString(2, usuario.getCpf());
+			pstm.setString(3, usuario.getEmail());
+			pstm.setString(4, usuario.getSenha());
+			pstm.setDate(5, new Date(usuario.getDataCadastro().getTime()));
+
 			pstm.execute();
-			System.out.println("Usuário cadastrado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			
-		} finally {
 
+		} finally {
 
 			try {
 				if (pstm != null) {
@@ -60,7 +61,7 @@ public class UsuarioDAO {
 
 	public void removeById(int id) {
 
-		String sql = "DELETE FROM usuario WHERE ID_USUARIO = ?";
+		String sql = "DELETE FROM USUARIO WHERE ID = ?";
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
@@ -68,14 +69,13 @@ public class UsuarioDAO {
 			pstm = conn.prepareStatement(sql);
 
 			pstm.setInt(1, id);
-		
+
 			pstm.execute();
-			System.out.println("Usuário excluído com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			
+
 		} finally {
 
 			try {
@@ -96,31 +96,29 @@ public class UsuarioDAO {
 	}
 
 	public void update(Usuario usuario) {
-		
-		String sql = "UPDATE usuario SET EMAIL_USUARIO = ?, SENHA_USUARIO = ?, NOME_CLI = ?"
-		+ " WHERE ID_USUARIO = ?";
+
+		String sql = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, SENHA = ?, DATAATUALIZACAOCADASTRO = ? WHERE ID = ?";
 
 		try {
 
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
-			
-			pstm.setString(1, usuario.getEmailUsuario());
-			pstm.setString(2, usuario.getSenha());
-			pstm.setString(3, usuario.getNome());
+
+			pstm.setString(1, usuario.getNome());
+			pstm.setString(2, usuario.getEmail());
+			pstm.setString(3, usuario.getSenha());
+			pstm.setDate(4, new Date(usuario.getDataAtualizacaoCadastro().getTime()));
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(4, usuario.getIdUsuario());
-			
+			pstm.setInt(5, usuario.getId());
+
 			pstm.execute();
-			System.out.println("Usuário atualizado com sucesso!");
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
-
 
 			try {
 				if (pstm != null) {
@@ -138,11 +136,10 @@ public class UsuarioDAO {
 			}
 		}
 	}
-	
-	
+
 	public List<Usuario> getUsuarios() {
 
-		String sql = "SELECT * FROM usuario";
+		String sql = "SELECT * FROM USUARIO";
 
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 
@@ -155,22 +152,17 @@ public class UsuarioDAO {
 
 			rset = pstm.executeQuery();
 
-
 			while (rset.next()) {
 
 				Usuario usuario = new Usuario();
 
-				usuario.setEmailUsuario(rset.getString("EMAIL_USUARIO"));
-
-				usuario.setSenha(rset.getString("SENHA_USUARIO"));
-
+				usuario.setNome(rset.getString("NOME"));
+				usuario.setCpf(rset.getString("CPF"));
+				usuario.setEmail(rset.getString("EMAIL"));
+				usuario.setSenha(rset.getString("SENHA"));
 				usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
-				
-				usuario.setCpf(rset.getString("CPF_CLI"));
-				
-				usuario.setNome(rset.getString("NOME_CLI"));
-				
-				
+				usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
+
 				usuarios.add(usuario);
 			}
 		} catch (Exception e) {
@@ -203,30 +195,33 @@ public class UsuarioDAO {
 		return usuarios;
 	}
 
-	
-	public Usuario getClienteById(int id) {
+	// CÓDIGO NOVO
 
-		String sql = "SELECT * FROM usuario where ID_USUARIO = ?";
+	public Usuario buscarUsuarioPorEmail(String email) {
+
+		String sql = "SELECT * FROM USUARIO WHERE EMAIL = ?";
+
 		Usuario usuario = new Usuario();
-
 		ResultSet rset = null;
 
 		try {
 			conn = Conexao.createConnectionToMySQL();
 			pstm = conn.prepareStatement(sql);
-			pstm.setInt(1, id);
+			pstm.setString(1, email);
 			rset = pstm.executeQuery();
 
 			rset.next();
 
-			usuario.setEmailUsuario(rset.getString("EMAIL_USUARIO"));
-			usuario.setSenha(rset.getString("SENHA_USUARIO"));
-			
+			usuario.setId(rset.getInt("ID"));
+			usuario.setNome(rset.getString("NOME"));
+			usuario.setCpf(rset.getString("CPF"));
+			usuario.setSenha(rset.getString("SENHA"));
 			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
-	
-			usuario.setCpf(rset.getString("CPF_CLI"));
-			usuario.setNome(rset.getString("NOME_CLI"));
+			usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
 			
+			
+			// CÓDIGO ADD PARA FUNCIONAR A ATUALIZAÇÃO
+			usuario.setEmail(rset.getString("EMAIL"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -246,8 +241,57 @@ public class UsuarioDAO {
 			}
 		}
 		return usuario;
-  
-    }
+
+	}
+	
+
+	// FIM CÓDIGO NOVO
 
 	
+	public Usuario getUsuarioById(int id) {
+
+		String sql = "SELECT * FROM USUARIO where ID = ?";
+		Usuario usuario = new Usuario();
+
+		ResultSet rset = null;
+
+		try {
+			conn = Conexao.createConnectionToMySQL();
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, id);
+			rset = pstm.executeQuery();
+
+			rset.next();
+
+			usuario.setNome(rset.getString("NOME"));
+			usuario.setCpf(rset.getString("CPF"));
+			usuario.setEmail(rset.getString("EMAIL"));
+			usuario.setSenha(rset.getString("SENHA"));
+			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
+			usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
+
+			// CÓDIGO ADD PARA FUNCIONAR A ATUALIZAÇÃO
+			usuario.setId(rset.getInt("ID"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null) {
+					rset.close();
+				}
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return usuario;
+
+	}
+
 }
