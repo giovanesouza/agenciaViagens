@@ -5,6 +5,24 @@ import java.util.Date;
 //import java.lang.runtime.SwitchBootstraps;
 import java.util.Scanner;
 
+import model.ClienteDAO;
+import model.DepartamentoDAO;
+import model.DestinoDAO;
+import model.EmpresaDAO;
+import model.FuncionarioDAO;
+import model.PassagemDAO;
+import model.PedidoDAO;
+import model.UsuarioDAO;
+
+import model.Cliente;
+import model.Departamento;
+import model.Destino;
+import model.Empresa;
+import model.Funcionario;
+import model.Passagem;
+import model.Pedido;
+import model.Usuario;
+
 public class Principal {
 
 	public static void main(String[] args) {
@@ -982,7 +1000,8 @@ public class Principal {
 				System.out.println("3 - Atualizar cadastro");
 				System.out.println("4 - Mostrar cadastro");
 				System.out.println("5 - Buscar por id");
-				System.out.println("6 - Sair");
+				System.out.println("6 - Realizar Login");
+				System.out.println("7 - Sair");
 				opcao = entrada.nextInt();
 
 				switch (opcao) {
@@ -1000,7 +1019,7 @@ public class Principal {
 					
 					System.out.println("Digite um E-MAIL para usuário:");
 					emailUsuario = entrada.next();
-					usuario.setEmailUsuario(emailUsuario);
+					usuario.setEmail(emailUsuario);
 					
 					System.out.println("Digite uma SENHA para o usuário:");
 					senhaUsuario = entrada.next();
@@ -1035,7 +1054,7 @@ public class Principal {
 
 					System.out.println("Digite o novo E-MAIL do usuário: ");
 					emailUsuario = entrada.next();
-					usuario.setEmailUsuario(emailUsuario);
+					usuario.setEmail(emailUsuario);
 					
 					System.out.println("Digite uma nova SENHA para o usuário: ");
 					senhaUsuario = entrada.next();
@@ -1046,7 +1065,7 @@ public class Principal {
 					usuario.setNome(nome);
 						
 					
-					usuario.setIdUsuario(id);
+					usuario.setId(id);
 					usuarioDAO.update(usuario);
 				}
 				case 4: {
@@ -1054,7 +1073,7 @@ public class Principal {
 
 						System.out.println("CPF: " + usu.getCpf());
 						System.out.println("NOME: " + usu.getNome());
-						System.out.println("EMAIL: " + usu.getEmailUsuario());
+						System.out.println("EMAIL: " + usu.getEmail());
 						System.out.println("TELEFONE: " + usu.getSenha());
 						System.out.println("DATA DE CADASTRO: " + usu.getDataCadastro());
 						
@@ -1070,19 +1089,65 @@ public class Principal {
 					
 					Usuario usu = new Usuario();
 
-					usu = usuarioDAO.getClienteById(id);
+					usu = usuarioDAO.getUsuarioById(id);
 
 					System.out.println("CPF: " + usu.getCpf());
 					System.out.println("NOME: " + usu.getNome());
-					System.out.println("EMAIL: " + usu.getEmailUsuario());
+					System.out.println("EMAIL: " + usu.getEmail());
 					System.out.println("SENHA: " + usu.getSenha());
 					System.out.println("DATA DE CADASTRO: " + usu.getDataCadastro());
 					
 					System.out.println("----------------------------------- ");
-				}
+					
 					break;
-
+				}
+					
 				case 6: {
+
+					System.out.print("Digite o EMAIL do usuario: ");
+					emailUsuario = entrada.next();
+					
+					System.out.print("Digite a SENHA do usuario: ");
+					senhaUsuario = entrada.next();
+									
+					Usuario u = new Usuario();
+
+					u = usuarioDAO.buscarUsuarioPorEmail(emailUsuario);
+
+					boolean logado = false;
+
+
+					if(u != null && u.getSenha().equals(senhaUsuario)) {
+						
+						logado = true;
+												
+					} 
+					
+					if (logado) {
+						System.out.println("--- USUÁRIO LOGADO: --- ");
+
+						System.out.println("ID: " + u.getId());
+						System.out.println("CPF: " + u.getCpf());
+						System.out.println("NOME: " + u.getNome());
+						System.out.println("EMAIL: " + u.getEmail());
+						System.out.println("SENHA: " + u.getSenha());
+						System.out.println("DATA DE CADASTRO: " + u.getDataCadastro());
+						
+						System.out.println("----------------------------------- ");
+						
+					} else {
+						
+						logado = false; 
+						
+						System.out.println("Não foi possível realizar o login.");
+						System.out.println("E-mail e/ou senha incorretos.");
+					}			
+							
+					
+					break;
+				}
+		
+				case 7: {
 					System.out.println(" === Agradecemos pela preferência! === ");
 					break;
 				}
@@ -1091,7 +1156,7 @@ public class Principal {
 
 				};
 
-			} while (opcao != 6);
+			} while (opcao != 7);
 
 			
 			break;
@@ -1100,12 +1165,9 @@ public class Principal {
 		
 
 		}
-		
 
-		entrada.close();
+	entrada.close();
 
-
-
-	}
+}
 
 }

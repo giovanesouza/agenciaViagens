@@ -41,7 +41,7 @@ public class Usuario {
     
     
     
-    public String getEmai() {
+    public String getEmail() {
     	return email;
     }
     

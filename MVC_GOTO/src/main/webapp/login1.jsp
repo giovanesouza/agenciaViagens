@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+    
+ <%
+    String erro = (String) request.getAttribute("erro");
+  %>
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="ISO-8859-1">
 <meta charset="UTF-8">
@@ -21,13 +26,13 @@
     <!-- CSS EXTERNO -->
     <link rel="stylesheet" href="css/all.css">
 
-    <title> Login - Go To | Agência de Viagens </title>
+    <title> Login - Go To | Agï¿½ncia de Viagens </title>
     
 </head>
 <body>
 
 
-    <!-- CABEÇALHO -->
+    <!-- CABEï¿½ALHO -->
 
     <div class="container-fluid mt-3">
 
@@ -43,17 +48,17 @@
             <div class="col-sm-6 text-center">
 
                 <h5> Pensou em viajar?! </h5>
-                <p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
+                <p class="small"> A Go To Viagens te leva aonde vocï¿½ quer chegar! </p>
 
             </div>
 
 
         </header>
 
-        <!-- FIM CABEÇALHO -->
+        <!-- FIM CABEï¿½ALHO -->
 
 
-        <!-- INÍCIO MENUS -->
+        <!-- INï¿½CIO MENUS -->
 
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <a class="navbar-brand" href="#"></a>
@@ -70,7 +75,7 @@
                                 class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link btn-hover" href="promocoes.html">PROMOÇÕES</a>
+                        <a class="nav-link btn-hover" href="promocoes.html">PROMOï¿½ï¿½ES</a>
                     </li>
                     <li class="nav-item text-center">
                         <a class="nav-link btn-hover" href="destinos.html">DESTINOS</a>
@@ -93,7 +98,7 @@
 
 
 
-    <!-- ÁREA LOGIN -->
+    <!-- ï¿½REA LOGIN -->
     <div class="container">
 
 
@@ -135,6 +140,7 @@
                                 </div>
                                 <div class="modal-body bg-modal">
 
+                                    <!-- INÃCIO forms cadastro usuÃ¡rio -->
                                     <form action="CadastrarUsuario" method="post">
 
                                         <label class="mt-2" for="nome"> <strong> Nome completo: </strong> </label>
@@ -147,11 +153,11 @@
                                         <label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
 
                                         <input type="tel" class="form-control" name="cpf" id="cliente_cadastrar"
-                                            aria-describedby="helpId" placeholder="Digite seu CPF (APENAS NÚMEROS)"
+                                            aria-describedby="helpId" placeholder="Digite seu CPF (APENAS Nï¿½MEROS)"
                                             maxlength="11" required="">
 
 
-                                        <label class="mt-2" for="senha"> <strong> Digite seu e-mail (Será utilizado para o Login): </strong> </label>
+                                        <label class="mt-2" for="senha"> <strong> Digite seu e-mail (Serï¿½ utilizado para o Login): </strong> </label>
 
                                         <input type="email" class="form-control" name="email" id="email_login"
                                             aria-describedby="helpId" placeholder="Digite seu e-mail (nome@dominio.com)"
@@ -160,13 +166,13 @@
 
                                         <label class="mt-2" for="senha"> <strong> Senha: </strong> </label>
 
-                                        <input type="password" class="form-control" name="senha" id="senha_login"
+                                        <input type="password" class="form-control" name="senha" id="senha"
                                             aria-describedby="helpId" placeholder="Digite sua senha (4 a 12 digitos)"
                                             minlength="4" maxlength="12" required="">
 
-                                        <label class="mt-2" for="senha"> <strong> Repita a senha: </strong> </label>
+                                        <label class="mt-2" for="senhaConfirmacao"> <strong> Repita a senha: </strong> </label>
 
-                                        <input type="password" class="form-control" name="senhaConfirmacao" id="senha_login"
+                                        <input type="password" class="form-control" name="senhaConfirmacao" id="senhaconfirm" onchange="verificaSenhaCad()"
                                             aria-describedby="helpId"
                                             placeholder="Digite sua senha novamente (4 a 12 digitos)" minlength="4" maxlength="12"
                                             required="">
@@ -180,6 +186,7 @@
 
 
                                     </form>
+                                    <!-- FIM forms cadastro usuÃ¡rio -->
 
                                 </div>
                                 <div class="modal-footer">
@@ -197,7 +204,7 @@
                 </div>
 
 
-                <form action="post">
+                <form action="Logar" method="post">
 
                     <div class="row mb-2 mt-2">
 
@@ -230,7 +237,15 @@
                     <div class="row">
 
                         <button class="botao_login" type="submit"> Entrar </button>
-
+							
+						<p class="text-center text-danger mt-2">
+						 <strong>
+						 	<%
+						 	if (erro != null) {	out.print(erro); }
+						 	%>	
+						 	</strong>
+						 </p>
+							
                     </div>
 
 
@@ -245,7 +260,7 @@
 
 
     </div>
-    <!-- FIM ÁREA LOGIN -->
+    <!-- FIM ï¿½REA LOGIN -->
 
 
     <!-- ICON SCROLL TOP -->
@@ -255,7 +270,7 @@
     <!-- ICON SCROLL TOP -->
 
 
-    <!-- RODAPÉ -->
+    <!-- RODAPï¿½ -->
     <footer class="container-fluid bg-light">
 
 
@@ -321,9 +336,9 @@
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="quemsomos.html"> Quem somos </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="centralajuda.html"> Central de ajuda </a>
             </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="termoscondicoes.html"> Termos e condições
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="termoscondicoes.html"> Termos e condiï¿½ï¿½es
                 </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="duvidas.html"> Dúvidas </a> </div>
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="duvidas.html"> Dï¿½vidas </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="contato.html"> Clique para falar conosco
                 </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="trabalheconosco.html"> Trabalhe conosco
@@ -334,7 +349,7 @@
 
 
         <div class="row mt-4 mb-3">
-            <div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
+            <div class="col-12 text-center"> &copy 2022 - Go To Agï¿½ncia de Viagens </div>
         </div>
 
 

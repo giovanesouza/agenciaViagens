@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-//import gotoviagens.Usuario;
 
 public class UsuarioDAO {
 
@@ -25,19 +24,18 @@ public class UsuarioDAO {
 			pstm = conn.prepareStatement(sql);
 
 			pstm.setString(1, usuario.getNome());
-			pstm.setString(2, usuario.getCpf());	
-			pstm.setString(3, usuario.getEmai());
+			pstm.setString(2, usuario.getCpf());
+			pstm.setString(3, usuario.getEmail());
 			pstm.setString(4, usuario.getSenha());
 			pstm.setDate(5, new Date(usuario.getDataCadastro().getTime()));
-			
+
 			pstm.execute();
-					
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			
-		} finally {
 
+		} finally {
 
 			try {
 				if (pstm != null) {
@@ -66,14 +64,13 @@ public class UsuarioDAO {
 			pstm = conn.prepareStatement(sql);
 
 			pstm.setInt(1, id);
-		
-			pstm.execute();
 
+			pstm.execute();
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			
+
 		} finally {
 
 			try {
@@ -94,7 +91,7 @@ public class UsuarioDAO {
 	}
 
 	public void update(Usuario usuario) {
-		
+
 		String sql = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, SENHA = ?, DATAATUALIZACAOCADASTRO = ? WHERE ID = ?";
 
 		try {
@@ -102,23 +99,21 @@ public class UsuarioDAO {
 			conn = Conexao.createConnectionToMySQL();
 
 			pstm = conn.prepareStatement(sql);
-			
+
 			pstm.setString(1, usuario.getNome());
-			pstm.setString(2, usuario.getEmai());
+			pstm.setString(2, usuario.getEmail());
 			pstm.setString(3, usuario.getSenha());
 			pstm.setDate(4, new Date(usuario.getDataAtualizacaoCadastro().getTime()));
-			
-			
+
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
 			pstm.setInt(5, usuario.getId());
-			
+
 			pstm.execute();
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		} finally {
-
 
 			try {
 				if (pstm != null) {
@@ -136,8 +131,7 @@ public class UsuarioDAO {
 			}
 		}
 	}
-	
-	
+
 	public List<Usuario> getUsuarios() {
 
 		String sql = "SELECT * FROM USUARIO";
@@ -153,13 +147,12 @@ public class UsuarioDAO {
 
 			rset = pstm.executeQuery();
 
-
 			while (rset.next()) {
 
 				Usuario usuario = new Usuario();
 
 				usuario.setNome(rset.getString("NOME"));
-				usuario.setCpf(rset.getString("CPF"));			
+				usuario.setCpf(rset.getString("CPF"));
 				usuario.setEmail(rset.getString("EMAIL"));
 				usuario.setSenha(rset.getString("SENHA"));
 				usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
@@ -197,6 +190,58 @@ public class UsuarioDAO {
 		return usuarios;
 	}
 
+	// CÓDIGO NOVO
+
+	public Usuario buscarUsuarioPorEmail(String email) {
+
+		String sql = "SELECT * FROM USUARIO WHERE EMAIL = ?";
+
+		Usuario usuario = new Usuario();
+		ResultSet rset = null;
+
+		try {
+			conn = Conexao.createConnectionToMySQL();
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, email);
+			rset = pstm.executeQuery();
+
+			rset.next();
+
+			usuario.setId(rset.getInt("ID"));
+			usuario.setNome(rset.getString("NOME"));
+			usuario.setCpf(rset.getString("CPF"));
+			usuario.setSenha(rset.getString("SENHA"));
+			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
+			usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
+			
+			
+			// CÓDIGO ADD PARA FUNCIONAR A ATUALIZAÇÃO
+			usuario.setEmail(rset.getString("EMAIL"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rset != null) {
+					rset.close();
+				}
+				if (pstm != null) {
+					pstm.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return usuario;
+
+	}
+	
+
+	// FIM CÓDIGO NOVO
+
 	
 	public Usuario getUsuarioById(int id) {
 
@@ -212,16 +257,14 @@ public class UsuarioDAO {
 			rset = pstm.executeQuery();
 
 			rset.next();
-			
-			
+
 			usuario.setNome(rset.getString("NOME"));
 			usuario.setCpf(rset.getString("CPF"));
 			usuario.setEmail(rset.getString("EMAIL"));
 			usuario.setSenha(rset.getString("SENHA"));
 			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
 			usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
-	
-			
+
 			// CÓDIGO ADD PARA FUNCIONAR A ATUALIZAÇÃO
 			usuario.setId(rset.getInt("ID"));
 
@@ -243,8 +286,7 @@ public class UsuarioDAO {
 			}
 		}
 		return usuario;
-  
-    }
 
-	
+	}
+
 }
