@@ -47,14 +47,17 @@ CREATE TABLE Cliente (
 );
 
 
-CREATE TABLE Usuario (
-    id_Usuario INTEGER PRIMARY KEY auto_increment,
-    Email_Usuario VARCHAR(50) not null,
-    Senha_Usuario VARCHAR(12) not null,
-    dataCadastro DATE not null,
-    Cpf_Cli VARCHAR(11) not null,
-    Nome_Cli VARCHAR(50) not null,
-    FOREIGN KEY (Cpf_Cli) REFERENCES Cliente (Cpf_Cli)
+create table usuario (
+id int auto_increment,
+nome varchar(50) not null,
+cpf varchar(11) unique not null,
+telefone varchar(11) default '',
+email varchar(50) unique not null,
+senha varchar(12) not null,
+logado boolean default 'false',
+dataCadastro date, 
+dataAtualizacaoCadastro date,
+Primary key (id)
 );
 
 
@@ -74,23 +77,22 @@ CREATE TABLE Destino (
 CREATE TABLE Passagem (
     Id_Passagem INTEGER PRIMARY KEY auto_increment,
     Quantidade INTEGER not null,
---  Num_Pedido INTEGER not null,
     Id_Destino INTEGER not null,
---    Nome_Destino VARCHAR(20) not null,
 	FOREIGN KEY (Id_Destino) REFERENCES Destino (Id_Destino)
- --   FOREIGN KEY (Nome_Destino) REFERENCES Destino (Nome_Destino)
+ 
 );
 
 
 CREATE TABLE Pedido (
     Num_Pedido INTEGER PRIMARY KEY auto_increment,
+	Data_Pedido DATE not null,
+    Mat_Func INTEGER not null,
+    idUsuario INTEGER not null,
     PrecoTotal DOUBLE not null,
     Forma_Pag VARCHAR(20) not null default 'Cartão de Crédito',
-    Mat_Func INTEGER not null,
-    Cpf_Cli VARCHAR(11) not null,
-    Nome_Cli VARCHAR(50) not null,
-	Data_Pedido DATE not null,
+    statusPedido VARCHAR(20) default 'Em processamento',
+
     FOREIGN KEY (Mat_Func) REFERENCES Funcionario (Mat_Func),
-    FOREIGN KEY (Cpf_Cli) REFERENCES Cliente (Cpf_Cli)
+    FOREIGN KEY (idUsuario) REFERENCES Usuario (id)
 );
 
