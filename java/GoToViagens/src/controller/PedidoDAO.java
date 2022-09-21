@@ -17,8 +17,8 @@ public class PedidoDAO {
 	
 	public void save(Pedido pedido) {
 
-		String sql = "INSERT INTO pedido(PRECOTOTAL, FORMA_PAG, MAT_FUNC, CPF_CLI,"
-				+ " NOME_CLI, DATA_PEDIDO)" + " VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO pedido(DATA_PEDIDO, MAT_FUNC, IDUSUARIO, PRECOTOTAL,"
+				+ "FORMA_PAG) VALUES(?,?,?,?,?)";
 
 		try {
 
@@ -26,13 +26,15 @@ public class PedidoDAO {
 
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setFloat(1, pedido.getPrecoTotal());
-			pstm.setString(2, pedido.getPagamento());
-			pstm.setInt(3, pedido.getMatFunc());
-			pstm.setString(4, pedido.getCpfCli());
-			pstm.setString(5, pedido.getNomeCli());
+			pstm.setDate(1, new Date(pedido.getDataPedido().getTime()));
+			pstm.setInt(2, pedido.getMatFunc());
+			pstm.setInt(3, pedido.getIdUsuario());
+			pstm.setFloat(4, pedido.getPrecoTotal());
+			pstm.setString(5, pedido.getPagamento());
+
+			//pstm.setInt(3, pedido.getMatFunc());
+
 			
-			pstm.setDate(6, new Date(pedido.getDataPedido().getTime()));
 
 			pstm.execute();
 			System.out.println("Pedido salvo com sucesso!");
@@ -102,7 +104,7 @@ public class PedidoDAO {
 	public void update(Pedido pedido) {
 		
 				
-		String sql = "UPDATE pedido SET PRECOTOTAL = ?, FORMA_PAG = ? WHERE NUM_PEDIDO = ?";
+		String sql = "UPDATE pedido SET PRECOTOTAL = ?, FORMA_PAG = ?, STATUSPEDIDO = ? WHERE NUM_PEDIDO = ?";
 
 		try {
 
@@ -112,12 +114,13 @@ public class PedidoDAO {
 			
 			pstm.setFloat(1, pedido.getPrecoTotal());
 			pstm.setString(2, pedido.getPagamento());
+			pstm.setString(3, pedido.getStatusPedido());
 			
 			// CRIAR UMA NOVA COLUNA E INSERIR ESTE TRECHO COMO DATA 
 			//pstm.setDate(3, new Date(pedido.getDataAtualizacao().getTime()));
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(3, pedido.getIdPedido());
+			pstm.setInt(4, pedido.getIdPedido());
 			
 			pstm.execute();
 			System.out.println("Pedido atualizado com sucesso!");
@@ -163,17 +166,15 @@ public class PedidoDAO {
 
 				Pedido pedido = new Pedido();
 
+				pedido.setIdPedido(rset.getInt("NUM_PEDIDO"));
+				pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
 				pedido.setPrecoTotal(rset.getFloat("PRECOTOTAL"));
-
-				pedido.setPagamento(rset.getString("FORMA_PAG"));
-
+				pedido.setIdUsuario(rset.getInt("IDUSUARIO"));
 				pedido.setMatFunc(rset.getInt("MAT_FUNC"));
 				
-				pedido.setCpfCli(rset.getString("CPF_CLI"));
-				
-				pedido.setNomeCli(rset.getString("NOME_CLI"));
-				
-				pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
+				pedido.setPagamento(rset.getString("FORMA_PAG"));
+
+				pedido.setStatusPedido(rset.getString("STATUSPEDIDO"));
 				
 				
 				pedidos.add(pedido);
@@ -224,14 +225,16 @@ public class PedidoDAO {
 
 			rset.next();
 
-			pedido.setPrecoTotal(rset.getFloat("PRECOTOTAL"));
-			pedido.setPagamento(rset.getString("FORMA_PAG"));
-	
-			pedido.setMatFunc(rset.getInt("MAT_FUNC"));
-			pedido.setCpfCli(rset.getString("CPF_CLI"));
-			pedido.setNomeCli(rset.getString("NOME_CLI"));
-			pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
 			
+			pedido.setIdPedido(rset.getInt("NUM_PEDIDO"));
+			pedido.setDataPedido(rset.getDate("DATA_PEDIDO"));
+			pedido.setPrecoTotal(rset.getFloat("PRECOTOTAL"));
+			pedido.setIdUsuario(rset.getInt("IDUSUARIO"));
+			
+			pedido.setPagamento(rset.getString("FORMA_PAG"));
+
+			pedido.setStatusPedido(rset.getString("STATUSPEDIDO"));
+				
 
 		} catch (Exception e) {
 			e.printStackTrace();

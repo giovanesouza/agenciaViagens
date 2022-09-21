@@ -5,7 +5,7 @@ import java.util.Date;
 public class Usuario {
     
     private int id;
-    private String nome, cpf, email, senha;
+    private String nome, cpf, telefone, email, senha;
     private Date dataCadastro, dataAtualizacaoCadastro;
     private Boolean cadastrado, logado;
     
@@ -39,6 +39,15 @@ public class Usuario {
         this.cpf = cpf;
     }
     
+    
+    public String getTelefone() {
+        return telefone;
+    }
+    
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
     
     
     public String getEmail() {
@@ -106,17 +115,7 @@ public class Usuario {
     
 
 
-
-    public void realizarCadastro() {
-
-    }
-    
-
-    public void cancelarCadastro() {
-       
-    }
-    
-
+   
     public void finalizarCompra() {
        
     }

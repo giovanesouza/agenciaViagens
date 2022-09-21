@@ -4,11 +4,9 @@ import java.util.Date;
 
 public class Pedido extends Passagem {
 	
-	// PRECOTOTAL, FORMA_PAG, MAT_FUNC, CPF_CLI, NOME_CLI, DATA_PEDIDO
-    
-    private int idPedido, matFunc;
+    private int idPedido, idUsuario, matFunc;
     private Date dataPedido;
-    private String pagamento, cpfCli, nomeCli;
+    private String pagamento, statusPedido;
     private float precoTotal;
     
   
@@ -21,6 +19,16 @@ public class Pedido extends Passagem {
         this.idPedido = idPedido;
     }
 
+    
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+    
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
     
     public int getMatFunc() {
     	return matFunc;
@@ -46,21 +54,13 @@ public class Pedido extends Passagem {
     }
     
     
-    public String getCpfCli() {
-    	return cpfCli;
+      
+    public String getStatusPedido() {
+    	return statusPedido;
     }
     
-    public void setCpfCli(String cpfCli) {
-    	this.cpfCli = cpfCli;
-    }
-    
-    
-    public String getNomeCli() {
-    	return nomeCli;
-    }
-    
-    public void setNomeCli(String nomeCli) {
-    	this.nomeCli = nomeCli;
+    public void setStatusPedido(String statusPedido) {
+    	this.statusPedido = statusPedido;
     }
     
 

@@ -3,8 +3,7 @@ package gotoviagens;
 public class Passagem extends Destino {
     
     private int idPassagem, idDestino, quantidade;
-        
-    
+ 
     
     public int getIdPassagem() {
         return idPassagem;

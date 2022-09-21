@@ -54,7 +54,6 @@ cpf varchar(11) unique not null,
 telefone varchar(11) default '',
 email varchar(50) unique not null,
 senha varchar(12) not null,
-logado boolean default 'false',
 dataCadastro date, 
 dataAtualizacaoCadastro date,
 Primary key (id)
@@ -91,7 +90,6 @@ CREATE TABLE Pedido (
     PrecoTotal DOUBLE not null,
     Forma_Pag VARCHAR(20) not null default 'Cartão de Crédito',
     statusPedido VARCHAR(20) default 'Em processamento',
-
     FOREIGN KEY (Mat_Func) REFERENCES Funcionario (Mat_Func),
     FOREIGN KEY (idUsuario) REFERENCES Usuario (id)
 );

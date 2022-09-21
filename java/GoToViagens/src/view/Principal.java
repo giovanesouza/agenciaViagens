@@ -87,7 +87,7 @@ public class Principal {
 		
 		// VARIÁVEIS PEDIDO
 		float total;
-		String formaPagamento;
+		String formaPagamento, status;
 		
 				
 		// VARIÁVEIS PARA PASSAGEM
@@ -744,28 +744,26 @@ public class Principal {
 				switch (opcao) {
 				
 				case 1: {
+					
+					pedido.setDataPedido(new Date());
+					
+					
+					System.out.println("Digite a MATRÍCULA do funcionário: ");
+					matricula = entrada.nextInt();
+					pedido.setMatFunc(matricula);
+					
+					System.out.println("Digite o ID do usuário:");
+					id = entrada.nextInt();
+					pedido.setIdUsuario(id);
+					
 					System.out.println("Digite o PREÇO TOTAL do pedido:");
 					total = entrada.nextFloat();
 					pedido.setPrecoTotal(total);
 					
-					System.out.println("Digite a FORMA DE PAGAMENTO do pedido:");
+					System.out.println("Digite a FORMA DE PAGAMENTO:");
 					formaPagamento = entrada.next();
 					pedido.setPagamento(formaPagamento);
-
-					System.out.println("Digite a MATRÍCULA do vendedor:");
-					matricula = entrada.nextInt();
-					pedido.setMatFunc(matricula);;
-					
-					System.out.println("Digite o CPF do cliente:");
-					cpf = entrada.next();
-					pedido.setCpfCli(cpf);;
-					
-					System.out.println("Digite o NOME do cliente:");
-					nome = entrada.next();
-					pedido.setNomeCli(nome);
-					
-					pedido.setDataPedido(new Date());
-					
+							
 					
 					pedidoDAO.save(pedido);
 					break;
@@ -800,18 +798,10 @@ public class Principal {
 					formaPagamento = entrada.next();
 					pedido.setPagamento(formaPagamento);
 					
-					//System.out.println("Digite a MATRÍCULA do funcionário: ");
-					//matricula = entrada.nextInt();
-					//pedido.setMatFunc(matricula);
-					
-					//System.out.println("Digite o CPF do cliente: ");
-					//cpf = entrada.next();
-					//pedido.setCpfCli(cpf);
-					
-					//System.out.println("Digite o NOME do cliente: ");
-					//nome = entrada.next();
-					//pedido.setNomeCli(nome);
-					
+					System.out.println("Digite o novo STATUS do pedido: ");
+					status = entrada.next();
+					pedido.setStatusPedido(status);
+							
 										
 					pedido.setIdPedido(id);
 					pedidoDAO.update(pedido);
@@ -822,8 +812,7 @@ public class Principal {
 						System.out.println("PREÇO TOTAL R$: " + ped.getPrecoTotal());
 						System.out.println("FORMA DE PAGAMENTO: " + ped.getPagamento());
 						System.out.println("MATR. DO FUNCIONÁRIO: " + ped.getMatFunc());
-						System.out.println("CPF DO CLIENTE: " + ped.getCpfCli());
-						System.out.println("NOME DO CLIENTE: " + ped.getNomeCli());
+
 						System.out.println("DATA DO PEDIDO: " + ped.getDataPedido());
 						
 						System.out.println("----------------------------------- ");
@@ -843,8 +832,7 @@ public class Principal {
 					System.out.println("PREÇO TOTAL R$: " + ped.getPrecoTotal());
 					System.out.println("FORMA DE PAGAMENTO: " + ped.getPagamento());
 					System.out.println("MATR. DO FUNCIONÁRIO: " + ped.getMatFunc());
-					System.out.println("CPF DO CLIENTE: " + ped.getCpfCli());
-					System.out.println("NOME DO CLIENTE: " + ped.getNomeCli());
+
 					System.out.println("DATA DO PEDIDO: " + ped.getDataPedido());
 
 					System.out.println("----------------------------------- ");
@@ -1016,6 +1004,10 @@ public class Principal {
 					nome = entrada.next();
 					usuario.setNome(nome);
 					
+					System.out.println("Digite seu TELEFONE:");
+					telefone = entrada.next();
+					usuario.setTelefone(telefone);
+					
 					
 					System.out.println("Digite um E-MAIL para usuário:");
 					emailUsuario = entrada.next();
@@ -1052,6 +1044,14 @@ public class Principal {
 					System.out.println("Digite o id do usuário para atualizar: ");
 					id = entrada.nextInt();
 
+					System.out.println("Digite o novo NOME do usuário: ");
+					nome = entrada.next();
+					usuario.setNome(nome);
+					
+					System.out.println("Digite o novo número de TELEFONE: ");
+					telefone = entrada.next();
+					usuario.setTelefone(telefone);
+					
 					System.out.println("Digite o novo E-MAIL do usuário: ");
 					emailUsuario = entrada.next();
 					usuario.setEmail(emailUsuario);
@@ -1060,10 +1060,8 @@ public class Principal {
 					senhaUsuario = entrada.next();
 					usuario.setSenha(senhaUsuario);
 					
-					System.out.println("Digite o novo NOME do usuário: ");
-					nome = entrada.next();
-					usuario.setNome(nome);
-						
+					usuario.setDataAtualizacaoCadastro(new Date());
+					
 					
 					usuario.setId(id);
 					usuarioDAO.update(usuario);
@@ -1073,6 +1071,7 @@ public class Principal {
 
 						System.out.println("CPF: " + usu.getCpf());
 						System.out.println("NOME: " + usu.getNome());
+						System.out.println("TELEFONE: " + usu.getTelefone());
 						System.out.println("EMAIL: " + usu.getEmail());
 						System.out.println("TELEFONE: " + usu.getSenha());
 						System.out.println("DATA DE CADASTRO: " + usu.getDataCadastro());
@@ -1123,8 +1122,9 @@ public class Principal {
 												
 					} 
 					
-					if (logado) {
-						System.out.println("--- USUÁRIO LOGADO: --- ");
+					if (logado) {			
+						
+						System.out.println("== USUÁRIO LOGADO ==");
 
 						System.out.println("ID: " + u.getId());
 						System.out.println("CPF: " + u.getCpf());
@@ -1139,7 +1139,7 @@ public class Principal {
 						
 						logado = false; 
 						
-						System.out.println("Não foi possível realizar o login.");
+						System.out.println("USUÁRIO LOGADO: " + u.getLogado());
 						System.out.println("E-mail e/ou senha incorretos.");
 					}			
 							
