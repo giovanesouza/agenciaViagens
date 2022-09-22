@@ -3,14 +3,17 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+
+<%
+String sucesso = (String) request.getAttribute("sucesso");
+%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
 <meta charset="ISO-8859-1">
-
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,8 +34,11 @@
 
 <!-- CSS EXTERNO -->
 <link rel="stylesheet" href="css/profile.css">
+<!-- <link rel="stylesheet" href="css/all.css"> -->
 
-<title>Perfil | Início</title>
+
+<title>Informações cadastrais</title>
+
 </head>
 <body>
 
@@ -49,13 +55,13 @@
 			<div
 				class="col-md-7 d-flex flex-column align-items-start justify-content-center">
 
-				<!-- PEGA O ATRIBUTO QUE ESTÁ DENTRO DA SESSÃO LOGADO -->
 				<%
 				Usuario u = (Usuario) session.getAttribute("usuarioLogado");
 				// out.print(u.getNome());
 				%>
 
-				<span>Olá, <%=u.getNome() %>. Seja bem vindo(a)! </span>
+				<span>Olá, <%=u.getNome()%>. Seja bem vindo(a)!
+				</span>
 
 				<div class="datahora">
 					<span><strong>Data:</strong> <span id="data"></span>.</span> <span><strong>Hora:</strong>
@@ -72,34 +78,122 @@
 			</div>
 
 		</div>
-
 	</header>
+
 
 	<div class="container grid-container">
 
 		<div class="menu">
 
 			<ul>
-				<a href="#">
+				<a href="perfil.jsp">
 					<li class="home">Início</li>
 				</a>
 				<a href="minhasviagens.jsp">
 					<li class="viagens">Minhas viagens</li>
 				</a>
-				<a href="infocadastrais.jsp">
+				<a href="#">
 					<li class="infoIcon">Info. Cadastrais</li>
 				</a>
 
 			</ul>
-
 		</div>
 
 
 		<div class="principal">
 
-			<h2 class="text-center mt-2 mb-2">Página inicial</h2>
-			<p class="text-center text-danger">Utilize os menus laterais para
-				navegar pelo perfil.</p>
+			<h2 class="text-center mt-2 mb-2">Informações cadastrais</h2>
+			<p class="infoCad">Caso deseje realizar uma atualização cadastral
+				basta alterar os dados e clicar no botão "atualizar dados".</p>
+
+			<form action="Atualizar" method="post">
+
+
+				<div class="row mt-5 mb-3">
+
+					<input type="hidden" name="id" value="<%=u.getId()%>" />
+
+					<div class="col-md-2">
+
+						<label for="cpf">CPF:</label>
+
+					</div>
+
+					<div class="col-md-10">
+						<input type="text" name="cpf" disabled value="<%=u.getCpf()%>" />
+
+					</div>
+
+
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-md-2">
+						<label for="nome">Nome:</label>
+					</div>
+					<div class="col-md-10">
+						<input type="text" maxlength="50" name="nome"
+							value="<%=u.getNome()%>" />
+					</div>
+				</div>
+
+
+				<div class="row mb-3">
+
+					<div class="col-md-2">
+						<label for="email">E-mail:</label>
+					</div>
+					<div class="col-md-10">
+						<input type="text" maxlength="50" name="email"
+							value="<%=u.getEmail()%>" />
+					</div>
+				</div>
+
+				<div class="row mb-3">
+
+					<div class="col-md-2">
+						<label for="telefone">Telefone:</label>
+					</div>
+					<div class="col-md-10">
+						<input type="text" maxlength="11" name="tel" value="<%=u.getTelefone()%>" />
+					</div>
+
+				</div>
+
+				<div class="row mb-5">
+
+					<div class="col-md-2">
+						<label for="senha">Senha:</label>
+					</div>
+					<div class="col-md-10">
+						<input type="text" minlength="4" maxlength="12" name="senha"
+							value="<%=u.getSenha()%>" />
+					</div>
+
+				</div>
+
+				<div class="row mb-3">
+
+					<div class="col-12 text-success">
+
+						<% if(sucesso != null) {
+						out.print(sucesso);}
+						%>
+
+					</div>
+
+					<div class="col-12 text-right">
+
+						<button type="submit">Atualizar dados</button>
+
+					</div>
+
+				</div>
+
+
+			</form>
+
+
 
 		</div>
 
@@ -113,6 +207,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+
 
 </body>
 </html>

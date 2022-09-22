@@ -1,7 +1,13 @@
+<!-- IMPORTAÇÃO DA CLASS USUÁRIO -->
+<%@page import="model.Usuario"%>
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
+<meta charset="ISO-8859-1">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,15 +24,12 @@
 
     <!-- CSS EXTERNO -->
     <link rel="stylesheet" href="css/profile.css">
-
-
-
-    <title>Perfil | InÃ­cio </title>
+    <!-- <link rel="stylesheet" href="css/all.css"> -->
+<title>Minhas Viagens</title>
 </head>
-
 <body>
 
-    <header class="container">
+  <header class="container">
 
         <div class="row container p-2">
 
@@ -38,7 +41,12 @@
 
             <div class="col-md-7 d-flex flex-column align-items-start justify-content-center">
 
-                <span>OlÃ¡, NOME. Seja bem vindo(a)!</span>
+				<%
+				Usuario u = (Usuario) session.getAttribute("usuarioLogado");
+				// out.print(u.getNome());
+				%>
+
+                <span>Olá, <%=u.getNome() %>. Seja bem vindo(a)!</span>
                 
                 <div class="datahora">
                     <span><strong>Data:</strong> <span id="data"></span>.</span>
@@ -49,38 +57,38 @@
 
             <div class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
 
-                <a href=""><i class="ri-logout-box-line"></i></a>
+                <a href="Index"><i class="ri-logout-box-line"></i></a>
 
             </div>
 
         </div>
-        
     </header>
+
 
     <div class="container grid-container">
 
         <div class="menu">
 
             <ul>
-                <a href="#">
-                    <li class="home">InÃ­cio</li>
+                <a href="perfil.jsp">
+                    <li class="home">Início</li>
                 </a>
-                <a href="minhasviagens.html">
+                <a href="#">
                     <li class="viagens">Minhas viagens</li>
                 </a>
-                <a href="infocadastrais.html">
+                <a href="infocadastrais.jsp">
                     <li class="infoIcon">Info. Cadastrais</li>
                 </a>
 
             </ul>
-
         </div>
 
 
         <div class="principal">
 
-            <h2 class="text-center mt-2 mb-2">PÃ¡gina inicial</h2>
-            <p class="text-center text-danger">Utilize os menus laterais para navegar pelo perfil.</p>
+            <h2 class="text-center mt-2 mb-2">Minhas viagens</h2>
+            <p class="text-center text-danger">No momento você não há compras em seu nome.</p>
+
 
         </div>
 
@@ -93,6 +101,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-</body>
 
+
+</body>
 </html>

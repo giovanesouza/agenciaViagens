@@ -26,7 +26,7 @@
     <!-- CSS EXTERNO -->
     <link rel="stylesheet" href="css/all.css">
 
-    <title> Login - Go To | Agï¿½ncia de Viagens </title>
+    <title> Login - Go To | Agência de Viagens </title>
     
 </head>
 <body>
@@ -48,7 +48,7 @@
             <div class="col-sm-6 text-center">
 
                 <h5> Pensou em viajar?! </h5>
-                <p class="small"> A Go To Viagens te leva aonde vocï¿½ quer chegar! </p>
+                <p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
 
             </div>
 
@@ -75,7 +75,7 @@
                                 class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link btn-hover" href="promocoes.html">PROMOï¿½ï¿½ES</a>
+                        <a class="nav-link btn-hover" href="promocoes.html">PROMOÇÕES</a>
                     </li>
                     <li class="nav-item text-center">
                         <a class="nav-link btn-hover" href="destinos.html">DESTINOS</a>
@@ -168,14 +168,14 @@
 
                                         <input type="password" class="form-control" name="senha" id="senha"
                                             aria-describedby="helpId" placeholder="Digite sua senha (4 a 12 digitos)"
-                                            minlength="4" maxlength="12" required="">
+                                            minlength="4" maxlength="12" required>
 
                                         <label class="mt-2" for="senhaConfirmacao"> <strong> Repita a senha: </strong> </label>
 
                                         <input type="password" class="form-control" name="senhaConfirmacao" id="senhaconfirm" onchange="verificaSenhaCad()"
                                             aria-describedby="helpId"
                                             placeholder="Digite sua senha novamente (4 a 12 digitos)" minlength="4" maxlength="12"
-                                            required="">
+                                            required>
 
 
                                         <div class="col-12 text-center mt-3">

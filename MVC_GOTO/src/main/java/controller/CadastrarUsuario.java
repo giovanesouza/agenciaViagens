@@ -26,19 +26,19 @@ public class CadastrarUsuario extends HttpServlet {
 		String senha = request.getParameter("senha");
 		
 		// criando o objeto contato 
-		Usuario objUsuario =  new Usuario();
+		Usuario u =  new Usuario();
 		
 		// guardando os dados do formulario do objeto
-		objUsuario.setNome(nome);
-		objUsuario.setCpf(cpf);
-		objUsuario.setEmail(email);
-		objUsuario.setSenha(senha);
-		objUsuario.setDataCadastro(new Date());
+		u.setNome(nome);
+		u.setCpf(cpf);
+		u.setEmail(email);
+		u.setSenha(senha);
+		u.setDataCadastro(new Date());
 		
 		// criando um objeto DAO para enviar o objeto Contato para o banco de dados
 		// usando o método save da classe ContatoDAO
 		UsuarioDAO udao = new UsuarioDAO();		
-		udao.save(objUsuario);
+		udao.save(u);
 		
 		// Redirecionando o usuario para a pagina inicial da aplicação.
 		response.sendRedirect("login1.jsp");

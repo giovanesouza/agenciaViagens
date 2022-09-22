@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Usuario;
 import model.UsuarioDAO;
@@ -58,22 +59,16 @@ public class Logar extends HttpServlet {
 		
 		if (logado) {
 			
-			 // SE LOGIN FOR TRUE, USUÁRIO LOGA 
+			// SESSÃO PARA GUARDAR OS DADOS DO USUÁRIO
+			HttpSession session = request.getSession();
 			
+			// ATRIBUTO = "USUÁRIOLOGADO" QUE RECEBE O VALOR DE U.
+			session.setAttribute("usuarioLogado", u);
+			
+			 // SE LOGIN FOR TRUE, USUÁRIO LOGA 		
 			RequestDispatcher rd = request.getRequestDispatcher("perfil.jsp");
 			rd.forward(request, response);
 
-			/*
-			System.out.println("ID: " + u.getId());
-			System.out.println("CPF: " + u.getCpf());
-			System.out.println("NOME: " + u.getNome());
-			System.out.println("EMAIL: " + u.getEmail());
-			System.out.println("SENHA: " + u.getSenha());
-			System.out.println("DATA DE CADASTRO: " + u.getDataCadastro());
-			
-			System.out.println("----------------------------------- ");
-			
-			*/
 			
 		} else {
 			
