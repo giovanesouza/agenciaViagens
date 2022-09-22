@@ -94,3 +94,13 @@ CREATE TABLE Pedido (
     FOREIGN KEY (idUsuario) REFERENCES Usuario (id)
 );
 
+
+-- INSERIR EM DESTINO
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ("RECIFE", 500.00, "NACIONAL", 250, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('PORTO DE GALINHAS', 650.00, 'NACIONAL', 300, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('SALVADOR', 700.00, 'NACIONAL', 320, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('RIO DE JANEIRO', 889.00, 'NACIONAL', 155, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('SÃO PAULO', 729.00, 'NACIONAL', 189, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('LONDRES', 1250.00, 'INTERNACIONAL', 50, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('PARIS', 1559.00, 'INTERNACIONAL', 75, default);
+INSERT INTO DESTINO (Nome_Destino, Preco_Destino, Categoria_Destino, Qtd_Disponivel, Condicao) VALUES ('LISBOA', 1500.00, 'INTERNACIONAL', 120, default);
