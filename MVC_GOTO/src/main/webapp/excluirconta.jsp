@@ -3,14 +3,13 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
 
 <!-- ICON GO TO -->
 <link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
@@ -29,9 +28,11 @@
 <!-- CSS EXTERNO -->
 <link rel="stylesheet" href="css/profile.css">
 
-<title>Minhas Viagens</title>
+
+<title>Excluir conta</title>
 </head>
 <body>
+
 
 	<header class="container">
 
@@ -87,15 +88,15 @@
 
 				</a>
 
-				<a href="#"> <span class="material-symbols-outlined">
-						flight </span>
+				<a href="minhasviagens.jsp"> <span
+					class="material-symbols-outlined"> flight </span>
 
 					<li>Minhas viagens</li>
 
 				</a>
 
-				<a href="Destinos"> <span class="material-symbols-outlined">
-						shopping_cart_checkout </span>
+				<a href="Destinos"> <span
+					class="material-symbols-outlined"> shopping_cart_checkout </span>
 
 					<li class="viagens">Comprar passagem</li>
 				</a>
@@ -106,7 +107,7 @@
 					<li>Info. Cadastrais</li>
 				</a>
 
-				<a href="excluirconta.jsp"> <span
+				<a href="#"> <span
 					class="material-symbols-outlined"> cancel </span>
 
 					<li>Excluir minha conta</li>
@@ -119,16 +120,14 @@
 
 		<div class="principal">
 
-			<h2 class="text-center mt-2 mb-2">Minhas viagens</h2>
-			<p class="m-5 p-2 text-center bg-danger text-light">No momento não há compras
-				em seu nome.</p>
-
+			<h2 class="text-center mt-2 mb-2">Excluir conta</h2>
+			<p class="text-center text-danger">Utilize os menus laterais para
+				navegar pelo perfil.</p>
 
 		</div>
 
 
 	</div>
-
 
 	<script src="js/perfil.js"></script>
 

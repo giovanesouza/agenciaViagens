@@ -79,7 +79,9 @@ public class Logar extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("login1.jsp");
 			rd.forward(request, response); // ENCAMINHA P/ PAGE
 			
-		}			
+		}		
+		
+
 
 
 

@@ -34,11 +34,10 @@ body {
 /* INÍCIO HEADER */
 header {
 
-    background-color: #fff !important;
-    color: #1a2e46 !important;
+    background-color: #fff;
+    color: #1a2e46;
     
 }
-
 
 
 #logo {
@@ -46,13 +45,13 @@ header {
     margin-right: 1.6rem;
 }
 
-.ri-logout-box-line {
+.logout {
     font-size: 3rem;
     color: #1a2e46;
 }
 
 
-.ri-logout-box-line:hover {
+.logout:hover {
     color: #ff0000;
     transition: all 0.2s;
 }
@@ -81,25 +80,24 @@ header {
 
 
 ul {
-    width: 100%;
+    /* width: 100%; */
     font-size: 1.6rem;
     padding: 0;
 }
 
-li {
-    padding-right: 1.6rem;
-}
 
-ul a {
+ul > a {
     width: 100%;
     color: #1a2e46;
-    background-color: transparent !important;
-    
+    display: flex;
+
+    gap: 1rem;
+    padding: 1rem;
 
 }
 
 
-li:hover {
+ul > a:hover {
     background-color: #1a2e46;
     color: #fff;
     transition: all 0.2s;
@@ -112,19 +110,9 @@ li:hover {
 
 
 .home::before {
-    content: "🏠 ";
+    content: "🏠  ";
     font-size: 2rem;
 
-}
-.viagens::before {
-    content: "✈️ ";
-    font-size: 2rem;
-
-}
-
-.infoIcon::before {
-    content: "ℹ️ ";
-    font-size: 2rem;
 }
 
 
@@ -210,9 +198,6 @@ html {
     height: auto;
 }
 
-ul a {
-    text-align: center;
-}
 
 
 }

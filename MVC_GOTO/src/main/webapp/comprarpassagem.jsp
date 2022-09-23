@@ -1,16 +1,15 @@
-<!-- IMPORTAÇÃO DA CLASS USUÁRIO -->
 <%@page import="model.Usuario"%>
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<!-- PERMITE O USO DA TAG LIB DO FORM DE EXIBIï¿½ï¿½O DA LISTA -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
+
 <head>
 <meta charset="ISO-8859-1">
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ICON GO TO -->
 <link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
@@ -29,8 +28,9 @@
 <!-- CSS EXTERNO -->
 <link rel="stylesheet" href="css/profile.css">
 
-<title>Minhas Viagens</title>
+<title>Comprar Passagem</title>
 </head>
+
 <body>
 
 	<header class="container">
@@ -80,15 +80,15 @@
 		<div class="menu">
 
 			<ul>
-				<a href="perfil.jsp"> <span class="material-symbols-outlined">
+				<a href="inicio.jsp"> <span class="material-symbols-outlined">
 						home </span>
 
-					<li>Início</li>
+					<li>InÃ­cio</li>
 
 				</a>
 
-				<a href="#"> <span class="material-symbols-outlined">
-						flight </span>
+				<a href="minhasviagens.jsp"> <span
+					class="material-symbols-outlined"> flight </span>
 
 					<li>Minhas viagens</li>
 
@@ -119,10 +119,44 @@
 
 		<div class="principal">
 
-			<h2 class="text-center mt-2 mb-2">Minhas viagens</h2>
-			<p class="m-5 p-2 text-center bg-danger text-light">No momento não há compras
-				em seu nome.</p>
+			<h2 class="text-center mt-2 mb-2">Destinos dispononíveis</h2>
 
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<!-- LISTA DOS DESTINOS -->
+					<table class="table mt-3 text-center">
+						<thead>
+							<tr>
+								<th>Nome do Destino</th>
+								<th>Preço R$</th>
+								<th>Categoria</th>
+								<th>Qtd disponível</th>
+								<th>Condição</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<jstl:forEach items="${listaDestinos}" var="destino">
+								<tr>
+									<td>${destino.nomeDestino}</td>
+									<td>${destino.precoUnit}</td>
+									<td>${destino.categoriaDestino}</td>
+									<td>${destino.qtdDisponivel}</td>
+									<td>${destino.condicao}</td>
+
+									<td><a href="#" class="btn btn-success">Comprar</a></td>
+								</tr>
+							</jstl:forEach>
+
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
 
 		</div>
 
@@ -130,13 +164,12 @@
 	</div>
 
 
-	<script src="js/perfil.js"></script>
 
+	<script src="js/perfil.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-
-
 </body>
+
 </html>

@@ -17,24 +17,19 @@ String sucesso = (String) request.getAttribute("sucesso");
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ICON GO TO -->
-<link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
+ <!-- ICON GO TO -->
+    <link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
 
-<!-- BOOTSTRAP -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<!-- REMIX ICON -->
-<link
-	href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-	rel="stylesheet">
+    <!-- GOOGLE ICON -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <!-- CSS EXTERNO -->
 <link rel="stylesheet" href="css/profile.css">
-<!-- <link rel="stylesheet" href="css/all.css"> -->
 
 
 <title>Informações cadastrais</title>
@@ -86,17 +81,40 @@ String sucesso = (String) request.getAttribute("sucesso");
 		<div class="menu">
 
 			<ul>
-				<a href="perfil.jsp">
-					<li class="home">Início</li>
+				<a href="#"> <span class="material-symbols-outlined">
+						home </span>
+
+					<li>Início</li>
+
 				</a>
-				<a href="minhasviagens.jsp">
-					<li class="viagens">Minhas viagens</li>
+
+				<a href="minhasviagens.jsp"> <span
+					class="material-symbols-outlined"> flight </span>
+
+					<li>Minhas viagens</li>
+
 				</a>
-				<a href="#">
-					<li class="infoIcon">Info. Cadastrais</li>
+
+				<a href="Destinos"> <span class="material-symbols-outlined">
+						shopping_cart_checkout </span>
+
+					<li class="viagens">Comprar passagem</li>
+				</a>
+
+				<a href="#"> <span class="material-symbols-outlined">
+						info </span>
+
+					<li>Info. Cadastrais</li>
+				</a>
+
+				<a href="excluirconta.jsp"> <span
+					class="material-symbols-outlined"> cancel </span>
+
+					<li>Excluir minha conta</li>
 				</a>
 
 			</ul>
+
 		</div>
 
 
@@ -155,7 +173,8 @@ String sucesso = (String) request.getAttribute("sucesso");
 						<label for="telefone">Telefone:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="11" name="tel" value="<%=u.getTelefone()%>" />
+						<input type="text" maxlength="11" name="tel"
+							value="<%=u.getTelefone()%>" />
 					</div>
 
 				</div>
@@ -176,8 +195,10 @@ String sucesso = (String) request.getAttribute("sucesso");
 
 					<div class="col-12 text-success">
 
-						<% if(sucesso != null) {
-						out.print(sucesso);}
+						<%
+						if (sucesso != null) {
+							out.print(sucesso);
+						}
 						%>
 
 					</div>
