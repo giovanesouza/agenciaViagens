@@ -54,8 +54,7 @@
 				// out.print(u.getNome());
 				%>
 
-				<span>Olá, <%=u.getNome()%>. Seja bem vindo(a)!
-				</span>
+				<span>Olá, <strong><%=u.getNome()%></strong>. Seja bem vindo(a)!	</span>
 
 				<div class="datahora">
 					<span><strong>Data:</strong> <span id="data"></span>.</span> <span><strong>Hora:</strong>

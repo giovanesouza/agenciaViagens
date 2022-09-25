@@ -41,7 +41,7 @@ public class CadastrarUsuario extends HttpServlet {
 		udao.save(u);
 		
 		// Redirecionando o usuario para a pagina inicial da aplicação.
-		response.sendRedirect("login1.jsp");
+		response.sendRedirect("success.html");
 		
 	}
 

@@ -17,16 +17,19 @@ String sucesso = (String) request.getAttribute("sucesso");
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <!-- ICON GO TO -->
-    <link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
+<!-- ICON GO TO -->
+<link rel="shortcut icon" href="img/icon_goto.png" type="image/x-icon">
 
-    <!-- BOOTSTRAP -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- BOOTSTRAP -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
 
-    <!-- GOOGLE ICON -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<!-- GOOGLE ICON -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <!-- CSS EXTERNO -->
 <link rel="stylesheet" href="css/profile.css">
@@ -55,7 +58,8 @@ String sucesso = (String) request.getAttribute("sucesso");
 				// out.print(u.getNome());
 				%>
 
-				<span>Olá, <%=u.getNome()%>. Seja bem vindo(a)!
+				<span>Olá, <strong><%=u.getNome()%></strong>. Seja bem
+					vindo(a)!
 				</span>
 
 				<div class="datahora">
@@ -68,7 +72,8 @@ String sucesso = (String) request.getAttribute("sucesso");
 			<div
 				class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
 
-				<a href="Index"><i class="ri-logout-box-line"></i></a>
+				<<a href="Index"> <span class="material-symbols-outlined logout">logout</span>
+				</a>
 
 			</div>
 
@@ -121,8 +126,10 @@ String sucesso = (String) request.getAttribute("sucesso");
 		<div class="principal">
 
 			<h2 class="text-center mt-2 mb-2">Informações cadastrais</h2>
-			<p class="infoCad">Caso deseje realizar uma atualização cadastral
-				basta alterar os dados e clicar no botão "atualizar dados".</p>
+			<p class="infoCad">
+				Caso deseje realizar uma atualização cadastral basta <strong>alterar
+					os dados e clicar no botão "atualizar dados" </strong>.
+			</p>
 
 			<form action="Atualizar" method="post">
 
@@ -138,7 +145,8 @@ String sucesso = (String) request.getAttribute("sucesso");
 					</div>
 
 					<div class="col-md-10">
-						<input type="text" name="cpf" disabled value="<%=u.getCpf()%>" />
+						<input type="text" class="p-2" name="cpf" disabled
+							value="<%=u.getCpf()%>" />
 
 					</div>
 
@@ -147,10 +155,10 @@ String sucesso = (String) request.getAttribute("sucesso");
 
 				<div class="row mb-3">
 					<div class="col-md-2">
-						<label for="nome">Nome:</label>
+						<label for="nome">NOME:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="50" name="nome"
+						<input type="text" class="p-2" maxlength="50" name="nome"
 							value="<%=u.getNome()%>" />
 					</div>
 				</div>
@@ -159,10 +167,10 @@ String sucesso = (String) request.getAttribute("sucesso");
 				<div class="row mb-3">
 
 					<div class="col-md-2">
-						<label for="email">E-mail:</label>
+						<label for="email">E-MAIL:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="50" name="email"
+						<input type="text" class="p-2" maxlength="50" name="email"
 							value="<%=u.getEmail()%>" />
 					</div>
 				</div>
@@ -170,47 +178,58 @@ String sucesso = (String) request.getAttribute("sucesso");
 				<div class="row mb-3">
 
 					<div class="col-md-2">
-						<label for="telefone">Telefone:</label>
+						<label for="telefone">TELEFONE:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="11" name="tel"
+						<input type="text" class="p-2" maxlength="11" name="tel"
 							value="<%=u.getTelefone()%>" />
 					</div>
 
 				</div>
 
-				<div class="row mb-5">
+				<div class="row mb-2">
 
 					<div class="col-md-2">
-						<label for="senha">Senha:</label>
+						<label for="senha">SENHA:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" minlength="4" maxlength="12" name="senha"
-							value="<%=u.getSenha()%>" />
+						<input type="password" class="p-2" minlength="4" maxlength="12"
+							name="senha" value="<%=u.getSenha()%>" id="senha" />
+
+						<p id="mostrar" class="d-flex p-2" style="cursor: pointer;">
+
+							<span class="material-symbols-outlined me-2">visibility</span>
+
+							VISUALIZAR SENHA
+						</p>
 					</div>
 
 				</div>
 
 				<div class="row mb-3">
 
-					<div class="col-12 text-success">
+					<div class="col-md-12 text-success text-center">
 
-						<%
-						if (sucesso != null) {
-							out.print(sucesso);
-						}
-						%>
-
+						<strong> <%
+ if (sucesso != null) {
+ 	out.print(sucesso);
+ }
+ %>
+						</strong>
 					</div>
 
-					<div class="col-12 text-right">
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-12 text-right mt-3">
 
 						<button type="submit">Atualizar dados</button>
 
 					</div>
 
-				</div>
 
+				</div>
 
 			</form>
 
@@ -220,6 +239,25 @@ String sucesso = (String) request.getAttribute("sucesso");
 
 
 	</div>
+
+
+	<script>
+		// MUDA O TYPE DO INPUT SENHA PARA VISUALIZAÇÃO DA MESMA
+		let input = document.getElementById('senha');
+		let mostrar = document.getElementById('mostrar');
+
+		mostrar.addEventListener("click", showSenha);
+
+		function showSenha() {
+
+			if (input.type == "password") {
+				input.type = "text";
+			} else {
+				input.type = "password";
+			}
+
+		}
+	</script>
 
 
 	<script src="js/perfil.js"></script>

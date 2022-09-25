@@ -32,7 +32,7 @@
 <body>
 
 
-    <!-- CABEï¿½ALHO -->
+    <!-- CABEÇALHO -->
 
     <div class="container-fluid mt-3">
 
@@ -55,10 +55,10 @@
 
         </header>
 
-        <!-- FIM CABEï¿½ALHO -->
+        <!-- FIM CABEÇALHO -->
 
 
-        <!-- INï¿½CIO MENUS -->
+        <!-- INÍCIO MENUS -->
 
         <nav class="navbar navbar-expand-sm navbar-light bg-light">
             <a class="navbar-brand" href="#"></a>
@@ -140,28 +140,28 @@
                                 </div>
                                 <div class="modal-body bg-modal">
 
-                                    <!-- INÃCIO forms cadastro usuÃ¡rio -->
-                                    <form action="CadastrarUsuario" method="post">
+                                    <!-- INÃCIO forms cadastro usuário -->
+                                    <form action="CadastrarUsuario" method="post" autocomplete="off">
 
                                         <label class="mt-2" for="nome"> <strong> Nome completo: </strong> </label>
 
                                         <input type="text" class="form-control" name="nome" id="nome_login"
                                             aria-describedby="helpId" placeholder="Digite seu nome completo"
-                                            maxlength="60" required="">
+                                            maxlength="50" required />
 
 
                                         <label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
 
                                         <input type="tel" class="form-control" name="cpf" id="cliente_cadastrar"
-                                            aria-describedby="helpId" placeholder="Digite seu CPF (APENAS Nï¿½MEROS)"
-                                            maxlength="11" required="">
+                                            aria-describedby="helpId" placeholder="Digite seu CPF (APENAS NÚMEROS)"
+                                            maxlength="11" required>
 
 
-                                        <label class="mt-2" for="senha"> <strong> Digite seu e-mail (Serï¿½ utilizado para o Login): </strong> </label>
+                                        <label class="mt-2" for="senha"> <strong> Digite seu e-mail (Será utilizado para o Login): </strong> </label>
 
                                         <input type="email" class="form-control" name="email" id="email_login"
                                             aria-describedby="helpId" placeholder="Digite seu e-mail (nome@dominio.com)"
-                                            maxlength="50" required="">
+                                            maxlength="50" required>
 
 
                                         <label class="mt-2" for="senha"> <strong> Senha: </strong> </label>
@@ -186,7 +186,7 @@
 
 
                                     </form>
-                                    <!-- FIM forms cadastro usuÃ¡rio -->
+                                    <!-- FIM forms cadastro usuário -->
 
                                 </div>
                                 <div class="modal-footer">
@@ -227,10 +227,11 @@
                             <input type="checkbox" name="lembrar" id="lembrar_login"> <span>Lembre-me</span>
                         </div>
 
+<!-- ESQUECI MINHA SENHA
                         <div>
                             <a class="link_rodape" href="#"> Esqueci minha senha </a>
                         </div>
-
+ -->
                     </div>
 
 
@@ -336,9 +337,9 @@
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="quemsomos.html"> Quem somos </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="centralajuda.html"> Central de ajuda </a>
             </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="termoscondicoes.html"> Termos e condiï¿½ï¿½es
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="termoscondicoes.html"> Termos e condições
                 </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="duvidas.html"> Dï¿½vidas </a> </div>
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="duvidas.html"> Dúvidas </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="contato.html"> Clique para falar conosco
                 </a> </div>
             <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="trabalheconosco.html"> Trabalhe conosco
@@ -349,7 +350,7 @@
 
 
         <div class="row mt-4 mb-3">
-            <div class="col-12 text-center"> &copy 2022 - Go To Agï¿½ncia de Viagens </div>
+            <div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
         </div>
 
 

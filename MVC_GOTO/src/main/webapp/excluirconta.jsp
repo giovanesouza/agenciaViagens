@@ -5,6 +5,11 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+
+<%
+String sucesso = (String) request.getAttribute("sucesso");
+%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -53,7 +58,7 @@
 				// out.print(u.getNome());
 				%>
 
-				<span>Olá, <%=u.getNome()%>. Seja bem vindo(a)!
+				<span>Olá, <strong><%=u.getNome()%></strong>. Seja bem vindo(a)!
 				</span>
 
 				<div class="datahora">
@@ -95,8 +100,8 @@
 
 				</a>
 
-				<a href="Destinos"> <span
-					class="material-symbols-outlined"> shopping_cart_checkout </span>
+				<a href="Destinos"> <span class="material-symbols-outlined">
+						shopping_cart_checkout </span>
 
 					<li class="viagens">Comprar passagem</li>
 				</a>
@@ -107,8 +112,8 @@
 					<li>Info. Cadastrais</li>
 				</a>
 
-				<a href="#"> <span
-					class="material-symbols-outlined"> cancel </span>
+				<a href="#"> <span class="material-symbols-outlined">
+						cancel </span>
 
 					<li>Excluir minha conta</li>
 				</a>
@@ -120,14 +125,80 @@
 
 		<div class="principal">
 
-			<h2 class="text-center mt-2 mb-2">Excluir conta</h2>
-			<p class="text-center text-danger">Utilize os menus laterais para
-				navegar pelo perfil.</p>
+			<h2 class="text-center mt-2 mb-3">Excluir conta</h2>
+			<p class="text-center text-primary">
+				Para excluir a sua conta <strong>marque a opção sim</strong> e
+				clique em <strong>excluir conta</strong>.
+			</p>
+
+
+			<div class="row text-center">
+
+				<div class="col-12">
+
+					<form action="ExcluirConta" method="get">
+
+						<input type="hidden" name="id" class="mt-4 p-2"
+							value="<%=u.getId()%>" />
+
+						<div class="row mt-5">
+							<p class="mb-5 text-danger">
+								<strong>Tem certeza que deseja excluir a sua conta?</strong>
+							</p>
+
+							<div class="col-6">
+								<label for="sim">Sim</label> <input type="radio" id="sim"
+									name="opc" value="sim" />
+							</div>
+
+							<div class="col-6">
+								<label for="nao">Não</label> <input type="radio" id="nao"
+									name="opc" value="nao" checked />
+							</div>
+						</div>
+
+						<input type="submit" id="botao"
+							class="mt-5 mb-4 bg-danger text-light p-3 btn" style="font-size: 1.6rem"
+							value="Excluir conta">
+
+
+					</form>
+
+
+
+				</div>
+
+
+			</div>
+
 
 		</div>
 
 
 	</div>
+
+	<script>
+	// CÓDIGO PARA HABILITAR/DESABILITAR O BOTÃO DE EXCLUIR CONTA
+		let sim = document.getElementById('sim');
+		let nao = document.getElementById('nao');
+		let btn = document.getElementById('botao');
+
+		btn.disabled = true;
+
+		sim.addEventListener("change", escolha);
+		nao.addEventListener("change", escolha);
+
+		function escolha() {
+			if (document.querySelector("#sim").checked == true) {
+				btn.disabled = false;
+			} else {
+				btn.disabled = true;
+			}
+		}
+		
+	</script>
+
+
 
 	<script src="js/perfil.js"></script>
 
