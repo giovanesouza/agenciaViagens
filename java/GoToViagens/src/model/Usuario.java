@@ -1,4 +1,4 @@
-package gotoviagens;
+package model;
 
 import java.util.Date;
 

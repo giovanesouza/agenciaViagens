@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Destino;
+import model.Destino;
 
 public class DestinoDAO {
 

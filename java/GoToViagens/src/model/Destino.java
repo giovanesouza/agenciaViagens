@@ -1,4 +1,4 @@
-package gotoviagens;
+package model;
 
 public class Destino {
     

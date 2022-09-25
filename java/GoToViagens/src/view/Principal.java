@@ -13,15 +13,14 @@ import controller.FuncionarioDAO;
 import controller.PassagemDAO;
 import controller.PedidoDAO;
 import controller.UsuarioDAO;
-
-import gotoviagens.Cliente;
-import gotoviagens.Departamento;
-import gotoviagens.Destino;
-import gotoviagens.Empresa;
-import gotoviagens.Funcionario;
-import gotoviagens.Passagem;
-import gotoviagens.Pedido;
-import gotoviagens.Usuario;
+import model.Cliente;
+import model.Departamento;
+import model.Destino;
+import model.Empresa;
+import model.Funcionario;
+import model.Passagem;
+import model.Pedido;
+import model.Usuario;
 
 public class Principal {
 

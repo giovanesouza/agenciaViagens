@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Pedido;
+import model.Pedido;
 
 public class PedidoDAO {
 

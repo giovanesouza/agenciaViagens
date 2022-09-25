@@ -7,11 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Usuario;
-
-
-
-//import gotoviagens.Usuario;
+import model.Usuario;
 
 public class UsuarioDAO {
 
@@ -97,7 +93,7 @@ public class UsuarioDAO {
 
 	public void update(Usuario usuario) {
 
-		String sql = "UPDATE USUARIO SET NOME = ?, EMAIL = ?, SENHA = ?, DATAATUALIZACAOCADASTRO = ? WHERE ID = ?";
+		String sql = "UPDATE USUARIO SET NOME = ?, TELEFONE = ?, EMAIL = ?, SENHA = ?, DATAATUALIZACAOCADASTRO = ? WHERE ID = ?";
 
 		try {
 
@@ -106,12 +102,14 @@ public class UsuarioDAO {
 			pstm = conn.prepareStatement(sql);
 
 			pstm.setString(1, usuario.getNome());
-			pstm.setString(2, usuario.getEmail());
-			pstm.setString(3, usuario.getSenha());
-			pstm.setDate(4, new Date(usuario.getDataAtualizacaoCadastro().getTime()));
+			pstm.setString(2, usuario.getTelefone());
+			pstm.setString(3, usuario.getEmail());
+			pstm.setString(4, usuario.getSenha());
+			
+			pstm.setDate(5, new Date(usuario.getDataAtualizacaoCadastro().getTime()));
 
 			// CAMPO QUE SERÁ UTILIZADO PARA BUSCAR O CADASTRO
-			pstm.setInt(5, usuario.getId());
+			pstm.setInt(6, usuario.getId());
 
 			pstm.execute();
 
@@ -156,8 +154,9 @@ public class UsuarioDAO {
 
 				Usuario usuario = new Usuario();
 
-				usuario.setNome(rset.getString("NOME"));
 				usuario.setCpf(rset.getString("CPF"));
+				usuario.setNome(rset.getString("NOME"));
+				usuario.setTelefone(rset.getString("TELEFONE"));
 				usuario.setEmail(rset.getString("EMAIL"));
 				usuario.setSenha(rset.getString("SENHA"));
 				usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
@@ -213,8 +212,9 @@ public class UsuarioDAO {
 			rset.next();
 
 			usuario.setId(rset.getInt("ID"));
-			usuario.setNome(rset.getString("NOME"));
 			usuario.setCpf(rset.getString("CPF"));
+			usuario.setNome(rset.getString("NOME"));
+			usuario.setTelefone(rset.getString("TELEFONE"));
 			usuario.setSenha(rset.getString("SENHA"));
 			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));
 			usuario.setDataAtualizacaoCadastro(rset.getDate("DATAATUALIZACAOCADASTRO"));
@@ -263,8 +263,9 @@ public class UsuarioDAO {
 
 			rset.next();
 
-			usuario.setNome(rset.getString("NOME"));
 			usuario.setCpf(rset.getString("CPF"));
+			usuario.setNome(rset.getString("NOME"));
+			usuario.setTelefone(rset.getString("TELEFONE"));
 			usuario.setEmail(rset.getString("EMAIL"));
 			usuario.setSenha(rset.getString("SENHA"));
 			usuario.setDataCadastro(rset.getDate("DATACADASTRO"));

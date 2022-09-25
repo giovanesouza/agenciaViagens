@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import gotoviagens.Cliente;
+import model.Cliente;
 
 public class ClienteDAO {
 
