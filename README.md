@@ -51,9 +51,19 @@
 - Criação de uma nova versão do site usando o padrão de projeto MVC (Model, View, Controller (Conectar todas as telas de cadastro ao banco de dados usando o padrão de projetos MVC). 
 
 
-
 <h3>MÓDULO 05:</h3>
 
+<h4>Front-end:</h4>
+
+- As views da aplicação serão baseadas na biblioteca React, usando todo o poder dos componentes, Code Splitting, states, router, flux, redux).
+
+<h4>Back-end:</h4>
+
+- Refatorar o código anterior usando os padrões de projeto MVC e Persistência de dados com os frameworks Spring para a organização da aplicação. 
+
+<h4>Banco de dados:</h4>
+
+- Construção da base de dados usando o padrão NoSql (MongoDB) ou SQL relacional que atenda as especificações do projeto usando o ecossistema Spring e as Tecnologias da plataforma e linguagem Java, aplicando ORM (Object-Relational Mapping ou em português mapeamento objeto-relacional).  
 
 
 <h3>MÓDULO 06</h3>
