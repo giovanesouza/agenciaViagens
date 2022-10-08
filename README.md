@@ -55,7 +55,7 @@
 
 <h4>Front-end:</h4>
 
-- As views da aplicação serão baseadas na biblioteca React, usando todo o poder dos componentes, Code Splitting, states, router, flux, redux).
+- As views da aplicação serão baseadas no padrão MVC usando opcionalmente a biblioteca React ou qualquer Java template engine (Thymeleaf).
 
 <h4>Back-end:</h4>
 
@@ -63,7 +63,7 @@
 
 <h4>Banco de dados:</h4>
 
-- Construção da base de dados usando o padrão NoSql (MongoDB) ou SQL relacional que atenda as especificações do projeto usando o ecossistema Spring e as Tecnologias da plataforma e linguagem Java, aplicando ORM (Object-Relational Mapping ou em português mapeamento objeto-relacional).  
+- Criação / Atualização da base de dados usando o padrão NoSql (MongoDB) ou SQL relacional, atendendo as especificações do projeto, usando o framework Spring Data e as Tecnologias da plataforma e linguagem Java, aplicando ORM (Object-Relational Mapping ou em português mapeamento objeto-relacional). 
 
 
 <h3>MÓDULO 06</h3>
