@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ICON GO TO -->
-    <link rel="shortcut icon" href="../static/img/icon_goto.png" type="image/x-icon">
+    <link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
     <!-- CSS EXTERNO -->
-    <link rel="stylesheet" href="../static/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/all.css}">
 
     <title> Go To | Agência de Viagens </title>
 
@@ -33,7 +33,7 @@
 
             <div class="col-sm-6 mb-2 text-justify">
                 <a href="#">
-                    <img src="../static/img/agencia_viagens_small.png" alt="Logo" height="60px">
+                    <img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
                 </a>
             </div>
 
@@ -67,16 +67,16 @@
                                 class="visually-hidden">(current)</span></a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link btn-hover" href="html/promocoes.html">PROMOÇÕES</a>
+                        <a class="nav-link btn-hover" href="/promocoes">PROMOÇÕES</a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link btn-hover" href="html/destinos.html">DESTINOS</a>
+                        <a class="nav-link btn-hover" href="/destinos">DESTINOS</a>
                     </li>
                     <li class="nav-item text-center">
-                        <a class="nav-link btn-hover" href="html/contato.html">CONTATO</a>
+                        <a class="nav-link btn-hover" href="/contato">CONTATO</a>
                     </li>
                     <li class="nav-item text-center absolute-right">
-                        <a class="nav-link login" href="html/login1.html">LOGIN</a>
+                        <a class="nav-link login" href="/login">LOGIN</a>
                     </li>
                 </ul>
 
@@ -95,7 +95,7 @@
 
         <div class="container">
 
-            <form action="">
+            <form action="" method="">
 
                 <div class="row">
 
@@ -120,7 +120,7 @@
 
                     <div class="col-md-6">
 
-                        <label class="text-light" for="saida" class="form-label">De onde você está saindo?</label>
+                        <label class="text-light form-label" for="saida">De onde você está saindo?</label>
 
                         <input type="text" class="form-control" name="destino" id="saida" aria-describedby="helpId"
                             placeholder="Informe o ponto de partida" required="">
@@ -132,11 +132,10 @@
                     <div class="col-md-6">
 
 
-                        <label class="text-light" for="destino" class="form-label">Para onde você vai?</label>
+                        <label class="text-light form-label" for="destino">Para onde você vai?</label>
 
                         <input type="text" class="form-control" name="destino" id="destino" aria-describedby="helpId"
-                            placeholder="Informe o destino" required="">
-
+                            placeholder="Informe o destino" required>
 
 
                     </div>
@@ -149,7 +148,7 @@
 
                     <div class="col-md-6">
 
-                        <label class="text-light" for="data" class="form-label">Escolha as datas (Ida / volta):</label>
+                        <label class="text-light form-label" for="data">Escolha as datas (Ida / volta):</label>
 
                         <br>
 
@@ -166,7 +165,7 @@
                     <div class="col-md-6">
 
 
-                        <label class="text-light" for="passageiros" class="form-label">Passageiros:</label>
+                        <label class="text-light form-label" for="passageiros">Passageiros:</label>
 
 
                         <input type="number" class="form-control" name="passageiros" id="passageiros"
@@ -180,12 +179,8 @@
                 <div class="row mt-3">
 
                     <div class="col-12 mb-3 text-justify">
-
-                        <a name="" id="" href="#">
-
+                     
                             <button class="btn bg-buscar"> BUSCAR PASSAGENS </button>
-
-                        </a>
 
                     </div>
 
@@ -223,7 +218,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/recife1.jpg" alt="Recife">
+                    <img class="card-img-top" th:src="@{/img/recife1.jpg}" alt="Recife">
                     <div class="card-body">
                         <h4 class="card-title">Recife</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 750,00 </del> Por </p>
@@ -242,7 +237,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/porto_galinhas1.jpg" alt="Porto de Galinhas">
+                    <img class="card-img-top" th:src="@{/img/porto_galinhas1.jpg}" alt="Porto de Galinhas">
                     <div class="card-body">
                         <h4 class="card-title">Porto de Galinhas</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 750,00 </del> Por </p>
@@ -261,7 +256,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/salvador1.jpeg" alt="Salvador">
+                    <img class="card-img-top" th:src="@{/img/salvador1.jpeg}" alt="Salvador">
                     <div class="card-body">
                         <h4 class="card-title">Salvador</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 800,00 </del> Por </p>
@@ -280,7 +275,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/rj1.jpg" alt="Rio de Janeiro">
+                    <img class="card-img-top" th:src="@{/img/rj1.jpg}" alt="Rio de Janeiro">
                     <div class="card-body">
                         <h4 class="card-title">Rio de Janeiro</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 1000,00 </del> Por </p>
@@ -304,7 +299,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/sao_paulo1.jpg" alt="São Paulo">
+                    <img class="card-img-top" th:src="@{/img/sao_paulo1.jpg}" alt="São Paulo">
                     <div class="card-body">
                         <h4 class="card-title">São Paulo</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 1000,00 </del> Por </p>
@@ -323,7 +318,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/londres1.jpg" alt="Londres">
+                    <img class="card-img-top" th:src="@{/img/londres1.jpg}" alt="Londres">
                     <div class="card-body">
                         <h4 class="card-title">Londres</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 1500,00 </del> Por </p>
@@ -342,7 +337,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/paris1.jpg" alt="Paris">
+                    <img class="card-img-top" th:src="@{/img/paris1.jpg}" alt="Paris">
                     <div class="card-body">
                         <h4 class="card-title">Paris</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 1.359,00 </del> Por </p>
@@ -361,7 +356,7 @@
             <div class="col-md-3 col-sm-6">
 
                 <div class="card text-center">
-                    <img class="card-img-top" src="../static/img/lisboa1.jpg" alt="Lisboa">
+                    <img class="card-img-top" th:src="@{/img/lisboa1.jpg}" alt="Lisboa">
                     <div class="card-body">
                         <h4 class="card-title">Lisboa</h4>
                         <p class="card-text text-danger m-0 small"> De <del> R$ 1.700,00 </del> Por </p>
@@ -400,7 +395,7 @@
 
             <div class="col-sm-6 mb-2 text-right">
                 <a href="#">
-                    <img src="../static/img/agencia_viagens_small.png" alt="logo" width="150px">
+                    <img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
                 </a>
             </div>
 
@@ -454,31 +449,26 @@
 
         <div class="row mt-4 mb-2">
 
-
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/quemsomos.html"> Quem somos </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/centralajuda.html"> Central de ajuda </a>
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/quemsomos"> Quem somos </a> </div>
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/centralajuda"> Central de ajuda </a>
             </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/termoscondicoes.html"> Termos e condições
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/termoscondicoes"> Termos e condições
                 </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/duvidas.html"> Dúvidas </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/contato.html"> Clique para falar conosco
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/duvidas"> Dúvidas </a> </div>
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/contato"> Clique para falar conosco
                 </a> </div>
-            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="html/trabalheconosco.html"> Trabalhe conosco
+            <div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/trabalheconosco"> Trabalhe conosco
                 </a> </div>
 
         </div>
-
-
 
         <div class="row mt-4 mb-3">
             <div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
         </div>
 
-
-
     </footer>
 
-    <script src="../static/js/all.js"></script>
+    <script th:src="@{/js/all.js}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
