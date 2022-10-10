@@ -24,28 +24,44 @@ public class Usuario {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50)
     private String nome;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 11, unique = true)
     private String cpf;
 	
-	@Column(nullable = false)
+	@Column(nullable = true, length = 11, unique = true)
     private String telefone;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 50, unique = true)
     private String email;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 12)
     private String senha;
 	
 	@Column(nullable = false, name = "dataCadastro")
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataCadastro;
 	
-	@Column(nullable = false, name = "dataAtualizacaoCadastro")
+	@Column(nullable = true, name = "dataAtualizacaoCadastro")
     @DateTimeFormat(iso = ISO.DATE)
     private LocalDate dataAtualizacaoCadastro;
+	
+	public Usuario() {}
+	
+	// MÉTODO CONSTRUTOR
+	public Usuario(Long id, String nome, String cpf, String telefone, String email, String senha,
+			LocalDate dataCadastro, LocalDate dataAtualizacaoCadastro) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
+		this.dataCadastro = dataCadastro;
+		this.dataAtualizacaoCadastro = dataAtualizacaoCadastro;
+	}
 
 	
 	// GETTERS E SETTERS

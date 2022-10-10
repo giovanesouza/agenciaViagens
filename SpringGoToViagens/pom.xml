@@ -8,11 +8,11 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.gotoviagens</groupId>
-	<artifactId>SpringGoToViagens</artifactId>
+	<groupId>br.org.com.recode</groupId>
+	<artifactId>ProjetoBD_MVC_SPRING</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringGoToViagens</name>
-	<description>Agência de Viagens Go To</description>
+	<name>ProjetoBD_MVC_SPRING</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
