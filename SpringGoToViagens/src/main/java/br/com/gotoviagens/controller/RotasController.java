@@ -28,25 +28,9 @@ public class RotasController {
 		ModelAndView modelAndView = new ModelAndView("html/destinos");
 		return modelAndView;
 	}
-	
-	@GetMapping("/contato")
-	// PÁGINA CONTATO E CLIQUE PARA FALAR CONOSCO (RODAPÉ)
-	public ModelAndView contato() {
-		ModelAndView modelAndView = new ModelAndView("html/contato");
-		return modelAndView;
-	}
-	
-	@GetMapping("/login")
-	// PÁGINA LOGIN
-	public ModelAndView login() {
-		ModelAndView modelAndView = new ModelAndView("html/login1");
-		return modelAndView;
-	}
-	
-
+		
 	
 	// ROTAS RODAPÉ
-	
 	@GetMapping("/quemsomos")
 	// PÁGINA QUEM SOMOS
 	public ModelAndView quemsomos() {

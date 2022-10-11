@@ -25,7 +25,6 @@
 
 <body>
 
-
 	<!-- CABEÇALHO -->
 
 	<div class="container-fluid mt-3">
@@ -64,8 +63,7 @@
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
 				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover" href="/"> HOME <span
-								class="visually-hidden">(current)</span></a>
+						<a class="nav-link btn-hover" href="/"> HOME <span class="visually-hidden">(current)</span></a>
 					</li>
 					<li class="nav-item text-center">
 						<a class="nav-link btn-hover" href="/promocoes">PROMOÇÕES</a>
@@ -113,87 +111,14 @@
 					<h3 class="text-login">Login</h3>
 					<span>ou</span>
 
-					<!-- Button trigger modal -->
-					<h3 class="text-registrar btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-						Registrar
-					</h3>
-
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Cadastre-se abaixo: </h5>
-									<button type="button" class="btn-close text-light" data-bs-dismiss="modal"
-										aria-label="Close"></button>
-								</div>
-								<div class="modal-body bg-modal">
-
-									<form action="" method="">
-
-										<label class="mt-2" for="senha"> <strong> Nome completo: </strong> </label>
-
-										<input type="text" class="form-control" name="nome" id="nome_login"
-											aria-describedby="helpId" placeholder="Digite seu nome completo"
-											maxlength="60" required="">
-
-
-										<label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
-
-										<input type="tel" class="form-control" name="cpf" id="cliente_cadastrar"
-											aria-describedby="helpId" placeholder="Digite seu CPF (APENAS NÚMEROS)"
-											maxlength="11" required>
-
-
-										<label class="mt-2" for="senha"> <strong> Digite seu e-mail: </strong> </label>
-
-										<input type="email" class="form-control" name="email" id="email_login"
-											aria-describedby="helpId" placeholder="Digite seu e-mail (nome@dominio.com)"
-											maxlength="40" required>
-
-
-										<label class="mt-2" for="senha"> <strong> Senha: </strong> </label>
-
-										<input type="password" class="form-control" name="senha" id="senha_login"
-											aria-describedby="helpId" placeholder="Digite sua senha (máx 12 digitos)"
-											maxlength="12" required="">
-
-										<label class="mt-2" for="senha"> <strong> Repita a senha: </strong> </label>
-
-										<input type="password" class="form-control" name="senha" id="senha_login"
-											aria-describedby="helpId"
-											placeholder="Digite sua senha novamente (máx 12 digitos)" maxlength="12"
-											required="">
-
-
-										<div class="col-12 text-center mt-3">
-
-											<button class="btn bg-cadastrar" type="submit">cadastrar</button>
-
-										</div>
-
-
-									</form>
-
-								</div>
-								<div class="modal-footer">
-
-									<button type="button" class="btn btn-secondary"
-										data-bs-dismiss="modal">cancelar</button>
-
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- FIM Button trigger modal -->
+					<a href="/cadastrarUsuario"><h3 class="text-registrar btn">
+						Cadastre-se
+					</h3></a>
 
 				</div>
 
 
-				<form action="post">
+				<form action="" method="get">
 
 					<div class="row mb-2 mt-2">
 

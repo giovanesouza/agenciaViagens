@@ -1,6 +1,6 @@
 package br.com.gotoviagens.model;
 
-import java.time.LocalDate;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,9 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table
@@ -38,39 +35,14 @@ public class Usuario {
 	
 	@Column(nullable = false, length = 12)
     private String senha;
-	
-	@Column(nullable = false, name = "dataCadastro")
-    @DateTimeFormat(iso = ISO.DATE)
-    private LocalDate dataCadastro;
-	
-	@Column(nullable = true, name = "dataAtualizacaoCadastro")
-    @DateTimeFormat(iso = ISO.DATE)
-    private LocalDate dataAtualizacaoCadastro;
-	
-	public Usuario() {}
-	
-	// MÉTODO CONSTRUTOR
-	public Usuario(Long id, String nome, String cpf, String telefone, String email, String senha,
-			LocalDate dataCadastro, LocalDate dataAtualizacaoCadastro) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
-		this.email = email;
-		this.senha = senha;
-		this.dataCadastro = dataCadastro;
-		this.dataAtualizacaoCadastro = dataAtualizacaoCadastro;
-	}
 
 	
 	// GETTERS E SETTERS
-	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -114,29 +86,27 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public LocalDate getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
-	public LocalDate getDataAtualizacaoCadastro() {
-		return dataAtualizacaoCadastro;
-	}
-
-	public void setDataAtualizacaoCadastro(LocalDate dataAtualizacaoCadastro) {
-		this.dataAtualizacaoCadastro = dataAtualizacaoCadastro;
+	public Usuario() {}
+	
+	// CONSTRUTOR
+	public Usuario(Long id, String nome, String cpf, String telefone, String email, String senha) {
+		
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.telefone = telefone;
+		this.email = email;
+		this.senha = senha;
 	}
 
 	
-	// HASHCODE E EQUALS
-	
+	// HASCHCODE E EQUALS
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, dataAtualizacaoCadastro, dataCadastro, email, id, nome, senha, telefone);
+		return Objects.hash(cpf, email, id, nome, senha, telefone);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -147,23 +117,18 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(dataAtualizacaoCadastro, other.dataAtualizacaoCadastro)
-				&& Objects.equals(dataCadastro, other.dataCadastro) && Objects.equals(email, other.email)
-				&& id == other.id && Objects.equals(nome, other.nome) && Objects.equals(senha, other.senha)
+		return Objects.equals(cpf, other.cpf) && Objects.equals(email, other.email) && Objects.equals(id, other.id)
+				&& Objects.equals(nome, other.nome) && Objects.equals(senha, other.senha)
 				&& Objects.equals(telefone, other.telefone);
 	}
 
-	
-	
-	// TOSTRING
-	
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone + ", email=" + email
-				+ ", senha=" + senha + ", dataCadastro=" + dataCadastro + ", dataAtualizacaoCadastro="
-				+ dataAtualizacaoCadastro + "]";
+				+ ", senha=" + senha + "]";
 	}
 	
-	
+
+
 	
 }

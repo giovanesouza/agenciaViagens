@@ -19,13 +19,14 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Fale Conosco - Go To | Agência de Viagens </title>
+	<title> Cadastre-se - Go To | Agência de Viagens </title>
 
 </head>
 
 <body>
 
 	<!-- CABEÇALHO -->
+
 	<div class="container-fluid mt-3">
 
 		<header class="row">
@@ -50,6 +51,7 @@
 
 
 		<!-- INÍCIO MENUS -->
+
 		<nav class="navbar navbar-expand-sm navbar-light bg-light">
 			<a class="navbar-brand" href="#"></a>
 			<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
@@ -70,10 +72,10 @@
 						<a class="nav-link btn-hover" href="/destinos">DESTINOS</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link btn-hover bg-active" href="#">CONTATO</a>
+						<a class="nav-link btn-hover" href="/contato">CONTATO</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link login absolute-right" href="/login">LOGIN</a>
+						<a class="nav-link absolute-right bg-active" href="#">LOGIN</a>
 					</li>
 				</ul>
 
@@ -86,107 +88,53 @@
 	<!-- FIM MENUS -->
 
 
-
-	<!-- INÍCIO CONTATO FORM -->
+	<!-- ÁREA CADASTRO -->
 	<div class="container">
 
-		<div class="row mt-3">
+		<form method="post" th:object="${usuario}">
 
-			<div class="col-12">
-				<h3 class="text-center text-padrao"> Fale conosco </h3>
-			</div>
+			<label class="mt-2" for="nome"> <strong> Nome completo: </strong> </label>
 
-		</div>
-
-
-		<div class="row mt-3">
-
-			<form method="post" th:object="${faleConosco}">
-
-				<div class="col-12">
-
-					<div class="col-8 offset-2">
-
-						<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
-							placeholder="Digite seu nome" maxlength="50" required>
-
-					</div>
+			<input type="text" class="form-control" name="nome" id="nome"
+				placeholder="Digite seu nome completo" maxlength="50" th:field="*{nome}" required>
 
 
-					<div class="col-8 offset-2 mt-3">
+			<label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
 
-						<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50"
-							required>
-
-					</div>
-
-					<div class="col-8 offset-2 mt-3">
-
-						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem" cols="30" rows="5"
-							placeholder="Digite sua mensagem aqui" required></textarea>
-
-					</div>
+			<input type="tel" class="form-control" name="cpf" id="cpf"
+				placeholder="Digite seu CPF (APENAS NÚMEROS)" maxlength="11" th:field="*{cpf}" required>
 
 
-					<div class="col-8 offset-2 mt-3 mb-5">
+			<label class="mt-2" for="senha"> <strong> Digite seu e-mail: </strong> </label>
 
-						<button class="botao_login" type="submit" style="width: 100%;"> Enviar </button>
-
-					</div>
-
-
-				</div>
-
-			</form>
-
-		</div>
+			<input type="email" class="form-control" name="email" id="email"
+				placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="40" th:field="*{email}" required>
 
 
+			<label class="mt-2" for="senha"> <strong> Senha: </strong> </label>
+
+			<input type="password" class="form-control" name="senha" id="senha"
+				placeholder="Digite sua senha (máx 12 digitos)" maxlength="12" th:field="*{senha}" required>
+
+			<label class="mt-2" for="senha"> <strong> Repita a senha: </strong> </label>
+
+			<input type="password" class="form-control" name="senha_confir"
+				placeholder="Digite sua senha novamente (máx 12 digitos)" maxlength="12" required>
 
 
-	</div>
-	<!-- FIM CONTATO FORM -->
+			<div class="col-12 text-center mt-3">
 
-
-	<!-- INÍCIO CELL E EMAIL -->
-
-	<div class="container">
-		<div class="row text-center mb-5">
-
-			<div class="col-md-6 ">
-
-				<div style="font-size: 16px;">
-
-					<i class="ri-phone-line"> (81) 98888-8335</i>
-
-				</div>
-
+				<button class="btn bg-cadastrar bg-success text-light mt-3 mb-5" type="submit">cadastrar</button>
 
 			</div>
 
 
-			<div class="col-md-6">
-
-				<div class="d-inline align-middle" style="font-size: 16px;">
-
-					<i class="ri-mail-line align-middle"> </i>
-
-					<span class="align-middle"> gotoviagens@gmail.com </span>
-
-				</div>
-
-
-			</div>
-
-		</div>
-
-
+		</form>
 
 	</div>
 
 
-	<!-- FIM CELL E EMAIL -->
+	<!-- FIM ÁREA LOGIN -->
 
 
 	<!-- ICON SCROLL TOP -->
@@ -198,7 +146,6 @@
 
 	<!-- RODAPÉ -->
 	<footer class="container-fluid bg-light">
-
 
 		<div class="row mb-3">
 
@@ -272,9 +219,11 @@
 		</div>
 
 
+
 		<div class="row mt-4 mb-3">
 			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
 		</div>
+
 
 
 	</footer>
