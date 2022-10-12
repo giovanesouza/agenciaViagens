@@ -12,7 +12,6 @@ import br.com.gotoviagens.model.Destinos;
 import br.com.gotoviagens.repository.DestinosRepository;
 
 
-
 @Controller
 public class DestinoController {
 	
@@ -23,14 +22,14 @@ public class DestinoController {
 
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/cadastrarDestinos")
-	public ModelAndView cadastrarPassagem() {
+	public ModelAndView cadastrarDestino() {
 		ModelAndView modelAndView = new ModelAndView("admin/cadastrarDestino");
 		modelAndView.addObject("destinos", new Destinos());
 		return modelAndView;
 	}
 	
 	@PostMapping("/cadastrarDestinos")
-	public ModelAndView cadastrarPassagem(Destinos destinos) throws IOException {
+	public ModelAndView cadastrarDestino(Destinos destinos) {
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:/cadastrarDestino");
 
