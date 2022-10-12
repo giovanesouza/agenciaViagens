@@ -75,7 +75,7 @@
 						<a class="nav-link btn-hover" href="/contato">CONTATO</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link absolute-right bg-active" href="#">LOGIN</a>
+						<a class="nav-link absolute-right bg-active" href="/login">LOGIN</a>
 					</li>
 				</ul>
 
@@ -89,20 +89,20 @@
 
 
 	<!-- ÁREA CADASTRO -->
-	<div class="container">
+	<div class="container mt-5 mb-5 bg-active">
 
 		<form method="post" th:object="${usuario}">
 
 			<label class="mt-2" for="nome"> <strong> Nome completo: </strong> </label>
 
-			<input type="text" class="form-control" name="nome" id="nome"
-				placeholder="Digite seu nome completo" maxlength="50" th:field="*{nome}" required>
+			<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome completo"
+				maxlength="50" th:field="*{nome}" required>
 
 
 			<label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
 
-			<input type="tel" class="form-control" name="cpf" id="cpf"
-				placeholder="Digite seu CPF (APENAS NÚMEROS)" maxlength="11" th:field="*{cpf}" required>
+			<input type="tel" class="form-control" name="cpf" id="cpf" placeholder="Digite seu CPF (APENAS NÚMEROS)"
+				maxlength="11" th:field="*{cpf}" required>
 
 
 			<label class="mt-2" for="senha"> <strong> Digite seu e-mail: </strong> </label>
@@ -116,15 +116,15 @@
 			<input type="password" class="form-control" name="senha" id="senha"
 				placeholder="Digite sua senha (máx 12 digitos)" maxlength="12" th:field="*{senha}" required>
 
-			<label class="mt-2" for="senha"> <strong> Repita a senha: </strong> </label>
+			<label class="mt-2" for="senhaConfirm"> <strong> Repita a senha: </strong> </label>
 
-			<input type="password" class="form-control" name="senha_confir"
+			<input type="password" class="form-control" name="senhaConfirm" id="senhaConfirm"
 				placeholder="Digite sua senha novamente (máx 12 digitos)" maxlength="12" required>
 
 
 			<div class="col-12 text-center mt-3">
 
-				<button class="btn bg-cadastrar bg-success text-light mt-3 mb-5" type="submit">cadastrar</button>
+				<button class="btn bg-cadastrar mt-3 mb-5" type="submit">cadastrar</button>
 
 			</div>
 
@@ -227,6 +227,7 @@
 
 
 	</footer>
+
 
 	<script th:src="@{/js/all.js}"></script>
 

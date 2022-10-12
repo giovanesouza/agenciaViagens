@@ -111,11 +111,11 @@
 
 		<div class="row mt-3">
 
-			<form action="" method="">
+			<form method="POST" th:object="${trabalheConosco}">
 
 				<div class="col-12">
 
-					<input type="text" class="form-control" name="senha" id="nome_contato" aria-describedby="helpId"
+					<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
 						placeholder="Digite seu nome" maxlength="50" required>
 
 				</div>
@@ -123,17 +123,26 @@
 
 				<div class="col-12 mt-3 mb-3">
 
-					<input type="email" class="form-control" name="senha" id="email_contato" aria-describedby="helpId"
-						placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="40" required>
+					<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
+						placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required>
+
+				</div>
+
+				<div class="col-12 mt-3 mb-3">
+
+					<input type="text" class="form-control" name="cargo" th:field="*{cargo}" id="cargo"
+						placeholder="Cargo para candidatura da vaga" maxlength="15" required>
 
 				</div>
 
 
 				<div class="col-12 mt-3 mb-3">
 
-					<label class="text-padrao" for="curriculo"> <strong> Envie o seu currículo: </strong> </label>
+					<label class="text-padrao" for="curriculo"> <strong> Envie o seu currículo: </strong> (Envie o seu
+						currículo para o DRIVE e cole o link abaixo - não esqueça de deixar o link como público)
+					</label>
 					<br>
-					<input type="file" name="curriculo" id="curriculo">
+					<input type="url" class="form-control" name="curriculo" th:field="*{curriculo}" id="curriculo">
 
 				</div>
 

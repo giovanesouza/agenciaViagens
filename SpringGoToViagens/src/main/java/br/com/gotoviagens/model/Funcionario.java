@@ -44,6 +44,7 @@ public class Funcionario {
 	@Column(nullable = false)
     private float salario;
 
+	public Funcionario() {}
 // CONSTRUTOR
 	public Funcionario(Long matricula, String nome, LocalDate dataAdimissao, LocalDate dataDemissao,
 			Long codDepartamento, String cargo, float salario) {

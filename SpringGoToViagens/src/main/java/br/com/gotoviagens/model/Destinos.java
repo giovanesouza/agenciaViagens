@@ -37,7 +37,7 @@ public class Destinos {
 	    private String categoria;
 		
 		@Column(nullable = false)
-	    private int qtdDisponivel;
+	    private int quantidade;
 		
 		@Column(nullable = false, length = 20)
 	    private String condicao;
@@ -49,23 +49,23 @@ public class Destinos {
 		@Column(nullable = true, name = "dataVolta")
 	    @DateTimeFormat(iso = ISO.DATE)
 	    private LocalDate dataVolta;
+		
+		public Destinos() {}
 
-		// CONSTRUTOR 
-		public Destinos(Long id, String destino, String embarque, float preco, String categoria, int qtdDisponivel,
+		public Destinos(Long id, String destino, String embarque, float preco, String categoria, int quantidade,
 				String condicao, LocalDate dataIda, LocalDate dataVolta) {
-			super();
+
 			this.id = id;
 			this.destino = destino;
 			this.embarque = embarque;
 			this.preco = preco;
 			this.categoria = categoria;
-			this.qtdDisponivel = qtdDisponivel;
+			this.quantidade = quantidade;
 			this.condicao = condicao;
 			this.dataIda = dataIda;
 			this.dataVolta = dataVolta;
 		}
 
-		// GETTERS E SETTERS
 		public Long getId() {
 			return id;
 		}
@@ -106,12 +106,12 @@ public class Destinos {
 			this.categoria = categoria;
 		}
 
-		public int getQtdDisponivel() {
-			return qtdDisponivel;
+		public int getQuantidade() {
+			return quantidade;
 		}
 
-		public void setQtdDisponivel(int qtdDisponivel) {
-			this.qtdDisponivel = qtdDisponivel;
+		public void setQuantidade(int quantidade) {
+			this.quantidade = quantidade;
 		}
 
 		public String getCondicao() {
@@ -137,37 +137,7 @@ public class Destinos {
 		public void setDataVolta(LocalDate dataVolta) {
 			this.dataVolta = dataVolta;
 		}
-		
 
-		// HASHCODE E EQUALS
-		@Override
-		public int hashCode() {
-			return Objects.hash(categoria, condicao, dataIda, dataVolta, destino, embarque, id, preco, qtdDisponivel);
-		}
-
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Destinos other = (Destinos) obj;
-			return Objects.equals(categoria, other.categoria) && Objects.equals(condicao, other.condicao)
-					&& Objects.equals(dataIda, other.dataIda) && Objects.equals(dataVolta, other.dataVolta)
-					&& Objects.equals(destino, other.destino) && Objects.equals(embarque, other.embarque)
-					&& Objects.equals(id, other.id) && Float.floatToIntBits(preco) == Float.floatToIntBits(other.preco)
-					&& qtdDisponivel == other.qtdDisponivel;
-		}
-
-		// TO STRING
-		@Override
-		public String toString() {
-			return "Destinos [id=" + id + ", destino=" + destino + ", embarque=" + embarque + ", preco=" + preco
-					+ ", categoria=" + categoria + ", qtdDisponivel=" + qtdDisponivel + ", condicao=" + condicao
-					+ ", dataIda=" + dataIda + ", dataVolta=" + dataVolta + "]";
-		}
 		
 		
 		

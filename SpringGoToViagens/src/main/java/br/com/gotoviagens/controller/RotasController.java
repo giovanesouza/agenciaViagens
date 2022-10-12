@@ -60,15 +60,5 @@ public class RotasController {
 	}
 	
 	
-	@GetMapping("/trabalheconosco")
-	// PÁGINA TRABALHE CONOSCO
-	public ModelAndView trabalheconosco() {
-		ModelAndView modelAndView = new ModelAndView("html/trabalheconosco");
-		return modelAndView;
-	}
-	
-	
-	
-	
 	
 }
