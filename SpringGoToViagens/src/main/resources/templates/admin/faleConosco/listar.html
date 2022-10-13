@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Administrador </title>
+	<title> LISTAR DE SOLICITAÇÕES DE CONTATO | Agência de Viagens </title>
 
 </head>
 
@@ -32,7 +32,7 @@
 		<header class="row">
 
 			<div class="col-sm-6 mb-2 text-justify">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
 				</a>
 			</div>
@@ -61,16 +61,17 @@
 			</button>
 
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
-				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+								<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover bg-active" href="#"> HOME <span class="visually-hidden">(current)</span></a>
+						<a class="nav-link btn-hover" href="/admin"> HOME <span class="visually-hidden">(current)</span></a>
 					</li>
 					<li class="nav-item text-center">
 						<a class="nav-link btn-hover" href="/cadastrarDestinos">CADASTRAR DESTINOS</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/listarContatos">SOLICITAÇÃO DE CONTATO</a>
+						<a class="nav-link btn-hover bg-active" href="#">SOLICITAÇÃO DE CONTATO</a>
 					</li>
+
 				</ul>
 
 			</div>
@@ -78,10 +79,58 @@
 		</nav>
 
 	</div>
-
 	<!-- FIM MENUS -->
 
 
+
+	<!-- INÍCIO - LISTAR DESTINOS -->
+
+<main class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Listagem de solicitação de contato</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nome</th>							
+							<th scope="col">E-mail</th>
+							<th scope="col">Mensagem</th>
+							<th scope="col">Status</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="faleConosco : ${faleConosco}">
+							<th scope="row" th:text="${faleConosco.id}"></th>
+							<td th:text="${faleConosco.nome}"></td>
+							<td th:text="${faleConosco.email}"></td>
+							<td th:text="${faleConosco.mensagem}"></td>
+							<td th:text="${faleConosco.status}"></td>
+
+							<td>
+								<a th:href="@{/{id}/editarStatusSolicitacaoContato (id=${faleConosco.id})}" class="btn btn-warning">
+									Editar
+								</a>
+								<a th:href="@{/{id}/excluirSolicitacaoContato (id=${faleConosco.id})}" class="btn btn-danger"
+									onclick="return confirm('Tem certeza que deseja excluir o destino?');">
+									Excluir
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- FIM - LISTAR DESTINOS  -->
 
 
 	<!-- ICON SCROLL TOP -->
@@ -97,7 +146,7 @@
 		<div class="row mb-3">
 
 			<div class="col-sm-6 mb-2 text-right">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
 				</a>
 			</div>
@@ -115,13 +164,11 @@
 		</div>
 
 
-
 		<div class="row mt-4 mb-3">
 			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
 		</div>
 
 	</footer>
-
 
 	<script th:src="@{/js/all.js}"></script>
 

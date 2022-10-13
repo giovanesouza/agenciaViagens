@@ -24,18 +24,20 @@ public class FaleConosco {
 	@Column(nullable = false, length = 200)
     private String mensagem;
 	
+	@Column(nullable = true, length = 20)
+    private String status;
 	
 	public FaleConosco() {}
 
-	// CONSTRUTOR
-	public FaleConosco(Long id, String nome, String email, String mensagem) {
+	public FaleConosco(Long id, String nome, String email, String mensagem, String status) {
+
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.mensagem = mensagem;
+		this.status = status;
 	}
 
-	// GETTERS E SETTERS
 	public Long getId() {
 		return id;
 	}
@@ -68,7 +70,13 @@ public class FaleConosco {
 		this.mensagem = mensagem;
 	}
 
-	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 	

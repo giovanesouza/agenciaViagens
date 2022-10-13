@@ -25,7 +25,7 @@ public class DestinoController {
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/cadastrarDestinos")
 	public ModelAndView cadastrarDestino() {
-		ModelAndView modelAndView = new ModelAndView("admin/cadastrarDestino");
+		ModelAndView modelAndView = new ModelAndView("admin/destinos/cadastrarDestino");
 		modelAndView.addObject("destinos", new Destinos());
 		return modelAndView;
 	}
@@ -33,7 +33,7 @@ public class DestinoController {
 	@PostMapping("/cadastrarDestinos")
 	public ModelAndView cadastrarDestino(Destinos destinos) throws IOException {
 	
-		ModelAndView modelAndView = new ModelAndView("admin/cadastrarDestino");	
+		ModelAndView modelAndView = new ModelAndView("admin//destinos/cadastrarDestino");	
 		destinosRepository.save(destinos);
 		
 		return modelAndView;
@@ -43,7 +43,7 @@ public class DestinoController {
 
 	@GetMapping("/listarDestinos")
 	public ModelAndView listar() {
-		ModelAndView modelAndView = new ModelAndView("admin/listarDestinos");
+		ModelAndView modelAndView = new ModelAndView("admin/destinos/listarDestinos");
 
 		List<Destinos> destinos = destinosRepository.findAll();
 		modelAndView.addObject("destinos", destinos);
@@ -55,7 +55,7 @@ public class DestinoController {
 	// APENAS LISTA O E MOSTRA OS CAMPOS P/ EDIÇÃO
 	@GetMapping("/{id}/editarDestino")
 	public ModelAndView editar(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("admin/editarDestino");
+		ModelAndView modelAndView = new ModelAndView("admin/destinos/editarDestino");
 
 		Destinos destinos = destinosRepository.getOne(id);
 		modelAndView.addObject("destinos", destinos);

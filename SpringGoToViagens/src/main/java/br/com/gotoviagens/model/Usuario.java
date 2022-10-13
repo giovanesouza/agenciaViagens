@@ -24,10 +24,10 @@ public class Usuario {
 	@Column(nullable = false, length = 50)
     private String nome;
 	
-	@Column(nullable = false, length = 11, unique = true)
+	@Column(nullable = false, length = 20, unique = true)
     private String cpf;
 	
-	@Column(nullable = true, length = 11, unique = true)
+	@Column(nullable = true, length = 20, unique = true)
     private String telefone;
 	
 	@Column(nullable = false, length = 50, unique = true)

@@ -19,14 +19,13 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Administrador </title>
+	<title> EDITAR STATUS | Agência de Viagens </title>
 
 </head>
 
 <body>
 
 	<!-- CABEÇALHO -->
-
 	<div class="container-fluid mt-3">
 
 		<header class="row">
@@ -61,16 +60,14 @@
 			</button>
 
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
-				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+								<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover bg-active" href="#"> HOME <span class="visually-hidden">(current)</span></a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/cadastrarDestinos">CADASTRAR DESTINOS</a>
+						<a class="nav-link btn-hover" href="/admin"> HOME <span class="visually-hidden">(current)</span></a>
 					</li>
 					<li class="nav-item text-center">
 						<a class="nav-link btn-hover" href="/listarContatos">SOLICITAÇÃO DE CONTATO</a>
 					</li>
+
 				</ul>
 
 			</div>
@@ -83,6 +80,115 @@
 
 
 
+	<!-- INÍCIO CONTATO FORM -->
+	<div class="container">
+
+		<div class="row mt-3">
+
+			<div class="col-12">
+				<h3 class="text-center text-padrao"> SOLICITAÇÃO DE CONTATO </h3>
+			</div>
+
+		</div>
+
+
+		<div class="row mt-3">
+
+			<form method="post" th:object="${faleConosco}">
+
+				<div class="col-12">
+
+					<div class="col-8 offset-2">
+
+						<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
+							placeholder="Digite seu nome" maxlength="50" />
+
+					</div>
+
+
+					<div class="col-8 offset-2 mt-3">
+
+						<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
+							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50"
+							/>
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3">
+
+						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem" cols="30" rows="5"
+							placeholder="Digite sua mensagem aqui"></textarea>
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3">
+
+						<input type="text" class="form-control" name="status" th:field="*{status}" id="status"
+							placeholder="Insira o status" maxlength="20"
+							required>
+
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3 mb-5">
+
+						<button class="botao_login" type="submit" style="width: 100%;"> Atualizar </button>
+
+					</div>
+
+
+				</div>
+
+			</form>
+
+		</div>
+
+
+
+
+	</div>
+	<!-- FIM CONTATO FORM -->
+
+
+	<!-- INÍCIO CELL E EMAIL -->
+
+	<div class="container">
+		<div class="row text-center mb-5">
+
+			<div class="col-md-6 ">
+
+				<div style="font-size: 16px;">
+
+					<i class="ri-phone-line"> (81) 98888-8335</i>
+
+				</div>
+
+
+			</div>
+
+
+			<div class="col-md-6">
+
+				<div class="d-inline align-middle" style="font-size: 16px;">
+
+					<i class="ri-mail-line align-middle"> </i>
+
+					<span class="align-middle"> gotoviagens@gmail.com </span>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+	<!-- FIM CELL E EMAIL -->
+
 
 	<!-- ICON SCROLL TOP -->
 
@@ -92,7 +198,8 @@
 
 
 	<!-- RODAPÉ -->
-	<footer class="container-fluid bg-light mt-5">
+	<footer class="container-fluid bg-light">
+
 
 		<div class="row mb-3">
 
@@ -115,13 +222,12 @@
 		</div>
 
 
-
 		<div class="row mt-4 mb-3">
 			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
 		</div>
 
-	</footer>
 
+	</footer>
 
 	<script th:src="@{/js/all.js}"></script>
 
