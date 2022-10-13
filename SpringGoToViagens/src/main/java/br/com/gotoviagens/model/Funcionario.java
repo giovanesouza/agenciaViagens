@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
-@Table
+@Table(name = "funcionario")
 public class Funcionario {
 	
 	// ATRIBUTOS

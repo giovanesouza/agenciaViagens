@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "passagem")
 public class Passagem {
 
 	// ATRIBUTOS

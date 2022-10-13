@@ -1,5 +1,6 @@
 package br.com.gotoviagens.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
-@Table
+@Table(name = "destinos")
 public class Destinos {
 	
 	// ATRIBUTOS
@@ -31,7 +32,7 @@ public class Destinos {
 	    private String embarque;
 		
 		@Column(nullable = false)
-	    private float preco;
+	    private BigDecimal preco;
 
 		@Column(nullable = false, length = 20)
 	    private String categoria;
@@ -52,7 +53,7 @@ public class Destinos {
 		
 		public Destinos() {}
 
-		public Destinos(Long id, String destino, String embarque, float preco, String categoria, int quantidade,
+		public Destinos(Long id, String destino, String embarque, BigDecimal preco, String categoria, int quantidade,
 				String condicao, LocalDate dataIda, LocalDate dataVolta) {
 
 			this.id = id;
@@ -90,11 +91,11 @@ public class Destinos {
 			this.embarque = embarque;
 		}
 
-		public float getPreco() {
+		public BigDecimal getPreco() {
 			return preco;
 		}
 
-		public void setPreco(float preco) {
+		public void setPreco(BigDecimal preco) {
 			this.preco = preco;
 		}
 
@@ -138,7 +139,34 @@ public class Destinos {
 			this.dataVolta = dataVolta;
 		}
 
-		
+		@Override
+		public int hashCode() {
+			return Objects.hash(categoria, condicao, dataIda, dataVolta, destino, embarque, id, preco, quantidade);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Destinos other = (Destinos) obj;
+			return Objects.equals(categoria, other.categoria) && Objects.equals(condicao, other.condicao)
+					&& Objects.equals(dataIda, other.dataIda) && Objects.equals(dataVolta, other.dataVolta)
+					&& Objects.equals(destino, other.destino) && Objects.equals(embarque, other.embarque)
+					&& Objects.equals(id, other.id) && Objects.equals(preco, other.preco)
+					&& quantidade == other.quantidade;
+		}
+
+		@Override
+		public String toString() {
+			return "Destinos [id=" + id + ", destino=" + destino + ", embarque=" + embarque + ", preco=" + preco
+					+ ", categoria=" + categoria + ", quantidade=" + quantidade + ", condicao=" + condicao
+					+ ", dataIda=" + dataIda + ", dataVolta=" + dataVolta + "]";
+		}
+
 		
 		
 		
