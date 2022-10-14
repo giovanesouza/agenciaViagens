@@ -24,6 +24,8 @@ public class Departamento {
 
 	@Column(nullable = false, length = 15)
 	private String nome;
+	
+	public Departamento() {}
 
 	// CONSTRUTOR
 	public Departamento(Long codDepartamento, String nome) {
