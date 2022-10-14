@@ -21,7 +21,7 @@ public class DepartamentosController {
 	@Autowired
 	private DepartamentoRepository departamentoRepository;
 
-	// === CADASTRO DE USUÁRIOS
+	// === CADASTRO DE DEPARTAMENTOS
 
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/cadastrarDepartamento")
