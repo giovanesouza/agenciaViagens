@@ -1,5 +1,6 @@
 package br.com.gotoviagens.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -30,9 +31,9 @@ public class Funcionario {
 	@Column(nullable = false, length = 50)
     private String nome;
 	
-	@Column(nullable = false, name = "dataAdimissao")
+	@Column(nullable = false, name = "dataAdmissao")
     @DateTimeFormat(iso = ISO.DATE)
-    private LocalDate dataAdimissao;
+    private LocalDate dataAdmissao;
 	
 	@Column(nullable = true, name = "dataDemissao")
 	@DateTimeFormat(iso = ISO.DATE)
@@ -42,53 +43,28 @@ public class Funcionario {
     private String cargo;
 	
 	@Column(nullable = false)
-    private float salario;
+    private BigDecimal salario;
 
 	public Funcionario() {}
-// CONSTRUTOR
-	public Funcionario(Long matricula, String nome, LocalDate dataAdimissao, LocalDate dataDemissao,
-			Long codDepartamento, String cargo, float salario) {
-		super();
+
+	public Funcionario(Long matricula, Long codDepartamento, String nome, LocalDate dataAdmissao,
+			LocalDate dataDemissao, String cargo, BigDecimal salario) {
+		
 		this.matricula = matricula;
-		this.nome = nome;
-		this.dataAdimissao = dataAdimissao;
-		this.dataDemissao = dataDemissao;
 		this.codDepartamento = codDepartamento;
+		this.nome = nome;
+		this.dataAdmissao = dataAdmissao;
+		this.dataDemissao = dataDemissao;
 		this.cargo = cargo;
 		this.salario = salario;
 	}
 
-	// GETTERS E SETTERS
 	public Long getMatricula() {
 		return matricula;
 	}
 
 	public void setMatricula(Long matricula) {
 		this.matricula = matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public LocalDate getDataAdimissao() {
-		return dataAdimissao;
-	}
-
-	public void setDataAdimissao(LocalDate dataAdimissao) {
-		this.dataAdimissao = dataAdimissao;
-	}
-
-	public LocalDate getDataDemissao() {
-		return dataDemissao;
-	}
-
-	public void setDataDemissao(LocalDate dataDemissao) {
-		this.dataDemissao = dataDemissao;
 	}
 
 	public Long getCodDepartamento() {
@@ -99,6 +75,30 @@ public class Funcionario {
 		this.codDepartamento = codDepartamento;
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public LocalDate getDataAdmissao() {
+		return dataAdmissao;
+	}
+
+	public void setDataAdmissao(LocalDate dataAdmissao) {
+		this.dataAdmissao = dataAdmissao;
+	}
+
+	public LocalDate getDataDemissao() {
+		return dataDemissao;
+	}
+
+	public void setDataDemissao(LocalDate dataDemissao) {
+		this.dataDemissao = dataDemissao;
+	}
+
 	public String getCargo() {
 		return cargo;
 	}
@@ -107,19 +107,17 @@ public class Funcionario {
 		this.cargo = cargo;
 	}
 
-	public float getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public void setSalario(float salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
-	
-	
-	// HASHCODE E EQUALS
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(cargo, codDepartamento, dataAdimissao, dataDemissao, matricula, nome, salario);
+		return Objects.hash(cargo, codDepartamento, dataAdmissao, dataDemissao, matricula, nome, salario);
 	}
 
 	@Override
@@ -131,24 +129,18 @@ public class Funcionario {
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		return Objects.equals(cargo, other.cargo) && codDepartamento == other.codDepartamento
-				&& Objects.equals(dataAdimissao, other.dataAdimissao)
+		return Objects.equals(cargo, other.cargo) && Objects.equals(codDepartamento, other.codDepartamento)
+				&& Objects.equals(dataAdmissao, other.dataAdmissao)
 				&& Objects.equals(dataDemissao, other.dataDemissao) && Objects.equals(matricula, other.matricula)
-				&& Objects.equals(nome, other.nome)
-				&& Float.floatToIntBits(salario) == Float.floatToIntBits(other.salario);
+				&& Objects.equals(nome, other.nome) && Objects.equals(salario, other.salario);
 	}
 
-	
-	// TO STRING
 	@Override
 	public String toString() {
-		return "Funcionario [matricula=" + matricula + ", nome=" + nome + ", dataAdimissao=" + dataAdimissao
-				+ ", dataDemissao=" + dataDemissao + ", codDepartamento=" + codDepartamento + ", cargo=" + cargo
+		return "Funcionario [matricula=" + matricula + ", codDepartamento=" + codDepartamento + ", nome=" + nome
+				+ ", dataAdmissao=" + dataAdmissao + ", dataDemissao=" + dataDemissao + ", cargo=" + cargo
 				+ ", salario=" + salario + "]";
 	}
-	
-
-
 
 	
 	

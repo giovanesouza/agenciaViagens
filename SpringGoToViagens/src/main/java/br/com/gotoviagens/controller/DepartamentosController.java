@@ -34,7 +34,7 @@ public class DepartamentosController {
 	@PostMapping("/cadastrarDepartamento")
 	public ModelAndView cadastrar(Departamento departamentos) throws IOException {
 
-		ModelAndView modelAndView = new ModelAndView("redirect:/admin");
+		ModelAndView modelAndView = new ModelAndView("redirect:/listarDepartamentos");
 		departamentoRepository.save(departamentos);
 		return modelAndView;
 	}
