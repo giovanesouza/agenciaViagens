@@ -5,13 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.gotoviagens.model.Destinos;
 import br.com.gotoviagens.model.FaleConosco;
 import br.com.gotoviagens.repository.FaleConoscoRepository;
 
@@ -41,7 +40,7 @@ public class FaleConoscoController {
 
 		return modelAndView;
 	}
-	
+
 	
 	// === LISTA AS SOLICITAÇÕES DE CONTATO
 

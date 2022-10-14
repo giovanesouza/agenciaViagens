@@ -60,9 +60,10 @@
 			</button>
 
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
-								<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover" href="/admin"> HOME <span class="visually-hidden">(current)</span></a>
+						<a class="nav-link btn-hover" href="/admin"> HOME <span
+								class="visually-hidden">(current)</span></a>
 					</li>
 					<li class="nav-item text-center">
 						<a class="nav-link btn-hover" href="/listarContatos">SOLICITAÇÃO DE CONTATO</a>
@@ -109,23 +110,37 @@
 					<div class="col-8 offset-2 mt-3">
 
 						<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50"
-							/>
+							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" />
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
-						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem" cols="30" rows="5"
-							placeholder="Digite sua mensagem aqui"></textarea>
+						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem"
+							cols="30" rows="5" placeholder="Digite sua mensagem aqui"></textarea>
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3">
+
+						<label for="dataContato"> Data de solicitação de contato: </label>
+						<input type="date" class="form-control bg-warning" name="dataContato" th:field="*{dataContato}"
+							id="dataContato"  />
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3">
+
+						<label for="dataContato"> Data de resposta: </label>
+						<input type="date" class="form-control bg-success text-light" name="dataResposta" th:field="*{dataResposta}"
+							id="dataResposta" />
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
 						<input type="text" class="form-control" name="status" th:field="*{status}" id="status"
-							placeholder="Insira o status" maxlength="20"
-							required>
+							placeholder="Insira o status" maxlength="20" required>
 
 
 					</div>
@@ -234,6 +249,27 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+		
+			<!-- INSERINDO VALOR AO INPUT DATA -->
+	<script>
+		const inputDate = document.querySelector('#dataResposta');
+		const dataHoje = new Date();
+
+		const d = dataHoje.getDate();
+		const m = dataHoje.getMonth();
+		const y = dataHoje.getFullYear();
+		
+		let zero;
+		
+		if(m <10) {
+			zero = "0";
+		} else {
+			zero = "";
+		}
+
+		inputDate.value = `${y}-${zero}${m}-${d}`;
+
+	</script>
 </body>
 
 </html>
