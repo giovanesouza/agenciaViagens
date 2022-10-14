@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,6 +51,35 @@ public class FuncionarioController {
 
 			return modelAndView;
 		}
+		
+		// == EDITANDO UM CADASTRO
+		// APENAS LISTA O E MOSTRA OS CAMPOS P/ EDIÇÃO
+		@GetMapping("/{matricula}/editarFuncionario")
+		public ModelAndView editar(@PathVariable Long matricula) {
+			ModelAndView modelAndView = new ModelAndView("admin/funcionario/editar");
+
+			Funcionario funcionarios = funcionarioRepository.getOne(matricula);
+			modelAndView.addObject("funcionarios", funcionarios);
+
+			return modelAndView;
+		}
+
+		// ATUALIZA O CADASTRO
+		@PostMapping("/{matricula}/editarFuncionario")
+		public ModelAndView editar(Funcionario funcionarios) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/listarFuncionarios");
+			funcionarioRepository.save(funcionarios);
+
+			return modelAndView;
+		}
 	
+		
+		// == EXCLUI UM CADASTRO
+		@GetMapping("/{matricula}/excluirFuncionario")
+		public ModelAndView excluir(@PathVariable Long matricula) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/listarFuncionarios");
+			funcionarioRepository.deleteById(matricula);
+			return modelAndView;
+		}
 	
 }
