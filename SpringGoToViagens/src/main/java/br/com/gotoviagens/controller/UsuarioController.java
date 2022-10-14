@@ -14,13 +14,6 @@ import br.com.gotoviagens.repository.UsuarioRepository;
 @Controller
 public class UsuarioController {
 	
-	@GetMapping("/login")
-	// PÁGINA LOGIN
-	public ModelAndView login() {
-		ModelAndView modelAndView = new ModelAndView("html/login1");
-		return modelAndView;
-	}
-	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
@@ -33,8 +26,7 @@ public class UsuarioController {
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
-	
-		
+			
 	@PostMapping("/cadastrarUsuario")
 	public ModelAndView cadastrar(Usuario usuario)  throws IOException {
 		
@@ -44,6 +36,6 @@ public class UsuarioController {
 
 		return modelAndView;
 	}
-
+	
 	
 }

@@ -118,7 +118,7 @@
 				</div>
 
 
-				<form action="" method="get">
+				<form action="/logar" method="post">
 
 					<div class="row mb-2 mt-2">
 
@@ -150,6 +150,9 @@
 
 
 					<div class="row">
+					
+					<!-- VARIÁVEL DE ERRO -->
+					<div class="alert alert-danger text-center mt-3" role="alert" th:if="${erro} != null" th:text="${erro}"> </div>
 
 						<button class="botao_login" type="submit"> Entrar </button>
 

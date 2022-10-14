@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* FORMATAÇÃO BARRA SCROLL */
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(40deg, #26b4fb, #26b4fb46);
+    border-radius: 5rem;
+}
+
+/* FIM FORMATAÇÃO BARRA SCROLL */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #ccc;
+    font-size: 1.6rem;
+}
+
+/* INÍCIO HEADER */
+header {
+
+    background-color: #fff;
+    color: #1a2e46;
+    
+}
+
+
+#logo {
+    width: 16rem;
+    margin-right: 1.6rem;
+}
+
+.logout {
+    font-size: 3rem;
+    color: #1a2e46;
+}
+
+
+.logout:hover {
+    color: #ff0000;
+    transition: all 0.2s;
+}
+
+/* FIM HEADER */
+
+
+/* ÁREA PRINCIPAL */
+.grid-container {
+    background-color: #1a2e46;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2rem;
+    padding: 1rem;
+    border: 0.1rem solid #1a2e46;
+}
+
+
+.menu,
+.principal {
+    background-color: #fff;
+    border: 0.2rem solid #26b4fb;
+    border-radius: 1rem;
+    height: 80vh;
+}
+
+
+ul {
+    /* width: 100%; */
+    font-size: 1.6rem;
+    padding: 0;
+}
+
+
+ul > a {
+    width: 100%;
+    color: #1a2e46;
+    display: flex;
+
+    gap: 1rem;
+    padding: 1rem;
+
+}
+
+
+ul > a:hover {
+    background-color: #1a2e46;
+    color: #fff;
+    transition: all 0.2s;
+}
+
+.menu {
+    background-color: #fff;
+}
+
+
+
+.home::before {
+    content: "🏠  ";
+    font-size: 2rem;
+
+}
+
+
+h2 {
+    color: #1a2e46;
+}
+
+.infoCad {
+    margin: 1rem;
+    text-align: justify;
+    color: #ff0000;
+
+}
+
+label {
+    color: #1a2e46;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+input {
+    width: 90%;
+    
+}
+
+
+.text-right {
+    text-align: end;
+}
+
+button{
+    background-color: #0b41219f;
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-right: 1rem;
+
+}
+
+button:hover {
+    background-color: #009A3D;
+    color: #fff;
+    border: none;
+}
+
+
+
+@media only screen and (max-width: 575px) {
+
+html {
+    font-size: 55%;
+}
+
+.logo {
+    text-align: center;  
+}
+
+#logo{
+    margin-bottom: 1rem; 
+}
+
+.align-items-start {
+    align-items: center !important;
+}
+
+/* ÁREA PRINCIPAL */
+.grid-container {
+    background-color: #1a2e46;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 2rem;
+    padding: 1rem;
+    border: 0.1rem solid #1a2e46;
+}
+
+
+.menu,
+.principal {
+    background-color: #fff;
+    border: 0.2rem solid #26b4fb;
+    border-radius: 1rem;
+    height: auto;
+}
+
+
+
+}
