@@ -6,4 +6,6 @@ import br.com.gotoviagens.model.Passagem;
 
 public interface PassagemRepository extends JpaRepository<Passagem, Long> {
 
+	
+	
 }

@@ -31,16 +31,16 @@ public class Destinos {
 		@Column(nullable = false, length = 20)
 	    private String embarque;
 		
-		@Column(nullable = false)
+		@Column(nullable = true)
 	    private BigDecimal preco;
 
-		@Column(nullable = false, length = 20)
+		@Column(nullable = true, length = 20)
 	    private String categoria;
 		
-		@Column(nullable = false)
+		@Column(nullable = true)
 	    private int quantidade;
 		
-		@Column(nullable = false, length = 20)
+		@Column(nullable = true, length = 20)
 	    private String condicao;
 		
 		@Column(nullable = false, name = "dataIda")

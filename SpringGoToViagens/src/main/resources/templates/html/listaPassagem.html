@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Go To | Agência de Viagens </title>
+	<title> PASSAGENS ENCONTRADAS | Agência de Viagens </title>
 
 </head>
 
@@ -152,182 +152,41 @@
 
 
 	<!-- INÍCIO CARDS -->
-	<main class="container-fluid mb-5">
+	<main class="container mb-5">
 
-		<div class="row mb-2">
+		
+		<h2 class="mt-3 mb-5">LISTA DE PASSAGENS DISPONÍVEIS</h2>
 
-			<div class="col-12 mt-5 text-center">
-
-				<h2 class="mb-4 text-padrao"> PASSAGENS NACIONAIS E INTERNACIONAIS</h2>
-
-			</div>
-
-		</div>
-
-
-
-		<div class="row">
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/recife1.jpg}" alt="Recife">
-					<div class="card-body">
-						<h4 class="card-title">Recife</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 750,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 500,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
+		<table class="table mb-5">
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Embarque</th>
+					<th scope="col">Destino</th>
+					<th scope="col">Preço</th>
+					<th scope="col">Condição</th>
+					<th scope="col">Qtd Disponível</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="destinos : ${destinos}">
+					<th scope="row" th:text="${destinos.id}"></th>
+					<td th:text="${destinos.embarque}"></td>
+					<td th:text="${destinos.destino}"></td>
+					<td th:text="${destinos.preco}"></td>
+					<td th:text="${destinos.quantidade}"></td>
+					<td th:text="*{quantidade}"></td>
+					<td th:text="${destinos.categoria}"></td>
+					<td>
+						<a th:href="@{/{id}/comprarPassagem (id=${destinos.id})}" class="btn btn-success">
+							Comprar
 						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/porto_galinhas1.jpg}" alt="Porto de Galinhas">
-					<div class="card-body">
-						<h4 class="card-title">Porto de Galinhas</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 750,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 650,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/salvador1.jpeg}" alt="Salvador">
-					<div class="card-body">
-						<h4 class="card-title">Salvador</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 800,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 700,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/rj1.jpg}" alt="Rio de Janeiro">
-					<div class="card-body">
-						<h4 class="card-title">Rio de Janeiro</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 1000,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 889,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-
-
-		<div class="row mt-4">
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/sao_paulo1.jpg}" alt="São Paulo">
-					<div class="card-body">
-						<h4 class="card-title">São Paulo</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 1000,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 729,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/londres1.jpg}" alt="Londres">
-					<div class="card-body">
-						<h4 class="card-title">Londres</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 1500,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 1.250,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/paris1.jpg}" alt="Paris">
-					<div class="card-body">
-						<h4 class="card-title">Paris</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 1.359,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 1.559,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-3 col-sm-6">
-
-				<div class="card text-center">
-					<img class="card-img-top" th:src="@{/img/lisboa1.jpg}" alt="Lisboa">
-					<div class="card-body">
-						<h4 class="card-title">Lisboa</h4>
-						<p class="card-text text-danger m-0 small"> De <del> R$ 1.700,00 </del> Por </p>
-						<h4 class="card-text text-success"> R$ 1.500,00 </h4>
-
-						<a href="html/destinos.html">
-							<button class="btn bg-ver-mais">Ver mais</button>
-						</a>
-
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
 	</main>
 

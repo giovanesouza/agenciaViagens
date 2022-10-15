@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -79,6 +79,26 @@ public class DestinoController {
 		ModelAndView modelAndView = new ModelAndView("redirect:/listarDestinos");
 		destinosRepository.deleteById(id);
 		return modelAndView;
+	}
+	
+
+	
+	// BUSCAR PASSAGENS
+	@GetMapping("/PassagensDisponiveis")
+	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
+	public String buscar(Model model, Destinos userParams) {
+		
+		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
+		Destinos dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
+
+		
+		if(dest != null) {
+			return "html/listaPassagem";
+		}
+		
+	
+		model.addAttribute("erro", "Passagem indisponível!");
+		return "index";
 	}
 
 }
