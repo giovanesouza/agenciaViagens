@@ -107,7 +107,7 @@
 						<tr th:each="funcionario : ${funcionarios}">
 							<th scope="row" th:text="${funcionario.matricula}"></th>
 							<td th:text="${funcionario.nome}"></td>
-							<td th:text="${funcionario.cargo}"></td>
+							<td th:text="${funcionario.cargo.nome}"></td>
 							<td th:text="${funcionario.salario}"></td>
 							<td th:text="${funcionario.dataAdmissao}"></td>
 							<td th:text="${funcionario.dataDemissao}"></td>

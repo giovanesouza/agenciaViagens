@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.gotoviagens.model.Cargo;
-import br.com.gotoviagens.model.Departamento;
 import br.com.gotoviagens.repository.CargoRepository;
 
 @Controller

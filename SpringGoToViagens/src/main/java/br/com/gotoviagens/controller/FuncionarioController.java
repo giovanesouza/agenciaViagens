@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.gotoviagens.model.Departamento;
 import br.com.gotoviagens.model.Funcionario;
+import br.com.gotoviagens.repository.CargoRepository;
 import br.com.gotoviagens.repository.FuncionarioRepository;
 
 
@@ -21,6 +21,10 @@ public class FuncionarioController {
 
 	@Autowired
 	private FuncionarioRepository funcionarioRepository;
+	
+	// NECESSÁRIO PARA FAZER A RELAÇÃO COM FUNCIONÁRIO
+    @Autowired
+    private CargoRepository cargoRepository;
 
 	// === CADASTRO DE USUÁRIOS
 
@@ -29,6 +33,9 @@ public class FuncionarioController {
 		public ModelAndView cadastrar() {
 			ModelAndView modelAndView = new ModelAndView("admin/funcionario/cadastrar");
 			modelAndView.addObject("funcionarios", new Funcionario());
+			
+			// MOSTRA A LISTA DE CARGOS
+			modelAndView.addObject("cargos", cargoRepository.findAll());
 			return modelAndView;
 		}
 
@@ -60,6 +67,7 @@ public class FuncionarioController {
 
 			Funcionario funcionarios = funcionarioRepository.getOne(matricula);
 			modelAndView.addObject("funcionarios", funcionarios);
+			modelAndView.addObject("cargos", cargoRepository.findAll());
 
 			return modelAndView;
 		}

@@ -6,9 +6,12 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,41 +20,44 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 @Entity
 @Table(name = "funcionario")
 public class Funcionario {
-	
+
 	// ATRIBUTOS
-	
+
 	@Id
 	// IDENTITY = CHAVE PRIMÁRIA E AUTOINCREMENT
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long matricula;
-	
-	@Column(nullable = false)
-	private Long codDepartamento;
-	
+
+	@Column(nullable = false, length = 20, unique = true)
+	private String cpf;
+
 	@Column(nullable = false, length = 50)
-    private String nome;
-	
+	private String nome;
+
 	@Column(nullable = false, name = "dataAdmissao")
-    @DateTimeFormat(iso = ISO.DATE)
-    private LocalDate dataAdmissao;
-	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataAdmissao;
+
 	@Column(nullable = true, name = "dataDemissao")
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate dataDemissao;
-   
-	@Column(nullable = false, length = 20)
-    private String cargo;
-	
+
+// MUITOS FUNCIONÁRIOS PARA UM CARGO	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cargo_id_fk", nullable = false)
+	private Cargo cargo;
+
 	@Column(nullable = false)
-    private BigDecimal salario;
+	private BigDecimal salario;
 
-	public Funcionario() {}
+	public Funcionario() {
+	}
 
-	public Funcionario(Long matricula, Long codDepartamento, String nome, LocalDate dataAdmissao,
-			LocalDate dataDemissao, String cargo, BigDecimal salario) {
-		
+	public Funcionario(Long matricula, String cpf, String nome, LocalDate dataAdmissao, LocalDate dataDemissao,
+			Cargo cargo, BigDecimal salario) {
+
 		this.matricula = matricula;
-		this.codDepartamento = codDepartamento;
+		this.cpf = cpf;
 		this.nome = nome;
 		this.dataAdmissao = dataAdmissao;
 		this.dataDemissao = dataDemissao;
@@ -67,12 +73,12 @@ public class Funcionario {
 		this.matricula = matricula;
 	}
 
-	public Long getCodDepartamento() {
-		return codDepartamento;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCodDepartamento(Long codDepartamento) {
-		this.codDepartamento = codDepartamento;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getNome() {
@@ -99,11 +105,11 @@ public class Funcionario {
 		this.dataDemissao = dataDemissao;
 	}
 
-	public String getCargo() {
+	public Cargo getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
+	public void setCargo(Cargo cargo) {
 		this.cargo = cargo;
 	}
 
@@ -117,7 +123,7 @@ public class Funcionario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cargo, codDepartamento, dataAdmissao, dataDemissao, matricula, nome, salario);
+		return Objects.hash(cargo, cpf, dataAdmissao, dataDemissao, matricula, nome, salario);
 	}
 
 	@Override
@@ -129,19 +135,18 @@ public class Funcionario {
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		return Objects.equals(cargo, other.cargo) && Objects.equals(codDepartamento, other.codDepartamento)
-				&& Objects.equals(dataAdmissao, other.dataAdmissao)
-				&& Objects.equals(dataDemissao, other.dataDemissao) && Objects.equals(matricula, other.matricula)
-				&& Objects.equals(nome, other.nome) && Objects.equals(salario, other.salario);
+		return Objects.equals(cargo, other.cargo) && Objects.equals(cpf, other.cpf)
+				&& Objects.equals(dataAdmissao, other.dataAdmissao) && Objects.equals(dataDemissao, other.dataDemissao)
+				&& Objects.equals(matricula, other.matricula) && Objects.equals(nome, other.nome)
+				&& Objects.equals(salario, other.salario);
 	}
 
 	@Override
 	public String toString() {
-		return "Funcionario [matricula=" + matricula + ", codDepartamento=" + codDepartamento + ", nome=" + nome
-				+ ", dataAdmissao=" + dataAdmissao + ", dataDemissao=" + dataDemissao + ", cargo=" + cargo
-				+ ", salario=" + salario + "]";
+		return "Funcionario [matricula=" + matricula + ", cpf=" + cpf + ", nome=" + nome + ", dataAdmissao="
+				+ dataAdmissao + ", dataDemissao=" + dataDemissao + ", cargo=" + cargo + ", salario=" + salario + "]";
 	}
+	
+	
 
-	
-	
 }
