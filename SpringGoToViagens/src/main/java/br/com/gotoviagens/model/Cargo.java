@@ -22,7 +22,7 @@ public class Cargo {
 	private Long id;
 	
 	
-	@Column(name = "nome", nullable = false)
+	@Column(name = "nome", length = 20, unique = true, nullable = false)
 	private String nome;
 	
 	@OneToMany(mappedBy = "cargo")

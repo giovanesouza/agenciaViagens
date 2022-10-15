@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Administrador </title>
+	<title> LISTA DE CANDIDATOS | Agência de Viagens </title>
 
 </head>
 
@@ -32,7 +32,7 @@
 		<header class="row">
 
 			<div class="col-sm-6 mb-2 text-justify">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
 				</a>
 			</div>
@@ -63,26 +63,11 @@
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
 				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover bg-active" href="#"> HOME <span
+						<a class="nav-link btn-hover" href="/admin"> HOME <span
 								class="visually-hidden">(current)</span></a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/cadastrarDestinos">CADASTRAR DESTINOS</a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/listarContatos">SOLICITAÇÃO DE CONTATO</a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/cadastrarDepartamento">CADASTRAR DEPARTAMENTO</a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/cadastrarCargo">CADASTRAR CARGO</a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/cadastrarFuncionario">CADASTRAR FUNCIONÁRIO</a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/listarCandidatos">LISTAR CANDIDATOS</a>
+						<a class="nav-link btn-hover bg-active" href="#">LISTAR CANDIDATOS</a>
 					</li>
 				</ul>
 
@@ -91,10 +76,54 @@
 		</nav>
 
 	</div>
-
 	<!-- FIM MENUS -->
 
 
+
+	<!-- INÍCIO - LISTAR DESTINOS -->
+
+<main class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Lista de candidatos cadastrados</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nome</th>							
+							<th scope="col">Email</th>							
+							<th scope="col">Cargo</th>							
+							<th scope="col">Currículo (link)</th>							
+							<th scope="col">Ações</th>							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="trabalheConosco : ${trabalheConosco}">
+							<th scope="row" th:text="${trabalheConosco.id}"></th>
+							<td th:text="${trabalheConosco.nome}"></td>
+							<td th:text="${trabalheConosco.email}"></td>
+							<td th:text="${trabalheConosco.cargo}"></td>
+							<td th:text="${trabalheConosco.curriculo}"></td>
+							<td>
+								<a th:href="@{/{id}/excluirCandidato (id=${trabalheConosco.id})}" class="btn btn-danger"
+									onclick="return confirm('Tem certeza que deseja excluir a candidatura?');">
+									Excluir
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</main>
+
+	<!-- FIM - LISTAR DESTINOS  -->
 
 
 	<!-- ICON SCROLL TOP -->
@@ -110,7 +139,7 @@
 		<div class="row mb-3">
 
 			<div class="col-sm-6 mb-2 text-right">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
 				</a>
 			</div>
@@ -128,13 +157,11 @@
 		</div>
 
 
-
 		<div class="row mt-4 mb-3">
 			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
 		</div>
 
 	</footer>
-
 
 	<script th:src="@{/js/all.js}"></script>
 
