@@ -16,22 +16,24 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
+	<link rel="stylesheet" th:href="@{/css/confirm.css}">
 
-	<title> Trabalhe Conosco - Go To | Agência de Viagens </title>
+	<title> Enviado com sucesso! - Go To | Agência de Viagens </title>
 
 </head>
 
 <body>
 
-
 	<!-- CABEÇALHO -->
-
 	<div class="container-fluid mt-3">
 
 		<header class="row">
-
 
 			<div class="col-sm-6 mb-2 text-justify">
 				<a href="/">
@@ -48,6 +50,7 @@
 
 
 		</header>
+
 		<!-- FIM CABEÇALHO -->
 
 
@@ -72,7 +75,7 @@
 						<a class="nav-link btn-hover" href="/destinos">DESTINOS</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href="/contato">CONTATO</a>
+						<a class="nav-link btn-hover bg-active" href="#">CONTATO</a>
 					</li>
 					<li class="nav-item text-center">
 						<a class="nav-link login absolute-right" href="/login">LOGIN</a>
@@ -84,7 +87,9 @@
 		</nav>
 
 	</div>
+
 	<!-- FIM MENUS -->
+
 
 
 	<!-- INÍCIO CONTATO FORM -->
@@ -93,17 +98,7 @@
 		<div class="row mt-3">
 
 			<div class="col-12">
-				<h3 class="text-center text-padrao"> Trabalhe conosco </h3>
-
-				<p> Se você está querendo trabalhar na área que mais cresce no Brasil e no Mundo, venha fazer parte da
-					nossa equipe! </p>
-
-				<p> Será um prazer tê-lo(a) como colaborador!! </p>
-
-
-				<p class="text-padrao text-center"> <strong> Preencha o formulário abaixo com os seus dados: </strong>
-				</p>
-
+				<h3 class="text-center text-padrao"> Fale conosco </h3>
 			</div>
 
 		</div>
@@ -111,54 +106,28 @@
 
 		<div class="row mt-3">
 
-			<form method="post" th:object="${trabalheConosco}">
+			<!-- INÍCIO CONFIRMAÇÃO DE ENVIO -->
+			<div class="row mt-3 mb-5 confirm" id="success">
 
-				<div class="col-12">
-
-					<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
-						placeholder="Digite seu nome" maxlength="50" required>
-
+				<div class="col-md-12 text-center">
+					<span class="material-symbols-outlined sucesso">
+						done
+					</span>
 				</div>
 
 
-				<div class="col-12 mt-3 mb-3">
-
-					<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
-						placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required>
-
-				</div>
-
-				<div class="col-12 mt-3 mb-3">
-
-					<input type="text" class="form-control" name="cargo" th:field="*{cargo}" id="cargo"
-						placeholder="Cargo para candidatura da vaga" maxlength="15" required>
-
+				<div class="col-md-12 mt-3 text-center text-light">
+					<h3>Solicitação de contato realizada com sucesso!</h3>
+					<span>Em breve entraremos em contato pelo e-mail.</span>
 				</div>
 
 
-				<div class="col-12 mt-3 mb-3">
-
-					<label class="text-padrao" for="curriculo"> <strong> Envie o seu currículo: </strong> (Envie o seu
-						currículo para o DRIVE e cole o link abaixo - não esqueça de deixar o link como público)
-					</label>
-					<br>
-					<input type="url" class="form-control" name="curriculo" th:field="*{curriculo}" id="curriculo">
-
-				</div>
-
-
-				<div class="col-12 mb-3 text-center">
-
-					<button class="botao_login" type="submit" style="width: 100%;"> Enviar </button>
-
-				</div>
-
-			</form>
+			</div>
+			<!-- FIM CONFIRMAÇÃO DE ENVIO -->
 
 		</div>
 
 
-	</div>
 
 
 	</div>
@@ -168,31 +137,30 @@
 	<!-- INÍCIO CELL E EMAIL -->
 
 	<div class="container">
-		<div class="row text-center mt-5 mb-5">
+		<div class="row text-center mb-5">
 
+			<div class="col-md-6 ">
 
-			<div class="col-md-6">
+				<div style="font-size: 16px;">
 
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<path fill="none" d="M0 0h24v24H0z" />
-					<path
-						d="M9.366 10.682a10.556 10.556 0 0 0 3.952 3.952l.884-1.238a1 1 0 0 1 1.294-.296 11.422 11.422 0 0 0 4.583 1.364 1 1 0 0 1 .921.997v4.462a1 1 0 0 1-.898.995c-.53.055-1.064.082-1.602.082C9.94 21 3 14.06 3 5.5c0-.538.027-1.072.082-1.602A1 1 0 0 1 4.077 3h4.462a1 1 0 0 1 .997.921A11.422 11.422 0 0 0 10.9 8.504a1 1 0 0 1-.296 1.294l-1.238.884zm-2.522-.657l1.9-1.357A13.41 13.41 0 0 1 7.647 5H5.01c-.006.166-.009.333-.009.5C5 12.956 11.044 19 18.5 19c.167 0 .334-.003.5-.01v-2.637a13.41 13.41 0 0 1-3.668-1.097l-1.357 1.9a12.442 12.442 0 0 1-1.588-.75l-.058-.033a12.556 12.556 0 0 1-4.702-4.702l-.033-.058a12.442 12.442 0 0 1-.75-1.588z" />
-				</svg>
+					<i class="ri-phone-line"> (81) 98888-8335</i>
 
-				<span> (81) 98888-8335 </span>
+				</div>
+
 
 			</div>
 
 
 			<div class="col-md-6">
 
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<path fill="none" d="M0 0h24v24H0z" />
-					<path
-						d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z" />
-				</svg>
+				<div class="d-inline align-middle" style="font-size: 16px;">
 
-				<span>gotoviagens@gmail.com </span>
+					<i class="ri-mail-line align-middle"> </i>
+
+					<span class="align-middle"> gotoviagens@gmail.com </span>
+
+				</div>
+
 
 			</div>
 
@@ -211,7 +179,6 @@
 	<i onclick="subirTela()" class="ri-arrow-up-s-line" id="icon-top"></i>
 
 	<!-- ICON SCROLL TOP -->
-
 
 
 	<!-- RODAPÉ -->
@@ -284,7 +251,7 @@
 			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/duvidas"> Dúvidas </a> </div>
 			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/contato"> Clique para falar conosco
 				</a> </div>
-			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="#"> Trabalhe conosco
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/trabalheconosco"> Trabalhe conosco
 				</a> </div>
 
 		</div>
@@ -302,6 +269,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+
 </body>
 
 </html>

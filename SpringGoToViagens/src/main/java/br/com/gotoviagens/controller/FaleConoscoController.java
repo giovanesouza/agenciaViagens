@@ -34,7 +34,7 @@ public class FaleConoscoController {
 	@PostMapping("/contato")
 	public ModelAndView contactar(FaleConosco faleConosco)  throws IOException {
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/contato");
+		ModelAndView modelAndView = new ModelAndView("success/confirm-contato");
 
 		faleConoscoRepository.save(faleConosco);
 

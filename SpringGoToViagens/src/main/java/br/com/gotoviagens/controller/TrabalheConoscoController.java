@@ -35,7 +35,7 @@ public class TrabalheConoscoController {
 	@PostMapping("/trabalheconosco")
 	public ModelAndView cadastrar(TrabalheConosco curriculo) throws IOException {
 
-		ModelAndView modelAndView = new ModelAndView("redirect:/trabalheconosco");
+		ModelAndView modelAndView = new ModelAndView("success/confirm-trabalheconosco");
 
 		trabalheConoscoRepository.save(curriculo);
 

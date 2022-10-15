@@ -16,10 +16,15 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
+	<link rel="stylesheet" th:href="@{/css/confirm.css}">
 
-	<title> Trabalhe Conosco - Go To | Agência de Viagens </title>
+	<title> Enviado com sucesso! - Go To | Agência de Viagens </title>
 
 </head>
 
@@ -93,16 +98,8 @@
 		<div class="row mt-3">
 
 			<div class="col-12">
+
 				<h3 class="text-center text-padrao"> Trabalhe conosco </h3>
-
-				<p> Se você está querendo trabalhar na área que mais cresce no Brasil e no Mundo, venha fazer parte da
-					nossa equipe! </p>
-
-				<p> Será um prazer tê-lo(a) como colaborador!! </p>
-
-
-				<p class="text-padrao text-center"> <strong> Preencha o formulário abaixo com os seus dados: </strong>
-				</p>
 
 			</div>
 
@@ -111,49 +108,25 @@
 
 		<div class="row mt-3">
 
-			<form method="post" th:object="${trabalheConosco}">
+			<!-- INÍCIO CONFIRMAÇÃO DE ENVIO -->
+			<div class="row mt-3 mb-5 confirm" id="success">
 
-				<div class="col-12">
-
-					<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
-						placeholder="Digite seu nome" maxlength="50" required>
-
+				<div class="col-md-12 text-center">
+					<span class="material-symbols-outlined sucesso">
+						done
+					</span>
 				</div>
 
 
-				<div class="col-12 mt-3 mb-3">
-
-					<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
-						placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required>
-
-				</div>
-
-				<div class="col-12 mt-3 mb-3">
-
-					<input type="text" class="form-control" name="cargo" th:field="*{cargo}" id="cargo"
-						placeholder="Cargo para candidatura da vaga" maxlength="15" required>
-
+				<div class="col-md-12 mt-3 text-center text-light">
+					<h3>Currículo enviado com sucesso!</h3>
+					<span>Ficamos felizes pelo seu interesse em trabalhar conosco!</span>
+					<span>Em breve entraremos em contato pelo e-mail.</span>
 				</div>
 
 
-				<div class="col-12 mt-3 mb-3">
-
-					<label class="text-padrao" for="curriculo"> <strong> Envie o seu currículo: </strong> (Envie o seu
-						currículo para o DRIVE e cole o link abaixo - não esqueça de deixar o link como público)
-					</label>
-					<br>
-					<input type="url" class="form-control" name="curriculo" th:field="*{curriculo}" id="curriculo">
-
-				</div>
-
-
-				<div class="col-12 mb-3 text-center">
-
-					<button class="botao_login" type="submit" style="width: 100%;"> Enviar </button>
-
-				</div>
-
-			</form>
+			</div>
+			<!-- FIM CONFIRMAÇÃO DE ENVIO -->
 
 		</div>
 

@@ -22,7 +22,7 @@ public class UsuarioController {
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/cadastrarUsuario")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("html/cadastrar");
+		ModelAndView modelAndView = new ModelAndView("html/cadastrarUsuario");
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
@@ -30,7 +30,7 @@ public class UsuarioController {
 	@PostMapping("/cadastrarUsuario")
 	public ModelAndView cadastrar(Usuario usuario)  throws IOException {
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/login");
+		ModelAndView modelAndView = new ModelAndView("success/confirm-cadastroUsuario");
 
 		usuarioRepository.save(usuario);
 
