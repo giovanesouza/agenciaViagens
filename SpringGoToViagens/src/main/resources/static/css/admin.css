@@ -1,0 +1,32 @@
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+}
+
+.material-symbols-outlined {
+	font-size: 4rem;
+}
+
+.col-4 a {
+	color:  #1a2e46;
+	transition: all 0.2s;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.col-4 a:hover {
+	background-color: #1a2e46;
+	color: #fff;
+}
+
+
+@media only screen and (max-width: 575px) {
+
+html {
+    font-size: 55%;
+}
+
+}

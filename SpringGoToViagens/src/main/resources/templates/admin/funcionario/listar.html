@@ -27,7 +27,7 @@
 
 	<!-- CABEÇALHO -->
 
-	<div class="container-fluid mt-3">
+	<div class="container mt-3">
 
 		<header class="row">
 
@@ -82,7 +82,7 @@
 
 	<!-- INÍCIO - LISTAR DESTINOS -->
 
-<main class="container mt-5 mb-5">
+	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
 				<h1>Funcionários cadastrados</h1>
@@ -94,13 +94,13 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Matrícula</th>							
-							<th scope="col">Nome</th>							
-							<th scope="col">Cargo</th>							
-							<th scope="col">Salário</th>							
-							<th scope="col">Data de Adimissão</th>							
-							<th scope="col">Data de Demissão</th>							
-							<th scope="col">Ações</th>							
+							<th scope="col">Matrícula</th>
+							<th scope="col">Nome</th>
+							<th scope="col">Cargo</th>
+							<th scope="col">Salário</th>
+							<th scope="col">Data de Adimissão</th>
+							<th scope="col">Data de Demissão</th>
+							<th scope="col">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -112,10 +112,12 @@
 							<td th:text="${funcionario.dataAdmissao}"></td>
 							<td th:text="${funcionario.dataDemissao}"></td>
 							<td>
-								<a th:href="@{/{matricula}/editarFuncionario (matricula=${funcionario.matricula})}" class="btn btn-warning">
+								<a th:href="@{/{matricula}/editarFuncionario (matricula=${funcionario.matricula})}"
+									class="btn btn-warning">
 									Editar
 								</a>
-								<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}" class="btn btn-danger"
+								<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}"
+									class="btn btn-danger"
 									onclick="return confirm('Tem certeza que deseja excluir o funcionário?');">
 									Excluir
 								</a>
@@ -128,8 +130,8 @@
 
 		<div class="row">
 			<div class="col-sm-12">
-			
-			<!-- CHAMA A VIEW DE CADASTRO E PASSA UM OBJETO VAZIO -->
+
+				<!-- CHAMA A VIEW DE CADASTRO E PASSA UM OBJETO VAZIO -->
 				<a th:href="@{/cadastrarFuncionario}" class="btn btn-primary">Cadastrar novo funcionário</a>
 			</div>
 		</div>
