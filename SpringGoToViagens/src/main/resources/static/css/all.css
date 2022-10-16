@@ -434,11 +434,28 @@ a {
 /* FIM CENTRAL DE AJUDA */
 
 
-/* INÍCIO RESPONSIVIDADE TABLES - PAGS ADMIN */
+/* INÍCIO RESPONSIVIDADE TABELAS */
 
 #table {
 	overflow-x: auto;
+	border: 0.1rem solid #1a2e46;
+	border-radius: 2rem 2rem 0 0;
 }
+
+tr, th, td {
+	text-align: center;
+}
+
+tr {
+	/*background-color: #cdcd; */
+
+}
+
+td input {
+	text-align: center;
+	background-color: #ccc;
+}
+
 
 
 /* FIM RESPONSIVIDADE TABLES */

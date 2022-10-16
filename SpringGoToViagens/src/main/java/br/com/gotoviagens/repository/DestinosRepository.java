@@ -1,5 +1,8 @@
 package br.com.gotoviagens.repository;
 
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,6 +17,8 @@ public interface DestinosRepository extends JpaRepository<Destinos, Long> {
 	 */
 
 	@Query(value = "select * from destinos where embarque = :embarque and destino = :destino", nativeQuery = true)
-	public Destinos BuscarPassagem(String embarque, String destino);
+	
+	public List<Destinos> BuscarPassagem(String embarque, String destino);
+
 
 }

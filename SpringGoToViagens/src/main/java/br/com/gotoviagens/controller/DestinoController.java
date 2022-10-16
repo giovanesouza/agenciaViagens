@@ -32,10 +32,10 @@ public class DestinoController {
 
 	@PostMapping("/cadastrarDestinos")
 	public ModelAndView cadastrarDestino(Destinos destinos) throws IOException {
-	
-		ModelAndView modelAndView = new ModelAndView("admin/destinos/cadastrarDestino");	
+
+		ModelAndView modelAndView = new ModelAndView("admin/destinos/cadastrarDestino");
 		destinosRepository.save(destinos);
-		
+
 		return modelAndView;
 	}
 
@@ -80,25 +80,50 @@ public class DestinoController {
 		destinosRepository.deleteById(id);
 		return modelAndView;
 	}
-	
 
-	
 	// BUSCAR PASSAGENS
-	@GetMapping("/PassagensDisponiveis")
+	/*@GetMapping("/buscarPassagem")
 	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
 	public String buscar(Model model, Destinos userParams) {
-		
+
 		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
 		Destinos dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
 
-		
-		if(dest != null) {
+		if (dest != null) {
 			return "html/listaPassagem";
 		}
-		
-	
-		model.addAttribute("erro", "Passagem indisponível!");
+
+		model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
 		return "index";
+
+	} 
+	*/
+	
+	// BUSCAR PASSAGEM - VERSÃO FUNCIONAL QUE APRESENTA TODOS OS CAMPOS DO BD
+
+	@GetMapping("/buscarPassagem")
+	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
+	public ModelAndView buscar(Model model, Destinos userParams) {
+
+		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
+		List<Destinos> dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
+
+		if (dest != null) {
+			//return new ModelAndView("html/listaPassagem");
+
+		}
+
+		model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
+		//model.addAttribute("sucesso", "Passagens localizadas.");
+	
+		model.addAttribute("destinos", dest);
+		return new ModelAndView("html/listaPassagem");
+
 	}
+	
+	
+
+
+	
 
 }
