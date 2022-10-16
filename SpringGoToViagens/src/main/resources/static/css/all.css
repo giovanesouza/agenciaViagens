@@ -8,6 +8,7 @@
 
 ::-webkit-scrollbar {
     width: 1rem;
+    height: 0.8rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -432,6 +433,15 @@ a {
 
 /* FIM CENTRAL DE AJUDA */
 
+
+/* INÍCIO RESPONSIVIDADE TABLES - PAGS ADMIN */
+
+#table {
+	overflow-x: auto;
+}
+
+
+/* FIM RESPONSIVIDADE TABLES */
 
 
 

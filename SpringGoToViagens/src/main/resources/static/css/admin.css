@@ -10,20 +10,25 @@ body {
 	font-size: 4rem;
 }
 
-.col-4 a {
+.col-sm-4 > a {
 	color:  #1a2e46;
 	transition: all 0.2s;
 	gap: 1rem;
 	padding: 1rem;
+	
+	display: flex !important;
+	flex-direction: column !important;
+	
 }
 
-.col-4 a:hover {
+.col-sm-4 a:hover {
 	background-color: #1a2e46;
 	color: #fff;
 }
 
 
-@media only screen and (max-width: 575px) {
+
+@media only screen and (max-width: 600px) {
 
 html {
     font-size: 55%;

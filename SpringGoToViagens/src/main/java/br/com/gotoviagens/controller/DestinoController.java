@@ -33,7 +33,7 @@ public class DestinoController {
 	@PostMapping("/cadastrarDestinos")
 	public ModelAndView cadastrarDestino(Destinos destinos) throws IOException {
 	
-		ModelAndView modelAndView = new ModelAndView("admin//destinos/cadastrarDestino");	
+		ModelAndView modelAndView = new ModelAndView("admin/destinos/cadastrarDestino");	
 		destinosRepository.save(destinos);
 		
 		return modelAndView;
