@@ -176,8 +176,6 @@
 		</div>
 
 
-
-
 	</div>
 	<!-- FIM CONTATO FORM -->
 
@@ -323,19 +321,12 @@
 		const inputDate = document.querySelector('#dataContato');
 		const dataHoje = new Date();
 
-		const d = dataHoje.getDate();
-		const m = dataHoje.getMonth();
-		const y = dataHoje.getFullYear();
-		
-		let zero;
-		
-		if(m <10) {
-			zero = "0";
-		} else {
-			zero = "";
-		}
+		const d = dataHoje.getDate().toString().padStart(2,'0'); // Dia com 2 digitos;
+		const m = String(dataHoje.getMonth( )+ 1).padStart(2,'0'); // Mês com 2 digitos
+		const y = dataHoje.getFullYear(); // Ano com 4 digitos
+	
 
-		inputDate.value = `${y}-${zero}${m}-${d}`;
+		inputDate.value = `${y}-${m}-${d}`;
 
 	</script>
 </body>

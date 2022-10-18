@@ -101,31 +101,30 @@
 
 					<div class="col-8 offset-2">
 
-						<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
-							placeholder="Digite seu nome" maxlength="50" />
+						<input type="text" class="form-control" name="nome" th:field="*{nome}" th:value="*{nome}" id="nome"
+							placeholder="Digite seu nome" maxlength="50"  />
 
 					</div>
 
 
 					<div class="col-8 offset-2 mt-3">
 
-						<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" />
+						<input type="email" class="form-control" name="email" th:field="*{email}" th:value="*{email}" id="email"
+							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50"  />
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
 						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem"
-							cols="30" rows="5" placeholder="Digite sua mensagem aqui"></textarea>
+							cols="30" rows="5" placeholder="Digite sua mensagem aqui" /></textarea>
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
 						<label for="dataContato"> Data de solicitação de contato: </label>
-						<input type="date" class="form-control bg-warning" name="dataContato" th:field="*{dataContato}"
-							id="dataContato" />
+						<input type="date" class="form-control bg-warning" name="dataContato" th:field="*{dataContato}" id="dataContato" />
 
 					</div>
 
@@ -140,7 +139,7 @@
 					<div class="col-8 offset-2 mt-3">
 
 						<input type="text" class="form-control" name="status" th:field="*{status}" id="status"
-							placeholder="Insira o status" maxlength="20" required>
+							placeholder="Insira o status" maxlength="20" required />
 
 
 					</div>
@@ -252,22 +251,16 @@
 
 	<!-- INSERINDO VALOR AO INPUT DATA -->
 	<script>
+
 		const inputDate = document.querySelector('#dataResposta');
 		const dataHoje = new Date();
 
-		const d = dataHoje.getDate();
-		const m = dataHoje.getMonth();
-		const y = dataHoje.getFullYear();
+		const d = dataHoje.getDate().toString().padStart(2, '0'); // Dia com 2 digitos;
+		const m = String(dataHoje.getMonth() + 1).padStart(2, '0'); // Mês com 2 digitos
+		const y = dataHoje.getFullYear(); // Ano com 4 digitos
 
-		let zero;
 
-		if (m < 10) {
-			zero = "0";
-		} else {
-			zero = "";
-		}
-
-		inputDate.value = `${y}-${zero}${m}-${d}`;
+		inputDate.value = `${y}-${m}-${d}`;
 
 	</script>
 </body>

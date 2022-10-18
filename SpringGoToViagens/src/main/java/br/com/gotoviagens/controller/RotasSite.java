@@ -1,5 +1,6 @@
 package br.com.gotoviagens.controller;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -7,14 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RotasSite {
 
-	// ROTAS PRINCIPAIS
-	
+	// ROTAS PRINCIPAIS	
+
+	/*
 	@GetMapping("/")
 	// INICIALIZA A APLICAÇÃO
 	public String index() {
 		return "index";
 	}
-	
+
 	@GetMapping("/promocoes")
 	// PÁGINA PROMOÇÕES
 	public ModelAndView promocoes() {
@@ -59,6 +61,5 @@ public class RotasSite {
 		return modelAndView;
 	}
 	
-	
-	
+		*/
 }

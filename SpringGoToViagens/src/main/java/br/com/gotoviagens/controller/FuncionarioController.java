@@ -14,8 +14,6 @@ import br.com.gotoviagens.model.Funcionario;
 import br.com.gotoviagens.repository.CargoRepository;
 import br.com.gotoviagens.repository.FuncionarioRepository;
 
-
-
 @Controller
 public class FuncionarioController {
 

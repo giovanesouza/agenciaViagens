@@ -8,7 +8,7 @@ public class RotasPerfil {
 
 	@GetMapping("/perfil")
 	// PÁGINA INICIAL DO PERFIL
-	public String index() {
+	public String perfilHome() {
 		return "perfil/inicio";
 	}
 	
