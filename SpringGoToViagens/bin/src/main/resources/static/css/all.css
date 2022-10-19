@@ -1,0 +1,504 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FORMATAÇÃO BARRA SCROLL */
+
+::-webkit-scrollbar {
+    width: 1rem;
+    height: 0.8rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(40deg, #26b4fb, #26b4fb46);
+    border-radius: 5rem;
+}
+
+/* FIM FORMATAÇÃO BARRA SCROLL */
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+
+/* TAMANHO TEXTOS */
+
+h2 {
+    font-size: 3.1rem;
+}
+
+h3 {
+    font-size: 2.7rem;
+}
+
+h4 {
+    font-size: 2.3rem;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1.6rem;
+}
+
+/* INÍCIO CABEÇALHO */
+
+header img {
+    width: 14.3rem;
+}
+
+
+/* FIM CABEÇALHO */
+
+
+/* MENUS */
+
+nav {
+    font-size: 1.6rem;
+}
+
+
+.navbar-toggler {
+    font-size: 2rem;
+}
+
+/* --- ALINHAMENTO NAVBAR - POSITION */
+
+.relative {
+    position: relative;
+}
+
+.absolute-right {
+    position: absolute;
+    right: 9%;
+}
+
+/* FIM ALINHAMENTO NAVBAR - POSITION */
+
+
+/* INPUTS COM A CLASS .FORM-CONTROL */
+.form-control {
+    font-size: 1.6rem;
+}
+
+
+
+/* BOTÕES */
+
+.btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.bg-active {
+    background-color: #1a2e46;
+    color: #fff !important;
+    font-size: 1.6rem;
+}
+
+.btn-hover {
+    transition: all .2s;
+}
+
+.btn-hover:hover {
+    background-color: #1a2e46;
+    color: #fff !important;
+
+}
+
+.float-right {
+    float: right !important;
+}
+
+
+
+.login {
+    background-color: #0354b8;
+    color: #fff !important;
+
+    transition: all .2s;
+}
+
+.login:hover {
+    background-color: #d8450b;
+    color: #fff !important;
+}
+
+
+
+/* FIM BOTÕES */
+
+
+/* MODAL BACKGROUND */
+
+
+.bg-modal {
+    background-color: #1a2e46ec;
+    color: #fff;
+}
+
+.bg-cadastrar {
+    background-color: #eee;
+    color: #1a2e46;
+}
+
+
+.bg-cadastrar:hover {
+    background-color: #d8450b;
+    color: #fff;
+}
+
+
+/* FIM BACKGROUND */
+
+
+
+/* BUSCAR PASSAGENS */
+
+.bg-degrade {
+    background-image: linear-gradient(40deg, #1a2e46, #26b4fb);
+    padding: 1.6rem;
+}
+
+
+.bg-degrade h3 {
+    font-size: 2.7rem;
+}
+
+.btn-buscar {
+    border: 0.1rem solid #fff;
+    transition: all 0.2s;
+}
+
+.btn-buscar:hover {
+    background-color: #0354b8;
+}
+
+.bg-buscar {
+    background-color: #025ece;
+    color: #fff;
+    border: 0.1rem solid #fff;
+    transition: all 0.2s;
+}
+
+.bg-buscar:hover {
+    background-color: #d8450b;
+    color: #fff;
+}
+
+
+input[type="date"] {
+    width: 16rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+
+
+/* FIM BUSCAR PASSAGENS */
+
+
+/* INÍCIO ICON DO SCROLL TOP */
+
+#icon-top {
+    background-color: #0354b8;
+    color: #ffffff;
+
+    padding: 0.5rem 1rem;
+    text-align: center;
+    
+
+    border-radius: 50%;
+    box-shadow: 0 0 0.1rem 0.1rem #ffffff;
+
+    display: none;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    position: fixed;
+    right: 1rem;
+    bottom: 2rem;
+
+    cursor: pointer;
+    z-index: 999;
+}
+
+#icon-top:hover {
+    background-color: #1a2e46;
+}
+
+/* FIM ICON DO SCROLL TOP */
+
+
+
+/* INÍCIO RODAPÉ */
+
+footer .text-right img {
+    width: 20rem;
+}
+
+
+.link_rodape {
+    text-decoration: none;
+    color: #1a2e46;
+
+}
+
+.accordion-button {
+    font-size: 1.6rem;
+}
+
+/* FIM RODAPÉ */
+
+
+
+
+/* ALINHAMENTOS GERAIS */
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-right {
+    text-align: end;
+
+}
+
+.p_justify {
+    text-align: justify;
+}
+
+/* FIM ALINHAMENTOS GERAIS */
+
+
+
+/* COR PADRÃO LOGO - TEXTO */
+
+.text-padrao {
+    color: #1a2e46;
+}
+
+
+/* FIM COR PADRÃO */
+
+
+/* TEXTO - Sempre justificado */
+
+.text-alinhado {
+    text-align: justify;
+}
+
+/* FIM justificado */
+
+
+
+/* FIM FORMATAÇÃO GERAL */
+
+
+
+/* PÁGINA INICIAL */
+
+
+.bg-ver-mais {
+    border: 0.1rem solid #d8450b;
+    color: #1a2e46;
+    transition: all 0.2s;
+}
+
+.bg-ver-mais:hover {
+    transform: scale(1.1);
+    background-color: #d8450b;
+    box-shadow: 0.1rem 0.2rem 1rem;
+    color: #fff;
+}
+
+/* FIM PÁGINA INICIAL */
+
+
+
+/* PÁGINA PROMOÇÕES */
+
+.animation {
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+/* ANIMAÇÃO DE PROMOÇÃO CONTEÚDO */
+
+.animation::after {
+    color: #d80b0b;
+    content:'';
+    animation: promocao 2s linear infinite;
+}
+
+@keyframes promocao {
+    0% {content:''}
+    50% {content:' POR TEMPO LIMITADO!!'}
+
+    100% {content:''}
+}
+
+
+/* FIM PÁGINA PROMOÇÕES */
+
+
+
+/* PÁGINA DE LOGIN */
+
+/* LOGIN */
+
+.text-login {
+    color: #1a2e46 !important;
+}
+
+.text-registrar:hover {
+    cursor: pointer;
+    color: #F86629;
+}
+
+
+.botao_login {
+
+    border: 0.1rem solid #1a2e46;
+    border-radius: 1rem;
+
+
+    color: #1a2e46;
+    padding: 1rem;
+    margin-top: 1rem;
+
+}
+
+
+.botao_login:hover {
+    cursor: pointer;
+    border-radius: 1rem;
+    background-color: #1a2e46;
+    color: #EEEEEE;
+    transition: 0.2s;
+}
+
+/* FIM DE LOGIN */
+
+/* PÁGINA CENTRAL DE AJUDA */
+
+.bg-central-ajuda,
+a {
+    text-decoration: none;
+}
+
+.bg-central-ajuda {
+    display: flex;
+    align-items: center;
+    box-shadow: 0.1rem 0.2rem 1rem;
+    border: none;
+    transition: all .2s;
+
+}
+
+.bg-central-ajuda:hover {
+    background-color: #d8450b;
+    box-shadow: 0.1rem 0.2rem 1rem;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: #EEEEEE;
+}
+
+.icon>i {
+    color: #1a2e46;
+}
+
+/* FIM CENTRAL DE AJUDA */
+
+
+/* INÍCIO RESPONSIVIDADE TABELAS */
+
+#table {
+	overflow-x: auto;
+	border: 0.1rem solid #1a2e46;
+	border-radius: 2rem 2rem 0 0;
+}
+
+tr, th, td {
+	text-align: center;
+}
+
+tr {
+	/*background-color: #cdcd; */
+
+}
+
+td input {
+	text-align: center;
+	background-color: #ccc;
+}
+
+
+
+/* FIM RESPONSIVIDADE TABLES */
+
+
+
+@media only screen and (max-width: 575px) {
+
+
+    html {
+        font-size: 55%;
+    }
+
+
+
+    .text-right {
+        text-align: center;
+
+    }
+
+    .text-justify {
+        text-align: center;
+    }
+
+
+    /* ALINHAMENTO NAVBAR - POSITION */
+
+    .relative {
+        position: relative;
+    }
+
+    .absolute-right {
+        position: static;
+
+    }
+
+
+}
+
+@media only screen and (max-width: 400px) {
+
+    html {
+        font-size: 50%;
+    }
+
+}

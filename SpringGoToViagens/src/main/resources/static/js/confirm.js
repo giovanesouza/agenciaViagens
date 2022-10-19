@@ -24,7 +24,6 @@ form.addEventListener("submit", (e) => {
 });
 
 
-
 btnSair.addEventListener("click", sair);
 
 

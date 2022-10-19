@@ -45,13 +45,16 @@ header {
     margin-right: 1.6rem;
 }
 
+
 .logout {
+	background-color: transparent;
     font-size: 3rem;
     color: #1a2e46;
 }
 
 
 .logout:hover {
+	background-color: transparent;
     color: #ff0000;
     transition: all 0.2s;
 }

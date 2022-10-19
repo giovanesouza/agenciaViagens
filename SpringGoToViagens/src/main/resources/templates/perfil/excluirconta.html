@@ -37,7 +37,7 @@
 
 			<div class="col-md-7 d-flex flex-column align-items-start justify-content-center">
 
-				<span>Olá, <span>NOME</span>. Seja bem vindo(a)!</span>
+				<span>Olá, <span th:text="${session.usuarioLogado.nome}">NOME</span>. Seja bem vindo(a)!</span>
 
 				<div class="datahora">
 					<span><strong>Data:</strong> <span id="data"></span>.</span>
@@ -48,9 +48,9 @@
 
 			<div class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
 
-				<a href="#">
-					<span class="material-symbols-outlined logout">logout</span>
-				</a>
+				<form action="/logout" method="post">
+					<button type="submit" class="material-symbols-outlined logout"> logout </button>
+				</form>
 
 			</div>
 
@@ -62,7 +62,7 @@
 
 		<div class="menu">
 
-		<ul>
+			<ul>
 				<a href="/perfil">
 
 					<span class="material-symbols-outlined"> home </span>

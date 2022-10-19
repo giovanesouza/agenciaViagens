@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- ICON GO TO -->
+	<link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
+
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- REMIX ICON -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+	<!-- CSS EXTERNO -->
+	<link rel="stylesheet" th:href="@{/css/all.css}">
+
+	<title> Trabalhe Conosco - Go To | Agência de Viagens </title>
+
+</head>
+
+<body>
+
+
+	<!-- CABEÇALHO -->
+
+	<div class="container-fluid mt-3">
+
+		<header class="row">
+
+
+			<div class="col-sm-6 mb-2 text-justify">
+				<a href="/">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-center">
+
+				<h5> Pensou em viajar?! </h5>
+				<p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
+
+			</div>
+
+
+		</header>
+		<!-- FIM CABEÇALHO -->
+
+
+		<!-- INÍCIO MENUS -->
+		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			<a class="navbar-brand" href="#"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+				data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
+				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+					<li class="nav-item active text-center">
+						<a class="nav-link btn-hover" href="/"> HOME <span class="visually-hidden">(current)</span></a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/promocoes">PROMOÇÕES</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/destinos">DESTINOS</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/contato">CONTATO</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link login absolute-right" href="/login">LOGIN</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</nav>
+
+	</div>
+	<!-- FIM MENUS -->
+
+
+	<!-- INÍCIO CONTATO FORM -->
+	<div class="container">
+
+		<div class="row mt-3">
+
+			<div class="col-12">
+				<h3 class="text-center text-padrao"> Trabalhe conosco </h3>
+
+				<p> Se você está querendo trabalhar na área que mais cresce no Brasil e no Mundo, venha fazer parte da
+					nossa equipe! </p>
+
+				<p> Será um prazer tê-lo(a) como colaborador!! </p>
+
+
+				<p class="text-padrao text-center"> <strong> Preencha o formulário abaixo com os seus dados: </strong>
+				</p>
+
+			</div>
+
+		</div>
+
+
+		<div class="row mt-3">
+
+			<form method="post" th:object="${trabalheConosco}">
+
+				<div class="col-12">
+
+					<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
+						placeholder="Digite seu nome" maxlength="50" required>
+
+				</div>
+
+
+				<div class="col-12 mt-3 mb-3">
+
+					<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
+						placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required>
+
+				</div>
+
+				<div class="col-12 mt-3 mb-3">
+
+					<input type="text" class="form-control" name="cargo" th:field="*{cargo}" id="cargo"
+						placeholder="Cargo para candidatura da vaga" maxlength="15" required>
+
+				</div>
+
+
+				<div class="col-12 mt-3 mb-3">
+
+					<label class="text-padrao" for="curriculo"> <strong> Envie o seu currículo: </strong> (Envie o seu
+						currículo para o DRIVE e cole o link abaixo - não esqueça de deixar o link como público)
+					</label>
+					<br>
+					<input type="url" class="form-control" name="curriculo" th:field="*{curriculo}" id="curriculo">
+
+				</div>
+
+
+				<div class="col-12 mb-3 text-center">
+
+					<button class="botao_login" type="submit" style="width: 100%;"> Enviar </button>
+
+				</div>
+
+			</form>
+
+		</div>
+
+
+	</div>
+
+
+	</div>
+	<!-- FIM CONTATO FORM -->
+
+
+	<!-- INÍCIO CELL E EMAIL -->
+
+	<div class="container">
+		<div class="row text-center mt-5 mb-5">
+
+
+			<div class="col-md-6">
+
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M9.366 10.682a10.556 10.556 0 0 0 3.952 3.952l.884-1.238a1 1 0 0 1 1.294-.296 11.422 11.422 0 0 0 4.583 1.364 1 1 0 0 1 .921.997v4.462a1 1 0 0 1-.898.995c-.53.055-1.064.082-1.602.082C9.94 21 3 14.06 3 5.5c0-.538.027-1.072.082-1.602A1 1 0 0 1 4.077 3h4.462a1 1 0 0 1 .997.921A11.422 11.422 0 0 0 10.9 8.504a1 1 0 0 1-.296 1.294l-1.238.884zm-2.522-.657l1.9-1.357A13.41 13.41 0 0 1 7.647 5H5.01c-.006.166-.009.333-.009.5C5 12.956 11.044 19 18.5 19c.167 0 .334-.003.5-.01v-2.637a13.41 13.41 0 0 1-3.668-1.097l-1.357 1.9a12.442 12.442 0 0 1-1.588-.75l-.058-.033a12.556 12.556 0 0 1-4.702-4.702l-.033-.058a12.442 12.442 0 0 1-.75-1.588z" />
+				</svg>
+
+				<span> (81) 98888-8335 </span>
+
+			</div>
+
+
+			<div class="col-md-6">
+
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z" />
+				</svg>
+
+				<span>gotoviagens@gmail.com </span>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+	<!-- FIM CELL E EMAIL -->
+
+
+	<!-- ICON SCROLL TOP -->
+
+	<i onclick="subirTela()" class="ri-arrow-up-s-line" id="icon-top"></i>
+
+	<!-- ICON SCROLL TOP -->
+
+
+
+	<!-- RODAPÉ -->
+	<footer class="container-fluid bg-light">
+
+
+		<div class="row mb-3">
+
+			<div class="col-sm-6 mb-2 text-right">
+				<a href="/">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-justify">
+
+				<h5> Go To Viagens </h5>
+				<p class="m-0 small">CNPJ 12.123.123/0001-12</p>
+				<p class="m-0 small">Rua Giovane Souza, 0010 - HTML CSS BOOTSTRAP</p>
+				<p class="m-0 small">CEP: 10100-011, Internet/JS</p>
+
+			</div>
+
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="col-12">
+
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button bg-light text-primary" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne">
+								FORMAS DE PAGAMENTO
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body text-center">
+
+								<img class="img-fluid"
+									src="https://i0.wp.com/urucuna.com/wp-content/uploads/2021/02/bandeiras-cartoes-credito.png?ssl=1"
+									alt="formas de pagamento">
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+
+
+		<div class="row mt-4 mb-2">
+
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/quemsomos"> Quem somos </a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/centralajuda"> Central de ajuda </a>
+			</div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/termoscondicoes"> Termos e condições
+				</a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/duvidas"> Dúvidas </a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/contato"> Clique para falar conosco
+				</a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="#"> Trabalhe conosco
+				</a> </div>
+
+		</div>
+
+
+		<div class="row mt-4 mb-3">
+			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
+		</div>
+
+
+	</footer>
+
+	<script th:src="@{/js/all.js}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

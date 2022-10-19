@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- ICON GO TO -->
-        <link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
+	<!-- ICON GO TO -->
+	<link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
 
-        <!-- BOOTSTRAP -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-        <!-- GOOGLE ICON -->
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    
-        <!-- CSS EXTERNO -->
-        <link rel="stylesheet" th:href="@{/css/profile.css}">
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Comprar passagem</title>
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+	<!-- CSS EXTERNO -->
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
+
+	<title>Comprar passagem</title>
 </head>
+
 <body>
-    
 
-    <header class="container">
 
-        <div class="row container p-2">
+	<header class="container">
 
-            <div class="col-md-3 mt-2 mb-2 logo">
+		<div class="row container p-2">
 
-                <img th:src="@{/img/agencia_viagens_small.png}" alt="logo" id="logo">
+			<div class="col-md-3 mt-2 mb-2 logo">
 
-            </div>
+				<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" id="logo">
 
-            <div class="col-md-7 d-flex flex-column align-items-start justify-content-center">
+			</div>
 
-                <span>Olá,  <span>NOME</span>. Seja bem vindo(a)!</span>
+			<div class="col-md-7 d-flex flex-column align-items-start justify-content-center">
 
-                <div class="datahora">
-                    <span><strong>Data:</strong> <span id="data"></span>.</span>
-                    <span><strong>Hora:</strong> <span id="hora"></span>.</span>
-                </div>
+				<span>Olá, <span th:text="${session.usuarioLogado.nome}">NOME</span>. Seja bem vindo(a)!</span>
 
-            </div>
+				<div class="datahora">
+					<span><strong>Data:</strong> <span id="data"></span>.</span>
+					<span><strong>Hora:</strong> <span id="hora"></span>.</span>
+				</div>
 
-            <div class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
+			</div>
 
-                <a href="#">
-                 <span class="material-symbols-outlined logout">logout</span>
-                </a>
+			<div class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
 
-            </div>
+				<form action="/logout" method="post">
+					<button type="submit" class="material-symbols-outlined logout"> logout </button>
+				</form>
 
-        </div>
+			</div>
 
-    </header>
+		</div>
 
-    <div class="container grid-container">
+	</header>
 
-        <div class="menu">
+	<div class="container grid-container">
 
-   		<ul>
+		<div class="menu">
+
+			<ul>
 				<a href="/perfil">
 
 					<span class="material-symbols-outlined"> home </span>
@@ -107,24 +109,25 @@
 
 			</ul>
 
-        </div>
+		</div>
 
 
-        <div class="principal">
+		<div class="principal">
 
-            <h2 class="text-center mt-2 mb-2">Comprar Passagem</h2>
-            <p class="text-center text-danger">Utilize os menus laterais para navegar pelo perfil.</p>
+			<h2 class="text-center mt-2 mb-2">Comprar Passagem</h2>
+			<p class="text-center text-danger">Utilize os menus laterais para navegar pelo perfil.</p>
 
-        </div>
+		</div>
 
 
-    </div>
+	</div>
 
 
 	<script th:src="@{/js/perfil.js}"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 </body>
+
 </html>

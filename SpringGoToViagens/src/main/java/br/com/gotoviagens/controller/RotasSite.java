@@ -10,7 +10,6 @@ public class RotasSite {
 
 	// ROTAS PRINCIPAIS	
 
-	/*
 	@GetMapping("/")
 	// INICIALIZA A APLICAÇÃO
 	public String index() {
@@ -61,5 +60,5 @@ public class RotasSite {
 		return modelAndView;
 	}
 	
-		*/
+		
 }

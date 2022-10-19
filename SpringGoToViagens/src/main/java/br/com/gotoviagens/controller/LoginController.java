@@ -1,5 +1,7 @@
 package br.com.gotoviagens.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,17 +27,27 @@ public class LoginController {
 	
 	@PostMapping("/logar")
 	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
-	public String logar(Model model, Usuario userParams, String lembrar) {
+	public String logar(Model model, Usuario userParams, String lembrar, HttpSession session) {
 		
 		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
 		Usuario user = this.usuarioRepository.Login(userParams.getEmail(), userParams.getSenha());
 		
 		if(user != null) {
+			session.setAttribute("usuarioLogado", user);
 			return "redirect:/perfil";
+			
 		}
+		
 		model.addAttribute("erro", "Email e/ou senha inválidos!");
 		return "html/login1";
 	}
 	
+	// LOGOUT
+	
+	@PostMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";	
+	}
 	
 }

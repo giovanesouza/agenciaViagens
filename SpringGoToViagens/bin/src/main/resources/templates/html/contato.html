@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- ICON GO TO -->
+	<link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
+
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- REMIX ICON -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+	<!-- CSS EXTERNO -->
+	<link rel="stylesheet" th:href="@{/css/all.css}">
+
+	<title> Fale Conosco - Go To | Agência de Viagens </title>
+
+</head>
+
+<body>
+
+	<!-- CABEÇALHO -->
+	<div class="container-fluid mt-3">
+
+		<header class="row">
+
+			<div class="col-sm-6 mb-2 text-justify">
+				<a href="/">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-center">
+
+				<h5> Pensou em viajar?! </h5>
+				<p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
+
+			</div>
+
+
+		</header>
+
+		<!-- FIM CABEÇALHO -->
+
+
+		<!-- INÍCIO MENUS -->
+		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			<a class="navbar-brand" href="#"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+				data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
+				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+					<li class="nav-item active text-center">
+						<a class="nav-link btn-hover" href="/"> HOME <span class="visually-hidden">(current)</span></a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/promocoes">PROMOÇÕES</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/destinos">DESTINOS</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover bg-active" href="#">CONTATO</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link login absolute-right" href="/login">LOGIN</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</nav>
+
+	</div>
+
+	<!-- FIM MENUS -->
+
+
+
+	<!-- INÍCIO CONTATO FORM -->
+	<div class="container">
+
+		<div class="row mt-3">
+
+			<div class="col-12">
+				<h3 class="text-center text-padrao"> Fale conosco </h3>
+			</div>
+
+		</div>
+
+
+		<div class="row mt-3">
+
+			<form method="post" th:object="${faleConosco}" id="form">
+
+				<div class="col-12">
+
+					<div class="col-8 offset-2">
+
+						<input type="text" class="form-control" name="nome" th:field="*{nome}" id="nome"
+							placeholder="Digite seu nome" maxlength="50" required>
+
+					</div>
+
+
+					<div class="col-8 offset-2 mt-3">
+
+						<input type="email" class="form-control" name="email" th:field="*{email}" id="email"
+							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required>
+
+					</div>
+
+					<div class="col-8 offset-2 mt-3">
+
+						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem"
+							cols="30" rows="5" placeholder="Digite sua mensagem aqui" required></textarea>
+
+					</div>
+
+					<!-- VARIÁVEL DE SUCESSO -->
+					<div class="col-8 offset-2 mt-3 mb-3">
+						<div class="alert alert-success text-center mt-3" role="alert" th:if="${sucesso} != null"
+							th:text="${sucesso}"> </div>
+					</div>
+
+					<div class="col-8 offset-2 mt-3 mb-5">
+
+						<input type="date" class="form-control" name="dataContato" th:field="*{dataContato}"
+							id="dataContato" hidden />
+
+						<button class="botao_login" type="submit" style="width: 100%;" id="enviar"> Enviar </button>
+
+					</div>
+
+
+				</div>
+
+			</form>
+
+			<!-- CONFIRMAÇÃO DE ENVIO -->
+			<!-- 	<div class="row mt-3 mb-5 confirm" id="success">
+
+				<div class="col-md-12 text-center">
+					<span class="material-symbols-outlined sucesso">
+						done
+					</span>
+				</div>
+
+
+				<div class="col-md-12 mt-3 text-center text-light">
+					<h3>Cadastro realizado com sucesso!</h3>
+					<span>Em breve entraremos em contato pelo e-mail cadastrado.</span>
+
+
+				</div>
+
+
+			</div> -->
+
+
+
+		</div>
+
+
+	</div>
+	<!-- FIM CONTATO FORM -->
+
+
+	<!-- INÍCIO CELL E EMAIL -->
+
+	<div class="container">
+		<div class="row text-center mb-5">
+
+			<div class="col-md-6 ">
+
+				<div style="font-size: 16px;">
+
+					<i class="ri-phone-line"> (81) 98888-8335</i>
+
+				</div>
+
+
+			</div>
+
+
+			<div class="col-md-6">
+
+				<div class="d-inline align-middle" style="font-size: 16px;">
+
+					<i class="ri-mail-line align-middle"> </i>
+
+					<span class="align-middle"> gotoviagens@gmail.com </span>
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+
+	<!-- FIM CELL E EMAIL -->
+
+
+	<!-- ICON SCROLL TOP -->
+
+	<i onclick="subirTela()" class="ri-arrow-up-s-line" id="icon-top"></i>
+
+	<!-- ICON SCROLL TOP -->
+
+
+	<!-- RODAPÉ -->
+	<footer class="container-fluid bg-light">
+
+
+		<div class="row mb-3">
+
+			<div class="col-sm-6 mb-2 text-right">
+				<a href="/">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-justify">
+
+				<h5> Go To Viagens </h5>
+				<p class="m-0 small">CNPJ 12.123.123/0001-12</p>
+				<p class="m-0 small">Rua Giovane Souza, 0010 - HTML CSS BOOTSTRAP</p>
+				<p class="m-0 small">CEP: 10100-011, Internet/JS</p>
+
+			</div>
+
+
+		</div>
+
+
+		<div class="row">
+
+			<div class="col-12">
+
+				<div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button bg-light text-primary" type="button"
+								data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne">
+								FORMAS DE PAGAMENTO
+							</button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+							data-bs-parent="#accordionExample">
+							<div class="accordion-body text-center">
+
+								<img class="img-fluid"
+									src="https://i0.wp.com/urucuna.com/wp-content/uploads/2021/02/bandeiras-cartoes-credito.png?ssl=1"
+									alt="formas de pagamento">
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+
+
+		<div class="row mt-4 mb-2">
+
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/quemsomos"> Quem somos </a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/centralajuda"> Central de ajuda </a>
+			</div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/termoscondicoes"> Termos e condições
+				</a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/duvidas"> Dúvidas </a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/contato"> Clique para falar conosco
+				</a> </div>
+			<div class="col-lg-2 col-sm-4 small"> <a class="link_rodape" href="/trabalheconosco"> Trabalhe conosco
+				</a> </div>
+
+		</div>
+
+
+		<div class="row mt-4 mb-3">
+			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
+		</div>
+
+
+	</footer>
+
+	<script th:src="@{/js/all.js}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- INSERINDO VALOR AO INPUT DATA -->
+	<script>
+		const inputDate = document.querySelector('#dataContato');
+		const dataHoje = new Date();
+
+		const d = dataHoje.getDate().toString().padStart(2,'0'); // Dia com 2 digitos;
+		const m = String(dataHoje.getMonth( )+ 1).padStart(2,'0'); // Mês com 2 digitos
+		const y = dataHoje.getFullYear(); // Ano com 4 digitos
+	
+
+		inputDate.value = `${y}-${m}-${d}`;
+
+	</script>
+</body>
+
+</html>

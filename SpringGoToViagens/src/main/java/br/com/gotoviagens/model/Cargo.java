@@ -52,9 +52,7 @@ public class Cargo {
 		this.nome = nome;
 	}
 	
-	
-	
-	
+		
 	
 	
 }

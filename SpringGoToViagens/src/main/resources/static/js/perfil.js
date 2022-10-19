@@ -2,11 +2,12 @@
 function dataHora() {
 
 	let d = new Date(); // Para pegar a data atual
-
+		
 	// DATA
-	let dia = d.getDate();
-	let m = d.getMonth();
+	let dia = d.getDate().toString().padStart(2,'0'); // Dia com 2 digitos;
+	let m = String(d.getMonth() + 1).padStart(2,'0'); // Mês com 2 digitos
 	let a = d.getFullYear();
+	
 	document.getElementById('data').innerText = `${dia}/${m}/${a}`;
 
 	let hora = d.getHours(); // Pega a hora

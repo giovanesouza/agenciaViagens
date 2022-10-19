@@ -1,0 +1,22 @@
+.confirm {
+    background-color: #28A745;
+    box-shadow: 0 0 0.5rem #fff;
+    border-radius: 1rem;
+    padding: 1.6rem;
+}
+
+/* ICON */
+span.sucesso {
+    color: #28A745;
+    font-weight: bolder;
+    font-size: 5rem;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+/* TÍTULO SOLICITAÇÃO */
+h3 {
+    color: #fff;
+}
+

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- ICON GO TO -->
+	<link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
+
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- REMIX ICON -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+	<!-- CSS EXTERNO -->
+	<link rel="stylesheet" th:href="@{/css/all.css}">
+
+	<title> CADASTRAR DESTINOS | Agência de Viagens </title>
+
+</head>
+
+<body>
+
+	<!-- CABEÇALHO -->
+
+	<div class="container mt-3">
+
+		<header class="row">
+
+			<div class="col-sm-6 mb-2 text-justify">
+				<a href="#">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-center">
+
+				<h5> Pensou em viajar?! </h5>
+				<p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
+
+			</div>
+
+
+		</header>
+
+		<!-- FIM CABEÇALHO -->
+
+
+		<!-- INÍCIO MENUS -->
+
+		<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			<a class="navbar-brand" href="#"></a>
+			<button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+				data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
+				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+					<li class="nav-item active text-center">
+						<a class="nav-link btn-hover" href="/admin"> HOME <span
+								class="visually-hidden">(current)</span></a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover bg-active" href="#">CADASTRAR DESTINOS</a>
+					</li>
+					<li class="nav-item text-center">
+						<a class="nav-link btn-hover" href="/listarDestinos">LISTAR DESTINOS</a>
+					</li>
+				</ul>
+
+			</div>
+
+		</nav>
+
+	</div>
+
+	<!-- FIM MENUS -->
+
+
+
+	<!-- INÍCIO - BUSCAR PASSAGENS -->
+	<div class="container-fluid bg-degrade">
+
+		<div class="container">
+
+			<form method="post" th:object="${destinos}">
+
+				<div class="row">
+
+					<div class="col-md-6">
+
+						<h3 class="mt-3 text-light text-justify"> CADASTRAR DESTINOS </h3>
+
+					</div>
+
+					<div class="col-md-6 mt-3 text-justify">
+						<!--
+						<input class="btn text-light btn-buscar" type="radio" value="Ida e Volta">
+
+						<input class="btn text-light btn-buscar" type="radio" value="Somente Ida">
+-->
+					</div>
+
+
+				</div>
+
+				<div class="row mt-3">
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="embarque">Embarque:</label>
+
+						<input type="text" class="form-control" name="embarque" id="saida"
+							placeholder="Informe o ponto de partida" maxlength="20" required>
+
+					</div>
+
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="destino">Destino:</label>
+
+						<input type="text" class="form-control" name="destino" id="destino"
+							placeholder="Informe o destino" maxlength="20" required>
+
+					</div>
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="categoria">Categoria:</label>
+
+						<input type="text" class="form-control" name="categoria" id="destino"
+							placeholder="Informe a categoria" required>
+
+					</div>
+
+
+				</div>
+
+
+				<div class="row mt-5">
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="preco">Preço:</label>
+
+						<input type="number" step="0.01" class="form-control" name="preco" id="preco"
+							placeholder="Informe o preco" required />
+
+					</div>
+
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="condicao">Condição:</label>
+
+						<input type="text" class="form-control" name="condicao" placeholder="Condição" required>
+
+					</div>
+
+
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="quantidade">Quantidade de Passagens:</label>
+						<br>
+						<input type="number" class="p-2 form-control" min="1" name="quantidade">
+
+					</div>
+
+
+					<div class="col-md-4">
+
+						<label class="text-light form-label" for="dataIda">Data de Ida:</label>
+
+						<input class="p-2 form-control" type="date" name="dataIda" th:field="*{dataIda}" id="partida"
+							pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2022-01-01" max="2022-12-31" required>
+					</div>
+
+					<div class="col-md-4">
+						<label class="text-light form-label" for="dataVolta">Data de Volta:</label>
+
+						<input class="p-2 form-control" type="date" name="dataVolta" th:field="*{dataVolta}"
+							id="destino" pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$" min="2022-01-01" max="2022-12-31">
+					</div>
+
+
+
+				</div>
+
+				<div class="row mt-3">
+
+					<div class="col-12 mb-3 text-justify">
+
+
+						<button class="btn bg-buscar mt-5"> CADASTRAR </button>
+
+					</div>
+
+				</div>
+
+
+			</form>
+
+
+		</div>
+
+	</div>
+	<!-- FIM BUSCAR PASSAGENS -->
+
+
+	<!-- ICON SCROLL TOP -->
+
+	<i onclick="subirTela()" class="ri-arrow-up-s-line" id="icon-top"></i>
+
+	<!-- ICON SCROLL TOP -->
+
+
+	<!-- RODAPÉ -->
+	<footer class="container-fluid bg-light mt-5">
+
+		<div class="row mb-3">
+
+			<div class="col-sm-6 mb-2 text-right">
+				<a href="#">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-justify">
+
+				<h5> Go To Viagens </h5>
+				<p class="m-0 small">CNPJ 12.123.123/0001-12</p>
+				<p class="m-0 small">Rua Giovane Souza, 0010 - HTML CSS BOOTSTRAP</p>
+				<p class="m-0 small">CEP: 10100-011, Internet/JS</p>
+
+			</div>
+
+
+		</div>
+
+
+		<div class="row mt-4 mb-3">
+			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
+		</div>
+
+	</footer>
+
+	<script th:src="@{/js/all.js}"></script>
+
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
