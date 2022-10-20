@@ -119,11 +119,11 @@
 			<p class="infoCad">Caso deseje realizar uma atualização cadastral basta alterar os dados e clicar no botão
 				"atualizar dados".</p>
 
-			<form action="" method="" th:object="${usuario}">
+			<form action="/infoCadastrais" method="post" th:object="${usuario}">
 
 				<div class="row mt-5 mb-3">
 
-					<input type="hidden" name="id">
+					<input type="hidden" name="id" th:value="${session.usuarioLogado.id}">
 
 					<div class="col-md-2">
 
@@ -132,7 +132,7 @@
 					</div>
 
 					<div class="col-md-10">
-						<input type="text" name="cpf" th:value="${session.usuarioLogado.cpf}" disabled />
+						<input class="p-2" type="text" name="cpf" id="cpf" th:value="${session.usuarioLogado.cpf}" />
 
 					</div>
 
@@ -144,7 +144,8 @@
 						<label for="nome">Nome:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="50" name="nome" th:value="${session.usuarioLogado.nome}" />
+						<input class="p-2" type="text" maxlength="50" name="nome"
+							th:value="${session.usuarioLogado.nome}" />
 					</div>
 				</div>
 
@@ -155,7 +156,8 @@
 						<label for="email">E-mail:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="50" name="email" th:value="${session.usuarioLogado.email}" />
+						<input class="p-2" type="text" maxlength="50" name="email"
+							th:value="${session.usuarioLogado.email}" />
 					</div>
 
 				</div>
@@ -166,33 +168,52 @@
 						<label for="telefone">Telefone:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" maxlength="11" name="telefone"
+						<input class="p-2" type="text" name="telefone" id="telefone"
 							th:value="${session.usuarioLogado.telefone}" />
 					</div>
 
 				</div>
 
-				<div class="row mb-5">
+				<div class="row mb-2">
 
 					<div class="col-md-2">
 						<label for="senha">Senha:</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" minlength="4" maxlength="12" name="senha"
-							th:value="${session.usuarioLogado.senha}" />
-					</div>
 
-				</div>
+						<div id="exibirSenha">
+							<input class="p-2" type="password" minlength="4" maxlength="12" name="senha" id="senhaInfo"
+								th:value="${session.usuarioLogado.senha}" />
 
-				<div class="row mb-3">
+							<span class="material-symbols-outlined" id="esconder">visibility_off</span>
+							<span class="material-symbols-outlined" id="mostrar">visibility</span>
 
-					<div class="col-12 text-right">
+							<div>
 
-						<button type="submit">Atualizar dados</button>
 
-					</div>
+								<!--
+						<p id="mostrarSenha" onclick="showSenha()" class="d-flex p-2" style="cursor: pointer;">
+							VISUALIZAR SENHA
+						</p>
+						-->
 
-				</div>
+							</div>
+
+						</div>
+
+						<div class="row mb-3">
+
+							<!-- VARIÁVEL DE ERRO -->
+							<div class="alert alert-sucess text-center mt-3" role="alert" th:text="${sucesso}"> </div>
+
+
+							<div class="col-12 text-right mt-5">
+
+								<button type="submit">Atualizar dados</button>
+
+							</div>
+
+						</div>
 			</form>
 
 
@@ -204,10 +225,19 @@
 
 
 	<script th:src="@{/js/perfil.js}"></script>
+	
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+		
+	<script>
+	$('#cpf').mask('000.000.000-00', {reverse: true});
+	$('#telefone').mask('(00) 00000-0000');
+	</script>
 </body>
 
 </html>

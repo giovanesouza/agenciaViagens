@@ -364,6 +364,10 @@ footer .text-right img {
     color: #1a2e46 !important;
 }
 
+.text-registrar{
+font-weight: bold;
+}
+
 .text-registrar:hover {
     cursor: pointer;
     color: #F86629;
@@ -446,10 +450,6 @@ tr, th, td {
 	text-align: center;
 }
 
-tr {
-	/*background-color: #cdcd; */
-
-}
 
 td input {
 	text-align: center;

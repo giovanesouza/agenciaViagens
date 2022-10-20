@@ -124,9 +124,9 @@
 
 				<div class="col-12">
 
-					<form action="" method="">
+					<form action="/perfilExcluidoComSucesso" method="post">
 
-						<input type="hidden" name="id" class="mt-4 p-2" value="" />
+						<input type="hidden" name="id" class="mt-4 p-2" th:value="${session.usuarioLogado.id}" />
 
 						<div class="row mt-5">
 							<p class="mb-5 text-danger">
@@ -145,7 +145,6 @@
 
 						<input type="submit" id="botao" class="mt-5 mb-4 bg-danger text-light p-3 btn"
 							style="font-size: 1.6rem" value="Excluir conta">
-
 
 					</form>
 

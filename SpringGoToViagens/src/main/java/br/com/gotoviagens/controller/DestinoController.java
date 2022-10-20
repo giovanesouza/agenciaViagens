@@ -73,6 +73,7 @@ public class DestinoController {
 		return modelAndView;
 	}
 
+	
 	// == EXCLUI UM CADASTRO
 	@GetMapping("/{id}/excluirDestino")
 	public ModelAndView excluir(@PathVariable Long id) {
@@ -81,23 +82,7 @@ public class DestinoController {
 		return modelAndView;
 	}
 
-	// BUSCAR PASSAGENS
-	/*@GetMapping("/buscarPassagem")
-	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
-	public String buscar(Model model, Destinos userParams) {
-
-		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
-		Destinos dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
-
-		if (dest != null) {
-			return "html/listaPassagem";
-		}
-
-		model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
-		return "index";
-
-	} 
-	*/
+	
 	
 	// BUSCAR PASSAGEM - VERSÃO FUNCIONAL QUE APRESENTA TODOS OS CAMPOS DO BD
 
@@ -122,7 +107,26 @@ public class DestinoController {
 	}
 	
 	
+	
+	
+	// BUSCAR PASSAGENS
+	/*@GetMapping("/buscarPassagem")
+	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
+	public String buscar(Model model, Destinos userParams) {
 
+		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
+		Destinos dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
+
+		if (dest != null) {
+			return "html/listaPassagem";
+		}
+
+		model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
+		return "index";
+
+	} 
+	*/
+	
 
 	
 

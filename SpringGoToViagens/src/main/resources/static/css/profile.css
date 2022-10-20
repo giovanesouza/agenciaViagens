@@ -112,12 +112,6 @@ ul > a:hover {
 
 
 
-.home::before {
-    content: "🏠  ";
-    font-size: 2rem;
-
-}
-
 
 h2 {
     color: #1a2e46;
@@ -160,6 +154,34 @@ button:hover {
     background-color: #009A3D;
     color: #fff;
     border: none;
+}
+
+
+/* INFORMAÇÕES CADASTRAIS INPUT SENHA */
+div#exibirSenha {
+	    position: relative;
+	    display: flex;
+	    align-items: center;
+	    
+}
+
+span#mostrar, span#esconder {
+	position: absolute;
+
+	color: #fff;
+	border-radius: 1rem;
+	padding: 0.5rem;
+	
+	cursor: pointer;
+	right: 2rem;
+}
+
+span#mostrar {
+		background-color: #d8450b;
+}
+
+span#esconder {
+	background-color:  #1a2e46;
 }
 
 

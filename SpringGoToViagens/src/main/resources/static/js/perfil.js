@@ -28,7 +28,7 @@ setInterval(dataHora, 1000);
 
 // PÁGINA EXCLUIR CONTA - CÓDIGO INSERIDO DIRETAMENTE NA PÁG, POIS O JSP NÃO ESTAVA RECONHECENDO POR ESTE ARQUIVO.
 // CÓDIGO PARA HABILITAR/DESABILITAR O BOTÃO DE EXCLUIR CONTA
-/*
+
 let sim = document.getElementById('sim');
 let nao = document.getElementById('nao');
 let btn = document.getElementById('botao');
@@ -47,23 +47,36 @@ function escolha() {
 	}
 }
 
-*/
+
+
+
+// MUDA O TYPE DO INPUT SENHA PARA VISUALIZAÇÃO DA MESMA - PÁGINA INFO CADASTRAIS
+
+const iconEsconder = document.querySelector('#esconder');
+const iconMostrar = document.querySelector('#mostrar');
+
+iconMostrar.style.display = 'none';
+iconEsconder.style.display = 'none';
 
 
 /*
-// MUDA O TYPE DO INPUT SENHA PARA VISUALIZAÇÃO DA MESMA - PÁGINA INFO CADASTRAIS
-let input = document.getElementById('senha');
-let mostrar = document.getElementById('mostrar');
+let input = document.getElementById('senhaInfo');
+let show = document.getElementById('mostrarSenha');
 
-mostrar.addEventListener("click", showSenha);
+
+show.addEventListener("click", showSenha);
 
 function showSenha() {
+	
+	//alert("clicou");
+
 
 	if (input.type == "password") {
 		input.type = "text";
 	} else {
 		input.type = "password";
 	}
+
 
 }
 */
