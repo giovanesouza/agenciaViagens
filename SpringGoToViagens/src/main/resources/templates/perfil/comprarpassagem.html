@@ -20,6 +20,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/profile.css}">
 
+
 	<title>Comprar passagem</title>
 </head>
 
@@ -114,10 +115,137 @@
 
 		<div class="principal">
 
-			<h2 class="text-center mt-2 mb-2">Comprar Passagem</h2>
-			<p class="text-center text-danger">Utilize os menus laterais para navegar pelo perfil.</p>
+			<h2 class="text-center mt-3 mb-3">Comprar Passagem</h2>
+
+			<!-- INÍCIO - BUSCAR PASSAGENS -->
+			<div class="container">
+
+				<form action="/perfil/buscarPassagem" method="get">
+
+					<div class="row">
+
+						<div class="col-md-12">
+
+							<h3 class="mt-3 text-dark text-justify"> BUSCAR PASSAGENS </h3>
+
+						</div>
+
+					</div>
+
+					<div class="row mt-3">
+
+						<div class="col-md-12 mt-2">
+
+							<label class="text-primary form-label" for="saida">De onde você está saindo?
+								<strong>(embarque)</strong></label>
+							<input class="p-2" type="text" name="embarque" id="saida"
+								placeholder="Informe o ponto de partida" required />
+
+
+						</div>
+
+						<div class="col-md-12 mt-3">
+
+							<label class="text-primary form-label" for="destino">Para onde você vai?
+								<strong>(destino)</strong></label>
+							<input class="p-2" type="text" name="destino" id="destino" placeholder="Informe o destino"
+								required />
+
+						</div>
+
+					</div>
+
+
+					<div class="row mt-3">
+
+						<!-- VARIÁVEL DE ERRO -->
+						<div class="col-md-12 alert alert-danger text-center mt-3" role="alert"
+							th:text="${msg}"> </div>
+
+						<div class="col-12 mt-3 mb-3 text-justify">
+
+							<button class="btn text-light bg-primary"> BUSCAR PASSAGENS </button>
+
+						</div>
+
+
+					</div>
+
+				</form>
+
+
+			</div>
+
+			<!-- FIM BUSCAR PASSAGENS -->
+
+
+
+
+			<!-- INÍCIO PASSAGENS -->
+			<div class="container">
+				<div class="row mb-5">
+
+					<h3 class="mt-5 mb-3 text-login">PASSAGENS DISPONÍVEIS</h3>
+
+					<div id="table">
+						<table class="table">
+							<thead>
+								<tr>
+									<!--	<th scope="col">Id</th> -->
+									<th scope="col">Embarque</th>
+									<th scope="col">Destino</th>
+									<th scope="col">Data Ida</th>
+									<th scope="col">Data Volta</th>
+									<th scope="col">Preço</th>
+									<th scope="col">Condição</th>
+									<th scope="col">Qtd Disponível</th>
+									<th scope="col">Categoria</th>
+									<th scope="col">Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="destinos : ${destinos}">
+									<!--	<th scope="row" th:text="${destinos.id}"></th> -->
+									<td class="text-danger" th:text="${destinos.embarque}"></td>
+									<td class="text-success" th:text="${destinos.destino}"></td>
+									<td> <input type="date" th:value="${destinos.dataIda}" disabled /> </td>
+									<td> <input class="dataVolta" type="date" th:value="${destinos.dataVolta}"
+											disabled /> </td>
+									<td th:text="${destinos.preco}"></td>
+									<td class="text-danger" th:text="${destinos.condicao}"></td>
+									<td th:text="${destinos.quantidade}"></td>
+									<td th:text="${destinos.categoria}"></td>
+									<td>
+										<!--	<a th:href="@{/{id}/comprarPassagem (id=${destinos.id})}" class="btn btn-success">
+							Comprar
+						</a>
+						-->
+										<a th:href="@{/login}" class="btn btn-success">
+											Comprar
+										</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<!-- FIM PASSAGENS -->
+
+
+
+
 
 		</div>
+
+
+
+
 
 
 	</div>
