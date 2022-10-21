@@ -27,42 +27,41 @@
 <body>
 
 
-	<header class="container">
+	<!-- LAYOUT NOVO -->
+	<header>
 
-		<div class="row container p-2">
+		<div class="logo">
+			<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" id="logo">
+		</div>
 
-			<div class="col-md-3 mt-2 mb-2 logo">
+		<div class="welcome">
 
-				<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" id="logo">
+			<span>Olá, <strong th:text="${session.usuarioLogado.nome}">NOME</strong>. Seja bem vindo(a)!</span>
 
-			</div>
-
-			<div class="col-md-7 d-flex flex-column align-items-start justify-content-center">
-
-				<span>Olá, <span th:text="${session.usuarioLogado.nome}">NOME</span>. Seja bem vindo(a)!</span>
-
-				<div class="datahora">
-					<span><strong>Data:</strong> <span id="data"></span>.</span>
-					<span><strong>Hora:</strong> <span id="hora"></span>.</span>
-				</div>
-
-			</div>
-
-			<div class="col-md-2 text-light d-flex align-items-center justify-content-end mt-2 mb-2">
-
-				<form action="/logout" method="post">
-					<button type="submit" class="material-symbols-outlined logout"> logout </button>
-				</form>
-
+			<div class="datahora">
+				<span><strong>Data:</strong> <span id="data"></span>.</span>
+				<span><strong>Hora:</strong> <span id="hora"></span>.</span>
 			</div>
 
 		</div>
 
+		<div class="text-light d-flex align-items-center justify-content-end botao-sair">
+
+			<form action="/logout" method="post">
+				<button type="submit" class="material-symbols-outlined logout"> logout </button>
+			</form>
+
+		</div>
+
+
 	</header>
 
-	<div class="container grid-container">
 
-		<div class="menu">
+
+	<div class="grid-layout">
+
+		<!-- MENU -->
+		<nav>
 
 			<ul>
 				<a href="/perfil">
@@ -110,12 +109,18 @@
 
 			</ul>
 
-		</div>
+
+		</nav>
+
+		<!-- FIM MENU -->
 
 
-		<div class="principal">
+
+		<!-- PRINCIPAL -->
+		<man>
 
 			<h2 class="text-center mt-3 mb-3">Comprar Passagem</h2>
+
 
 			<!-- INÍCIO - BUSCAR PASSAGENS -->
 			<div class="container">
@@ -126,17 +131,17 @@
 
 						<div class="col-md-12">
 
-							<h3 class="mt-3 text-dark text-justify"> BUSCAR PASSAGENS </h3>
+							<h3 class="mt-3 text-primary text-justify"> BUSCAR PASSAGENS </h3>
 
 						</div>
 
 					</div>
 
-					<div class="row mt-3">
+					<div class="row m-0">
 
-						<div class="col-md-12 mt-2">
+						<div class="col-12 mt-3">
 
-							<label class="text-primary form-label" for="saida">De onde você está saindo?
+							<label class="text-dark form-label" for="saida">De onde você está saindo?
 								<strong>(embarque)</strong></label>
 							<input class="p-2" type="text" name="embarque" id="saida"
 								placeholder="Informe o ponto de partida" required />
@@ -144,9 +149,9 @@
 
 						</div>
 
-						<div class="col-md-12 mt-3">
+						<div class="col-12 mt-3">
 
-							<label class="text-primary form-label" for="destino">Para onde você vai?
+							<label class="text-dark form-label" for="destino">Para onde você vai?
 								<strong>(destino)</strong></label>
 							<input class="p-2" type="text" name="destino" id="destino" placeholder="Informe o destino"
 								required />
@@ -159,12 +164,11 @@
 					<div class="row mt-3">
 
 						<!-- VARIÁVEL DE ERRO -->
-						<div class="col-md-12 alert alert-danger text-center mt-3" role="alert"
-							th:text="${msg}"> </div>
+						<!--<div class="col-md-12 alert alert-danger text-center mt-3" role="alert" th:text="${msg}"> </div>-->
 
 						<div class="col-12 mt-3 mb-3 text-justify">
 
-							<button class="btn text-light bg-primary"> BUSCAR PASSAGENS </button>
+							<button type="submit"> BUSCAR PASSAGENS </button>
 
 						</div>
 
@@ -180,13 +184,17 @@
 
 
 
-
 			<!-- INÍCIO PASSAGENS -->
-			<div class="container">
-				<div class="row mb-5">
 
-					<h3 class="mt-5 mb-3 text-login">PASSAGENS DISPONÍVEIS</h3>
+			<div class="row mb-5">
 
+				<div class="col-12">
+
+					<h3 class="mt-5 mb-3 text-success">PASSAGENS DISPONÍVEIS</h3>
+
+				</div>
+
+				<div class="col-12">
 					<div id="table">
 						<table class="table">
 							<thead>
@@ -210,7 +218,8 @@
 									<td class="text-success" th:text="${destinos.destino}"></td>
 									<td> <input type="date" th:value="${destinos.dataIda}" disabled /> </td>
 									<td> <input class="dataVolta" type="date" th:value="${destinos.dataVolta}"
-											disabled /> </td>
+											disabled />
+									</td>
 									<td th:text="${destinos.preco}"></td>
 									<td class="text-danger" th:text="${destinos.condicao}"></td>
 									<td th:text="${destinos.quantidade}"></td>
@@ -229,7 +238,6 @@
 						</table>
 
 					</div>
-
 				</div>
 
 			</div>
@@ -238,17 +246,14 @@
 			<!-- FIM PASSAGENS -->
 
 
-
-
-
-		</div>
-
-
-
-
+		</man>
+		<!-- PRINCIPAL -->
 
 
 	</div>
+	<!-- LAYOUT NOVO -->
+
+
 
 
 	<script th:src="@{/js/perfil.js}"></script>
