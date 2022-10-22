@@ -117,10 +117,9 @@
 
 
 		<!-- PRINCIPAL -->
-		<man>
+		<main>
 
 			<h2 class="text-center mt-3 mb-3">Comprar Passagem</h2>
-
 
 			<!-- INÍCIO - BUSCAR PASSAGENS -->
 			<div class="container">
@@ -199,7 +198,7 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<!--	<th scope="col">Id</th> -->
+									<th scope="col">Id</th>
 									<th scope="col">Embarque</th>
 									<th scope="col">Destino</th>
 									<th scope="col">Data Ida</th>
@@ -213,7 +212,7 @@
 							</thead>
 							<tbody>
 								<tr th:each="destinos : ${destinos}">
-									<!--	<th scope="row" th:text="${destinos.id}"></th> -->
+									<th scope="row" th:text="${destinos.id}"></th>
 									<td class="text-danger" th:text="${destinos.embarque}"></td>
 									<td class="text-success" th:text="${destinos.destino}"></td>
 									<td> <input type="date" th:value="${destinos.dataIda}" disabled /> </td>
@@ -225,13 +224,11 @@
 									<td th:text="${destinos.quantidade}"></td>
 									<td th:text="${destinos.categoria}"></td>
 									<td>
-										<!--	<a th:href="@{/{id}/comprarPassagem (id=${destinos.id})}" class="btn btn-success">
-							Comprar
-						</a>
-						-->
-										<a th:href="@{/login}" class="btn btn-success">
+
+										<a th:href="@{/{id}/realizarPedido (id=${destinos.id})}" class="btn btn-success">
 											Comprar
 										</a>
+
 									</td>
 								</tr>
 							</tbody>
@@ -242,11 +239,11 @@
 
 			</div>
 
-
 			<!-- FIM PASSAGENS -->
 
 
-		</man>
+
+		</main>
 		<!-- PRINCIPAL -->
 
 

@@ -2,6 +2,7 @@ package br.com.gotoviagens.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -51,11 +53,17 @@ public class Destinos {
 	    @DateTimeFormat(iso = ISO.DATE)
 	    private LocalDate dataVolta;
 		
+		
+		// CÓDIGO NOVO
+		@OneToMany(mappedBy = "destinos")
+		private List<Pedido> pedido;
+		
 		public Destinos() {}
 
+		// CONSTRUTOR
 		public Destinos(Long id, String destino, String embarque, BigDecimal preco, String categoria, int quantidade,
-				String condicao, LocalDate dataIda, LocalDate dataVolta) {
-
+				String condicao, LocalDate dataIda, LocalDate dataVolta, List<Pedido> pedido) {
+			
 			this.id = id;
 			this.destino = destino;
 			this.embarque = embarque;
@@ -65,8 +73,11 @@ public class Destinos {
 			this.condicao = condicao;
 			this.dataIda = dataIda;
 			this.dataVolta = dataVolta;
+			this.pedido = pedido;
 		}
+		
 
+		// GETTERS E SETTERS
 		public Long getId() {
 			return id;
 		}
@@ -139,9 +150,20 @@ public class Destinos {
 			this.dataVolta = dataVolta;
 		}
 
+		public List<Pedido> getPedido() {
+			return pedido;
+		}
+
+		public void setPedido(List<Pedido> pedido) {
+			this.pedido = pedido;
+		}
+
+		
+		// HASHCODE E EQUALS
 		@Override
 		public int hashCode() {
-			return Objects.hash(categoria, condicao, dataIda, dataVolta, destino, embarque, id, preco, quantidade);
+			return Objects.hash(categoria, condicao, dataIda, dataVolta, destino, embarque, id, pedido, preco,
+					quantidade);
 		}
 
 		@Override
@@ -156,18 +178,21 @@ public class Destinos {
 			return Objects.equals(categoria, other.categoria) && Objects.equals(condicao, other.condicao)
 					&& Objects.equals(dataIda, other.dataIda) && Objects.equals(dataVolta, other.dataVolta)
 					&& Objects.equals(destino, other.destino) && Objects.equals(embarque, other.embarque)
-					&& Objects.equals(id, other.id) && Objects.equals(preco, other.preco)
-					&& quantidade == other.quantidade;
+					&& Objects.equals(id, other.id) && Objects.equals(pedido, other.pedido)
+					&& Objects.equals(preco, other.preco) && quantidade == other.quantidade;
 		}
 
+		
+		// TO STRING
 		@Override
 		public String toString() {
 			return "Destinos [id=" + id + ", destino=" + destino + ", embarque=" + embarque + ", preco=" + preco
 					+ ", categoria=" + categoria + ", quantidade=" + quantidade + ", condicao=" + condicao
-					+ ", dataIda=" + dataIda + ", dataVolta=" + dataVolta + "]";
+					+ ", dataIda=" + dataIda + ", dataVolta=" + dataVolta + ", pedido=" + pedido + "]";
 		}
 
 		
 		
+	
 		
 }
