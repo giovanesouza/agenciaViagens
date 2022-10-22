@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> LISTAR DE SOLICITAÇÕES DE CONTATO | Agência de Viagens </title>
+	<title> LISTA DE USUÁRIOS | Agência de Viagens </title>
 
 </head>
 
@@ -66,10 +66,6 @@
 						<a class="nav-link btn-hover" href="/admin"> HOME <span
 								class="visually-hidden">(current)</span></a>
 					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover bg-active" href="#">SOLICITAÇÃO DE CONTATO</a>
-					</li>
-
 				</ul>
 
 			</div>
@@ -86,7 +82,7 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Listagem de solicitação de contato</h1>
+				<h1>Lista de usuários cadastrados</h1>
 			</div>
 		</div>
 
@@ -96,38 +92,20 @@
 					<thead>
 						<tr>
 							<th scope="col">Id</th>
+							<th scope="col">Cpf</th>
 							<th scope="col">Nome</th>
-							<th scope="col">E-mail</th>
-							<th scope="col">Mensagem</th>
-							<th scope="col">Data Solitação</th>
-							<th scope="col">Data Resposta</th>
-							<th scope="col">Status</th>
-							<th scope="col" colspan="2">Ações</th>
+							<th scope="col">Email</th>
+							<th scope="col">Telefone</th>
 
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="faleConosco : ${faleConosco}">
-							<th scope="row" th:text="${faleConosco.id}"></th>
-							<td th:text="${faleConosco.nome}"></td>
-							<td th:text="${faleConosco.email}"></td>
-							<td th:text="${faleConosco.mensagem}"></td>
-							<td th:text="${faleConosco.dataContato}"></td>
-							<td th:text="${faleConosco.dataResposta}"></td>
-							<td th:text="${faleConosco.status}"></td>
-							<td>
-								<a th:href="@{/{id}/editarStatusSolicitacaoContato (id=${faleConosco.id})}"
-									class="btn btn-warning">
-									Editar
-								</a>
-							</td>
-							<td>
-								<a th:href="@{/{id}/excluirSolicitacaoContato (id=${faleConosco.id})}"
-									class="btn btn-danger"
-									onclick="return confirm('Tem certeza que deseja excluir contato?');">
-									Excluir
-								</a>
-							</td>
+						<tr th:each="usuarios : ${usuarios}">
+							<th scope="row" th:text="${usuarios.id}"></th>
+							<td th:text="${usuarios.cpf}"></td>
+							<td th:text="${usuarios.nome}"></td>
+							<td th:text="${usuarios.email}"></td>
+							<td th:text="${usuarios.telefone}"></td>
 						</tr>
 					</tbody>
 				</table>

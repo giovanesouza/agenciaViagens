@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- ICON GO TO -->
+	<link rel="shortcut icon" th:href="@{/img/icon_goto.png}" type="image/x-icon">
+
+	<!-- BOOTSTRAP -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- REMIX ICON -->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+	<!-- CSS EXTERNO -->
+	<link rel="stylesheet" th:href="@{/css/all.css}">
+
+	<title> Erro | Agência de Viagens </title>
+
+</head>
+
+<body class="bg-primary">
+
+	<!-- CABEÇALHO -->
+
+	<div class="container-fluid bg-light p-3">
+
+		<header class="row">
+
+			<div class="col-sm-6 mb-2 text-justify">
+				<a href="/">
+					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
+				</a>
+			</div>
+
+			<div class="col-sm-6 text-center text-primary">
+
+				<h5> Pensou em viajar?! </h5>
+				<p class="small"> A Go To Viagens te leva aonde você quer chegar! </p>
+
+			</div>
+
+
+		</header>
+
+	</div>
+
+	<!-- FIM CABEÇALHO -->
+
+
+	<div class="container-fluid mt-5">
+
+		<div class="row text-center text-light">
+			<div class="col-12">
+
+				<img th:src="@{/img/error.png}" alt="Erro" class="img-fluid">
+
+			</div>
+
+
+			<div class="col-12 mt-4 p-2 bg-light text-danger">
+
+				<h1>Ops, algo deu errado!</h1>
+
+			</div>
+
+			<div class="col-12">
+
+				<span>Acesso não permitido ou página não encontrada.</span>
+
+			</div>
+
+
+		</div>
+
+
+		<div class="row text-center mt-5">
+			<div class="col-12">
+
+				<a class="btn bg-warning text-dark" href="/"><strong> Clique aqui para continuar navegando pelo
+						site</strong></a>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<!-- RODAPÉ -->
+	<footer class="container-fluid mt-5">
+
+		<div class="row">
+			<div class="col-12 text-center text-light"> <strong> &copy 2022 - Go To Agência de Viagens </strong> </div>
+		</div>
+		
+	</footer>
+
+	<!-- FIM RODAPÉ -->
+
+	<script th:src="@{/js/all.js}"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

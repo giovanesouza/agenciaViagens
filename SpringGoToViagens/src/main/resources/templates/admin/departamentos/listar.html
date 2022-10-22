@@ -96,7 +96,7 @@
 						<tr>
 							<th scope="col">Id</th>
 							<th scope="col">Nome</th>
-							<th scope="col">Ações</th>
+							<th scope="col" colspan="2">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -108,6 +108,8 @@
 									class="btn btn-warning">
 									Editar
 								</a>
+							</td>
+							<td>
 								<a th:href="@{/{codDepartamento}/excluirDepartamento (codDepartamento=${departamento.codDepartamento})}"
 									class="btn btn-danger"
 									onclick="return confirm('Tem certeza que deseja excluir o departamento?');">

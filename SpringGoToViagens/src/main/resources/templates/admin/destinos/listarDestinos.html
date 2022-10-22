@@ -103,7 +103,7 @@
 							<th scope="col">Categoria</th>
 							<th scope="col">Preço</th>
 							<th scope="col">Condição</th>
-							<th scope="col">Ações</th>
+							<th scope="col" colspan="2">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -121,6 +121,8 @@
 								<a th:href="@{/{id}/editarDestino (id=${destinos.id})}" class="btn btn-warning">
 									Editar
 								</a>
+							</td>
+							<td>
 								<a th:href="@{/{id}/excluirDestino (id=${destinos.id})}" class="btn btn-danger"
 									onclick="return confirm('Tem certeza que deseja excluir o destino?');">
 									Excluir

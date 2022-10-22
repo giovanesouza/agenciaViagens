@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.gotoviagens.model.Destinos;
+import br.com.gotoviagens.model.Funcionario;
 import br.com.gotoviagens.model.Usuario;
 import br.com.gotoviagens.repository.DestinosRepository;
 import br.com.gotoviagens.repository.UsuarioRepository;
@@ -44,6 +45,21 @@ public class UsuarioController {
 
 		return modelAndView;
 	}
+	
+	
+	
+	// === LISTA OS USUÁRIOS - NO ADM
+
+	@GetMapping("/listarUsuarios")
+	public ModelAndView listar() {
+		ModelAndView modelAndView = new ModelAndView("admin/usuario/listar");
+
+		List<Usuario> usuarios = usuarioRepository.findAll();
+		modelAndView.addObject("usuarios", usuarios);
+
+		return modelAndView;
+	}
+	
 	
 	
 	// ATUALIZA O CADASTRO

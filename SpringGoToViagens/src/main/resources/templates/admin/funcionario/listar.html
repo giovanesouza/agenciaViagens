@@ -89,7 +89,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
 					<thead>
@@ -100,7 +100,7 @@
 							<th scope="col">Salário</th>
 							<th scope="col">Data de Adimissão</th>
 							<th scope="col">Data de Demissão</th>
-							<th scope="col">Ações</th>
+							<th scope="col" colspan="2">Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -116,6 +116,8 @@
 									class="btn btn-warning">
 									Editar
 								</a>
+							</td>
+							<td>
 								<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}"
 									class="btn btn-danger"
 									onclick="return confirm('Tem certeza que deseja excluir o funcionário?');">
