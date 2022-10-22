@@ -135,7 +135,29 @@ input {
     text-align: end;
 }
 
-button{
+
+
+.buscarPassagem {
+    background-color: #0354b8;
+    color: #fff !important;
+    
+    padding: 0.8rem;
+    border: none;
+    border-radius: 1rem;
+
+
+    transition: all .2s;
+}
+
+.buscarPassagem:hover {
+    background-color: #d8450b;
+    color: #fff !important;
+}
+
+
+
+
+button.infoCad {
     background-color: #0b41219f;
     color: #fff;
     border: none;
@@ -145,7 +167,7 @@ button{
 
 }
 
-button:hover {
+button.infoCad:hover {
     background-color: #009A3D;
     color: #fff;
     border: none;

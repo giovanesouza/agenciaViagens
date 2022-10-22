@@ -45,6 +45,8 @@
 
 		</div>
 
+
+
 		<div class="text-light d-flex align-items-center justify-content-end botao-sair">
 
 			<form action="/logout" method="post">
@@ -58,74 +60,103 @@
 
 
 	<div class="grid-layout">
-	
+
 		<!-- MENU -->
 		<nav>
-	
+
 			<ul>
 				<a href="#">
-	
+
 					<span class="material-symbols-outlined"> home </span>
-	
+
 					<li>Início </li>
-	
+
 				</a>
-	
+
 				<a href="/minhasViagens">
-	
+
 					<span class="material-symbols-outlined"> flight
 					</span>
-	
+
 					<li>Minhas viagens</li>
-	
+
 				</a>
-	
+
 				<a href="/comprarPassagem">
-	
+
 					<span class="material-symbols-outlined">
 						shopping_cart_checkout
 					</span>
-	
+
 					<li class="viagens">Comprar passagem</li>
 				</a>
-	
+
 				<a href="/infoCadastrais">
-	
+
 					<span class="material-symbols-outlined">
 						info
 					</span>
-	
+
 					<li>Info. Cadastrais</li>
 				</a>
-	
+
 				<a href="/excluirConta">
-	
+
 					<span class="material-symbols-outlined">
 						cancel </span>
-	
+
 					<li>Excluir minha conta</li>
 				</a>
-	
+
 			</ul>
-	
-	
+
+
 		</nav>
-	
+
 		<!-- FIM MENU -->
-	
-	
-	
+
+
+
 		<!-- PRINCIPAL -->
 		<man>
-	
-			<h2 class="text-center mt-2 mb-2">Página inicial</h2>
-			<p class="text-center text-danger">Utilize os menus laterais para navegar pelo perfil.</p>
-	
-	
+
+		
+			<div class="container mt-3 mb-3">
+			
+				<!-- INÍCIO CAROUSEL -->
+				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active text-center">
+							<img th:src="@{/img/lisboa1.jpg}" class="img-fluid" alt="Lisboa">
+						</div>
+						<div class="carousel-item text-center">
+							<img th:src="@{/img/paris1.jpg}" class="img-fluid" alt="Paris">
+						</div>
+						<div class="carousel-item text-center">
+							<img th:src="@{/img/recife1.jpg}" class="img-fluid" alt="Recife">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Anterior</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Próximo</span>
+					</button>
+				</div>
+							<!-- FIM CAROUSEL -->
+							
+			</div>
+
+
+
 		</man>
 		<!-- PRINCIPAL -->
-	
-	
+
+
 	</div>
 	<!-- LAYOUT NOVO -->
 
