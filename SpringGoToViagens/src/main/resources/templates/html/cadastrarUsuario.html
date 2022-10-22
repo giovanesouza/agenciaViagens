@@ -123,6 +123,9 @@
 
 
 			<div class="col-12 text-center mt-3">
+			
+			<!-- VARIÁVEL DE ERRO -->
+					<div class="alert alert-danger text-center mt-3" role="alert" th:if="${msg} != null" th:text="${msg}"> </div>
 
 				<button class="btn bg-cadastrar mt-3 mb-5" type="submit">cadastrar</button>
 

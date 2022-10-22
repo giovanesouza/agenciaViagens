@@ -1,6 +1,7 @@
 package br.com.gotoviagens.controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ import br.com.gotoviagens.repository.UsuarioRepository;
 
 @Controller
 public class UsuarioController {
-	
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private DestinosRepository destinosRepository;
 
@@ -35,19 +36,48 @@ public class UsuarioController {
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
-			
+
+	/*
+	 * @PostMapping("/cadastrarUsuario") public ModelAndView cadastrar(Usuario
+	 * usuario) throws IOException {
+	 * 
+	 * ModelAndView modelAndView = new
+	 * ModelAndView("success/confirm-cadastroUsuario");
+	 * 
+	 * usuarioRepository.save(usuario);
+	 * 
+	 * return modelAndView; }
+	 */
+
 	@PostMapping("/cadastrarUsuario")
-	public ModelAndView cadastrar(Usuario usuario)  throws IOException {
+	public ModelAndView cadastrar(Usuario usuario, Model model)  throws IOException {
+			
+		ModelAndView modelAndView = new	ModelAndView("success/confirm-cadastroUsuario");
+
 		
-		ModelAndView modelAndView = new ModelAndView("success/confirm-cadastroUsuario");
-
+		// VERIFICAÇÃO PARA SABER SE O USUÁRIO JÁ TEM E-MAIL CADASTRADO
+		
+		try {
+			
+			if(usuarioRepository.findByCpf(usuario.getCpf()) != null) {
+				ModelAndView mv = new	ModelAndView("html/cadastrarUsuario");
+				model.addAttribute("msg", "Já existe um cadastro para o CPF informado: " + usuario.getCpf() + ".");
+				return mv;
+				//throw new EmailExistsException("Este e-mail já foi cadastrado para um usuário: " + usuario.getCpf());
+			} 
+				
+		} finally {
+			
+		}
+		
+		// CADASTRA NOVO USUÁRIO
 		usuarioRepository.save(usuario);
-
 		return modelAndView;
+		
 	}
-	
-	
-	
+			
+			
+
 	// === LISTA OS USUÁRIOS - NO ADM
 
 	@GetMapping("/listarUsuarios")
@@ -59,28 +89,26 @@ public class UsuarioController {
 
 		return modelAndView;
 	}
-	
-	
-	
+
 	// ATUALIZA O CADASTRO
-	
+
 	@GetMapping("/infoCadastrais")
 	// PÁGINA INFORMAÇÕES CADASTRAIS
 	public String informacoesCadastrais() {
 		return "perfil/infocadastrais";
 	}
-	
+
 	@PostMapping("/infoCadastrais")
 	// PÁGINA INICIAL DO PERFIL
 	public ModelAndView editar(Usuario usuario, Model model) {
 		ModelAndView mv = new ModelAndView("redirect:/infoCadastrais");
-		
-		model.addAttribute("sucesso", "Atualização realizada com sucesso! As informações atualizadas aparecerão no próximo acesso/login.");
+
+		model.addAttribute("sucesso",
+				"Atualização realizada com sucesso! As informações atualizadas aparecerão no próximo acesso/login.");
 		usuarioRepository.save(usuario);
-		
+
 		return mv;
 	}
-	
 
 	// EXCLUI CONTA
 
@@ -89,18 +117,15 @@ public class UsuarioController {
 	public String excluirConta() {
 		return "perfil/excluirconta";
 	}
-	
+
 	@PostMapping("/perfilExcluidoComSucesso")
 	public ModelAndView excluir(Usuario usuario) {
 		ModelAndView mv = new ModelAndView("success/confirm-delete-perfilUsuario");
-		
+
 		usuarioRepository.delete(usuario);
 		return mv;
 	}
-	
-	
-	
-	
+
 	@GetMapping("/perfil/buscarPassagem")
 	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
 	public ModelAndView buscar(Model model, Destinos userParams) {
@@ -110,19 +135,17 @@ public class UsuarioController {
 
 		if (dest != null) {
 			model.addAttribute("msg", "Passagens localizadas!");
-			//return new ModelAndView("html/listaPassagem");
+			// return new ModelAndView("html/listaPassagem");
 
 		}
 
 		if (dest == null) {
-		model.addAttribute("msg", "No momento não há passagens para o embarque e destino selecionado.");
-		//model.addAttribute("sucesso", "Passagens localizadas.");
+			model.addAttribute("msg", "No momento não há passagens para o embarque e destino selecionado.");
+			// model.addAttribute("sucesso", "Passagens localizadas.");
 		}
 		model.addAttribute("destinos", dest);
 		return new ModelAndView("perfil/comprarpassagem");
 
 	}
-	
-	
-	
+
 }

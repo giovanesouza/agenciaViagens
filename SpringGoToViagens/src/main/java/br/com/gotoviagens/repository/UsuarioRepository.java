@@ -16,4 +16,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	public Usuario Login(String email, String senha);
 	
 	
+	// LISTA DOS CPFs CADASTRADOS
+	@Query(value="select * from usuario where cpf = :cpf", nativeQuery = true)
+	public Usuario findByCpf(String cpf);
+	
 }
