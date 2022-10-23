@@ -27,7 +27,7 @@ public class TrabalheConoscoController {
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/trabalheconosco")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("html/trabalheconosco");
+		ModelAndView modelAndView = new ModelAndView("site/trabalheconosco");
 		modelAndView.addObject("trabalheConosco", new TrabalheConosco());
 		return modelAndView;
 	}

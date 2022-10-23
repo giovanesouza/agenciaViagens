@@ -138,7 +138,6 @@ public class UsuarioController {
 	
 	
 	
-	
 	// PÁGINA INICIAL DO PERFIL
 	
 	@GetMapping("/perfil")

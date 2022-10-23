@@ -73,12 +73,12 @@
 
 				</a>
 
-				<a href="/minhasViagens">
+				<a th:href="@{/{id}/minhasPassagens}">
 
 					<span class="material-symbols-outlined"> flight
 					</span>
 
-					<li>Minhas viagens</li>
+					<li>Minhas Passagens</li>
 
 				</a>
 
@@ -164,14 +164,14 @@
 
 
 
-				<form th:action="@{/{id}/realizarPedido}" method="post" th:object="${pedido}">
+				<form action="/pedidoRealizado" method="post" th:object="${pedido}">
 
 					<div class="row m-0">
 
 						<div class="col-6 mt-3" hidden>
 
-							<label class="text-dark form-label" for="destino">Id do Destino:</label>
-							<input name="destino" th:value="${destinos.id}">
+							<label class="text-dark form-label" for="destinos">Id do Destino:</label>
+							<input name="destinos" th:value="${destinos.id}">
 
 
 						</div>
@@ -189,8 +189,6 @@
 						</div>
 
 
-
-
 						<div class="col-12 mt-3" hidden>
 
 							<label class="text-dark form-label" for="dataPedido">Data do pedido:</label>
@@ -201,13 +199,12 @@
 
 						<div class="col-6 mt-3">
 
-							<label class="text-dark form-label" for="precoTotal">Total a pagar:</label>
+							<label class="text-dark form-label" for="precoTotal">Total a pagar: R$</label>
 
 							<input class="p-2" type="number" name="precoTotal" th:value="${destinos.preco}" required />
 
 
 						</div>
-
 
 
 						<div class="col-6 mt-3">

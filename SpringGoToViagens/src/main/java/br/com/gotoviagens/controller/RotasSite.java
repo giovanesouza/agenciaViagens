@@ -19,14 +19,14 @@ public class RotasSite {
 	@GetMapping("/promocoes")
 	// PÁGINA PROMOÇÕES
 	public ModelAndView promocoes() {
-		ModelAndView modelAndView = new ModelAndView("html/promocoes");
+		ModelAndView modelAndView = new ModelAndView("site/promocoes");
 		return modelAndView;
 	}
 	
 	@GetMapping("/destinos")
 	// PÁGINA DESTINOS
 	public ModelAndView destinos() {
-		ModelAndView modelAndView = new ModelAndView("html/destinos");
+		ModelAndView modelAndView = new ModelAndView("site/destinos");
 		return modelAndView;
 	}
 		
@@ -35,28 +35,28 @@ public class RotasSite {
 	@GetMapping("/quemsomos")
 	// PÁGINA QUEM SOMOS
 	public ModelAndView quemsomos() {
-		ModelAndView modelAndView = new ModelAndView("html/quemsomos");
+		ModelAndView modelAndView = new ModelAndView("site/quemsomos");
 		return modelAndView;
 	}
 	
 	@GetMapping("/centralajuda")
 	// PÁGINA CENTRAL DE AJUDA
 	public ModelAndView centralajuda() {
-		ModelAndView modelAndView = new ModelAndView("html/centralajuda");
+		ModelAndView modelAndView = new ModelAndView("site/centralajuda");
 		return modelAndView;
 	}
 	
 	@GetMapping("/termoscondicoes")
 	// PÁGINA TERMOS E CONDIÇÕES
 	public ModelAndView termoscondicoes() {
-		ModelAndView modelAndView = new ModelAndView("html/termoscondicoes");
+		ModelAndView modelAndView = new ModelAndView("site/termoscondicoes");
 		return modelAndView;
 	}
 	
 	@GetMapping("/duvidas")
 	// PÁGINA DÚVIDAS
 	public ModelAndView duvidas() {
-		ModelAndView modelAndView = new ModelAndView("html/duvidas");
+		ModelAndView modelAndView = new ModelAndView("site/duvidas");
 		return modelAndView;
 	}
 	

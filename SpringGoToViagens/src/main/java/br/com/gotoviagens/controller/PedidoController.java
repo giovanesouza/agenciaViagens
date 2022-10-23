@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import br.com.gotoviagens.model.Pedido;
 import br.com.gotoviagens.model.Usuario;
 import br.com.gotoviagens.repository.DestinosRepository;
 import br.com.gotoviagens.repository.PedidoRepository;
+import br.com.gotoviagens.repository.UsuarioRepository;
 
 @Controller
 public class PedidoController {
@@ -25,6 +27,9 @@ public class PedidoController {
 
 	@Autowired
 	private DestinosRepository destinosRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	// === REALIZANDO PEDIDO
 
@@ -47,25 +52,50 @@ public class PedidoController {
 	
 	
 	// SALVA O PEDIDO NO BD
-	@PostMapping("/{id}/realizarPedido")
+
+	@PostMapping("/pedidoRealizado")
 	public ModelAndView cadastrarDestino(Pedido pedido) throws IOException {
 
-		ModelAndView modelAndView = new ModelAndView("perfil/minhasviagens");
+		ModelAndView modelAndView = new ModelAndView("perfil/success-compra");
+		
+		
+		// PARA EXIBIR AS INFORMAÇÕES DO PEDIDO
+		modelAndView.addObject("pedidos", pedido);	
+		
 		pedidoRepository.save(pedido);
 
 		return modelAndView;
 	}
+
 	
 	
-	
-	
+	/*
 	// EXIBE LISTA COM AS PASSAGENS COMPRADAS
 	@GetMapping("/minhasViagens")
 
-	public ModelAndView viagens(Usuario usuario, @PathVariable Long id) {
-		ModelAndView mv = new ModelAndView("perfil/minhasviagens");
-		List<Pedido> pedidos = pedidoRepository.buscarPedidosById(usuario.getId());
+	public ModelAndView viagens(Usuario userParams) {
+		
+		ModelAndView mv = new ModelAndView("perfil/minhaspassagens");
+		
+		//List<Pedido> pedidos = pedidoRepository.buscarPedidosPorIdUser(userParams.getId());
+		List<Pedido> pedidos = pedidoRepository.findAll();
 		mv.addObject("pedidos", pedidos);
+		
+		return mv;
+	}
+	
+	*/
+	
+	@GetMapping("/{id}/minhasPassagens")
+	public ModelAndView minhasPassagens(@PathVariable Long id) {
+		
+		ModelAndView mv = new ModelAndView("perfil/minhaspassagens");
+				
+		//List<Pedido> pedidos = pedidoRepository.buscarPedidosPorIdUser(userParams.getId());
+		List<Pedido> pedidos = pedidoRepository.findByUserId(id);
+		mv.addObject("pedidos", pedidos);
+		mv.addObject("destinos", destinosRepository.findById(id));
+
 		return mv;
 	}
 	

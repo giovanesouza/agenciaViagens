@@ -21,7 +21,7 @@
 	<link rel="stylesheet" th:href="@{/css/profile.css}">
 
 
-	<title>Minhas Viagens</title>
+	<title>Compra realizada com sucesso! </title>
 </head>
 
 <body>
@@ -72,12 +72,13 @@
 
 				</a>
 
+				<!-- INSERIR ROTA -->
 				<a href="#">
 
 					<span class="material-symbols-outlined"> flight
 					</span>
 
-					<li>Minhas viagens</li>
+					<li>Minhas Passagens</li>
 
 				</a>
 
@@ -119,45 +120,54 @@
 		<!-- PRINCIPAL -->
 		<main>
 
-			<h2 class="text-center mt-3 mb-2">Minhas viagens</h2>
-			
+			<div class="row">
 
-		<div id="table">
-			<table class="table">
-				<thead>
-					<tr>
-						<!--	<th scope="col">Id</th> -->
-						<th scope="col">id Pedido</th>
-						<th scope="col">Embarque</th>
-						<th scope="col">Destino</th>
-						<th scope="col">Data Ida</th>
-						<th scope="col">Data Volta</th>
-						<th scope="col">Preço</th>
-						<th scope="col">Forma de pagamento</th>
-						<th scope="col">Status</th>
+				<div class="col-12 text-center mt-3">
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="pedidos : ${pedidos}">
-						<th scope="row" th:text="${pedidos.id}"></th>
-						<td class="text-danger" th:text="${pedidos.embarque}"></td>
-						<td class="text-success" th:text="${pedidos.destino}"></td>
-						<td> <input type="date" th:value="${pedidos.dataIda}" disabled /> </td>
-						<td> <input class="dataVolta" type="date" th:value="${pedidos.dataVolta}" disabled /> </td>
-						<td th:text="${pedidos.preco}"></td>
-						<td class="text-danger" th:text="${pedidos.condicao}"></td>
-						<td th:text="${pedidos.quantidade}"></td>
-						<td th:text="${pedidos.categoria}"></td>
+					<img th:src="@{/img/pedido-success.png}" alt="Sucesso ao realizar o pedido" width="100">
 
-					</tr>
-				</tbody>
-			</table>
-			
-		</div>
+				</div>
+
+
+			</div>
+
+			<h2 class="text-center mt-3 mb-5">Compra realizada com sucesso!</h2>
+
+			<div class="container">
+
+
+				<div id="table">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Nº Pedido</th>
+								<th scope="col">Preço</th>
+								<th scope="col">Forma de pagamento</th>
+								<th scope="col">Data Pedido</th>
+								<th scope="col">Status</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pedidos : ${pedidos}">
+								<th scope="row" th:text="${pedidos.idPedido}"></th>
+
+								<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
+								<td th:text="${pedidos.formaPagamento}"></td>
+								<td th:text="${pedidos.dataPedido}"></td>
+								<td th:text="${pedidos.status}"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+
+			</div>
 
 		</main>
 		<!-- PRINCIPAL -->
+
 
 
 	</div>

@@ -25,7 +25,7 @@ public class FaleConoscoController {
 	// CHAMA A VIEW C E PASSA UM OBJETO VAZIO
 	@GetMapping("/contato")
 	public ModelAndView contactar() {
-		ModelAndView modelAndView = new ModelAndView("html/contato");
+		ModelAndView modelAndView = new ModelAndView("site/contato");
 		modelAndView.addObject("faleConosco", new FaleConosco());
 		return modelAndView;
 	}

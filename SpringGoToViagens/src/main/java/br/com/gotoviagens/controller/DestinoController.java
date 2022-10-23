@@ -102,7 +102,7 @@ public class DestinoController {
 		//model.addAttribute("sucesso", "Passagens localizadas.");
 	
 		model.addAttribute("destinos", dest);
-		return new ModelAndView("html/listaPassagem");
+		return new ModelAndView("site/listaPassagem");
 
 	}
 	

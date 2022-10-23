@@ -15,16 +15,6 @@ public class RotasPerfil {
 	}
 	
 	
-	/* EXCLUIR
-	@GetMapping("/minhasViagens")
-	// PÁGINA INICIAL DO PERFIL
-	public String viagens() {
-		return "perfil/minhasViagens";
-	}
-	*/
-	
-	
-	
 	
 	@GetMapping("/comprarPassagem")
 	// PÁGINA COMPRAR PASSAGENS

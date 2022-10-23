@@ -21,7 +21,7 @@ public class LoginController {
 	@GetMapping("/login")
 	// PÁGINA LOGIN
 	public String login(Model model) {
-		return "html/login1";
+		return "site/login1";
 	}
 	
 	
@@ -39,7 +39,7 @@ public class LoginController {
 		}
 		
 		model.addAttribute("erro", "Email e/ou senha inválidos!");
-		return "html/login1";
+		return "site/login1";
 	}
 	
 	// LOGOUT

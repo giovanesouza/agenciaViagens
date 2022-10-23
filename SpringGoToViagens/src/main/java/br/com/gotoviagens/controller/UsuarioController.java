@@ -5,18 +5,20 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.gotoviagens.model.Destinos;
-import br.com.gotoviagens.model.Funcionario;
+
 import br.com.gotoviagens.model.Usuario;
 import br.com.gotoviagens.repository.DestinosRepository;
 import br.com.gotoviagens.repository.UsuarioRepository;
+import br.com.gotoviagens.util.SenhaUtil;
 
 @Controller
 public class UsuarioController {
@@ -32,7 +34,7 @@ public class UsuarioController {
 	// CHAMA A VIEW CADASTRAR E PASSA UM OBJETO VAZIO
 	@GetMapping("/cadastrarUsuario")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("html/cadastrarUsuario");
+		ModelAndView modelAndView = new ModelAndView("site/cadastrarUsuario");
 		modelAndView.addObject("usuario", new Usuario());
 		return modelAndView;
 	}
@@ -49,33 +51,41 @@ public class UsuarioController {
 	 * return modelAndView; }
 	 */
 
+
 	@PostMapping("/cadastrarUsuario")
 	public ModelAndView cadastrar(Usuario usuario, Model model)  throws IOException {
 			
 		ModelAndView modelAndView = new	ModelAndView("success/confirm-cadastroUsuario");
 
-		
+		// CRIPTOGRAFA SENHA
+		//String senhaEncriptada = SenhaUtil.encode(usuario.getSenha());
+		//String senhaCriptografada = SenhaUtil.encode(usuario.getSenha());
+			
 		// VERIFICAÇÃO PARA SABER SE O USUÁRIO JÁ TEM E-MAIL CADASTRADO
 		
 		try {
 			
 			if(usuarioRepository.findByCpf(usuario.getCpf()) != null) {
-				ModelAndView mv = new	ModelAndView("html/cadastrarUsuario");
+				ModelAndView mv = new	ModelAndView("site/cadastrarUsuario");
 				model.addAttribute("msg", "Já existe um cadastro para o CPF informado: " + usuario.getCpf() + ".");
 				return mv;
 				//throw new EmailExistsException("Este e-mail já foi cadastrado para um usuário: " + usuario.getCpf());
-			} 
+			};
 				
 		} finally {
 			
 		}
 		
+		
+		// usuario.setSenha(senhaCriptografada);
+		 
 		// CADASTRA NOVO USUÁRIO
 		usuarioRepository.save(usuario);
 		return modelAndView;
 		
 	}
-			
+	
+
 			
 
 	// === LISTA OS USUÁRIOS - NO ADM
@@ -105,6 +115,8 @@ public class UsuarioController {
 
 		model.addAttribute("sucesso",
 				"Atualização realizada com sucesso! As informações atualizadas aparecerão no próximo acesso/login.");
+		
+		
 		usuarioRepository.save(usuario);
 
 		return mv;

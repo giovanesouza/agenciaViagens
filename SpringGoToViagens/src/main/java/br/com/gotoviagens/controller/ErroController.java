@@ -14,7 +14,7 @@ public class ErroController implements ErrorController {
 	//@ResponseBody => UTILIZADO PARA EXIBIR MSG NO CORPO DO SITE SEM A NECESSIDADE DE CRIAR UMA VIEW
 	public String getErrorPath() {
 		// TODO Auto-generated method stub
-		return "error/error.html";
+		return "error/error";
 	}
 
 

@@ -20,7 +20,8 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/profile.css}">
 
-	<title>Excluir conta</title>
+
+	<title>Minhas Viagens</title>
 </head>
 
 <body>
@@ -57,8 +58,6 @@
 
 
 
-
-
 	<div class="grid-layout">
 
 		<!-- MENU -->
@@ -73,7 +72,7 @@
 
 				</a>
 
-				<a th:href="@{/{id}/minhasPassagens}">
+				<a href="#">
 
 					<span class="material-symbols-outlined"> flight
 					</span>
@@ -100,7 +99,7 @@
 					<li>Info. Cadastrais</li>
 				</a>
 
-				<a href="#">
+				<a href="/excluirConta">
 
 					<span class="material-symbols-outlined">
 						cancel </span>
@@ -109,6 +108,7 @@
 				</a>
 
 			</ul>
+
 
 		</nav>
 
@@ -119,69 +119,58 @@
 		<!-- PRINCIPAL -->
 		<main>
 
-			<h2 class="text-center mt-3 mb-3">Excluir conta</h2>
-			<p class="text-center text-primary">
-				Para excluir a sua conta <strong>marque a opção sim</strong> e
-				clique em <strong>excluir conta</strong>.
-			</p>
+			<h2 class="text-center mt-3 mb-3">Minhas Passagens</h2>
 
+			<div class="container">
+				<div id="table">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Nº Pedido</th>
+								<!--	<th scope="col">Destino</th>-->
+								<th scope="col">Preço</th>
+								<th scope="col">Forma de pagamento</th>
+								<th scope="col">Data Pedido</th>
+								<th scope="col">Status</th>
+								<th scope="col">Detalhes</th>
 
-			<div class="row text-center">
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pedidos : ${pedidos}">
+								<th scope="row" th:text="${pedidos.idPedido}"></th>
 
-				<form action="/perfilExcluidoComSucesso" method="post">
+								<!--							<td th:text="${pedidos.destinos.destino}">						
+								
+									<select th:field="*{destinos}" class="form-control" style="width: 100%;">
+										<option th:each="destinos : ${destinos}" th:text="${destinos.destino}"
+											th:value="${destinos.id}">
+											Nome Cargo</option>
+									</select>
 
-					<input type="hidden" name="id" class="mt-4 p-2" th:value="${session.usuarioLogado.id}" />
+								</td>
+-->
 
+								<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
+								<td th:text="${pedidos.formaPagamento}"></td>
+								<td th:text="${pedidos.dataPedido}"></td>
+								<td th:text="${pedidos.status}"></td>
+								<td>Exibir</td>
 
-					<div class="row" style="margin-top: 10rem !important;">
+							</tr>
+						</tbody>
+					</table>
 
-						<div class="col-12 mb-5">
-							<p class="text-danger">
-								<strong>Tem certeza que deseja excluir a sua conta?</strong>
-							</p>
-							
-						</div>
-
-					</div>
-
-
-					<div class="row">
-
-						<div class="col-6 text-center">
-							<label for="sim">Sim</label> <br />
-							<input type="radio" id="sim" name="opc" value="sim" />
-						</div>
-
-						<div class="col-6 text-center">
-							<label for="nao">Não</label> <br />
-							<input type="radio" id="nao" name="opc" value="nao" checked />
-						</div>
-
-					</div>
-
-
-					<input type="submit" id="botao" class="mt-5 mb-4 bg-danger text-light p-3 btn"
-						style="font-size: 1.6rem" value="Excluir conta">
-
-				</form>
-
-
-
-
-
+				</div>
 			</div>
-
-
 
 		</main>
 		<!-- PRINCIPAL -->
 
 
+
 	</div>
 	<!-- LAYOUT NOVO -->
-
-
-
 
 
 
@@ -191,7 +180,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-
 </body>
 
 </html>
