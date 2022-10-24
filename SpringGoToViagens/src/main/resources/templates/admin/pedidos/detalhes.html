@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> LISTA DE PEDIDOS | Agência de Viagens </title>
+	<title> DETALHES DO PEDIDO | Agência de Viagens </title>
 
 </head>
 
@@ -66,6 +66,10 @@
 						<a class="nav-link btn-hover" href="/admin"> HOME <span
 								class="visually-hidden">(current)</span></a>
 					</li>
+					<li class="nav-item active text-center">
+						<a class="nav-link btn-hover" href="/listarPedidos"> LISTAR PEDIDOS <span
+								class="visually-hidden">(current)</span></a>
+					</li>
 				</ul>
 
 			</div>
@@ -82,49 +86,38 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Pedidos realizados</h1>
+				<h1>Detalhes do Pedido</h1>
 			</div>
 		</div>
 
 		<div class="row" id="table">
 			<div class="col-sm-12">
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Nº Pedido</th>
-							<th scope="col">Nome Cliente</th>
 
-							<th scope="col">Preço</th>
-							<th scope="col">Forma de pagamento</th>
-							<th scope="col">Data Pedido</th>
-							<th scope="col">Status</th>
-							<th scope="col">Detalhes</th>
-						</tr>
-					</thead>
-					<tbody>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Id Destino</th>
+								<th scope="col">Embarque</th>
+								<th scope="col">Destino</th>
+								<th scope="col">Data Ida</th>
+								<th scope="col">Data Volta</th>
+							</tr>
+						</thead>
+						<tbody>
 
-						<tr th:each="pedidos : ${pedidos}">
-							<th scope="row" th:text="${pedidos.idPedido}"></th>
+							<tr th:each="pedidos : ${pedidos}">
+								<th scope="row" th:text="${pedidos.destinos.id}"></th>
 
-							<td th:text="${pedidos.usuario.nome}"></td>
+								<td th:text="${pedidos.destinos.embarque}"></td>
+								<td th:text="${pedidos.destinos.destino}"></td>
+								<td th:text="${pedidos.destinos.dataIda}"></td>
+								<td th:text="${pedidos.destinos.dataVolta}"></td>
 
+							</tr>
 
-							<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
-							<td th:text="${pedidos.formaPagamento}"></td>
-							<td th:text="${pedidos.dataPedido}"></td>
-							<td th:text="${pedidos.status}"></td>
+						</tbody>
+					</table>
 
-							<td>
-								<a th:href="@{/{idPedido}/detalhePedido (idPedido=${pedidos.idPedido})}"
-									class="btn btn-warning">
-									Exibir
-								</a>
-							</td>
-							
-						</tr>
-
-					</tbody>
-				</table>
 			</div>
 		</div>
 

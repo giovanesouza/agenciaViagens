@@ -21,7 +21,7 @@
 	<link rel="stylesheet" th:href="@{/css/profile.css}">
 
 
-	<title>Minhas Viagens</title>
+	<title>Detalhes da Passagem</title>
 </head>
 
 <body>
@@ -72,14 +72,14 @@
 
 				</a>
 
-				<a href="#">
-
-					<span class="material-symbols-outlined"> flight
-					</span>
-
-					<li>Minhas Passagens</li>
-
-				</a>
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
+						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
+						
+						<span class="material-symbols-outlined"> flight
+						</span>
+						
+						<li>  Minhas Passagens </li>
+				</form>
 
 				<a href="/comprarPassagem">
 
@@ -120,6 +120,7 @@
 		<main>
 
 			<h2 class="text-center mt-3 mb-3">Minhas Passagens</h2>
+			<p class="text-center mb-3 text-success"> ** Detalhes do pedido ** </p>
 
 			<!-- VARIÁVEL DE ERRO 
 			<div class="container mt-5 mb-3">
@@ -129,39 +130,36 @@
 
 			<div class="container mb-5">
 				<div id="table">
+
+
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">Nº Pedido</th>
-								<!--	<th scope="col">Destino</th>-->
-								<th scope="col">Preço</th>
-								<th scope="col">Forma de pagamento</th>
-								<th scope="col">Data Pedido</th>
-								<th scope="col">Status</th>
-								<th scope="col">Detalhes</th>
-
+								<th scope="col">Id Destino</th>
+								<th scope="col">Embarque</th>
+								<th scope="col">Destino</th>
+								<th scope="col">Data Ida</th>
+								<th scope="col">Data Volta</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="pedidos : ${pedidos}">
-								<th scope="row" th:text="${pedidos.idPedido}"></th>
 
-								<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
-								<td th:text="${pedidos.formaPagamento}"></td>
-								<td th:text="${pedidos.dataPedido}"></td>
-								<td th:text="${pedidos.status}"></td>
-								<td>
-									<a th:href="@{/detalhesPassagem/{idPedido} (idPedido=${pedidos.idPedido})}"
-										class="btn btn-warning">
-										Exibir
-									</a>
-								</td>
+							<tr th:each="pedidos : ${pedidos}">
+								<th scope="row" th:text="${pedidos.destinos.id}"></th>
+
+								<td th:text="${pedidos.destinos.embarque}"></td>
+								<td th:text="${pedidos.destinos.destino}"></td>
+								<td th:text="${pedidos.destinos.dataIda}"></td>
+								<td th:text="${pedidos.destinos.dataVolta}"></td>
 
 							</tr>
+
 						</tbody>
 					</table>
 
+
 				</div>
+
 			</div>
 
 		</main>

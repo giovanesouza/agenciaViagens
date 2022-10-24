@@ -88,6 +88,18 @@ public class PedidoController {
 
 	}
 	
+	// == MOSTRA DETALHES DO PEDIDO - PERFIL USUÁRIO
+	
+	@GetMapping("/detalhesPassagem/{idPedido}")
+	public ModelAndView detalhesPassagem(@PathVariable Long idPedido) {
+		ModelAndView modelAndView = new ModelAndView("perfil/exibir-detalhes");
+
+		Pedido pedidos = pedidoRepository.getOne(idPedido);
+		modelAndView.addObject("pedidos", pedidos);
+
+		return modelAndView;
+	}
+	
 	
 	
 	// === LISTA TODOS OS PEDIDOS - ADM
@@ -98,11 +110,24 @@ public class PedidoController {
 
 		List<Pedido> pedidos = pedidoRepository.findAll();
 		mv.addObject("pedidos", pedidos);
-		mv.addObject("destinos", destinosRepository.findAll());
+		//mv.addObject("destinos", destinosRepository.findAll());
 
 		return mv;
 	}
 	
+	
+	
+	// == MOSTRA DETALHES DO PEDIDO - ADM
+	
+	@GetMapping("/{idPedido}/detalhePedido")
+	public ModelAndView detalhePedido(@PathVariable Long idPedido) {
+		ModelAndView modelAndView = new ModelAndView("admin/pedidos/detalhes");
+
+		Pedido pedidos = pedidoRepository.getOne(idPedido);
+		modelAndView.addObject("pedidos", pedidos);
+
+		return modelAndView;
+	}
 	
 	
 }
