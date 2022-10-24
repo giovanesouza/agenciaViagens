@@ -87,18 +87,18 @@ public class DestinoController {
 	// BUSCAR PASSAGEM - VERSÃO FUNCIONAL QUE APRESENTA TODOS OS CAMPOS DO BD
 
 	@GetMapping("/buscarPassagem")
-	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
+	// RECEBE OS PARÂMETROS EMBARQUE E DESTINO PARA BUSCAR 
 	public ModelAndView buscar(Model model, Destinos userParams) {
 
 		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
 		List<Destinos> dest = destinosRepository.BuscarPassagem(userParams.getEmbarque(), userParams.getDestino());
 
-		if (dest != null) {
+		//if (dest != null) {
 			//return new ModelAndView("html/listaPassagem");
 
-		}
+		//}
 
-		model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
+		//model.addAttribute("erro", "No momento não há passagens para o embarque e destino selecionado.");
 		//model.addAttribute("sucesso", "Passagens localizadas.");
 	
 		model.addAttribute("destinos", dest);

@@ -73,14 +73,15 @@
 
 				</a>
 
-				<a th:href="@{/{id}/minhasPassagens}">
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
+						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
+						
+						<span class="material-symbols-outlined"> flight
+						</span>
+						
+						<li>  Minhas Passagens </li>
+				</form>
 
-					<span class="material-symbols-outlined"> flight
-					</span>
-
-					<li>Minhas Passagens</li>
-
-				</a>
 
 				<a href="/comprarPassagem">
 
@@ -120,9 +121,9 @@
 		<!-- PRINCIPAL -->
 		<main>
 
-		
+
 			<div class="container mt-3 mb-3">
-			
+
 				<!-- INÍCIO CAROUSEL -->
 				<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
@@ -147,8 +148,8 @@
 						<span class="visually-hidden">Próximo</span>
 					</button>
 				</div>
-							<!-- FIM CAROUSEL -->
-							
+				<!-- FIM CAROUSEL -->
+
 			</div>
 
 

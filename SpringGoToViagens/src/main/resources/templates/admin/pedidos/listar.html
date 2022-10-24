@@ -16,15 +16,10 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
-	<!-- GOOGLE ICON -->
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
-	<link rel="stylesheet" th:href="@{/css/admin.css}">
 
-	<title> Administrador </title>
+	<title> LISTA DE PEDIDOS | Agência de Viagens </title>
 
 </head>
 
@@ -37,7 +32,7 @@
 		<header class="row">
 
 			<div class="col-sm-6 mb-2 text-justify">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
 				</a>
 			</div>
@@ -68,11 +63,8 @@
 			<div class="collapse navbar-collapse relative" id="collapsibleNavId">
 				<ul class="navbar-nav me-auto mt-2 mt-lg-0">
 					<li class="nav-item active text-center">
-						<a class="nav-link btn-hover bg-active" href="#"> HOME <span
+						<a class="nav-link btn-hover" href="/admin"> HOME <span
 								class="visually-hidden">(current)</span></a>
-					</li>
-					<li class="nav-item text-center">
-						<a class="nav-link btn-hover" href=""></a>
 					</li>
 				</ul>
 
@@ -81,124 +73,89 @@
 		</nav>
 
 	</div>
-
 	<!-- FIM MENUS -->
 
-	<!-- INÍCIO CARDS -->
-
-	<div class="bg-degrade">
-		<div class="container mt-5 mb-5">
-
-			<div class="row p-0">
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/cadastrarDepartamento">
-						<span class="material-symbols-outlined">
-							groups_2
-						</span>
-
-						<span>CADASTRAR DEPARTAMENTO</span>
-					</a>
-				</div>
 
 
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/cadastrarCargo">
-						<span class="material-symbols-outlined">
-							badge
-						</span>
+	<!-- INÍCIO - LISTAR DESTINOS -->
 
-						<span>CADASTRAR CARGO</span>
-					</a>
-				</div>
-
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/cadastrarFuncionario">
-						<span class="material-symbols-outlined">
-							person_add
-						</span>
-
-						<span>CADASTRAR FUNCIONÁRIO</span>
-					</a>
-				</div>
-
-
-
-
+	<main class="container mt-5 mb-5">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Pedidos realizados</h1>
 			</div>
-
-
-			<div class="row mt-3 p-0">
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/cadastrarDestinos">
-						<span class="material-symbols-outlined">
-							connecting_airports
-						</span>
-
-						<span>CADASTRAR DESTINO</span>
-					</a>
-				</div>
-
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/listarContatos">
-						<span class="material-symbols-outlined">
-							contact_mail
-						</span>
-
-						<span>SOLICITAÇÃO DE CONTATO</span>
-					</a>
-				</div>
-
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/listarCandidatos">
-						<span class="material-symbols-outlined">
-							article
-						</span>
-
-						<span>LISTAR CANDIDATOS</span>
-					</a>
-				</div>
-
-
-			</div>
-
-
-			<div class="row mt-3 p-0">
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/listarUsuarios">
-						<span class="material-symbols-outlined">
-							person
-						</span>
-
-						<span>LISTAR USUÁRIOS</span>
-					</a>
-				</div>
-
-				<div class="col-sm-4 mt-2 text-center card p-0">
-					<a href="/listarPedidos">
-						<span class="material-symbols-outlined">
-							receipt_long
-						</span>
-
-						<span>LISTAR PEDIDOS</span>
-					</a>
-				</div>
-
-
-			</div>
-
-
-
 		</div>
-		<!-- FIM CARDS -->
 
-	</div>
+		<div class="row" id="table">
+			<div class="col-sm-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Nº Pedido</th>
+							<th scope="col">Nome Cliente</th>
+							<th scope="col">Embarque</th>
+							<th scope="col">Destino</th>
+							<th scope="col">Preço</th>
+							<th scope="col">Forma de pagamento</th>
+							<th scope="col">Data Pedido</th>
+							<th scope="col">Status</th>
+							<th scope="col">Detalhes</th>
+						</tr>
+					</thead>
+					<tbody>
 
+						<tr th:each="pedidos : ${pedidos}">
+							<th scope="row" th:text="${pedidos.idPedido}"></th>
+
+							<td th:text="${pedidos.usuario.nome}"></td>
+							<td class="text-danger" th:text="${pedidos.destinos.embarque}"></td>
+							<td class="text-success" th:text="${pedidos.destinos.destino}"></td>
+
+
+							<!--<td th:text="${pedidos.destinos}"></td>
+
+									<select th:field="*{destinos}" class="form-control" style="width: 100%;">
+										<option th:each="destinos : ${destinos}" th:text="${destinos.destino}"
+											th:value="${destinos.id}">
+											Nome Cargo</option>
+									</select> -->
+
+
+							<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
+							<td th:text="${pedidos.formaPagamento}"></td>
+							<td th:text="${pedidos.dataPedido}"></td>
+							<td th:text="${pedidos.status}"></td>
+							<td>Exibir</td>
+
+
+							<!--					<td>
+								<a th:href="@{/{matricula}/editarFuncionario (matricula=${funcionario.matricula})}"
+									class="btn btn-warning">
+									Editar
+								</a>
+							</td>
+							<td>
+								<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}"
+									class="btn btn-danger"
+									onclick="return confirm('Tem certeza que deseja excluir o funcionário?');">
+									Excluir
+								</a>
+							</td>
+	-->
+
+						</tr>
+
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</main>
+
+	<!-- FIM - LISTAR DESTINOS  -->
 
 
 	<!-- ICON SCROLL TOP -->
@@ -214,7 +171,7 @@
 		<div class="row mb-3">
 
 			<div class="col-sm-6 mb-2 text-right">
-				<a href="/">
+				<a href="#">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="logo" width="150px">
 				</a>
 			</div>
@@ -232,13 +189,11 @@
 		</div>
 
 
-
 		<div class="row mt-4 mb-3">
 			<div class="col-12 text-center"> &copy 2022 - Go To Agência de Viagens </div>
 		</div>
 
 	</footer>
-
 
 	<script th:src="@{/js/all.js}"></script>
 

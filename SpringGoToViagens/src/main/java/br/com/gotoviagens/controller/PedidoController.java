@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.gotoviagens.model.Cargo;
+import br.com.gotoviagens.model.Departamento;
 import br.com.gotoviagens.model.Destinos;
 import br.com.gotoviagens.model.Pedido;
 import br.com.gotoviagens.model.Usuario;
@@ -66,39 +67,41 @@ public class PedidoController {
 
 		return modelAndView;
 	}
-
 	
-	
-	/*
-	// EXIBE LISTA COM AS PASSAGENS COMPRADAS
-	@GetMapping("/minhasViagens")
 
-	public ModelAndView viagens(Usuario userParams) {
-		
+	// LISTA OS PEDIDOS - PERFIL USUÁRIO
+	
+	@PostMapping("/minhasPassagens")
+	// RECEBE MODEL E OBJETO COM O EMAIL E SENHA
+	public ModelAndView buscarPedidos(Model model, Usuario userParams) {
+
 		ModelAndView mv = new ModelAndView("perfil/minhaspassagens");
 		
-		//List<Pedido> pedidos = pedidoRepository.buscarPedidosPorIdUser(userParams.getId());
+		// INSTÂNCIA DE USUÁRIO - RETORNA O OBJETO
+		List<Pedido> pedidos = pedidoRepository.findByUserId(userParams.getId());
+
+
+		//model.addAttribute("msg", "No momento não há passagens em seu nome.");
+		mv.addObject("pedidos", pedidos);
+
+		return mv;
+
+	}
+	
+	
+	
+	// === LISTA TODOS OS PEDIDOS - ADM
+
+	@GetMapping("/listarPedidos")
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("admin/pedidos/listar");
+
 		List<Pedido> pedidos = pedidoRepository.findAll();
 		mv.addObject("pedidos", pedidos);
-		
-		return mv;
-	}
-	
-	*/
-	
-	@GetMapping("/{id}/minhasPassagens")
-	public ModelAndView minhasPassagens(@PathVariable Long id) {
-		
-		ModelAndView mv = new ModelAndView("perfil/minhaspassagens");
-				
-		//List<Pedido> pedidos = pedidoRepository.buscarPedidosPorIdUser(userParams.getId());
-		List<Pedido> pedidos = pedidoRepository.findByUserId(id);
-		mv.addObject("pedidos", pedidos);
-		mv.addObject("destinos", destinosRepository.findById(id));
+		mv.addObject("destinos", destinosRepository.findAll());
 
 		return mv;
 	}
-	
 	
 	
 	

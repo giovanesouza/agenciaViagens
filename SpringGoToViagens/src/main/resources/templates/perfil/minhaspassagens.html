@@ -121,7 +121,13 @@
 
 			<h2 class="text-center mt-3 mb-3">Minhas Passagens</h2>
 
-			<div class="container">
+			<!-- VARIÁVEL DE ERRO 
+			<div class="container mt-5 mb-3">
+			<div class="col-12 alert alert-danger text-center mt-3" role="alert" th:if="${msg} != null"
+				th:text="${msg}"> </div>
+			</div>-->
+
+			<div class="container mb-5">
 				<div id="table">
 					<table class="table">
 						<thead>
@@ -139,17 +145,6 @@
 						<tbody>
 							<tr th:each="pedidos : ${pedidos}">
 								<th scope="row" th:text="${pedidos.idPedido}"></th>
-
-								<!--							<td th:text="${pedidos.destinos.destino}">						
-								
-									<select th:field="*{destinos}" class="form-control" style="width: 100%;">
-										<option th:each="destinos : ${destinos}" th:text="${destinos.destino}"
-											th:value="${destinos.id}">
-											Nome Cargo</option>
-									</select>
-
-								</td>
--->
 
 								<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
 								<td th:text="${pedidos.formaPagamento}"></td>

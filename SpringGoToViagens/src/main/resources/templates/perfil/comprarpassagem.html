@@ -72,14 +72,14 @@
 
 				</a>
 
-				<a th:href="@{/{id}/minhasPassagens}">
-
-					<span class="material-symbols-outlined"> flight
-					</span>
-
-					<li>Minhas Passagens</li>
-
-				</a>
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
+						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
+						
+						<span class="material-symbols-outlined"> flight
+						</span>
+						
+						<li>  Minhas Passagens </li>
+				</form>
 
 				<a href="#">
 

@@ -73,14 +73,14 @@
 
 				</a>
 
-				<a th:href="@{/{id}/minhasPassagens}">
-
-					<span class="material-symbols-outlined"> flight
-					</span>
-
-					<li>Minhas Passagens</li>
-
-				</a>
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
+						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
+						
+						<span class="material-symbols-outlined"> flight
+						</span>
+						
+						<li>  Minhas Passagens </li>
+				</form>
 
 				<a href="/comprarPassagem">
 
@@ -120,7 +120,7 @@
 		<!-- PRINCIPAL -->
 		<main>
 
-			<h2 class="text-center mt-3 mb-3">Finalize o pedido preenchendo os campos abaixo</h2>
+			<h2 class="text-center mt-3 mb-3">Finalize o pedido realizando o pagamento abaixo:</h2>
 
 			<!-- INÍCIO - PEDIDO -->
 			<div class="container">
@@ -187,6 +187,15 @@
 
 
 						</div>
+						
+						<div class="col-6 mt-3">
+
+
+							<label class="text-dark form-label" for="nome">CPF:</label> <br />
+							<input class="p-2" type="text" th:value="${session.usuarioLogado.cpf}" disabled />
+
+
+						</div>
 
 
 						<div class="col-12 mt-3" hidden>
@@ -200,8 +209,9 @@
 						<div class="col-6 mt-3">
 
 							<label class="text-dark form-label" for="precoTotal">Total a pagar: R$</label>
-
-							<input class="p-2" type="number" name="precoTotal" th:value="${destinos.preco}" required />
+							
+							<input class="p-2" type="number" th:value="${destinos.preco}" disabled />
+							<input class="p-2" type="number" name="precoTotal" th:value="${destinos.preco}" hidden />
 
 
 						</div>
@@ -225,12 +235,11 @@
 						</div>
 
 
-						<div class="col-6 mt-3">
+						<div class="col-6 mt-3" hidden>
 
 							<label class="text-dark form-label" for="status">Status do pedido:</label>
 
 							<input class="p-2" type="text" name="status" value="Finalizado" />
-
 
 						</div>
 
