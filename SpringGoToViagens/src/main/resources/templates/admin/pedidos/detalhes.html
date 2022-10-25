@@ -108,10 +108,14 @@
 							<tr th:each="pedidos : ${pedidos}">
 								<th scope="row" th:text="${pedidos.destinos.id}"></th>
 
-								<td th:text="${pedidos.destinos.embarque}"></td>
-								<td th:text="${pedidos.destinos.destino}"></td>
-								<td th:text="${pedidos.destinos.dataIda}"></td>
-								<td th:text="${pedidos.destinos.dataVolta}"></td>
+								<td  class="text-danger" th:text="${pedidos.destinos.embarque}"></td>
+								<td class="text-success" th:text="${pedidos.destinos.destino}"></td>
+								<td>	
+								<input type="date" th:value="${pedidos.destinos.dataIda}" disabled />						
+								</td>
+								<td>							
+								<input type="date" th:value="${pedidos.destinos.dataVolta}" disabled />						
+								</td>
 
 							</tr>
 
@@ -119,6 +123,17 @@
 					</table>
 
 			</div>
+		</div>
+		
+		<div class="row mt-3 mb-3">
+		
+		<div class="col-12">
+		
+		<a href="/listarPedidos" class="btn bg-buscar">Voltar</a>
+		
+		</div>
+		
+		
 		</div>
 
 

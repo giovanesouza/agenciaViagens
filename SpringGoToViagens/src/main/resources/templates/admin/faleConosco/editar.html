@@ -101,30 +101,38 @@
 
 					<div class="col-8 offset-2">
 
+						<input type="text" class="form-control" th:field="*{nome}" th:value="*{nome}" disabled />
+						
 						<input type="text" class="form-control" name="nome" th:field="*{nome}" th:value="*{nome}" id="nome"
-							placeholder="Digite seu nome" maxlength="50"  />
+							placeholder="Digite seu nome" hidden />
 
 					</div>
 
 
 					<div class="col-8 offset-2 mt-3">
 
+						<input type="email" class="form-control" th:field="*{email}" th:value="*{email}" id="email" disabled />
+						
 						<input type="email" class="form-control" name="email" th:field="*{email}" th:value="*{email}" id="email"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50"  />
+							hidden />
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
+						<textarea class="form-control size" th:field="*{mensagem}" id="mensagem"
+							cols="30" rows="5" placeholder="Digite sua mensagem aqui" disabled></textarea>
+							
 						<textarea class="form-control size" name="mensagem" th:field="*{mensagem}" id="mensagem"
-							cols="30" rows="5" placeholder="Digite sua mensagem aqui" /></textarea>
+							cols="30" rows="5" hidden></textarea>
 
 					</div>
 
 					<div class="col-8 offset-2 mt-3">
 
 						<label for="dataContato"> Data de solicitação de contato: </label>
-						<input type="date" class="form-control bg-warning" name="dataContato" th:field="*{dataContato}" id="dataContato" />
+						<input type="date" class="form-control bg-warning" th:field="*{dataContato}" id="dataContato" disabled />
+						<input type="date" class="form-control bg-warning" name="dataContato" th:field="*{dataContato}" id="dataContato" hidden />
 
 					</div>
 
@@ -139,7 +147,7 @@
 					<div class="col-8 offset-2 mt-3">
 
 						<input type="text" class="form-control" name="status" th:field="*{status}" id="status"
-							placeholder="Insira o status" maxlength="20" required />
+							placeholder="Insira o status - Ex: Respondido" maxlength="20" required />
 
 
 					</div>

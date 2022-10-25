@@ -72,13 +72,13 @@
 
 				</a>
 
-				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
-						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
-						
-						<span class="material-symbols-outlined"> flight
-						</span>
-						
-						<li>  Minhas Passagens </li>
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">
+					<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}" />
+
+					<span class="material-symbols-outlined"> flight
+					</span>
+
+					<li> Minhas Passagens </li>
 				</form>
 
 				<a href="/comprarPassagem">
@@ -135,7 +135,9 @@
 					</div>
 
 					<div class="col-md-10">
-						<input class="p-2" type="text" name="cpf" id="cpf" th:value="${session.usuarioLogado.cpf}" />
+						<input class="p-2" type="text" th:value="${session.usuarioLogado.cpf}" disabled />
+						<input class="p-2" type="text" name="cpf" id="cpf" th:value="${session.usuarioLogado.cpf}"
+							hidden />
 
 					</div>
 
@@ -209,6 +211,15 @@
 				<div class="row mb-3">
 
 					<div class="col-md-12 text-right">
+
+						<div class="col-md-12 alert alert-warning text-center mt-3" role="alert">
+
+							<p>Ao clicar em <strong>atualizar</strong>, todos os campos alterados serão atualizados!</p>
+							<p>Entretanto, só será possível verificar as alterações no próximo acesso/login.</p>
+
+
+						</div>
+
 
 						<button class="mt-5 me-3 infoCad" type="submit">Atualizar dados</button>
 

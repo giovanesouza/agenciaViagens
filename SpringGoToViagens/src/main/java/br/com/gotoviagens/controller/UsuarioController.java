@@ -113,17 +113,14 @@ public class UsuarioController {
 	public ModelAndView editar(Usuario usuario, Model model) {
 		ModelAndView mv = new ModelAndView("redirect:/infoCadastrais");
 
-		model.addAttribute("sucesso",
-				"Atualização realizada com sucesso! As informações atualizadas aparecerão no próximo acesso/login.");
-		
 		
 		usuarioRepository.save(usuario);
+		
 
 		return mv;
 	}
 
 	// EXCLUI CONTA
-
 	@GetMapping("/excluirConta")
 	// PÁGINA INICIAL DO PERFIL
 	public String excluirConta() {
