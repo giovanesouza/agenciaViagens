@@ -3,6 +3,32 @@ using GoToViagensAPI_Csharp.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+// DEFINE O ENDENREÇO DE ONDE A APLICAÇÃO REACT VAI RODAR
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:19006")
+                                               .AllowAnyHeader()
+                                               .AllowAnyMethod();
+                      });
+});
+
+
+// services.AddResponseCaching();
+
+
+
+builder.Services.AddControllers();
+
+
+
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -28,10 +54,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// new
+app.UseStaticFiles();
+app.UseRouting();
 
+
+// CHAMADA DO CORS
+app.UseCors(MyAllowSpecificOrigins);
+
+
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

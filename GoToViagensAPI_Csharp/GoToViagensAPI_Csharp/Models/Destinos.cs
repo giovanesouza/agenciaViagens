@@ -12,6 +12,9 @@ namespace GoToViagensAPI_Csharp.Models
             [Key]
             public int DestinoId { get; set; }
 
+            [Required(ErrorMessage = "Informe a url da imagem de destino")]
+            public string Imagem { get; set; }
+
             [Required(ErrorMessage = "Informe onde será o embarque")]
             [StringLength(20)]
             public string Embarque { get; set; }
@@ -22,10 +25,12 @@ namespace GoToViagensAPI_Csharp.Models
 
             // INSERIR A DATA NO PADRÃO AAAA-MM-DD
             [Required(ErrorMessage = "Informe a data de Ida - PADRÃO AAAA-MM-DD")]
+            [StringLength(10)]
             public string DataIda { get; set; }
 
              // INSERIR A DATA NO PADRÃO AAAA-MM-DD
             [Required(ErrorMessage = "Informe a data de volta - PADRÃO AAAA-MM-DD")]
+            [StringLength(10)]
             public string DataVolta { get; set; }
 
 

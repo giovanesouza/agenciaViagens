@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GoToViagensAPI_Csharp.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace GoToViagensAPI_Csharp.Controllers
 {
@@ -18,6 +19,7 @@ namespace GoToViagensAPI_Csharp.Controllers
 
 
         // GET: api/Destinos - LISTA TODOS OS DESTINOS
+        [EnableCors("_myAllowSpecificOrigins")] // NEW - CORS
         [HttpGet]
         public IEnumerable<Destinos> GetDestinos()
         {
