@@ -19,7 +19,7 @@
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
-	<title> Login - Go To | Agência de Viagens </title>
+	<title> Alterar senha | Agência de Viagens </title>
 
 </head>
 
@@ -75,7 +75,7 @@
 						<a class="nav-link btn-hover" href="/contato">CONTATO</a>
 					</li>
 					<li class="nav-item text-center">
-						<a class="nav-link absolute-right bg-active" href="#">LOGIN</a>
+						<a class="nav-link absolute-right" href="/login">LOGIN</a>
 					</li>
 				</ul>
 
@@ -108,45 +108,28 @@
 
 				<div class="d-flex justify-content-between">
 
-					<h3 class="text-login">Login</h3>
-					<span>ou</span>
-
-					<a href="/cadastrarUsuario">
-						<h3 class="text-registrar btn">
-							Cadastre-se
-						</h3>
-					</a>
+					<h3 class="text-login">Para recuperar sua senha preencha os campos abaixo</h3>
 
 				</div>
 
 
-				<form action="/logar" method="post" th:object="${usuario}">
+				<form action="/alterarSenha" method="post" th:object="${usuario}">
 
 					<div class="row mb-2 mt-2">
 
-						<input type="email" class="form-control" name="email" id="email_login" aria-describedby="helpId"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="40" required>
+						<label class="mt-2" for="email"> <strong> E-MAIL: </strong> </label>
+						
+						<input type="email" class="form-control" name="email" id="email_login"
+							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required />
 
 					</div>
 
 					<div class="row">
 
-						<input type="password" class="form-control" name="senha" id="senha_login"
-							aria-describedby="helpId" placeholder="Digite sua senha (máx 12 digitos)" maxlength="12"
-							required="">
+						<label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
 
-					</div>
-
-
-					<div class="row mt-2">
-
-						<div>
-							<input type="checkbox" name="lembrar" id="lembrar_login"> <span>Lembre-me</span>
-						</div>
-
-						<div>
-							<a class="link_rodape" href="/alterarSenha"> Esqueci minha senha </a>
-						</div>
+						<input type="text" class="form-control" name="cpf" id="cpf"
+							placeholder="Digite seu CPF (APENAS NÚMEROS)" th:field="*{cpf}" required />
 
 					</div>
 
@@ -156,12 +139,7 @@
 						<!-- VARIÁVEL DE ERRO -->
 						<div class="alert alert-danger text-center mt-3" role="alert" th:if="${erro} != null"
 							th:text="${erro}"> </div>
-
-
-						<!-- VARIÁVEL DE SUCESSO - REDEFINIÇÃO DE SENHA OK -->
-						<div class="alert alert-success text-center mt-3" role="alert" th:if="${sucesso}"
-							th:text="${sucesso}"> </div>
-
+							
 
 						<button class="botao_login" type="submit"> Entrar </button>
 
@@ -275,9 +253,18 @@
 
 	<script th:src="@{/js/all.js}"></script>
 
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+
+	<script>
+		$('#cpf').mask('000.000.000-00', {reverse: true});
+	</script>
 </body>
 
 </html>

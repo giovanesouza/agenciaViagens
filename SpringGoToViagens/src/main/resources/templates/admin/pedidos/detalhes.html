@@ -101,6 +101,7 @@
 								<th scope="col">Destino</th>
 								<th scope="col">Data Ida</th>
 								<th scope="col">Data Volta</th>
+								<th scope="col">Condição</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -116,6 +117,7 @@
 								<td>							
 								<input type="date" th:value="${pedidos.destinos.dataVolta}" disabled />						
 								</td>
+								<td th:text="${pedidos.destinos.condicao}"></td>
 
 							</tr>
 
