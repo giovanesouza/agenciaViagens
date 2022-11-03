@@ -68,3 +68,15 @@
 
 <h3>MÓDULO 06</h3>
 
+<h4>Front-end:</h4>
+
+- Criar uma interface mobile usando React Native para consultas usando API em C#.
+
+<h4>Back-end:</h4>
+
+- Desenvolver as APIs para manipulação de dados em C#. 
+
+<h4>Banco de dados:</h4>
+
+- Ajustar a base de dados para relatórios das APIs, caso seja necessário.
+Disponibilizar acesso aos dados consumidos pelas APIs. 
