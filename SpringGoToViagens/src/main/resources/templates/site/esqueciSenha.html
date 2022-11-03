@@ -95,20 +95,20 @@
 		<div class="row mt-5 mb-5">
 
 
+			<!-- IMAGEM RECUPERAÇÃO DE SENHA -->
 			<div class="col-md-6">
 
-				<img class="img_login img-fluid"
-					src="https://img.freepik.com/free-vector/tiny-man-buying-ticket-online-via-laptop-monitor-plane-baggage-flat-vector-illustration-travelling-digital-technology_74855-8621.jpg?w=740&t=st=1656546362~exp=1656546962~hmac=21772148eee30138a03402a80befb34beb3239d839b7e4dd85ed0eb3ac12e8b7"
-					alt="Imagem login">
+				<img class="img_login img-fluid" th:src="@{img/recuperar-senha.jpg}" alt="Imagem recuperar senha">
 
 			</div>
+
 
 			<div class="col-md-6">
 
 
 				<div class="d-flex justify-content-between">
 
-					<h3 class="text-login">Para recuperar sua senha preencha os campos abaixo</h3>
+					<h3 class="text-justify text-login">Para recuperar sua senha preencha os campos abaixo:</h3>
 
 				</div>
 
@@ -117,16 +117,16 @@
 
 					<div class="row mb-2 mt-2">
 
-						<label class="mt-2" for="email"> <strong> E-MAIL: </strong> </label>
-						
+						<label class="mt-2 text-danger" for="email"> <strong> E-MAIL: </strong> </label>
+
 						<input type="email" class="form-control" name="email" id="email_login"
-							placeholder="Digite seu e-mail (nome@dominio.com)" maxlength="50" required />
+							placeholder="nome@dominio.com" maxlength="50" required />
 
 					</div>
 
 					<div class="row">
 
-						<label class="mt-2" for="cpf"> <strong> CPF: </strong> </label>
+						<label class="mt-2 text-danger" for="cpf"> <strong> CPF: </strong> </label>
 
 						<input type="text" class="form-control" name="cpf" id="cpf"
 							placeholder="Digite seu CPF (APENAS NÚMEROS)" th:field="*{cpf}" required />
@@ -139,7 +139,7 @@
 						<!-- VARIÁVEL DE ERRO -->
 						<div class="alert alert-danger text-center mt-3" role="alert" th:if="${erro} != null"
 							th:text="${erro}"> </div>
-							
+
 
 						<button class="botao_login" type="submit"> Entrar </button>
 

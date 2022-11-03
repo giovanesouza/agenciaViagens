@@ -42,22 +42,18 @@ public class EsqueciSenhaController {
 
 		}
 
-		// model.addAttribute("erro", "No momento não há passagens para o embarque e
-		// destino selecionado.");
-		// model.addAttribute("sucesso", "Passagens localizadas.");
-
 		model.addAttribute("erro", "Os dados não conferem!");
 		return mv;
 
 	}
+	
+	
 
 	// ATUALIZA O CADASTRO
 	@PostMapping("/senhaAlterada")
 	public ModelAndView editar(Usuario usuario, Model model) {
 		ModelAndView mv = new ModelAndView("redirect:/login");
 
-		model.addAttribute("sucesso",
-				"Senha alterada com sucesso! Utilize a senha nova para realizar o login.");
 		usuarioRepository.save(usuario);
 		return mv;
 	}

@@ -94,17 +94,13 @@
 
 		<div class="row mt-5 mb-5">
 
+			<div class="col-md-6 mb-5 text-center">
 
-			<div class="col-md-6">
-
-				<img class="img_login img-fluid"
-					src="https://img.freepik.com/free-vector/tiny-man-buying-ticket-online-via-laptop-monitor-plane-baggage-flat-vector-illustration-travelling-digital-technology_74855-8621.jpg?w=740&t=st=1656546362~exp=1656546962~hmac=21772148eee30138a03402a80befb34beb3239d839b7e4dd85ed0eb3ac12e8b7"
-					alt="Imagem login">
+				<img class="img-fluid" th:src="@{img/reset.png}" alt="Atualizar senha">
 
 			</div>
 
 			<div class="col-md-6">
-
 
 				<div class="mb-3">
 
@@ -115,18 +111,24 @@
 
 
 				<form action="/senhaAlterada" method="post" th:object="${usuario}">
-				
-				<input type="number"  class="form-control" name="id"  th:value="${session.alterarSenhaUser.id}" hidden />
-				<input type="text"  class="form-control" name="cpf" th:value="${session.alterarSenhaUser.cpf}" hidden />
-				<input type="text"  class="form-control" name="email" th:value="${session.alterarSenhaUser.email}" hidden />
-				<input type="text"  class="form-control" name="nome" th:value="${session.alterarSenhaUser.nome}" hidden />
-				<input type="text"  class="form-control" name="telefone" th:value="${session.alterarSenhaUser.telefone}" hidden />
+
+					<input type="number" class="form-control" name="id" th:value="${session.alterarSenhaUser.id}"
+						hidden />
+					<input type="text" class="form-control" name="cpf" th:value="${session.alterarSenhaUser.cpf}"
+						hidden />
+					<input type="text" class="form-control" name="email" th:value="${session.alterarSenhaUser.email}"
+						hidden />
+					<input type="text" class="form-control" name="nome" th:value="${session.alterarSenhaUser.nome}"
+						hidden />
+					<input type="text" class="form-control" name="telefone"
+						th:value="${session.alterarSenhaUser.telefone}" hidden />
 
 					<div class="row mb-2 mt-2">
-					
+
 						<label class="mt-2" for="senha"> <strong> SENHA: </strong> </label>
-						
-						<input type="password"  class="form-control" name="senha" minlength="4" maxlength="12" required />
+
+						<input type="password" class="form-control" name="senha" minlength="4" maxlength="12"
+							required />
 
 					</div>
 
@@ -140,13 +142,7 @@
 
 
 					<div class="row">
-
-						<!-- VARIÁVEL DE SUCESSO - REDEFINIÇÃO DE SENHA OK -->
-						<div class="alert alert-success text-center mt-3" role="alert" th:if="${sucesso} != null"
-							th:text="${sucesso}"> </div>
-
-						<button class="botao_login" type="submit"> Entrar </button>
-
+							<button class="botao_login" type="submit" onclick="alert('Senha Alterada com sucesso!')"> Entrar </button>
 					</div>
 
 
