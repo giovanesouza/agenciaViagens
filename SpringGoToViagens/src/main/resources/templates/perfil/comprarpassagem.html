@@ -47,10 +47,34 @@
 
 		<div class="text-light d-flex align-items-center justify-content-end botao-sair">
 
-			<form action="/logout" method="post">
-				<button type="submit" class="material-symbols-outlined logout"> logout </button>
-			</form>
+			<button type="submit" class="material-symbols-outlined logout" data-bs-toggle="modal"
+				data-bs-target="#staticBackdrop"> logout </button>
 
+		</div>
+
+
+		<!-- MODAL -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header bg-warning">
+						<h5 class="modal-title text-light" id="staticBackdropLabel"><strong>Logout</strong></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body text-danger">
+						<strong>Você tem certeza que deseja sair?</strong>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary p-2" data-bs-dismiss="modal">Cancelar</button>
+
+						<form action="/logout" method="post">
+							<button type="submit" class="btn btn-primary p-2 ml-3 sair">Sim, quero sair.</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
 		</div>
 
 
@@ -72,13 +96,13 @@
 
 				</a>
 
-				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">			
-						<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}"  />
-						
-						<span class="material-symbols-outlined"> flight
-						</span>
-						
-						<li>  Minhas Passagens </li>
+				<form action="/minhasPassagens" method="post" class="minhasPassagensLink" onclick="submit()">
+					<input type="hidden" name="usuario" th:value="${session.usuarioLogado.id}" />
+
+					<span class="material-symbols-outlined"> flight
+					</span>
+
+					<li> Minhas Passagens </li>
 				</form>
 
 				<a href="#">
@@ -225,7 +249,8 @@
 									<td th:text="${destinos.categoria}"></td>
 									<td>
 
-										<a th:href="@{/{id}/realizarPedido (id=${destinos.id})}" class="btn btn-success">
+										<a th:href="@{/{id}/realizarPedido (id=${destinos.id})}"
+											class="btn btn-success">
 											Comprar
 										</a>
 

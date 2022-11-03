@@ -74,6 +74,23 @@ header {
 }
 
 
+/* INÍCIO - CONFIGURAÇÕES MODAL */
+.modal-content {
+	width: 100vw;
+}
+
+div.modal-footer button, 
+.modal-title,
+.modal-body {
+	font-size: 1.6rem;
+}
+
+div.modal-footer .sair {
+	margin-left: 1rem !important;
+}
+
+/* FIM - CONFIGURAÇÕES MODAL */
+
 .grid-layout {
 	
 	background-color:  #1A2E46;
