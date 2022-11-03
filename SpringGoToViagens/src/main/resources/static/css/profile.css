@@ -225,7 +225,7 @@ div#exibirSenha {
 }
 
 span#mostrar, span#esconder {
-	position: absolute;
+position: absolute;
 
 	color: #fff;
 	border-radius: 1rem;
@@ -236,14 +236,12 @@ span#mostrar, span#esconder {
 }
 
 span#mostrar {
-		background-color: #d8450b;
+	background-color: #d8450b;
 }
 
 span#esconder {
 	background-color:  #1a2e46;
 }
-
-
 
 
 /* INÍCIO RESPONSIVIDADE TABELAS */

@@ -2,12 +2,12 @@
 function dataHora() {
 
 	let d = new Date(); // Para pegar a data atual
-		
+
 	// DATA
-	let dia = d.getDate().toString().padStart(2,'0'); // Dia com 2 digitos;
-	let m = String(d.getMonth() + 1).padStart(2,'0'); // Mês com 2 digitos
+	let dia = d.getDate().toString().padStart(2, '0'); // Dia com 2 digitos;
+	let m = String(d.getMonth() + 1).padStart(2, '0'); // Mês com 2 digitos
 	let a = d.getFullYear();
-	
+
 	document.getElementById('data').innerText = `${dia}/${m}/${a}`;
 
 	let hora = d.getHours(); // Pega a hora
@@ -34,10 +34,10 @@ let nao = document.getElementById('nao');
 let btn = document.getElementById('botao');
 
 
-btn.disabled = true;
-
 sim.addEventListener("change", escolha);
 nao.addEventListener("change", escolha);
+
+btn.disabled = true;
 
 function escolha() {
 	if (document.querySelector("#sim").checked == true) {
@@ -47,36 +47,3 @@ function escolha() {
 	}
 }
 
-
-
-
-// MUDA O TYPE DO INPUT SENHA PARA VISUALIZAÇÃO DA MESMA - PÁGINA INFO CADASTRAIS
-
-const iconEsconder = document.querySelector('#esconder');
-const iconMostrar = document.querySelector('#mostrar');
-
-iconMostrar.style.display = 'none';
-iconEsconder.style.display = 'none';
-
-
-/*
-let input = document.getElementById('senhaInfo');
-let show = document.getElementById('mostrarSenha');
-
-
-show.addEventListener("click", showSenha);
-
-function showSenha() {
-	
-	//alert("clicou");
-
-
-	if (input.type == "password") {
-		input.type = "text";
-	} else {
-		input.type = "password";
-	}
-
-
-}
-*/
