@@ -460,6 +460,31 @@ td input {
 /* FIM RESPONSIVIDADE TABLES */
 
 
+/* CADASTRO DE USUÁRIOS - EXIBIÇÃO DE SENHA */
+
+.icons-senha {
+	position: absolute;
+}
+
+span#mostrar, span#esconder {
+position: relative;
+background-color: #fff;
+padding: 0.5rem;
+border-radius: 1rem;
+cursor: pointer;
+
+	
+}
+span#mostrar {
+	color: #d8450b;
+}
+
+span#esconder {
+	display: none;
+	color:  #1a2e46;
+}
+
+
 
 @media only screen and (max-width: 575px) {
 

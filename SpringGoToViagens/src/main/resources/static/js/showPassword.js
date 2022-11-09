@@ -16,13 +16,13 @@ function showSenha() {
 
 	if (input.type == "password") {
 		input.type = "text";
-		iconMostrar.style.display = 'block';
-		iconEsconder.style.display = 'none';
+		iconMostrar.style.display = 'none';
+		iconEsconder.style.display = 'block';
 
 	} else {
 		input.type = "password";
-		iconEsconder.style.display = 'block';
-		iconMostrar.style.display = 'none';
+		iconEsconder.style.display = 'none';
+		iconMostrar.style.display = 'block';
 	}
 
 }
