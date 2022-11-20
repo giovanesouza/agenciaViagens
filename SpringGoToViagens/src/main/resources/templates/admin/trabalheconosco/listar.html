@@ -16,6 +16,10 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
@@ -85,10 +89,45 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Lista de candidatos cadastrados</h1>
+				<h1 class="text-center">Lista de candidatos cadastrados</h1>
 			</div>
 		</div>
 
+
+		<div class="text-dark mt-3" th:each="trabalheConosco : ${trabalheConosco}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
+
+			<div class="row">
+
+				<div class="col-6"><strong class="text-danger">DADOS CANDIDATO(A) </strong></div>
+
+				<div class="col-6 text-right">
+
+					<a th:href="@{/{id}/excluirCandidato (id=${trabalheConosco.id})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-danger material-symbols-outlined"
+						onclick="return confirm('Tem certeza que deseja excluir a candidatura?');">
+						delete
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<!--<p><strong>Id: </strong><span th:text="${trabalheConosco.id"></span></p>-->
+				<p><strong>Nome: </strong><span th:text="${trabalheConosco.nome}"></span></p>
+				<p><strong>Email: </strong><span th:text="${trabalheConosco.email}"></span></p>
+				<p><strong>Cargo: </strong><span th:text="${trabalheConosco.cargo}"></span></p>
+				<p><strong>Currículo: </strong><span th:text="${trabalheConosco.curriculo}"></span>
+				 <a th:href="${trabalheConosco.curriculo}"> - Acessar currículo</a></p>
+				
+			</div>
+
+		</div>
+
+<!--
 		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
@@ -110,9 +149,11 @@
 							<td th:text="${trabalheConosco.cargo}"></td>
 							<td th:text="${trabalheConosco.curriculo}"></td>
 							<td>
-								<a th:href="@{/{id}/excluirCandidato (id=${trabalheConosco.id})}" class="btn btn-danger"
+								<a th:href="@{/{id}/excluirCandidato (id=${trabalheConosco.id})}"
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-danger material-symbols-outlined"
 									onclick="return confirm('Tem certeza que deseja excluir a candidatura?');">
-									Excluir
+									delete
 								</a>
 							</td>
 						</tr>
@@ -120,6 +161,7 @@
 				</table>
 			</div>
 		</div>
+-->
 
 	</main>
 

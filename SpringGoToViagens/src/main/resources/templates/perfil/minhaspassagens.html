@@ -172,12 +172,12 @@
 
 								<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
 								<td th:text="${pedidos.formaPagamento}"></td>
-								<td th:text="${pedidos.dataPedido}"></td>
+								<td> <input type="date" th:value="${pedidos.dataPedido}" disabled /></td>
 								<td th:text="${pedidos.status}"></td>
 								<td>
 									<a th:href="@{/detalhesPassagem/{idPedido} (idPedido=${pedidos.idPedido})}"
-										class="btn btn-warning">
-										Exibir
+										class="btn btn-warning material-symbols-outlined">
+										visibility
 									</a>
 								</td>
 

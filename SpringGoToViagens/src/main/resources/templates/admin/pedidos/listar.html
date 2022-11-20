@@ -16,6 +16,10 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
@@ -82,11 +86,51 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Pedidos realizados</h1>
+				<h1 class="text-center">Pedidos realizados</h1>
 			</div>
 		</div>
 
-		<div class="row" id="table">
+
+		<div class="text-dark mt-3" th:each="pedidos : ${pedidos}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
+
+			<div class="row">
+
+				<div class="col-6"><strong class="text-danger">DADOS DO PEDIDO: </strong></div>
+
+				<div class="col-6 text-right">
+
+					<a th:href="@{/{idPedido}/detalhePedido (idPedido=${pedidos.idPedido})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-warning material-symbols-outlined">
+						visibility
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<!--<p><strong>Id:</strong> <span th:text="${pedidos.id}"></span></p>-->
+				<p><strong>Nome do cliente: </strong><span th:text="${pedidos.usuario.nome}"></span></p>
+
+				<p><strong>CPF: </strong><span th:text="${pedidos.usuario.cpf}"></span></p>
+				<p><strong>Preço: </strong><span th:text="${pedidos.precoTotal}"></span></p>
+				<p><strong>Forma de pagamento: </strong><span th:text="${pedidos.formaPagamento}"></span></p>
+
+
+				<p><strong>Data do Pedido: </strong><span> <input type="date" th:value="${pedidos.dataPedido}"
+							disabled /></span></p>
+
+				<p><strong>Status pedido: </strong><span th:text="${pedidos.status}"></span></p>
+
+			</div>
+
+		</div>
+
+
+		<!--		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
 					<thead>
@@ -112,26 +156,27 @@
 							<td>R$ <span th:text="${pedidos.precoTotal}"> </span> </td>
 							<td th:text="${pedidos.formaPagamento}"></td>
 							<td>
-							
-							<input type="date" th:value="${pedidos.dataPedido}" disabled />
-							
-							 </td>
+
+								<input type="date" th:value="${pedidos.dataPedido}" disabled />
+
+							</td>
 							<td th:text="${pedidos.status}"></td>
 
 							<td>
 								<a th:href="@{/{idPedido}/detalhePedido (idPedido=${pedidos.idPedido})}"
-									class="btn btn-warning">
-									Exibir
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-warning material-symbols-outlined">
+									visibility
 								</a>
 							</td>
-							
+
 						</tr>
 
 					</tbody>
 				</table>
 			</div>
 		</div>
-
+-->
 
 	</main>
 

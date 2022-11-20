@@ -86,10 +86,35 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Detalhes do Pedido</h1>
+				<h1 class="text-center">Detalhes do Pedido</h1>
 			</div>
 		</div>
 
+
+		<div class="text-dark mt-3" th:each="pedidos : ${pedidos}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
+
+
+			<div class="row">
+
+				<p><strong>Id do destino:</strong> <span th:text="${pedidos.destinos.id}"></span></p>
+				<p><strong>Embarque: </strong><span th:text="${pedidos.destinos.embarque}"></span></p>
+				<p><strong>Destino </strong><span th:text="${pedidos.destinos.destino}"></span></p>
+
+				<p><strong>Data Ida: </strong><span> <input type="date" th:value="${pedidos.destinos.dataIda}"
+							disabled /></span></p>
+
+				<p><strong>Data Volta: </strong><span> <input type="date" th:value="${pedidos.destinos.dataVolta}"
+							disabled /></span></p>
+
+				<p><strong>Condição: </strong><span th:text="${pedidos.destinos.condicao}"></span></p>
+
+			</div>
+
+		</div>
+
+
+		<!--
 		<div class="row" id="table">
 			<div class="col-sm-12">
 
@@ -126,17 +151,19 @@
 
 			</div>
 		</div>
-		
+		-->
+
 		<div class="row mt-3 mb-3">
-		
-		<div class="col-12">
-		
-		<a href="/listarPedidos" class="btn bg-buscar">Voltar</a>
-		
+
+			<div class="col-12">
+
+				<a href="/listarPedidos" class="btn bg-buscar">Voltar</a>
+
+			</div>
+
+
 		</div>
-		
-		
-		</div>
+
 
 
 	</main>

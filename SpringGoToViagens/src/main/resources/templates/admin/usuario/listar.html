@@ -82,10 +82,34 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Lista de usuários cadastrados</h1>
+				<h1 class="text-center">Lista de usuários cadastrados</h1>
 			</div>
 		</div>
+		
+		
+		<div class="text-dark mt-3" th:each="usuarios : ${usuarios}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
 
+			<div class="row mb-2">
+
+				<div class="col-12"><strong class="text-danger">DADOS DO USUÁRIO: </strong></div>
+
+			</div>
+
+
+			<div class="row">
+
+				<p><strong>Id: </strong><span th:text="${usuarios.id}"></span></p>
+				<p><strong>Cpf: </strong><span th:text="${usuarios.cpf}"></span></p>
+				<p><strong>Nome: </strong><span th:text="${usuarios.nome}"></span></p>
+				<p><strong>Email: </strong><span th:text="${usuarios.email}"></span></p>
+				<p><strong>Telefone: </strong><span th:text="${usuarios.telefone}"></span></p>
+
+			</div>
+
+		</div>
+
+<!--
 		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
@@ -111,6 +135,7 @@
 				</table>
 			</div>
 		</div>
+-->
 
 	</main>
 

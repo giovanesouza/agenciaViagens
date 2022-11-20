@@ -32,7 +32,7 @@
 		<header class="row">
 
 			<div class="col-sm-6 mb-2 text-justify">
-				<a href="#">
+				<a href="/">
 					<img th:src="@{/img/agencia_viagens_small.png}" alt="Logo" height="60px">
 				</a>
 			</div>
@@ -135,9 +135,6 @@
 					<!-- VARIÁVEL DE ERRO -->
 					<div class="col-md-12 alert alert-danger text-center mt-3" role="alert" th:if="${erro} != null"
 						th:text="${erro}"> </div>
-						
-					<div class="col-md-12 alert alert-success text-center mt-3" role="alert" th:if="${sucesso} != null"
-						th:text="${sucesso}"> </div>
 
 					<div class="col-12 mt-3 mb-3 text-justify">
 
@@ -190,10 +187,7 @@
 						<td th:text="${destinos.quantidade}"></td>
 						<td th:text="${destinos.categoria}"></td>
 						<td>
-							<!--	<a th:href="@{/{id}/comprarPassagem (id=${destinos.id})}" class="btn btn-success">
-							Comprar
-						</a>
-						-->
+
 							<a href="/login" class="btn btn-success">
 								Comprar
 							</a>
@@ -201,7 +195,7 @@
 					</tr>
 				</tbody>
 			</table>
-			
+
 		</div>
 
 	</main>

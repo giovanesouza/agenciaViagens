@@ -16,6 +16,10 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
@@ -86,10 +90,58 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Listagem de solicitação de contato</h1>
+				<h1 class="text-center">Listagem de solicitação de contato</h1>
 			</div>
 		</div>
 
+
+		<div class="text-dark mt-3" th:each="faleConosco : ${faleConosco}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
+
+			<div class="row">
+
+				<div class="col-6"><strong class="text-danger">DADOS DO CONTATO: </strong></div>
+
+				<div class="col-6 text-right">
+
+					<a th:href="@{/{id}/editarStatusSolicitacaoContato (id=${faleConosco.id})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-warning material-symbols-outlined">
+						edit
+					</a>
+
+					<a th:href="@{/{id}/excluirSolicitacaoContato (id=${faleConosco.id})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-danger material-symbols-outlined"
+						onclick="return confirm('Tem certeza que deseja excluir contato?');">
+						delete
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<p><strong>Id:</strong> <span th:text="${faleConosco.id}"></span></p>
+				<p><strong>Nome: </strong><span th:text="${faleConosco.nome}"></span></p>
+
+				<p><strong>Email: </strong><span th:text="${faleConosco.email}"></span></p>
+				<p><strong>Mensagem: </strong><span th:text="${faleConosco.mensagem}"></span></p>
+
+				<p><strong>Data solicitação: </strong><span> <input type="date" th:value="${faleConosco.dataContato}"
+							disabled /></span></p>
+
+				<p><strong>Data resposta: </strong><span> <input type="date" th:value="${faleConosco.dataResposta}"
+							disabled /></span></p>
+
+				<p><strong>Status: </strong><span th:text="${faleConosco.status}"></span></p>
+
+			</div>
+
+		</div>
+
+
+<!--
 		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
@@ -112,20 +164,22 @@
 							<td th:text="${faleConosco.nome}"></td>
 							<td th:text="${faleConosco.email}"></td>
 							<td th:text="${faleConosco.mensagem}"></td>
-							<td th:text="${faleConosco.dataContato}"></td>
+							<td> <input type="date" th:value="${faleConosco.dataContato}" disabled /></td>
 							<td th:text="${faleConosco.dataResposta}"></td>
 							<td th:text="${faleConosco.status}"></td>
 							<td>
 								<a th:href="@{/{id}/editarStatusSolicitacaoContato (id=${faleConosco.id})}"
-									class="btn btn-warning">
-									Editar
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-warning material-symbols-outlined">
+									edit
 								</a>
 							</td>
 							<td>
 								<a th:href="@{/{id}/excluirSolicitacaoContato (id=${faleConosco.id})}"
-									class="btn btn-danger"
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-danger material-symbols-outlined"
 									onclick="return confirm('Tem certeza que deseja excluir contato?');">
-									Excluir
+									delete
 								</a>
 							</td>
 						</tr>
@@ -133,6 +187,7 @@
 				</table>
 			</div>
 		</div>
+-->
 
 	</main>
 

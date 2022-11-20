@@ -16,6 +16,10 @@
 	<!-- REMIX ICON -->
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
+	<!-- GOOGLE ICON -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 	<!-- CSS EXTERNO -->
 	<link rel="stylesheet" th:href="@{/css/all.css}">
 
@@ -85,10 +89,56 @@
 	<main class="container mt-5 mb-5">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Funcionários cadastrados</h1>
+				<h1 class="text-center">Funcionários cadastrados</h1>
 			</div>
 		</div>
 
+
+		<div class="text-dark mt-3" th:each="funcionario : ${funcionarios}"
+			style="border: 0.1rem solid #164B66; border-radius: 1rem; padding: 1rem;">
+
+			<div class="row">
+
+				<div class="col-6"><strong class="text-danger">DADOS DO FUNCIONÁRIO: </strong></div>
+
+				<div class="col-6 text-right">
+
+					<a th:href="@{/{matricula}/editarFuncionario (matricula=${funcionario.matricula})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-warning material-symbols-outlined">
+						edit
+					</a>
+
+					<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}"
+						style="font-weight: normal; font-size: 2rem" class="btn btn-danger material-symbols-outlined"
+						onclick="return confirm('Tem certeza que deseja excluir o funcionário?');">
+						delete
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<p><strong>Mat.:</strong> <span th:text="${funcionario.matricula}"></span></p>
+				<p><strong>Nome: </strong><span th:text="${funcionario.nome}"></span></p>
+
+				<p><strong>Cargo: </strong><span th:text="${funcionario.cargo.nome}"></span></p>
+				<p><strong>Salário: </strong>R$ <span th:text="${funcionario.salario}"></span></p>
+
+				<p><strong>Data admissão: </strong><span> <input type="date" th:value="${funcionario.dataAdmissao}"
+							disabled /></span></p>
+
+				<p><strong>Data demissão: </strong><span> <input type="date" th:value="${funcionario.dataDemissao}"
+							disabled /></span></p>
+
+			</div>
+
+		</div>
+
+
+<!--
 		<div class="row" id="table">
 			<div class="col-sm-12">
 				<table class="table">
@@ -109,19 +159,21 @@
 							<td th:text="${funcionario.nome}"></td>
 							<td th:text="${funcionario.cargo.nome}"></td>
 							<td th:text="${funcionario.salario}"></td>
-							<td th:text="${funcionario.dataAdmissao}"></td>
-							<td th:text="${funcionario.dataDemissao}"></td>
+							<td> <input type="date" th:value="${funcionario.dataAdmissao}" disabled /></td>
+							<td> <input type="date" th:value="${funcionario.dataDemissao}" disabled /></td>
 							<td>
 								<a th:href="@{/{matricula}/editarFuncionario (matricula=${funcionario.matricula})}"
-									class="btn btn-warning">
-									Editar
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-warning material-symbols-outlined">
+									edit
 								</a>
 							</td>
 							<td>
 								<a th:href="@{/{matricula}/excluirFuncionario (matricula=${funcionario.matricula})}"
-									class="btn btn-danger"
+									style="font-weight: normal; font-size: 2rem"
+									class="btn btn-danger material-symbols-outlined"
 									onclick="return confirm('Tem certeza que deseja excluir o funcionário?');">
-									Excluir
+									delete
 								</a>
 							</td>
 						</tr>
@@ -129,6 +181,7 @@
 				</table>
 			</div>
 		</div>
+--> 
 
 		<div class="row">
 			<div class="col-sm-12">
@@ -137,6 +190,7 @@
 				<a th:href="@{/cadastrarFuncionario}" class="btn btn-primary mt-5 mb-5">Cadastrar novo funcionário</a>
 			</div>
 		</div>
+		
 	</main>
 
 	<!-- FIM - LISTAR DESTINOS  -->
